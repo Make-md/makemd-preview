@@ -205,14 +205,14 @@ function T(n2) {
   this.l[n2.type + true](l.event ? l.event(n2) : n2);
 }
 function j(n2, u4, i4, t4, o3, r3, f4, e4, c4) {
-  var a5, h5, v3, y5, _3, k5, b4, g4, m5, x5, A4, C3, $3, H5, I4, T6 = u4.type;
+  var a5, h5, v3, y5, _4, k5, b4, g4, m5, x5, A4, C3, $3, H5, I4, T6 = u4.type;
   if (void 0 !== u4.constructor)
     return null;
   null != i4.__h && (c4 = i4.__h, e4 = u4.__e = i4.__e, u4.__h = null, r3 = [e4]), (a5 = l.__b) && a5(u4);
   try {
     n:
       if ("function" == typeof T6) {
-        if (g4 = u4.props, m5 = (a5 = T6.contextType) && t4[a5.__c], x5 = a5 ? m5 ? m5.props.value : a5.__ : t4, i4.__c ? b4 = (h5 = u4.__c = i4.__c).__ = h5.__E : ("prototype" in T6 && T6.prototype.render ? u4.__c = h5 = new T6(g4, x5) : (u4.__c = h5 = new d(g4, x5), h5.constructor = T6, h5.render = O), m5 && m5.sub(h5), h5.props = g4, h5.state || (h5.state = {}), h5.context = x5, h5.__n = t4, v3 = h5.__d = true, h5.__h = [], h5._sb = []), null == h5.__s && (h5.__s = h5.state), null != T6.getDerivedStateFromProps && (h5.__s == h5.state && (h5.__s = s({}, h5.__s)), s(h5.__s, T6.getDerivedStateFromProps(g4, h5.__s))), y5 = h5.props, _3 = h5.state, v3)
+        if (g4 = u4.props, m5 = (a5 = T6.contextType) && t4[a5.__c], x5 = a5 ? m5 ? m5.props.value : a5.__ : t4, i4.__c ? b4 = (h5 = u4.__c = i4.__c).__ = h5.__E : ("prototype" in T6 && T6.prototype.render ? u4.__c = h5 = new T6(g4, x5) : (u4.__c = h5 = new d(g4, x5), h5.constructor = T6, h5.render = O), m5 && m5.sub(h5), h5.props = g4, h5.state || (h5.state = {}), h5.context = x5, h5.__n = t4, v3 = h5.__d = true, h5.__h = [], h5._sb = []), null == h5.__s && (h5.__s = h5.state), null != T6.getDerivedStateFromProps && (h5.__s == h5.state && (h5.__s = s({}, h5.__s)), s(h5.__s, T6.getDerivedStateFromProps(g4, h5.__s))), y5 = h5.props, _4 = h5.state, v3)
           null == T6.getDerivedStateFromProps && null != h5.componentWillMount && h5.componentWillMount(), null != h5.componentDidMount && h5.__h.push(h5.componentDidMount);
         else {
           if (null == T6.getDerivedStateFromProps && g4 !== y5 && null != h5.componentWillReceiveProps && h5.componentWillReceiveProps(g4, x5), !h5.__e && null != h5.shouldComponentUpdate && false === h5.shouldComponentUpdate(g4, h5.__s, x5) || u4.__v === i4.__v) {
@@ -224,7 +224,7 @@ function j(n2, u4, i4, t4, o3, r3, f4, e4, c4) {
             break n;
           }
           null != h5.componentWillUpdate && h5.componentWillUpdate(g4, h5.__s, x5), null != h5.componentDidUpdate && h5.__h.push(function() {
-            h5.componentDidUpdate(y5, _3, k5);
+            h5.componentDidUpdate(y5, _4, k5);
           });
         }
         if (h5.context = x5, h5.props = g4, h5.__v = u4, h5.__P = n2, C3 = l.__r, $3 = 0, "prototype" in T6 && T6.prototype.render) {
@@ -235,7 +235,7 @@ function j(n2, u4, i4, t4, o3, r3, f4, e4, c4) {
           do {
             h5.__d = false, C3 && C3(u4), a5 = h5.render(h5.props, h5.state, h5.context), h5.state = h5.__s;
           } while (h5.__d && ++$3 < 25);
-        h5.state = h5.__s, null != h5.getChildContext && (t4 = s(s({}, t4), h5.getChildContext())), v3 || null == h5.getSnapshotBeforeUpdate || (k5 = h5.getSnapshotBeforeUpdate(y5, _3)), I4 = null != a5 && a5.type === p && null == a5.key ? a5.props.children : a5, w(n2, Array.isArray(I4) ? I4 : [I4], u4, i4, t4, o3, r3, f4, e4, c4), h5.base = u4.__e, u4.__h = null, h5.__h.length && f4.push(h5), b4 && (h5.__E = h5.__ = null), h5.__e = false;
+        h5.state = h5.__s, null != h5.getChildContext && (t4 = s(s({}, t4), h5.getChildContext())), v3 || null == h5.getSnapshotBeforeUpdate || (k5 = h5.getSnapshotBeforeUpdate(y5, _4)), I4 = null != a5 && a5.type === p && null == a5.key ? a5.props.children : a5, w(n2, Array.isArray(I4) ? I4 : [I4], u4, i4, t4, o3, r3, f4, e4, c4), h5.base = u4.__e, u4.__h = null, h5.__h.length && f4.push(h5), b4 && (h5.__E = h5.__ = null), h5.__e = false;
       } else
         null == r3 && u4.__v === i4.__v ? (u4.__k = i4.__k, u4.__e = i4.__e) : u4.__e = L(i4.__e, u4, i4, t4, o3, r3, f4, c4);
     (a5 = l.diffed) && a5(u4);
@@ -6915,7 +6915,7 @@ var require_lib = __commonJS({
             var a6 = e5 + u5, f5 = t5 - o4;
             return r4[t5] = { line: a6, lineStart: o4 }, { offset: t5, line: a6 + 1, column: f5 + 1 };
           }
-          function _3(n4) {
+          function _4(n4) {
             if (!y5(n4))
               throw new Error("not a parser: " + n4);
           }
@@ -6986,7 +6986,7 @@ var require_lib = __commonJS({
           }
           function C3() {
             for (var n4 = [].slice.call(arguments), t5 = n4.length, r4 = 0; r4 < t5; r4 += 1)
-              _3(n4[r4]);
+              _4(n4[r4]);
             return e4(function(r5, e5) {
               for (var u5, o4 = new Array(t5), i5 = 0; i5 < t5; i5 += 1) {
                 if (!(u5 = B5(n4[i5]._(r5, e5), u5)).status)
@@ -7010,7 +7010,7 @@ var require_lib = __commonJS({
             if (0 === t5)
               return Y3("zero alternates");
             for (var r4 = 0; r4 < t5; r4 += 1)
-              _3(n4[r4]);
+              _4(n4[r4]);
             return e4(function(t6, r5) {
               for (var e5, u5 = 0; u5 < n4.length; u5 += 1)
                 if ((e5 = B5(n4[u5]._(t6, r5), e5)).status)
@@ -7022,7 +7022,7 @@ var require_lib = __commonJS({
             return H5(n4, t5).or(X3([]));
           }
           function H5(n4, t5) {
-            return _3(n4), _3(t5), J2(n4, t5.then(n4).many(), function(n5, t6) {
+            return _4(n4), _4(t5), J2(n4, t5.then(n4).many(), function(n5, t6) {
               return [n5].concat(t6);
             });
           }
@@ -7082,7 +7082,7 @@ var require_lib = __commonJS({
             throw new Error("not a string, regexp, or parser: " + n4);
           }
           function $3(n4) {
-            return _3(n4), e4(function(t5, r4) {
+            return _4(n4), e4(function(t5, r4) {
               var e5 = n4._(t5, r4), u5 = t5.slice(r4, e5.index);
               return e5.status ? x5(r4, 'not "' + u5 + '"') : b4(r4, null);
             });
@@ -7129,7 +7129,7 @@ var require_lib = __commonJS({
           }, u4.thru = function(n4) {
             return n4(this);
           }, u4.then = function(n4) {
-            return _3(n4), C3(this, n4).map(function(n5) {
+            return _4(n4), C3(this, n4).map(function(n5) {
               return n5[1];
             });
           }, u4.many = function() {
@@ -7371,8 +7371,8 @@ var require_lib = __commonJS({
         path = path.substring(0, path.length - 3);
       return path;
     }
-    parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regex(new RegExp(emojiRegex(), "")), parsimmon_umd_min.exports.regex(/[0-9\p{Letter}_-]+/u).map((str) => str.toLocaleLowerCase()), parsimmon_umd_min.exports.whitespace.map((_3) => "-"), parsimmon_umd_min.exports.any.map((_3) => "")).many().map((result) => result.join(""));
-    var HEADER_CANONICALIZER = parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regex(new RegExp(emojiRegex(), "")), parsimmon_umd_min.exports.regex(/[0-9\p{Letter}_-]+/u), parsimmon_umd_min.exports.whitespace.map((_3) => " "), parsimmon_umd_min.exports.any.map((_3) => " ")).many().map((result) => {
+    parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regex(new RegExp(emojiRegex(), "")), parsimmon_umd_min.exports.regex(/[0-9\p{Letter}_-]+/u).map((str) => str.toLocaleLowerCase()), parsimmon_umd_min.exports.whitespace.map((_4) => "-"), parsimmon_umd_min.exports.any.map((_4) => "")).many().map((result) => result.join(""));
+    var HEADER_CANONICALIZER = parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regex(new RegExp(emojiRegex(), "")), parsimmon_umd_min.exports.regex(/[0-9\p{Letter}_-]+/u), parsimmon_umd_min.exports.whitespace.map((_4) => " "), parsimmon_umd_min.exports.any.map((_4) => " ")).many().map((result) => {
       return result.join("").split(/\s+/).join(" ").trim();
     });
     function normalizeHeaderForLink(header) {
@@ -8057,7 +8057,7 @@ var require_lib = __commonJS({
     var EXPRESSION = parsimmon_umd_min.exports.createLanguage({
       number: (q5) => parsimmon_umd_min.exports.regexp(/-?[0-9]+(\.[0-9]+)?/).map((str) => Number.parseFloat(str)).desc("number"),
       string: (q5) => parsimmon_umd_min.exports.string('"').then(parsimmon_umd_min.exports.alt(q5.escapeCharacter, parsimmon_umd_min.exports.noneOf('"\\')).atLeast(0).map((chars) => chars.join(""))).skip(parsimmon_umd_min.exports.string('"')).desc("string"),
-      escapeCharacter: (_3) => parsimmon_umd_min.exports.string("\\").then(parsimmon_umd_min.exports.any).map((escaped) => {
+      escapeCharacter: (_4) => parsimmon_umd_min.exports.string("\\").then(parsimmon_umd_min.exports.any).map((escaped) => {
         if (escaped === '"')
           return '"';
         if (escaped === "\\")
@@ -8065,19 +8065,19 @@ var require_lib = __commonJS({
         else
           return "\\" + escaped;
       }),
-      bool: (_3) => parsimmon_umd_min.exports.regexp(/true|false|True|False/).map((str) => str.toLowerCase() == "true").desc("boolean ('true' or 'false')"),
-      tag: (_3) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("#"), parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/[\p{Letter}0-9_/-]/u).desc("text"), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")).many(), (start, rest) => start + rest.join("")).desc("tag ('#hello/stuff')"),
-      identifier: (_3) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/\p{Letter}/u), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")), parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/[0-9\p{Letter}_-]/u), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")).many(), (first, rest) => first + rest.join("")).desc("variable identifier"),
-      link: (_3) => parsimmon_umd_min.exports.regexp(/\[\[([^\[\]]*?)\]\]/u, 1).map((linkInner) => parseInnerLink(linkInner)).desc("file link"),
+      bool: (_4) => parsimmon_umd_min.exports.regexp(/true|false|True|False/).map((str) => str.toLowerCase() == "true").desc("boolean ('true' or 'false')"),
+      tag: (_4) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("#"), parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/[\p{Letter}0-9_/-]/u).desc("text"), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")).many(), (start, rest) => start + rest.join("")).desc("tag ('#hello/stuff')"),
+      identifier: (_4) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/\p{Letter}/u), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")), parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/[0-9\p{Letter}_-]/u), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")).many(), (first, rest) => first + rest.join("")).desc("variable identifier"),
+      link: (_4) => parsimmon_umd_min.exports.regexp(/\[\[([^\[\]]*?)\]\]/u, 1).map((linkInner) => parseInnerLink(linkInner)).desc("file link"),
       embedLink: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("!").atMost(1), q5.link, (p3, l4) => {
         if (p3.length > 0)
           l4.embed = true;
         return l4;
       }).desc("file link"),
-      binaryPlusMinus: (_3) => parsimmon_umd_min.exports.regexp(/\+|-/).map((str) => str).desc("'+' or '-'"),
-      binaryMulDiv: (_3) => parsimmon_umd_min.exports.regexp(/\*|\/|%/).map((str) => str).desc("'*' or '/' or '%'"),
-      binaryCompareOp: (_3) => parsimmon_umd_min.exports.regexp(/>=|<=|!=|>|<|=/).map((str) => str).desc("'>=' or '<=' or '!=' or '=' or '>' or '<'"),
-      binaryBooleanOp: (_3) => parsimmon_umd_min.exports.regexp(/and|or|&|\|/i).map((str) => {
+      binaryPlusMinus: (_4) => parsimmon_umd_min.exports.regexp(/\+|-/).map((str) => str).desc("'+' or '-'"),
+      binaryMulDiv: (_4) => parsimmon_umd_min.exports.regexp(/\*|\/|%/).map((str) => str).desc("'*' or '/' or '%'"),
+      binaryCompareOp: (_4) => parsimmon_umd_min.exports.regexp(/>=|<=|!=|>|<|=/).map((str) => str).desc("'>=' or '<=' or '!=' or '=' or '>' or '<'"),
+      binaryBooleanOp: (_4) => parsimmon_umd_min.exports.regexp(/and|or|&|\|/i).map((str) => {
         if (str.toLowerCase() == "and")
           return "&";
         else if (str.toLowerCase() == "or")
@@ -8085,25 +8085,25 @@ var require_lib = __commonJS({
         else
           return str;
       }).desc("'and' or 'or'"),
-      rootDate: (_3) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/\d{4}/), parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.regexp(/\d{2}/), (year, _4, month) => {
+      rootDate: (_4) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/\d{4}/), parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.regexp(/\d{2}/), (year, _5, month) => {
         return DateTime_1.fromObject({ year: Number.parseInt(year), month: Number.parseInt(month) });
       }).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),
-      dateShorthand: (_3) => parsimmon_umd_min.exports.alt(...Object.keys(DATE_SHORTHANDS).sort((a5, b4) => b4.length - a5.length).map(parsimmon_umd_min.exports.string)),
-      date: (q5) => chainOpt(q5.rootDate, (ym) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_3, day) => ym.set({ day: Number.parseInt(day) })), (ymd) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("T"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_3, hour) => ymd.set({ hour: Number.parseInt(hour) })), (ymdh) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string(":"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_3, minute) => ymdh.set({ minute: Number.parseInt(minute) })), (ymdhm) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string(":"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_3, second) => ymdhm.set({ second: Number.parseInt(second) })), (ymdhms) => parsimmon_umd_min.exports.alt(
-        parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("."), parsimmon_umd_min.exports.regexp(/\d{3}/), (_3, millisecond) => ymdhms.set({ millisecond: Number.parseInt(millisecond) })),
+      dateShorthand: (_4) => parsimmon_umd_min.exports.alt(...Object.keys(DATE_SHORTHANDS).sort((a5, b4) => b4.length - a5.length).map(parsimmon_umd_min.exports.string)),
+      date: (q5) => chainOpt(q5.rootDate, (ym) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_4, day) => ym.set({ day: Number.parseInt(day) })), (ymd) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("T"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_4, hour) => ymd.set({ hour: Number.parseInt(hour) })), (ymdh) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string(":"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_4, minute) => ymdh.set({ minute: Number.parseInt(minute) })), (ymdhm) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string(":"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_4, second) => ymdhm.set({ second: Number.parseInt(second) })), (ymdhms) => parsimmon_umd_min.exports.alt(
+        parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("."), parsimmon_umd_min.exports.regexp(/\d{3}/), (_4, millisecond) => ymdhms.set({ millisecond: Number.parseInt(millisecond) })),
         parsimmon_umd_min.exports.succeed(ymdhms)
       ), (dt) => parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("+").or(parsimmon_umd_min.exports.string("-")), parsimmon_umd_min.exports.regexp(/\d{1,2}(:\d{2})?/), (pm, hr2) => dt.setZone("UTC" + pm + hr2, { keepLocalTime: true })), parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("Z"), () => dt.setZone("utc", { keepLocalTime: true })), parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("["), parsimmon_umd_min.exports.regexp(/[0-9A-Za-z+-\/]+/u), parsimmon_umd_min.exports.string("]"), (_a2, zone, _b2) => dt.setZone(zone, { keepLocalTime: true })))).assert((dt) => dt.isValid, "valid date").desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),
       datePlus: (q5) => parsimmon_umd_min.exports.alt(q5.dateShorthand.map((d5) => DATE_SHORTHANDS[d5]()), q5.date).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS] or in shorthand"),
-      durationType: (_3) => parsimmon_umd_min.exports.alt(...Object.keys(DURATION_TYPES).sort((a5, b4) => b4.length - a5.length).map(parsimmon_umd_min.exports.string)),
-      duration: (q5) => parsimmon_umd_min.exports.seqMap(q5.number, parsimmon_umd_min.exports.optWhitespace, q5.durationType, (count, _3, t4) => DURATION_TYPES[t4].mapUnits((x5) => x5 * count)).sepBy1(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace).or(parsimmon_umd_min.exports.optWhitespace)).map((durations) => durations.reduce((p3, c4) => p3.plus(c4))).desc("duration like 4hr2min"),
-      rawNull: (_3) => parsimmon_umd_min.exports.string("null"),
+      durationType: (_4) => parsimmon_umd_min.exports.alt(...Object.keys(DURATION_TYPES).sort((a5, b4) => b4.length - a5.length).map(parsimmon_umd_min.exports.string)),
+      duration: (q5) => parsimmon_umd_min.exports.seqMap(q5.number, parsimmon_umd_min.exports.optWhitespace, q5.durationType, (count, _4, t4) => DURATION_TYPES[t4].mapUnits((x5) => x5 * count)).sepBy1(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace).or(parsimmon_umd_min.exports.optWhitespace)).map((durations) => durations.reduce((p3, c4) => p3.plus(c4))).desc("duration like 4hr2min"),
+      rawNull: (_4) => parsimmon_umd_min.exports.string("null"),
       tagSource: (q5) => q5.tag.map((tag) => Sources.tag(tag)),
       csvSource: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("csv(").skip(parsimmon_umd_min.exports.optWhitespace), q5.string, parsimmon_umd_min.exports.string(")"), (_1, path, _22) => Sources.csv(path)),
       linkIncomingSource: (q5) => q5.link.map((link) => Sources.link(link.path, true)),
       linkOutgoingSource: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("outgoing(").skip(parsimmon_umd_min.exports.optWhitespace), q5.link, parsimmon_umd_min.exports.string(")"), (_1, link, _22) => Sources.link(link.path, false)),
       folderSource: (q5) => q5.string.map((str) => Sources.folder(str)),
-      parensSource: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q5.source, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_1, _22, field, _3, _4) => field),
-      negateSource: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.string("!")), q5.atomSource, (_3, source) => Sources.negate(source)),
+      parensSource: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q5.source, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_1, _22, field, _32, _4) => field),
+      negateSource: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.string("!")), q5.atomSource, (_4, source) => Sources.negate(source)),
       atomSource: (q5) => parsimmon_umd_min.exports.alt(q5.parensSource, q5.negateSource, q5.linkOutgoingSource, q5.linkIncomingSource, q5.folderSource, q5.tagSource, q5.csvSource),
       binaryOpSource: (q5) => createBinaryParser(q5.atomSource, q5.binaryBooleanOp.map((s6) => s6), Sources.binaryOp),
       source: (q5) => q5.binaryOpSource,
@@ -8119,7 +8119,7 @@ var require_lib = __commonJS({
       boolField: (q5) => q5.bool.map((val) => Fields.literal(val)).desc("boolean"),
       dateField: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("date("), parsimmon_umd_min.exports.optWhitespace, q5.datePlus, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (prefix, _1, date, _22, postfix) => Fields.literal(date)).desc("date"),
       durationField: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("dur("), parsimmon_umd_min.exports.optWhitespace, q5.duration, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (prefix, _1, dur, _22, postfix) => Fields.literal(dur)).desc("duration"),
-      nullField: (q5) => q5.rawNull.map((_3) => Fields.NULL),
+      nullField: (q5) => q5.rawNull.map((_4) => Fields.NULL),
       linkField: (q5) => q5.link.map((f4) => Fields.literal(f4)),
       listField: (q5) => q5.field.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)).wrap(parsimmon_umd_min.exports.string("[").skip(parsimmon_umd_min.exports.optWhitespace), parsimmon_umd_min.exports.optWhitespace.then(parsimmon_umd_min.exports.string("]"))).map((l4) => Fields.list(l4)).desc("list ('[1, 2, 3]')"),
       objectField: (q5) => parsimmon_umd_min.exports.seqMap(q5.identifier.or(q5.string), parsimmon_umd_min.exports.string(":").trim(parsimmon_umd_min.exports.optWhitespace), q5.field, (name, _sep, value) => {
@@ -8166,18 +8166,18 @@ var require_lib = __commonJS({
         }
         return result;
       }),
-      negatedField: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("!"), q5.indexField, (_3, field) => Fields.negate(field)).desc("negated field"),
-      parensField: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q5.field, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_1, _22, field, _3, _4) => field),
+      negatedField: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("!"), q5.indexField, (_4, field) => Fields.negate(field)).desc("negated field"),
+      parensField: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q5.field, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_1, _22, field, _32, _4) => field),
       lambdaField: (q5) => parsimmon_umd_min.exports.seqMap(q5.identifier.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)).wrap(parsimmon_umd_min.exports.string("(").trim(parsimmon_umd_min.exports.optWhitespace), parsimmon_umd_min.exports.string(")").trim(parsimmon_umd_min.exports.optWhitespace)), parsimmon_umd_min.exports.string("=>").trim(parsimmon_umd_min.exports.optWhitespace), q5.field, (ident, _ignore, value) => {
         return { type: "lambda", arguments: ident, value };
       }),
-      dotPostfix: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("."), q5.identifier, (_3, field) => {
+      dotPostfix: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("."), q5.identifier, (_4, field) => {
         return { type: "dot", field };
       }),
-      indexPostfix: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("["), parsimmon_umd_min.exports.optWhitespace, q5.field, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string("]"), (_3, _22, field, _32, _4) => {
+      indexPostfix: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("["), parsimmon_umd_min.exports.optWhitespace, q5.field, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string("]"), (_4, _22, field, _32, _42) => {
         return { type: "index", field };
       }),
-      functionPostfix: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q5.field.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)), parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_3, _1, fields, _22, _32) => {
+      functionPostfix: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q5.field.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)), parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_4, _1, fields, _22, _32) => {
         return { type: "function", fields };
       }),
       binaryMulDivField: (q5) => createBinaryParser(q5.indexField, q5.binaryMulDiv, Fields.binaryOp),
@@ -8262,7 +8262,7 @@ var require_lib = __commonJS({
         }
       }).desc("TABLE or LIST or TASK or CALENDAR"),
       fromClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/FROM/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.source, (_1, _22, source) => source),
-      whereClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/WHERE/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.field, (where, _3, field) => {
+      whereClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/WHERE/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.field, (where, _4, field) => {
         return { type: "where", clause: field };
       }).desc("WHERE <expression>"),
       sortByClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/SORT/i), parsimmon_umd_min.exports.whitespace, q5.sortField.sepBy1(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)), (sort, _1, fields) => {
@@ -8271,10 +8271,10 @@ var require_lib = __commonJS({
       limitClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/LIMIT/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.field, (limit, _1, field) => {
         return { type: "limit", amount: field };
       }).desc("LIMIT <value>"),
-      flattenClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/FLATTEN/i).skip(parsimmon_umd_min.exports.whitespace), q5.namedField, (_3, field) => {
+      flattenClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/FLATTEN/i).skip(parsimmon_umd_min.exports.whitespace), q5.namedField, (_4, field) => {
         return { type: "flatten", field };
       }).desc("FLATTEN <value> [AS <name>]"),
-      groupByClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/GROUP BY/i).skip(parsimmon_umd_min.exports.whitespace), q5.namedField, (_3, field) => {
+      groupByClause: (q5) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/GROUP BY/i).skip(parsimmon_umd_min.exports.whitespace), q5.namedField, (_4, field) => {
         return { type: "group", field };
       }).desc("GROUP BY <value> [AS <name>]"),
       clause: (q5) => parsimmon_umd_min.exports.alt(q5.fromClause, q5.whereClause, q5.sortByClause, q5.limitClause, q5.groupByClause, q5.flattenClause),
@@ -8994,7 +8994,7 @@ var require_lodash = __commonJS({
         return string.match(reUnicodeWord) || [];
       }
       var runInContext = function runInContext2(context) {
-        context = context == null ? root : _3.defaults(root.Object(), context, _3.pick(root, contextProps));
+        context = context == null ? root : _4.defaults(root.Object(), context, _4.pick(root, contextProps));
         var Array2 = context.Array, Date2 = context.Date, Error2 = context.Error, Function2 = context.Function, Math2 = context.Math, Object2 = context.Object, RegExp2 = context.RegExp, String2 = context.String, TypeError2 = context.TypeError;
         var arrayProto = Array2.prototype, funcProto = Function2.prototype, objectProto = Object2.prototype;
         var coreJsData = context["__core-js_shared__"];
@@ -13728,17 +13728,17 @@ var require_lodash = __commonJS({
         }
         return lodash;
       };
-      var _3 = runInContext();
+      var _4 = runInContext();
       if (typeof define == "function" && typeof define.amd == "object" && define.amd) {
-        root._ = _3;
+        root._ = _4;
         define(function() {
-          return _3;
+          return _4;
         });
       } else if (freeModule) {
-        (freeModule.exports = _3)._ = _3;
-        freeExports._ = _3;
+        (freeModule.exports = _4)._ = _4;
+        freeExports._ = _4;
       } else {
-        root._ = _3;
+        root._ = _4;
       }
     }).call(exports);
   }
@@ -13880,7 +13880,7 @@ var require_tslib = __commonJS({
         });
       };
       __generator2 = function(thisArg, body) {
-        var _3 = { label: 0, sent: function() {
+        var _4 = { label: 0, sent: function() {
           if (t4[0] & 1)
             throw t4[1];
           return t4[1];
@@ -13896,7 +13896,7 @@ var require_tslib = __commonJS({
         function step(op) {
           if (f4)
             throw new TypeError("Generator is already executing.");
-          while (g4 && (g4 = 0, op[0] && (_3 = 0)), _3)
+          while (g4 && (g4 = 0, op[0] && (_4 = 0)), _4)
             try {
               if (f4 = 1, y5 && (t4 = op[0] & 2 ? y5["return"] : op[0] ? y5["throw"] || ((t4 = y5["return"]) && t4.call(y5), 0) : y5.next) && !(t4 = t4.call(y5, op[1])).done)
                 return t4;
@@ -13908,42 +13908,42 @@ var require_tslib = __commonJS({
                   t4 = op;
                   break;
                 case 4:
-                  _3.label++;
+                  _4.label++;
                   return { value: op[1], done: false };
                 case 5:
-                  _3.label++;
+                  _4.label++;
                   y5 = op[1];
                   op = [0];
                   continue;
                 case 7:
-                  op = _3.ops.pop();
-                  _3.trys.pop();
+                  op = _4.ops.pop();
+                  _4.trys.pop();
                   continue;
                 default:
-                  if (!(t4 = _3.trys, t4 = t4.length > 0 && t4[t4.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                    _3 = 0;
+                  if (!(t4 = _4.trys, t4 = t4.length > 0 && t4[t4.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                    _4 = 0;
                     continue;
                   }
                   if (op[0] === 3 && (!t4 || op[1] > t4[0] && op[1] < t4[3])) {
-                    _3.label = op[1];
+                    _4.label = op[1];
                     break;
                   }
-                  if (op[0] === 6 && _3.label < t4[1]) {
-                    _3.label = t4[1];
+                  if (op[0] === 6 && _4.label < t4[1]) {
+                    _4.label = t4[1];
                     t4 = op;
                     break;
                   }
-                  if (t4 && _3.label < t4[2]) {
-                    _3.label = t4[2];
-                    _3.ops.push(op);
+                  if (t4 && _4.label < t4[2]) {
+                    _4.label = t4[2];
+                    _4.ops.push(op);
                     break;
                   }
                   if (t4[2])
-                    _3.ops.pop();
-                  _3.trys.pop();
+                    _4.ops.pop();
+                  _4.trys.pop();
                   continue;
               }
-              op = body.call(thisArg, _3);
+              op = body.call(thisArg, _4);
             } catch (e4) {
               op = [6, e4];
               y5 = 0;
@@ -14623,36 +14623,36 @@ var require_index_production = __commonJS({
         const l4 = n3.toLowerCase();
         return Boolean(null == (o4 = e5.getValue(t5)) ? void 0 : o4.toLowerCase().includes(l4));
       };
-      S4.autoRemove = (e5) => _3(e5);
+      S4.autoRemove = (e5) => _4(e5);
       const C3 = (e5, t5, n3) => {
         var o4;
         return Boolean(null == (o4 = e5.getValue(t5)) ? void 0 : o4.includes(n3));
       };
-      C3.autoRemove = (e5) => _3(e5);
+      C3.autoRemove = (e5) => _4(e5);
       const R3 = (e5, t5, n3) => {
         var o4;
         return (null == (o4 = e5.getValue(t5)) ? void 0 : o4.toLowerCase()) === n3.toLowerCase();
       };
-      R3.autoRemove = (e5) => _3(e5);
+      R3.autoRemove = (e5) => _4(e5);
       const v3 = (e5, t5, n3) => {
         var o4;
         return null == (o4 = e5.getValue(t5)) ? void 0 : o4.includes(n3);
       };
-      v3.autoRemove = (e5) => _3(e5) || !(null != e5 && e5.length);
+      v3.autoRemove = (e5) => _4(e5) || !(null != e5 && e5.length);
       const F3 = (e5, t5, n3) => !n3.some((n4) => {
         var o4;
         return !(null != (o4 = e5.getValue(t5)) && o4.includes(n4));
       });
-      F3.autoRemove = (e5) => _3(e5) || !(null != e5 && e5.length);
+      F3.autoRemove = (e5) => _4(e5) || !(null != e5 && e5.length);
       const M5 = (e5, t5, n3) => n3.some((n4) => {
         var o4;
         return null == (o4 = e5.getValue(t5)) ? void 0 : o4.includes(n4);
       });
-      M5.autoRemove = (e5) => _3(e5) || !(null != e5 && e5.length);
+      M5.autoRemove = (e5) => _4(e5) || !(null != e5 && e5.length);
       const V3 = (e5, t5, n3) => e5.getValue(t5) === n3;
-      V3.autoRemove = (e5) => _3(e5);
+      V3.autoRemove = (e5) => _4(e5);
       const y5 = (e5, t5, n3) => e5.getValue(t5) == n3;
-      y5.autoRemove = (e5) => _3(e5);
+      y5.autoRemove = (e5) => _4(e5);
       const x5 = (e5, t5, n3) => {
         let [o4, l4] = n3;
         const i5 = e5.getValue(t5);
@@ -14665,9 +14665,9 @@ var require_index_production = __commonJS({
           i5 = r4, r4 = e6;
         }
         return [i5, r4];
-      }, x5.autoRemove = (e5) => _3(e5) || _3(e5[0]) && _3(e5[1]);
+      }, x5.autoRemove = (e5) => _4(e5) || _4(e5[0]) && _4(e5[1]);
       const I4 = { includesString: S4, includesStringSensitive: C3, equalsString: R3, arrIncludes: v3, arrIncludesAll: F3, arrIncludesSome: M5, equals: V3, weakEquals: y5, inNumberRange: x5 };
-      function _3(e5) {
+      function _4(e5) {
         return null == e5 || "" === e5;
       }
       const P4 = { getDefaultColumnDef: () => ({ filterFn: "auto" }), getInitialState: (e5) => ({ columnFilters: [], globalFilter: void 0, ...e5 }), getDefaultOptions: (e5) => ({ onColumnFiltersChange: i4("columnFilters", e5), onGlobalFilterChange: i4("globalFilter", e5), filterFromLeafRows: false, maxLeafRowFilterDepth: 100, globalFilterFn: "auto", getColumnCanGlobalFilter: (t5) => {
@@ -19623,7 +19623,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     return fold(f4, z5, this);
   };
   var forEach = hamt.forEach = function(f4, map) {
-    return fold(function(_3, value, key2) {
+    return fold(function(_4, value, key2) {
       return f4(value, key2, map);
     }, null, map);
   };
@@ -20378,12 +20378,12 @@ function sendEndOfBatchNotifications(store) {
   if (dirtyAtoms.size) {
     for (const [key2, subscriptions] of storeState.nodeTransactionSubscriptions) {
       if (dirtyAtoms.has(key2)) {
-        for (const [_3, subscription] of subscriptions) {
+        for (const [_4, subscription] of subscriptions) {
           subscription(store);
         }
       }
     }
-    for (const [_3, subscription] of storeState.transactionSubscriptions) {
+    for (const [_4, subscription] of storeState.transactionSubscriptions) {
       subscription(store);
     }
     if (!Recoil_gkx_1("recoil_early_rendering_2021") || storeState.suspendedComponentResolvers.size) {
@@ -20426,7 +20426,7 @@ function Batcher({
   setNotifyBatcherOfChange
 }) {
   const storeRef = useStoreRef();
-  const [_3, setState] = useState([]);
+  const [_4, setState] = useState([]);
   setNotifyBatcherOfChange(() => setState({}));
   useEffect(() => {
     Recoil_Queue.enqueueExecution("Batcher", () => {
@@ -20943,7 +20943,7 @@ function validateRecoilValue(recoilValue, hookName) {
 }
 function useRecoilInterface_DEPRECATED() {
   const storeRef = useStoreRef$1();
-  const [_3, forceUpdate] = useState$1([]);
+  const [_4, forceUpdate] = useState$1([]);
   const recoilValuesUsed = useRef$2(/* @__PURE__ */ new Set());
   recoilValuesUsed.current = /* @__PURE__ */ new Set();
   const previousSubscriptions = useRef$2(/* @__PURE__ */ new Set());
@@ -20989,7 +20989,7 @@ function useRecoilInterface_DEPRECATED() {
   });
   useEffect$1(() => {
     const subs = subscriptions.current;
-    return () => subs.forEach((_4, key2) => unsubscribeFrom(key2));
+    return () => subs.forEach((_5, key2) => unsubscribeFrom(key2));
   }, [unsubscribeFrom]);
   return useMemo$1(() => {
     function useSetRecoilState2(recoilState) {
@@ -21095,7 +21095,7 @@ function useRecoilValueLoadable_LEGACY(recoilValue) {
     validateRecoilValue(recoilValue, "useRecoilValueLoadable");
   }
   const storeRef = useStoreRef$1();
-  const [_3, forceUpdate] = useState$1([]);
+  const [_4, forceUpdate] = useState$1([]);
   const componentName = Recoil_useComponentName();
   useEffect$1(() => {
     const store = storeRef.current;
@@ -27452,7 +27452,7 @@ var OptionMenu = (props) => {
   }));
   const reactTags = _2();
   const onDelete = T2((tagIndex) => {
-    const newTags = tags.filter((_3, i4) => i4 !== tagIndex);
+    const newTags = tags.filter((_4, i4) => i4 !== tagIndex);
     setTags(newTags);
     props.saveOptions(suggestions.map((f4) => f4.value), newTags.map((f4) => f4.value));
   }, [suggestions, tags]);
@@ -28195,7 +28195,7 @@ var saveDBToPath = async (sqlJS, path, tables) => {
     const rowsQuery = tables[t4].rows.reduce((prev, curr) => {
       return `${prev} REPLACE INTO ${t4} VALUES (${tableFields.map((c4) => {
         var _a2, _b2;
-        return `'${(_b2 = (_a2 = curr[c4]) == null ? void 0 : _a2.replace(`'`, `''`)) != null ? _b2 : ""}'`;
+        return `'${(_b2 = (_a2 = curr == null ? void 0 : curr[c4]) == null ? void 0 : _a2.replace(`'`, `''`)) != null ? _b2 : ""}'`;
       }).join(", ")});`;
     }, "");
     const idxQuery = tables[t4].uniques.reduce((p3, c4) => {
@@ -28688,6 +28688,17 @@ var frontMatterForFile = (file) => {
 var frontMatterKeys = (fm) => {
   return Object.keys(fm != null ? fm : {}).filter((f4) => f4 != "position");
 };
+var yamlTypeToMDBType = (YAMLtype) => {
+  switch (YAMLtype) {
+    case "duration":
+      return "text";
+      break;
+    case "unknown":
+      return "text";
+      break;
+  }
+  return YAMLtype;
+};
 var detectYAMLType = (value) => {
   if (typeof value === "string") {
     if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -28698,17 +28709,26 @@ var detectYAMLType = (value) => {
     return "number";
   } else if (typeof value === "boolean") {
     return "boolean";
+  } else if (!value) {
+    return "unknown";
   } else if (Array.isArray(value)) {
-    return "option";
+    const types = uniq(value.map((f4) => detectYAMLType(f4)));
+    if (types.length == 1 && types[0] == "link") {
+      return "link-multi";
+    }
+    return "option-multi";
   } else if (value.isLuxonDateTime) {
     return "date";
+  } else if (value.isLuxonDuration) {
+    return "duration";
   } else if (value.type == "file") {
-    return "file";
+    return "link";
   }
   return "text";
 };
 var processFrontMatter = (field, value) => {
-  switch (detectYAMLType(value)) {
+  const YAMLtype = detectYAMLType(value);
+  switch (YAMLtype) {
     case "number":
       return value.toString();
       break;
@@ -28718,16 +28738,23 @@ var processFrontMatter = (field, value) => {
     case "date":
       return new Date(value.ts).toDateString();
       break;
-    case "option":
+    case "duration":
+      return Object.keys(value.values).reduce((p3, c4) => [...p3, ...value.values[c4] > 0 ? [value.values[c4] + " " + c4] : []], []).join(", ");
+      break;
+    case "option-multi":
+    case "link-multi":
       if (field == "tags")
         return value.map((f4) => "#" + f4).join(",");
       return value.join(",");
       break;
-    case "file":
+    case "link":
       return value.path;
       break;
+    case "text":
+      return value;
+      break;
   }
-  return value;
+  return "";
 };
 
 // src/components/ContextView/FilterBar/FilterBar.tsx
@@ -28737,7 +28764,7 @@ var FilterBar = (props) => {
   const { folderNoteOpen, viewFolderNote } = props;
   const ctxRef = _2(null);
   const { tables, data, setDBSchema, cols, isFolderContext, saveSchema, saveDB: saveDB2, saveContextDB, setSchema, setSearchString, predicate, tagContexts, setPredicate, schema, dbSchema, dbPath, contextTable, tableData } = q2(MDBContext);
-  const saveOptions = (_3, value) => {
+  const saveOptions = (_4, value) => {
     saveSchema({
       ...dbSchema,
       def: value.join("&")
@@ -28771,7 +28798,7 @@ var FilterBar = (props) => {
       false,
       tagContexts,
       views.map((m5) => ({ name: m5.name, value: m5.id })),
-      (_3, value) => selectView(_dbschema, value[0]),
+      (_4, value) => selectView(_dbschema, value[0]),
       "Select View"
     );
   };
@@ -28856,7 +28883,7 @@ var FilterBar = (props) => {
     const offset = e4.target.getBoundingClientRect();
     menu.showAtPosition({ x: offset.left, y: offset.top + 30 });
   };
-  const saveSort = (_3, sort) => {
+  const saveSort = (_4, sort) => {
     const newSort = {
       field: sort[0],
       direction: "asc"
@@ -28866,7 +28893,7 @@ var FilterBar = (props) => {
       sort: [...predicate.sort.filter((s5) => s5.field != newSort.field), newSort]
     });
   };
-  const saveGroupBy = (_3, groupBy) => {
+  const saveGroupBy = (_4, groupBy) => {
     savePredicate({
       ...predicate,
       groupBy: groupBy[0]
@@ -28885,7 +28912,7 @@ var FilterBar = (props) => {
       filters: [...predicate.filters, filter]
     });
   };
-  const selectFilter = (e4, _3, field) => {
+  const selectFilter = (e4, _4, field) => {
     const menu = new import_obsidian5.Menu();
     menu.setUseNativeMenu(false);
     menu.addItem((menuItem) => {
@@ -28903,7 +28930,7 @@ var FilterBar = (props) => {
     showSelectMenu({ x: offset.left, y: offset.top + 30 }, false, false, [], cols.map((f4) => ({
       name: f4.name + f4.table,
       value: f4.name + f4.table
-    })), (_3, field) => selectFilter(e4, _3, field), "Select Field");
+    })), (_4, field) => selectFilter(e4, _4, field), "Select Field");
   };
   const showSortMenu = (e4) => {
     const offset = e4.target.getBoundingClientRect();
@@ -28932,12 +28959,31 @@ var FilterBar = (props) => {
       const dataViewAPI = (0, import_obsidian_dataview.getAPI)();
       const table = tableData;
       const files = data.map((c4) => c4.File);
+      const guestimateTypes = (_files, dv) => {
+        const typesArray = _files.map((f4) => getAbstractFileAtPath(app, f4)).map((k5) => {
+          const fm = dv ? dataViewAPI.page(k5.path) : frontMatterForFile(k5);
+          const fmKeys = dv ? Object.keys(fm != null ? fm : {}).filter((f4, i4, self2) => !self2.find((g4, j4) => g4.toLowerCase().replace(/\s/g, "-") == f4.toLowerCase().replace(/\s/g, "-") && i4 > j4) ? true : false).filter((f4) => f4 != "file") : frontMatterKeys(fm);
+          return fmKeys.reduce((pk, ck) => ({ ...pk, [ck]: detectYAMLType(fm[ck]) }), {});
+        });
+        const types = typesArray.reduce((p3, c4) => {
+          const newSet = Object.keys(c4).reduce((pk, ck) => {
+            var _a2;
+            return { ...pk, [ck]: [...(_a2 = p3 == null ? void 0 : p3[ck]) != null ? _a2 : [], c4[ck]] };
+          }, { ...p3 });
+          return newSet;
+        }, {});
+        const guessType = (ts) => {
+          return import_lodash.default.head((0, import_lodash.default)(ts).countBy().entries().maxBy(import_lodash.default.last));
+        };
+        const guessedTypes = Object.keys(types).reduce((p3, c4) => {
+          return { ...p3, [c4]: guessType(types[c4]) };
+        }, {});
+        return guessedTypes;
+      };
       const importDV = (files2) => {
         return files2.reduce((p3, c4) => {
           const dvValues = dataViewAPI.page(c4);
-          console.log(dvValues);
           const fmKeys = Object.keys(dvValues != null ? dvValues : {}).filter((f4, i4, self2) => !self2.find((g4, j4) => g4.toLowerCase().replace(/\s/g, "-") == f4.toLowerCase().replace(/\s/g, "-") && i4 > j4) ? true : false).filter((f4) => f4 != "file");
-          console.log(fmKeys);
           return {
             uniques: [],
             cols: (0, import_lodash.uniq)([...p3.cols, ...fmKeys]),
@@ -28962,10 +29008,10 @@ var FilterBar = (props) => {
           };
         }, { uniques: [], cols: [], rows: [] });
       };
-      const mergeTableData = (mdb, yamlmdb) => {
+      const mergeTableData = (mdb, yamlmdb, types) => {
         return {
           ...mdb,
-          cols: [...mdb.cols, ...yamlmdb.cols.map((f4) => ({ name: f4, schemaId: dbSchema.id, type: "text" }))].filter(onlyUniqueProp("name")),
+          cols: [...mdb.cols, ...yamlmdb.cols.map((f4) => ({ name: f4, schemaId: dbSchema.id, type: yamlTypeToMDBType(types[f4]) }))].filter(onlyUniqueProp("name")),
           rows: mdb.rows.map((r3) => {
             const fmRow = yamlmdb.rows.find((f4) => f4.File == r3.File);
             if (fmRow) {
@@ -28979,7 +29025,8 @@ var FilterBar = (props) => {
         };
       };
       const yamlTableData = dataViewAPI ? importDV(files) : importYAML(files);
-      const newTable = mergeTableData(table, yamlTableData);
+      const yamlTypes = guestimateTypes(files, dataViewAPI ? true : false);
+      const newTable = mergeTableData(table, yamlTableData, yamlTypes);
       saveDB2(newTable);
     };
     const menu = new import_obsidian5.Menu();
@@ -35362,7 +35409,7 @@ var ContextCell = (props) => {
     setValue(newValues);
     props.saveValue(newValues.map((f4) => f4.path).join(","));
   };
-  const saveOptions = (_3, _value) => {
+  const saveOptions = (_4, _value) => {
     if (!props.multi) {
       setValue(_value.map((f4) => ({
         path: f4,
@@ -41244,7 +41291,7 @@ var LinkCell = (props) => {
     setValue(newValues);
     props.saveValue(newValues.map((f4) => f4.value).join(","));
   };
-  const saveOptions = (_3, _value) => {
+  const saveOptions = (_4, _value) => {
     if (!props.multi) {
       setValue(resolveLinks(stringValueToLink(_value)));
       props.saveValue(_value.join(","));
@@ -43888,7 +43935,7 @@ function createListComponent(_ref) {
         return style;
       };
       _this._getItemStyleCache = void 0;
-      _this._getItemStyleCache = memoize_one_esm_default(function(_3, __, ___) {
+      _this._getItemStyleCache = memoize_one_esm_default(function(_4, __, ___) {
         return {};
       });
       _this._onScrollHorizontal = function(event) {
