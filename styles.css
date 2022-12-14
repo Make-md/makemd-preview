@@ -231,6 +231,10 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
 }
 
 /* src/css/Menu.css */
+.mk-suggestion {
+  display: flex;
+  flex-direction: column;
+}
 .mk-menu {
   padding: 0;
 }
@@ -274,12 +278,12 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
 }
 .mk-options-menu__selected-tag:after {
   content: "\2715";
-  color: #AAA;
+  color: #aaa;
   margin-left: 8px;
 }
 .mk-options-menu__selected-tag:hover,
 .mk-options-menu__selected-tag:focus {
-  border-color: #B1B1B1;
+  border-color: #b1b1b1;
 }
 .mk-options-menu__selected {
   width: 100%;

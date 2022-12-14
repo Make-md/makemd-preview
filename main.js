@@ -18066,10 +18066,10 @@ __export(main_exports, {
   default: () => MakeMDPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian26 = require("obsidian");
+var import_obsidian27 = require("obsidian");
 
 // src/components/Spaces/FileTreeView.tsx
-var import_obsidian19 = require("obsidian");
+var import_obsidian20 = require("obsidian");
 init_compat_module();
 
 // node_modules/preact/compat/client.mjs
@@ -23182,7 +23182,7 @@ var Recoil_index_35 = Recoil_index.snapshot_UNSTABLE;
 // src/components/Spaces/MainMenu.tsx
 init_compat_module();
 
-// src/components/Spaces/modals.ts
+// src/components/ui/modals/modals.ts
 var import_obsidian14 = require("obsidian");
 
 // src/i18n.ts
@@ -27492,6 +27492,12 @@ var OptionMenu = (props) => {
     }
     return true;
   }, [suggestions]);
+  const tagProps = props.detail ? {
+    suggestionComponent: (props2) => /* @__PURE__ */ bn.createElement("div", {
+      className: "mk-suggestion"
+    }, /* @__PURE__ */ bn.createElement("span", null, props2.item.name), /* @__PURE__ */ bn.createElement("span", null, props2.item.value)),
+    maxSuggestionsLength: 4
+  } : {};
   return /* @__PURE__ */ bn.createElement("div", null, /* @__PURE__ */ bn.createElement(ReactTags_default, {
     ref: reactTags,
     tags: props.multi ? tags : [],
@@ -27501,7 +27507,8 @@ var OptionMenu = (props) => {
     onValidate: onValidation,
     placeholderText: (_a2 = props.placeholder) != null ? _a2 : "",
     allowNew: true,
-    minQueryLength: 0
+    minQueryLength: 0,
+    ...tagProps
   }));
 };
 var inputMenuItem = (menuItem, value, setValue) => {
@@ -27524,7 +27531,7 @@ var inputMenuItem = (menuItem, value, setValue) => {
   menuItem.setTitle(frag);
   return menuItem;
 };
-var showSelectMenu = (point, multi, editable, value, options, saveOptions, placeholder2) => {
+var showSelectMenu = (point, multi, editable, value, options, saveOptions, placeholder2, detail) => {
   const menu = new import_obsidian.Menu();
   menu.dom.toggleClass("mk-menu", true);
   menu.setUseNativeMenu(false);
@@ -27549,7 +27556,8 @@ var showSelectMenu = (point, multi, editable, value, options, saveOptions, place
     options,
     saveOptions,
     hide: () => menu.hide(),
-    placeholder: placeholder2
+    placeholder: placeholder2,
+    detail
   })));
   menu.addItem((item) => {
     item.setTitle(frag);
@@ -27932,7 +27940,7 @@ var flattenTrees = (items, section, sectionIndex, parentId = null, depth = 0) =>
       return [
         ...acc,
         { ...item, parentId, depth, section: sectionIndex, index, id: id2, isFolder: true },
-        ...flattenTrees(item.children, section, sectionIndex, id2, depth + 1)
+        ...flattenTrees(folderChildren(item), section, sectionIndex, id2, depth + 1)
       ];
     } else {
       return [
@@ -27951,7 +27959,7 @@ var flattenTree = (folder, path, sectionIndex, collapsed) => {
     index: 0,
     section: -1,
     isFolder: true
-  }, ...!collapsed ? flattenTrees(folder.children, path, sectionIndex, path, 1) : []];
+  }, ...!collapsed ? flattenTrees(folderChildren(folder), path, sectionIndex, path, 1) : []];
 };
 function includeChildrenOf(items, ids2) {
   const excludeParentIds = items.filter((f4) => {
@@ -27970,6 +27978,9 @@ function includeChildrenOf(items, ids2) {
   });
 }
 var sortFolderTree = async (folderTree2, plugin) => {
+  if (plugin.settings.vaultSort.length > 0) {
+    return sortFolderTreeUsingField(folderTree2, plugin.settings.vaultSort[0], plugin.settings.vaultSort[1]);
+  }
   const stringTree = plugin.settings.folderRank;
   const rawStringTree = folderTreeToStringTree(folderTree2);
   const newStringTree = mergeStringTree(stringTree, rawStringTree);
@@ -28005,13 +28016,16 @@ var renamePathInStringTree = (oldPath, newFile, plugin) => {
   plugin.settings.folderRank = recursive(stringTree, "", "/" + oldPath, newName);
   plugin.saveSettings();
 };
-var excludeFilePredicate = (f4) => !(f4 instanceof import_obsidian2.TFile && f4.extension == "mdb") && !(f4.parent.name == fileNameToString(f4.name));
+var excludeFilePredicate = (f4) => !(f4 instanceof import_obsidian2.TFile && window.make.settings.hiddenExtensions.find((e4) => f4.extension == e4)) && !window.make.settings.hiddenFiles.find((e4) => e4 == f4.path) && !(f4.parent.name == fileNameToString(f4.name));
+var folderChildren = (f4, exclusionList) => {
+  return f4.children.filter(excludeFilePredicate);
+};
 var folderTreeToStringTree = (tree) => {
   const recursive = (subtree) => {
     if (subtree.children) {
       return {
         node: subtree.name,
-        children: subtree.children.filter(excludeFilePredicate).map((f4) => recursive(f4)),
+        children: folderChildren(subtree).map((f4) => recursive(f4)),
         isFolder: true
       };
     } else {
@@ -28062,12 +28076,36 @@ var mergeStringTree = (savedTree, rawTree) => {
   };
   return recursive(rawTree, rankReferences, "/");
 };
+var compareByField = (field, dir) => (_a2, _b2) => {
+  const a5 = dir ? _a2 : _b2;
+  const b4 = dir ? _b2 : _a2;
+  if (a5[field] < b4[field]) {
+    return -1;
+  }
+  if (a5[field] > b4[field]) {
+    return 1;
+  }
+  return 0;
+};
+var sortFolderTreeUsingField = (folderTree2, strategy, direction) => {
+  const recursiveSort = (file) => {
+    if (file instanceof import_obsidian2.TFolder) {
+      return {
+        ...file,
+        children: [...folderChildren(file).filter((f4) => f4 instanceof import_obsidian2.TFolder).map((f4) => recursiveSort(f4)).sort(compareByField("name", true)), ...folderChildren(file).filter((f4) => f4 instanceof import_obsidian2.TFile).sort(compareByField(strategy, direction))]
+      };
+    } else {
+      return file;
+    }
+  };
+  return recursiveSort(folderTree2);
+};
 var sortFolderTreeUsingStringTree = (folderTree2, stringTree) => {
   const recursiveSort = (file, strings) => {
     if (file instanceof import_obsidian2.TFolder) {
       return {
         ...file,
-        children: file.children.filter(excludeFilePredicate).map((f4) => {
+        children: folderChildren(file).map((f4) => {
           const currStringTree = strings.children.find((g4) => g4.node == f4.name);
           if (currStringTree)
             return recursiveSort(f4, currStringTree);
@@ -28492,7 +28530,7 @@ var MDBProvider = (props) => {
   const loadDefaultTableData = () => {
     let files;
     if (props.folder) {
-      files = getAbstractFileAtPath(window.make.app, props.folder).children.filter(excludeFilePredicate);
+      files = folderChildren(getAbstractFileAtPath(window.make.app, props.folder));
     } else if (props.tag) {
       files = getAllFilesForTag(props.tag).map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4);
     }
@@ -28510,7 +28548,7 @@ var MDBProvider = (props) => {
   const runDef = async () => {
     let files;
     if (props.folder) {
-      files = getAbstractFileAtPath(window.make.app, props.folder).children.filter(excludeFilePredicate);
+      files = folderChildren(getAbstractFileAtPath(window.make.app, props.folder));
     } else if (props.tag) {
       files = getAllFilesForTag(props.tag).map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4);
     }
@@ -28869,7 +28907,7 @@ var FilterBar = (props) => {
     });
     menu.addItem((item) => {
       item.setTitle("Sort By");
-      item.setIcon("arrow-up-down");
+      item.setIcon("lucide-arrow-up-down");
       item.onClick(() => {
         showSortMenu(e4);
       });
@@ -41232,7 +41270,7 @@ var FileCell = (props) => {
       }), /* @__PURE__ */ bn.createElement("div", {
         className: "mk-cell-file-name",
         onClick: (e4) => openFile({ ...v3.file, isFolder: v3.file instanceof import_obsidian10.TFolder }, app, e4.ctrlKey || e4.metaKey)
-      }, v3 ? v3.file instanceof import_obsidian10.TFile ? fileNameToString(v3.file.name) : v3.file.name : "")), /* @__PURE__ */ bn.createElement("div", {
+      }, v3 ? v3.file instanceof import_obsidian10.TFile ? fileNameToString(v3.file.name) : v3.file.name : "")), v3 && v3.file instanceof import_obsidian10.TFile && v3.file.extension == "md" && /* @__PURE__ */ bn.createElement("div", {
         className: "mk-cell-file-flow",
         onClick: () => props.openFlow(),
         dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-flow-hover"] }
@@ -41296,9 +41334,9 @@ var LinkCell = (props) => {
   };
   const showMenu = () => {
     const offset = ref.current.getBoundingClientRect();
-    const options = app.vault.getFiles().map((f4) => ({ name: fileNameToString(f4.name), value: f4.path }));
+    const options = getAllAbstractFilesInVault(app).map((f4) => ({ name: fileNameToString(f4.name), value: f4.path }));
     const _options = !props.multi ? [{ name: "None", value: "" }, ...options] : options;
-    showSelectMenu({ x: offset.left, y: offset.top + 30 }, false, false, value.map((f4) => f4.value), _options, saveOptions, "Find Note");
+    showSelectMenu({ x: offset.left, y: offset.top + 30 }, false, false, value.map((f4) => f4.value), _options, saveOptions, "Find Note", true);
   };
   const openLink = async (o3) => {
     if (o3.file) {
@@ -42866,6 +42904,23 @@ var ContextView = class extends import_obsidian12.ItemView {
 };
 
 // src/utils/file.ts
+function getAllAbstractFilesInVault(app2) {
+  let files = [];
+  let rootFolder = app2.vault.getRoot();
+  files.push(rootFolder);
+  function recursiveFx(folder) {
+    for (let child of folderChildren(folder)) {
+      if (child instanceof import_obsidian13.TFolder) {
+        let childFolder = child;
+        if (childFolder.children)
+          recursiveFx(childFolder);
+      }
+      files.push(child);
+    }
+  }
+  recursiveFx(rootFolder);
+  return files;
+}
 var getFolderPathFromString = (file) => {
   return file.substring(0, file.lastIndexOf("/"));
 };
@@ -42919,7 +42974,7 @@ var newFileInFolder = async (plugin, data) => {
   );
 };
 
-// src/components/Spaces/modals.ts
+// src/components/ui/modals/modals.ts
 var SaveViewModal = class extends import_obsidian14.Modal {
   constructor(schema, saveSchema) {
     super(app);
@@ -43214,7 +43269,128 @@ var SectionChangeModal = class extends import_obsidian14.Modal {
 };
 
 // src/components/Spaces/MainMenu.tsx
+var import_obsidian16 = require("obsidian");
+
+// src/components/ui/modals/hiddenFiles.tsx
 var import_obsidian15 = require("obsidian");
+init_compat_module();
+var HiddenItemsModal = class extends import_obsidian15.Modal {
+  constructor(plugin) {
+    super(plugin.app);
+    this.plugin = plugin;
+  }
+  onOpen() {
+    let { contentEl } = this;
+    let myModal = this;
+    let headerText;
+    const headerEl = contentEl.createEl("div", { text: headerText });
+    headerEl.addClass("modal-title");
+    headerEl.innerHTML = "Hidden Files";
+    const listEl = contentEl.createEl("div");
+    const root = createRoot(listEl);
+    root.render(/* @__PURE__ */ bn.createElement(HiddenFiles, {
+      plugin: this.plugin
+    }));
+    const cancelButton = contentEl.createEl("button", {
+      text: "Close"
+    });
+    cancelButton.style.cssText = "float: right;";
+    cancelButton.addEventListener("click", () => {
+      myModal.close();
+    });
+    const onClickAction = async () => {
+      myModal.close();
+    };
+  }
+  onClose() {
+    let { contentEl } = this;
+    let event = new CustomEvent(eventTypes.vaultChange);
+    window.dispatchEvent(event);
+    contentEl.empty();
+  }
+};
+var HiddenFiles = (props) => {
+  const { plugin } = props;
+  const ref = _2(null);
+  const [hiddenFiles, setHiddenFiles] = p2(plugin.settings.hiddenFiles);
+  const [hiddenExtensions, setHiddenExtensions] = p2(plugin.settings.hiddenExtensions);
+  const saveExtension = (value) => {
+    plugin.settings.hiddenExtensions = [...plugin.settings.hiddenExtensions, value];
+    plugin.saveSettings();
+  };
+  const saveFile = (_4, value) => {
+    plugin.settings.hiddenFiles = [...plugin.settings.hiddenFiles, ...value];
+    plugin.saveSettings();
+  };
+  const removeExtension = (index) => {
+    plugin.settings.hiddenExtensions = plugin.settings.hiddenExtensions.filter((f4, i4) => i4 != index);
+    plugin.saveSettings();
+  };
+  const removeItem = (index) => {
+    plugin.settings.hiddenFiles = plugin.settings.hiddenFiles.filter((f4, i4) => i4 != index);
+    plugin.saveSettings();
+  };
+  const addExtension = () => {
+    if ((ref == null ? void 0 : ref.current.value.length) > 0) {
+      saveExtension(ref.current.value);
+      ref.current.empty();
+    }
+  };
+  const settingsChanged = () => {
+    setHiddenFiles(plugin.settings.hiddenFiles);
+    setHiddenExtensions(plugin.settings.hiddenExtensions);
+  };
+  h2(() => {
+    window.addEventListener(eventTypes.settingsChanged, settingsChanged);
+    return () => {
+      window.removeEventListener(eventTypes.settingsChanged, settingsChanged);
+    };
+  }, []);
+  const addMenu = (e4) => {
+    const offset = e4.target.getBoundingClientRect();
+    const options = getAllAbstractFilesInVault(app).map((f4) => ({ name: fileNameToString(f4.name), value: f4.path }));
+    showSelectMenu({ x: offset.left, y: offset.top + 30 }, false, false, [], options, saveFile, "Find Note", true);
+  };
+  return /* @__PURE__ */ bn.createElement("div", {
+    className: "modal-content"
+  }, /* @__PURE__ */ bn.createElement("div", {
+    className: "setting-item setting-item-heading"
+  }, "Extensions"), /* @__PURE__ */ bn.createElement("div", null, hiddenExtensions.map((f4, index) => /* @__PURE__ */ bn.createElement("div", {
+    className: "mobile-option-setting-item"
+  }, /* @__PURE__ */ bn.createElement("span", {
+    className: "mobile-option-setting-item-name"
+  }, f4), /* @__PURE__ */ bn.createElement("div", {
+    className: "clickable-icon mobile-option-setting-item-option-icon",
+    "aria-label": "Delete",
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-close"] },
+    onClick: () => removeExtension(index)
+  })))), /* @__PURE__ */ bn.createElement("div", {
+    className: "setting-item"
+  }, /* @__PURE__ */ bn.createElement("input", {
+    placeholder: "Add Extension",
+    type: "text",
+    ref
+  }), /* @__PURE__ */ bn.createElement("button", {
+    onClick: (e4) => addExtension()
+  }, "+ Add")), /* @__PURE__ */ bn.createElement("div", {
+    className: "setting-item setting-item-heading"
+  }, "Files"), /* @__PURE__ */ bn.createElement("div", null, hiddenFiles.map((f4, index) => /* @__PURE__ */ bn.createElement("div", {
+    className: "mobile-option-setting-item"
+  }, /* @__PURE__ */ bn.createElement("span", {
+    className: "mobile-option-setting-item-name"
+  }, f4), /* @__PURE__ */ bn.createElement("div", {
+    className: "clickable-icon mobile-option-setting-item-option-icon",
+    "aria-label": "Delete",
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-close"] },
+    onClick: () => removeItem(index)
+  })))), /* @__PURE__ */ bn.createElement("div", {
+    className: "setting-item"
+  }, /* @__PURE__ */ bn.createElement("button", {
+    onClick: (e4) => addMenu(e4)
+  }, "+ Add File")));
+};
+
+// src/components/Spaces/MainMenu.tsx
 var replaceMobileMainMenu = (plugin) => {
   if (platformIsMobile()) {
     const header = app.workspace.containerEl.querySelector(
@@ -43259,7 +43435,7 @@ var MainMenu = (props) => {
   };
   const showMenu = (e4) => {
     const { spaceActive, leafs } = refreshLeafs();
-    const menu = new import_obsidian15.Menu();
+    const menu = new import_obsidian16.Menu();
     !spaceActive && menu.addItem((menuItem) => {
       menuItem.setIcon("lucide-arrow-left");
       menuItem.setTitle(i18n_default.menu.backToSpace);
@@ -43289,6 +43465,15 @@ var MainMenu = (props) => {
       menuItem.setTitle(i18n_default.menu.expandAllSections);
       menuItem.onClick((ev) => {
         toggleSections(false);
+      });
+    });
+    menu.addSeparator();
+    menu.addItem((menuItem) => {
+      menuItem.setIcon("eye-off");
+      menuItem.setTitle("Manage Hidden Files");
+      menuItem.onClick((ev) => {
+        let vaultChangeModal = new HiddenItemsModal(plugin);
+        vaultChangeModal.open();
       });
     });
     menu.addSeparator();
@@ -43351,7 +43536,7 @@ function useForceUpdate() {
 }
 
 // src/components/Spaces/TreeView/FileExplorerVirtualized.tsx
-var import_obsidian17 = require("obsidian");
+var import_obsidian18 = require("obsidian");
 
 // src/recoil/pluginState.ts
 var activeFile = Recoil_index_4({
@@ -43393,7 +43578,7 @@ init_compat_module();
 var import_classnames4 = __toESM(require_classnames());
 
 // src/components/Spaces/TreeView/SectionView.tsx
-var import_obsidian16 = require("obsidian");
+var import_obsidian17 = require("obsidian");
 init_compat_module();
 var import_classnames3 = __toESM(require_classnames());
 var SectionItem = k3(
@@ -43455,7 +43640,7 @@ var SectionItem = k3(
       data.section == -1 ? triggerVaultMenu(e4) : triggerSectionMenu(data.name, data.index, e4);
     };
     const triggerSectionMenu = (section2, index, e4) => {
-      const fileMenu = new import_obsidian16.Menu();
+      const fileMenu = new import_obsidian17.Menu();
       fileMenu.addItem((menuItem) => {
         menuItem.setTitle(i18n_default.menu.edit);
         menuItem.setIcon("pencil");
@@ -43491,7 +43676,11 @@ var SectionItem = k3(
       return false;
     };
     const triggerVaultMenu = (e4) => {
-      const fileMenu = new import_obsidian16.Menu();
+      const refreshFileList = () => {
+        let event = new CustomEvent(eventTypes.vaultChange);
+        window.dispatchEvent(event);
+      };
+      const fileMenu = new import_obsidian17.Menu();
       fileMenu.addItem((menuItem) => {
         menuItem.setTitle(i18n_default.menu.newSpace);
         menuItem.setIcon("plus");
@@ -43503,6 +43692,83 @@ var SectionItem = k3(
             "create"
           );
           vaultChangeModal.open();
+        });
+        fileMenu.addSeparator();
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("Collapse All");
+          menuItem2.setIcon("lucide-chevrons-down-up");
+          menuItem2.onClick((ev) => {
+            const newOpenFolders = plugin.settings.openFolders.filter((f4) => f4.charAt(0) != "/");
+            plugin.settings.openFolders = newOpenFolders;
+            plugin.saveSettings();
+          });
+        });
+        fileMenu.addSeparator();
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("Custom Sort");
+          menuItem2.setChecked(plugin.settings.vaultSort.length == 0);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = [];
+            plugin.saveSettings();
+            refreshFileList();
+          });
+        });
+        fileMenu.addSeparator();
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("File Name (A to Z)");
+          menuItem2.setChecked(plugin.settings.vaultSort[0] == "name" && plugin.settings.vaultSort[1] == true);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = ["name", true];
+            plugin.saveSettings();
+            refreshFileList();
+          });
+        });
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("File Name (Z to A)");
+          menuItem2.setChecked(plugin.settings.vaultSort[0] == "name" && plugin.settings.vaultSort[1] == false);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = ["name", false];
+            plugin.saveSettings();
+            refreshFileList();
+          });
+        });
+        fileMenu.addSeparator();
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("Modified Time (new to old)");
+          menuItem2.setChecked(plugin.settings.vaultSort[0] == "mtime" && plugin.settings.vaultSort[1] == true);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = ["mtime", true];
+            plugin.saveSettings();
+            refreshFileList();
+          });
+        });
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("Modified Time (old to new)");
+          menuItem2.setChecked(plugin.settings.vaultSort[0] == "mtime" && plugin.settings.vaultSort[1] == false);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = ["mtime", false];
+            plugin.saveSettings();
+            refreshFileList();
+          });
+        });
+        fileMenu.addSeparator();
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("Created Time (new to old)");
+          menuItem2.setChecked(plugin.settings.vaultSort[0] == "ctime" && plugin.settings.vaultSort[1] == true);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = ["ctime", true];
+            plugin.saveSettings();
+            refreshFileList();
+          });
+        });
+        fileMenu.addItem((menuItem2) => {
+          menuItem2.setTitle("Created Time (old to new)");
+          menuItem2.setChecked(plugin.settings.vaultSort[0] == "ctime" && plugin.settings.vaultSort[1] == false);
+          menuItem2.onClick((ev) => {
+            plugin.settings.vaultSort = ["ctime", false];
+            plugin.saveSettings();
+            refreshFileList();
+          });
         });
         if (isMouseEvent(e4)) {
           fileMenu.showAtPosition({ x: e4.pageX, y: e4.pageY });
@@ -43565,12 +43831,7 @@ var SectionItem = k3(
       dangerouslySetInnerHTML: {
         __html: uiIconSet["mk-ui-new-note"]
       }
-    })))), section && !collapsed && section.children.length == 0 && /* @__PURE__ */ bn.createElement("div", {
-      className: "mk-tree-empty",
-      style: {
-        "--spacing": `${indentationWidth}px`
-      }
-    }, "No Notes Inside"));
+    })))));
   }
 );
 SectionItem.displayName = "SectionItem";
@@ -43712,7 +43973,9 @@ var TreeItem = k3(
       onClick: (e4) => triggerStickerMenu(e4)
     })), /* @__PURE__ */ bn.createElement("div", {
       className: `mk-tree-text `
-    }, data.isFolder ? data.name : fileNameToString(data.name))), !clone ? /* @__PURE__ */ bn.createElement("div", {
+    }, data.isFolder ? data.name : fileNameToString(data.name), !data.isFolder && (data == null ? void 0 : data.extension) != "md" && /* @__PURE__ */ bn.createElement("span", {
+      className: "nav-file-tag"
+    }, data.extension))), !clone ? /* @__PURE__ */ bn.createElement("div", {
       className: "mk-folder-buttons"
     }, /* @__PURE__ */ bn.createElement("button", {
       "aria-label": i18n_default.buttons.moreOptions,
@@ -45043,6 +45306,9 @@ var FileExplorerComponent = (props) => {
     const activeItem2 = flattenedItems.find(({ id: id2 }) => id2 === activeId2);
     if (activeItem2.parentId == null && activeItem2.section == -1)
       return;
+    if (plugin.settings.vaultSort.length > 0) {
+      return;
+    }
     setActiveId(activeId2);
     setOverId(activeId2);
     if (activeItem2) {
@@ -45107,7 +45373,7 @@ var FileExplorerComponent = (props) => {
             const children = s5.children.filter((g4) => g4 != activeItem.path);
             const toIndex = activeIndex2 <= index && activeIndex2 != -1 ? index - 1 : index;
             if (activeIndex2 == -1) {
-              new import_obsidian17.Notice(i18n_default.notice.addedToSection);
+              new import_obsidian18.Notice(i18n_default.notice.addedToSection);
             }
             return {
               ...s5,
@@ -45124,10 +45390,13 @@ var FileExplorerComponent = (props) => {
         plugin.saveSettings();
         return;
       }
+      if (plugin.settings.vaultSort.length > 0) {
+        return;
+      }
       if (parentId != activeTreeItem.parentId) {
         const newPath = `${parentItem.isFolder ? parentItem.path : parentItem.parent.path}/${activeItem.name}`;
         if (plugin.app.vault.getAbstractFileByPath(newPath)) {
-          new import_obsidian17.Notice(i18n_default.notice.duplicateFile);
+          new import_obsidian18.Notice(i18n_default.notice.duplicateFile);
           return;
         }
         await props.plugin.app.vault.rename(activeTreeItem, newPath);
@@ -45259,7 +45528,7 @@ var FileExplorerComponent = (props) => {
 
 // src/components/Spaces/ContextList/ContextList.tsx
 init_compat_module();
-var import_obsidian18 = require("obsidian");
+var import_obsidian19 = require("obsidian");
 var ContextList = (props) => {
   const [tags, setTags] = p2([]);
   const openContext = async (tag) => {
@@ -45271,7 +45540,7 @@ var ContextList = (props) => {
   const loadTags = async () => {
     var _a2;
     const folder2 = window.make.settings.tagContextFolder == "" ? app.vault.getRoot() : getAbstractFileAtPath(app, getFolderPathFromString(window.make.settings.tagContextFolder));
-    setTags(uniq([...Object.keys(app.metadataCache.getTags()), ...(_a2 = folder2 == null ? void 0 : folder2.children.filter((f4) => f4 instanceof import_obsidian18.TFile && f4.extension == "mdb" && f4.name.charAt(0) == "#").map((f4) => fileNameToString(f4.name))) != null ? _a2 : []]));
+    setTags(uniq([...Object.keys(app.metadataCache.getTags()), ...(_a2 = folder2 == null ? void 0 : folder2.children.filter((f4) => f4 instanceof import_obsidian19.TFile && f4.extension == "mdb" && f4.name.charAt(0) == "#").map((f4) => fileNameToString(f4.name))) != null ? _a2 : []]));
   };
   const folder = ".";
   h2(() => {
@@ -45331,14 +45600,14 @@ var MainList = (props) => {
 var FILE_TREE_VIEW_TYPE = "mk-file-view";
 var VIEW_DISPLAY_TEXT = "Spaces";
 var ICON = "layout-grid";
-var FileTreeView = class extends import_obsidian19.ItemView {
+var FileTreeView = class extends import_obsidian20.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.navigation = false;
     this.plugin = plugin;
   }
   revealInFolder(file) {
-    if (file instanceof import_obsidian19.TFolder) {
+    if (file instanceof import_obsidian20.TFolder) {
       this.plugin.app.workspace.activeLeaf.setViewState({
         type: CONTEXT_VIEW_TYPE,
         state: { type: "folder", folder: file.path }
@@ -45392,7 +45661,7 @@ var FileTreeView = class extends import_obsidian19.ItemView {
 };
 
 // src/settings.ts
-var import_obsidian20 = require("obsidian");
+var import_obsidian21 = require("obsidian");
 var DEFAULT_SETTINGS = {
   filePreviewOnHover: false,
   markSans: true,
@@ -45420,9 +45689,12 @@ var DEFAULT_SETTINGS = {
   menuTriggerChar: "/",
   emojiTriggerChar: ":",
   folderContextFile: "context",
-  tagContextFolder: "Context/"
+  tagContextFolder: "Context/",
+  hiddenFiles: [],
+  hiddenExtensions: ["mdb"],
+  vaultSort: []
 };
-var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
+var MakeMDPluginSettingsTab = class extends import_obsidian21.PluginSettingTab {
   constructor(app2, plugin) {
     super(app2, plugin);
     this.plugin = plugin;
@@ -45435,7 +45707,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
     let { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h2", { text: i18n_default.settings.sectionSidebar });
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.spaces.name).setDesc(i18n_default.settings.spaces.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.spaces.name).setDesc(i18n_default.settings.spaces.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesEnabled).onChange((value) => {
         this.plugin.settings.spacesEnabled = value;
         this.plugin.saveSettings();
@@ -45447,7 +45719,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
         this.refreshView();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.spacesStickers.name).setDesc(i18n_default.settings.spacesStickers.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.spacesStickers.name).setDesc(i18n_default.settings.spacesStickers.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesStickers).onChange((value) => {
         this.plugin.settings.spacesStickers = value;
         this.plugin.saveSettings();
@@ -45455,14 +45727,14 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
       })
     );
     containerEl.createEl("h2", { text: i18n_default.settings.sectionFlow });
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.editorFlowReplace.name).setDesc(i18n_default.settings.editorFlowReplace.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.editorFlowReplace.name).setDesc(i18n_default.settings.editorFlowReplace.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.editorFlow).onChange((value) => {
         this.plugin.settings.editorFlow = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.editorFlowStyle.name).setDesc(i18n_default.settings.editorFlowStyle.desc).addDropdown((dropdown) => {
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.editorFlowStyle.name).setDesc(i18n_default.settings.editorFlowStyle.desc).addDropdown((dropdown) => {
       dropdown.addOption("classic", i18n_default.settings.editorFlowStyle.classic);
       dropdown.addOption("seamless", i18n_default.settings.editorFlowStyle.seamless);
       dropdown.setValue(this.plugin.settings.editorFlowStyle).onChange(async (value) => {
@@ -45476,7 +45748,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
       });
     });
     containerEl.createEl("h2", { text: i18n_default.settings.sectionEditor });
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.makeChar.name).setDesc(i18n_default.settings.makeChar.desc).addText((text) => {
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.makeChar.name).setDesc(i18n_default.settings.makeChar.desc).addText((text) => {
       text.setValue(this.plugin.settings.menuTriggerChar).onChange(async (value) => {
         if (value.trim().length < 1) {
           text.setValue(this.plugin.settings.menuTriggerChar);
@@ -45491,21 +45763,21 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
         await this.plugin.saveSettings();
       });
     });
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.editorMakePlacholder.name).setDesc(i18n_default.settings.editorMakePlacholder.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.editorMakePlacholder.name).setDesc(i18n_default.settings.editorMakePlacholder.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.makeMenuPlaceholder).onChange((value) => {
         this.plugin.settings.makeMenuPlaceholder = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.mobileMakeBar.name).setDesc(i18n_default.settings.mobileMakeBar.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.mobileMakeBar.name).setDesc(i18n_default.settings.mobileMakeBar.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.mobileMakeBar).onChange((value) => {
         this.plugin.settings.mobileMakeBar = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.inlineStyler.name).setDesc(i18n_default.settings.inlineStyler.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.inlineStyler.name).setDesc(i18n_default.settings.inlineStyler.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.inlineStyler).onChange((value) => {
         this.plugin.settings.inlineStyler = value;
         this.plugin.saveSettings();
@@ -45513,26 +45785,26 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
       })
     );
     containerEl.createEl("h2", { text: i18n_default.settings.sectionAdvanced });
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.sidebarTabs.name).setDesc(i18n_default.settings.sidebarTabs.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.sidebarTabs.name).setDesc(i18n_default.settings.sidebarTabs.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.sidebarTabs).onChange((value) => {
         this.plugin.settings.sidebarTabs = value;
         this.plugin.saveSettings();
         document.body.classList.toggle("mk-hide-tabs", !value);
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.spacesFileExplorerDual.name).setDesc(i18n_default.settings.spacesFileExplorerDual.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.spacesFileExplorerDual.name).setDesc(i18n_default.settings.spacesFileExplorerDual.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesDisablePatch).onChange((value) => {
         this.plugin.settings.spacesDisablePatch = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.spacesPerformance.name).setDesc(i18n_default.settings.spacesPerformance.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.spacesPerformance.name).setDesc(i18n_default.settings.spacesPerformance.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesPerformance).onChange((value) => {
         this.plugin.settings.spacesPerformance = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.spacesDeleteOption.name).setDesc(i18n_default.settings.spacesDeleteOption.desc).addDropdown((dropdown) => {
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.spacesDeleteOption.name).setDesc(i18n_default.settings.spacesDeleteOption.desc).addDropdown((dropdown) => {
       dropdown.addOption(
         "permanent",
         i18n_default.settings.spacesDeleteOptions.permanant
@@ -45548,14 +45820,14 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.inlineStylerColor.name).setDesc(i18n_default.settings.inlineStylerColor.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.inlineStylerColor.name).setDesc(i18n_default.settings.inlineStylerColor.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.inlineStylerColors).onChange((value) => {
         this.plugin.settings.inlineStylerColors = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian20.Setting(containerEl).setName(i18n_default.settings.editorMarkSans.name).setDesc(i18n_default.settings.editorMarkSans.desc).addToggle(
+    new import_obsidian21.Setting(containerEl).setName(i18n_default.settings.editorMarkSans.name).setDesc(i18n_default.settings.editorMarkSans.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.markSans).onChange((value) => {
         this.plugin.settings.markSans = value;
         this.plugin.saveSettings();
@@ -45566,7 +45838,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian20.PluginSettingTab {
 };
 
 // src/components/MakeMenu/MakeMenu.tsx
-var import_obsidian21 = require("obsidian");
+var import_obsidian22 = require("obsidian");
 
 // src/components/MakeMenu/commands/default.ts
 var default_default = [
@@ -45666,7 +45938,7 @@ function resolveCommands(plugin) {
 }
 
 // src/components/MakeMenu/MakeMenu.tsx
-var MakeMenu = class extends import_obsidian21.EditorSuggest {
+var MakeMenu = class extends import_obsidian22.EditorSuggest {
   constructor(app2, plugin) {
     super(app2);
     this.inCmd = false;
@@ -45736,8 +46008,8 @@ var MakeMenu = class extends import_obsidian21.EditorSuggest {
 
 // src/components/StickerMenu/StickerMenu.tsx
 init_compat_module();
-var import_obsidian22 = require("obsidian");
-var StickerMenu = class extends import_obsidian22.EditorSuggest {
+var import_obsidian23 = require("obsidian");
+var StickerMenu = class extends import_obsidian23.EditorSuggest {
   constructor(app2, plugin) {
     super(app2);
     this.inCmd = false;
@@ -46744,10 +47016,10 @@ function around1(obj, method, createWrapper) {
 }
 
 // src/utils/patches.ts
-var import_obsidian23 = require("obsidian");
+var import_obsidian24 = require("obsidian");
 var patchFileExplorer = (plugin) => {
   plugin.register(
-    around(import_obsidian23.Workspace.prototype, {
+    around(import_obsidian24.Workspace.prototype, {
       getLeavesOfType(old) {
         return function(type) {
           if (type == "file-explorer") {
@@ -46761,7 +47033,7 @@ var patchFileExplorer = (plugin) => {
 };
 var patchWorkspace = (plugin) => {
   let layoutChanging = false;
-  const uninstaller = around(import_obsidian23.Workspace.prototype, {
+  const uninstaller = around(import_obsidian24.Workspace.prototype, {
     changeLayout(old) {
       return async function(workspace) {
         layoutChanging = true;
@@ -46782,7 +47054,7 @@ var patchWorkspace = (plugin) => {
           return false;
         if (layoutChanging)
           return false;
-        if (parent === app.workspace.rootSplit || import_obsidian23.WorkspaceContainer && parent instanceof import_obsidian23.WorkspaceContainer) {
+        if (parent === app.workspace.rootSplit || import_obsidian24.WorkspaceContainer && parent instanceof import_obsidian24.WorkspaceContainer) {
           for (const popover of FlowEditor.popoversForWindow(
             parent.win
           )) {
@@ -46982,7 +47254,7 @@ var onFolderDeleted = async (oldPath) => {
 var import_queue_promise = __toESM(require_dist());
 
 // src/components/FileContextView/FileContextView.tsx
-var import_obsidian24 = require("obsidian");
+var import_obsidian25 = require("obsidian");
 init_compat_module();
 
 // src/components/FileContextView/FileContextList.tsx
@@ -47057,11 +47329,11 @@ var FileContextList = (props) => {
 };
 
 // src/components/FileContextView/FileContextView.tsx
-var import_obsidian25 = require("obsidian");
+var import_obsidian26 = require("obsidian");
 var FILE_CONTEXT_VIEW_TYPE = "make-context-view";
 var ICON2 = "sheets-in-box";
 var VIEW_DISPLAY_TEXT2 = "Spaces";
-var FileContextLeafView = class extends import_obsidian25.ItemView {
+var FileContextLeafView = class extends import_obsidian26.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.navigation = false;
@@ -47109,8 +47381,8 @@ var FileContextView = () => {
   const dbPath = `${folderPath}/${window.make.settings.folderContextFile}.mdb`;
   const contextExists = getAbstractFileAtPath(app, dbPath);
   const fetchData = () => {
-    const view = app.workspace.getActiveViewOfType(import_obsidian24.MarkdownView);
-    if (view instanceof import_obsidian24.MarkdownView) {
+    const view = app.workspace.getActiveViewOfType(import_obsidian25.MarkdownView);
+    if (view instanceof import_obsidian25.MarkdownView) {
       setFile(view.file);
     } else {
       const leaves = app.workspace.getLeavesOfType("markdown");
@@ -47121,10 +47393,10 @@ var FileContextView = () => {
   };
   h2(() => {
     app.workspace.on("active-leaf-change", () => fetchData());
-    app.workspace.on("editor-change", (0, import_obsidian24.debounce)(() => fetchData(), 180, true));
+    app.workspace.on("editor-change", (0, import_obsidian25.debounce)(() => fetchData(), 180, true));
     return () => {
       app.workspace.off("active-leaf-change", () => fetchData());
-      app.workspace.off("editor-change", (0, import_obsidian24.debounce)(() => fetchData(), 180, true));
+      app.workspace.off("editor-change", (0, import_obsidian25.debounce)(() => fetchData(), 180, true));
     };
   }, []);
   return /* @__PURE__ */ bn.createElement("div", {
@@ -47138,7 +47410,7 @@ var FileContextView = () => {
 };
 
 // src/main.ts
-var MakeMDPlugin = class extends import_obsidian26.Plugin {
+var MakeMDPlugin = class extends import_obsidian27.Plugin {
   constructor() {
     super(...arguments);
     this.triggerVaultChangeEvent = (file, changeType, oldPath) => {
@@ -47153,23 +47425,23 @@ var MakeMDPlugin = class extends import_obsidian26.Plugin {
     };
     this.onCreate = (file) => {
       this.triggerVaultChangeEvent(file, "create", "");
-      if (file instanceof import_obsidian26.TFile && file.extension != "mdb") {
+      if (file instanceof import_obsidian27.TFile && file.extension != "mdb") {
         this.queue.enqueue(() => onFileCreated(file.path));
       }
     };
     this.onDelete = (file) => {
       this.triggerVaultChangeEvent(file, "delete", "");
-      if (file instanceof import_obsidian26.TFile && file.extension != "mdb") {
+      if (file instanceof import_obsidian27.TFile && file.extension != "mdb") {
         this.queue.enqueue(() => onFileDeleted(file.path));
-      } else if (file instanceof import_obsidian26.TFolder) {
+      } else if (file instanceof import_obsidian27.TFolder) {
         this.queue.enqueue(() => onFolderDeleted(file.path));
       }
     };
     this.onRename = (file, oldPath) => {
       this.triggerVaultChangeEvent(file, "rename", oldPath);
-      if (file instanceof import_obsidian26.TFile && file.extension != "mdb") {
+      if (file instanceof import_obsidian27.TFile && file.extension != "mdb") {
         this.queue.enqueue(() => onFileChanged(oldPath, file.path));
-      } else if (file instanceof import_obsidian26.TFolder) {
+      } else if (file instanceof import_obsidian27.TFolder) {
         this.queue.enqueue(() => onFolderChanged(oldPath, file.path));
       }
     };
@@ -47365,7 +47637,7 @@ var MakeMDPlugin = class extends import_obsidian26.Plugin {
       interval: 0
     });
     this.sqlJS = await loadSQL();
-    (0, import_obsidian26.addIcon)("mk-logo", mkLogo);
+    (0, import_obsidian27.addIcon)("mk-logo", mkLogo);
     console.log("Loading Make.md");
     this.addSettingTab(new MakeMDPluginSettingsTab(this.app, this));
     await this.loadSettings();
