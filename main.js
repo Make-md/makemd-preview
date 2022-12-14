@@ -7956,10 +7956,10 @@ var require_lib = __commonJS({
         return { type: "negate", child };
       }
       Sources2.negate = negate;
-      function empty2() {
+      function empty() {
         return { type: "empty" };
       }
-      Sources2.empty = empty2;
+      Sources2.empty = empty;
     })(Sources || (Sources = {}));
     var EMOJI_REGEX = new RegExp(emojiRegex(), "");
     var DURATION_TYPES = {
@@ -19147,11 +19147,11 @@ var hamt_1 = createCommonjsModule(function(module2) {
   var COLLISION = 2;
   var INDEX = 3;
   var ARRAY = 4;
-  var empty2 = {
+  var empty = {
     __hamt_isEmpty: true
   };
   var isEmptyNode = function isEmptyNode2(x5) {
-    return x5 === empty2 || x5 && x5.__hamt_isEmpty;
+    return x5 === empty || x5 && x5.__hamt_isEmpty;
   };
   var Leaf = function Leaf2(edit, hash2, key2, value) {
     return {
@@ -19191,7 +19191,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     };
   };
   var isLeaf = function isLeaf2(node) {
-    return node === empty2 || node.type === LEAF || node.type === COLLISION;
+    return node === empty || node.type === LEAF || node.type === COLLISION;
   };
   var expand = function expand2(edit, frag, child, bitmap, subNodes) {
     var arr = [];
@@ -19259,7 +19259,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
         return this;
       else if (_v === nothing) {
         --size2.value;
-        return empty2;
+        return empty;
       }
       if (canEditNode(edit, this)) {
         this.value = _v;
@@ -19294,7 +19294,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var bit = toBitmap(frag);
     var indx = fromBitmap(mask, bit);
     var exists = mask & bit;
-    var current = exists ? children[indx] : empty2;
+    var current = exists ? children[indx] : empty;
     var child = current._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size2);
     if (current === child)
       return this;
@@ -19304,7 +19304,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     if (exists && isEmptyNode(child)) {
       bitmap &= ~bit;
       if (!bitmap)
-        return empty2;
+        return empty;
       if (children.length <= 2 && isLeaf(children[indx ^ 1]))
         return children[indx ^ 1];
       newChildren = arraySpliceOut(canEdit, indx, children);
@@ -19328,7 +19328,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var children = this.children;
     var frag = hashFragment(shift, h5);
     var child = children[frag];
-    var newChild = (child || empty2)._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size2);
+    var newChild = (child || empty)._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size2);
     if (child === newChild)
       return this;
     var canEdit = canEditNode(edit, this);
@@ -19340,7 +19340,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
       --count2;
       if (count2 <= MIN_ARRAY_NODE)
         return pack(edit, count2, frag, children);
-      newChildren = arrayUpdate(canEdit, frag, empty2, children);
+      newChildren = arrayUpdate(canEdit, frag, empty, children);
     } else {
       newChildren = arrayUpdate(canEdit, frag, newChild, children);
     }
@@ -19351,10 +19351,10 @@ var hamt_1 = createCommonjsModule(function(module2) {
     }
     return ArrayNode(edit, count2, newChildren);
   };
-  empty2._modify = function(edit, keyEq, shift, f4, h5, k5, size2) {
+  empty._modify = function(edit, keyEq, shift, f4, h5, k5, size2) {
     var v3 = f4();
     if (v3 === nothing)
-      return empty2;
+      return empty;
     ++size2.value;
     return Leaf(edit, h5, k5, v3);
   };
@@ -19456,7 +19456,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     return new Map2(0, 0, {
       keyEq: config && config.keyEq || defKeyCompare,
       hash: config && config.hash || hash
-    }, empty2, 0);
+    }, empty, 0);
   };
   hamt.empty = hamt.make();
   var isEmpty = hamt.isEmpty = function(map) {
@@ -27860,12 +27860,14 @@ var markIconSet = {
 // src/utils/tree.ts
 var import_obsidian2 = require("obsidian");
 var uniq = (a5) => [...new Set(a5)];
+var uniqCaseInsensitive = (a5) => [...new Map(a5.map((s5) => [s5.toLowerCase(), s5])).values()];
 var onlyUniqueProp = (prop) => (value, index, self2) => {
   return self2.findIndex((v3) => value[prop] == v3[prop]) === index;
 };
 var fileNameToString = (filename) => filename.substring(0, filename.lastIndexOf(".")) || filename;
 var removeLeadingSlash = (path) => path.charAt(0) == "/" ? path.substring(1) : path;
 var filePathToString = (filename) => removeLeadingSlash(filename.substring(filename.lastIndexOf("/"), filename.lastIndexOf("."))) || filename;
+var folderPathToString = (filename) => removeLeadingSlash(filename.substring(filename.lastIndexOf("/"))) || filename;
 var safelyParseJSON = (json) => {
   var parsed;
   try {
@@ -28683,7 +28685,7 @@ var frontMatterForFile = (file) => {
   if (file instanceof import_obsidian4.TFile && app.metadataCache.getFileCache(file) !== null) {
     currentCache = app.metadataCache.getFileCache(file);
   }
-  return currentCache.frontmatter;
+  return currentCache == null ? void 0 : currentCache.frontmatter;
 };
 var frontMatterKeys = (fm) => {
   return Object.keys(fm != null ? fm : {}).filter((f4) => f4 != "position");
@@ -28759,7 +28761,7 @@ var processFrontMatter = (field, value) => {
 
 // src/components/ContextView/FilterBar/FilterBar.tsx
 var import_lodash = __toESM(require_lodash());
-var defaultPredicate = { filters: [], sort: [], groupBy: "", colsOrder: [], colsHidden: [] };
+var defaultPredicate = { filters: [], sort: [], groupBy: "", colsOrder: [], colsHidden: [], colsSize: {} };
 var FilterBar = (props) => {
   const { folderNoteOpen, viewFolderNote } = props;
   const ctxRef = _2(null);
@@ -28843,6 +28845,21 @@ var FilterBar = (props) => {
   };
   const showFilterMenu = (e4) => {
     const menu = new import_obsidian5.Menu();
+    menu.addItem((item) => {
+      item.setTitle("List View");
+      item.setIcon("table-2");
+      item.onClick(() => {
+        saveViewType("table");
+      });
+    });
+    menu.addItem((item) => {
+      item.setTitle("Card View");
+      item.setIcon("layout-grid");
+      item.onClick(() => {
+        saveViewType("card");
+      });
+    });
+    menu.addSeparator();
     menu.addItem((item) => {
       item.setTitle("Group By");
       item.setIcon("columns");
@@ -28941,7 +28958,7 @@ var FilterBar = (props) => {
   };
   const showGroupByMenu = (e4) => {
     const offset = e4.target.getBoundingClientRect();
-    showSelectMenu({ x: offset.left, y: offset.top + 30 }, false, false, [], cols.map((f4) => ({
+    showSelectMenu({ x: offset.left, y: offset.top + 30 }, false, false, [], cols.filter((f4) => f4.primary != "true").map((f4) => ({
       name: f4.name + f4.table,
       value: f4.name + f4.table
     })), saveGroupBy, "Group By");
@@ -28960,7 +28977,7 @@ var FilterBar = (props) => {
       const table = tableData;
       const files = data.map((c4) => c4.File);
       const guestimateTypes = (_files, dv) => {
-        const typesArray = _files.map((f4) => getAbstractFileAtPath(app, f4)).map((k5) => {
+        const typesArray = _files.map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4).map((k5) => {
           const fm = dv ? dataViewAPI.page(k5.path) : frontMatterForFile(k5);
           const fmKeys = dv ? Object.keys(fm != null ? fm : {}).filter((f4, i4, self2) => !self2.find((g4, j4) => g4.toLowerCase().replace(/\s/g, "-") == f4.toLowerCase().replace(/\s/g, "-") && i4 > j4) ? true : false).filter((f4) => f4 != "file") : frontMatterKeys(fm);
           return fmKeys.reduce((pk, ck) => ({ ...pk, [ck]: detectYAMLType(fm[ck]) }), {});
@@ -28983,7 +29000,7 @@ var FilterBar = (props) => {
       const importDV = (files2) => {
         return files2.reduce((p3, c4) => {
           const dvValues = dataViewAPI.page(c4);
-          const fmKeys = Object.keys(dvValues != null ? dvValues : {}).filter((f4, i4, self2) => !self2.find((g4, j4) => g4.toLowerCase().replace(/\s/g, "-") == f4.toLowerCase().replace(/\s/g, "-") && i4 > j4) ? true : false).filter((f4) => f4 != "file");
+          const fmKeys = uniqCaseInsensitive(Object.keys(dvValues != null ? dvValues : {}).filter((f4, i4, self2) => !self2.find((g4, j4) => g4.toLowerCase().replace(/\s/g, "-") == f4.toLowerCase().replace(/\s/g, "-") && i4 > j4) ? true : false).filter((f4) => f4 != "file"));
           return {
             uniques: [],
             cols: (0, import_lodash.uniq)([...p3.cols, ...fmKeys]),
@@ -28995,9 +29012,9 @@ var FilterBar = (props) => {
         }, { uniques: [], cols: [], rows: [] });
       };
       const importYAML = (files2) => {
-        return files2.map((f4) => getAbstractFileAtPath(app, f4)).reduce((p3, c4) => {
+        return files2.map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4).reduce((p3, c4) => {
           const fm = frontMatterForFile(c4);
-          const fmKeys = frontMatterKeys(fm);
+          const fmKeys = uniqCaseInsensitive(frontMatterKeys(fm));
           return {
             uniques: [],
             cols: (0, import_lodash.uniq)([...p3.cols, ...fmKeys]),
@@ -29011,7 +29028,7 @@ var FilterBar = (props) => {
       const mergeTableData = (mdb, yamlmdb, types) => {
         return {
           ...mdb,
-          cols: [...mdb.cols, ...yamlmdb.cols.map((f4) => ({ name: f4, schemaId: dbSchema.id, type: yamlTypeToMDBType(types[f4]) }))].filter(onlyUniqueProp("name")),
+          cols: [...mdb.cols, ...yamlmdb.cols.filter((f4) => !mdb.cols.find((g4) => g4.name.toLowerCase() == f4.toLowerCase())).map((f4) => ({ name: f4, schemaId: dbSchema.id, type: yamlTypeToMDBType(types[f4]) }))].filter(onlyUniqueProp("name")),
           rows: mdb.rows.map((r3) => {
             const fmRow = yamlmdb.rows.find((f4) => f4.File == r3.File);
             if (fmRow) {
@@ -29599,7 +29616,7 @@ var getActiveCM = () => {
   app.workspace.iterateLeaves((leaf) => {
     var _a2;
     const cm = (_a2 = leaf.view.editor) == null ? void 0 : _a2.cm;
-    if (cm.hasFocus) {
+    if (cm == null ? void 0 : cm.hasFocus) {
       rcm = cm;
       return true;
     }
@@ -29611,7 +29628,7 @@ var getActiveMarkdownView = () => {
   app.workspace.iterateLeaves((leaf) => {
     var _a2;
     const cm = (_a2 = leaf.view.editor) == null ? void 0 : _a2.cm;
-    if (cm.hasFocus) {
+    if (cm == null ? void 0 : cm.hasFocus) {
       rv = leaf.view;
       return true;
     }
@@ -35245,54 +35262,6 @@ function isAfter2(a5, b4) {
 // src/components/ContextView/CardsView/KanbanColumn.tsx
 init_compat_module();
 var import_classnames = __toESM(require_classnames());
-var KanbanColumn = k3(
-  ({
-    children,
-    columns = 1,
-    handleProps,
-    horizontal,
-    hover,
-    onClick,
-    onRemove,
-    label,
-    placeholder: placeholder2,
-    style,
-    scrollable,
-    shadow,
-    unstyled,
-    ...props
-  }, ref) => {
-    const Component2 = "div";
-    return /* @__PURE__ */ bn.createElement(Component2, {
-      ...props,
-      ref,
-      style: {
-        ...style,
-        "--columns": columns
-      },
-      className: (0, import_classnames.default)(
-        "mk-cards-col",
-        unstyled && "unstyled",
-        horizontal && "horizontal",
-        hover && "hover",
-        placeholder2 && "placeholder",
-        scrollable && "scrollable",
-        shadow && "shadow"
-      ),
-      onClick,
-      tabIndex: onClick ? 0 : void 0
-    }, label ? /* @__PURE__ */ bn.createElement("div", {
-      className: "Header"
-    }, label, /* @__PURE__ */ bn.createElement("div", {
-      className: "Actions",
-      ...handleProps
-    })) : null, placeholder2 ? children : /* @__PURE__ */ bn.createElement("ul", null, children));
-  }
-);
-
-// src/components/ContextView/CardsView/KanbanCard.tsx
-init_compat_module();
-var import_classnames2 = __toESM(require_classnames());
 
 // src/components/ContextView/DataTypeView/DataTypeView.tsx
 init_compat_module();
@@ -35357,6 +35326,9 @@ var FilePropertyCell = (props) => {
   const appendFileMetaData = (propType, file2) => {
     let value = "";
     if (file2) {
+      if (propType == "folder") {
+        value = file2.parent.path;
+      }
       if (file2 instanceof import_obsidian7.TFile) {
         if (propType == "ctime") {
           value = file2.stat.ctime.toString();
@@ -35374,6 +35346,13 @@ var FilePropertyCell = (props) => {
     return value;
   };
   const initialValue = file ? appendFileMetaData(property, file) : "";
+  if (property == "folder") {
+    return /* @__PURE__ */ bn.createElement("div", {
+      onClick: () => {
+        openTFolder(getAbstractFileAtPath(app, initialValue), app, false);
+      }
+    }, folderPathToString(initialValue));
+  }
   if (property == "extension") {
     return /* @__PURE__ */ bn.createElement("div", {
       className: "mk-cell-fileprop"
@@ -35532,10 +35511,10 @@ var OptionCell = (props) => {
     onClick: () => props.editable && !props.multi && showMenu(),
     className: "mk-cell-option-select mk-icon-xxsmall mk-icon-rotated",
     dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-collapse-sm"] }
-  })) : /* @__PURE__ */ bn.createElement(bn.Fragment, null))) : !props.multi ? /* @__PURE__ */ bn.createElement("div", {
+  })) : /* @__PURE__ */ bn.createElement(bn.Fragment, null))) : props.editable && !props.multi ? /* @__PURE__ */ bn.createElement("div", {
     className: "mk-cell-option-item"
   }, /* @__PURE__ */ bn.createElement("div", {
-    onClick: () => props.editable && !props.multi && showMenu()
+    onClick: () => !props.multi && showMenu()
   }, "Select")) : /* @__PURE__ */ bn.createElement(bn.Fragment, null), props.editable && props.multi ? /* @__PURE__ */ bn.createElement("div", {
     onClick: () => props.editable && showMenu(),
     className: "mk-cell-option-new mk-icon-small",
@@ -41231,6 +41210,17 @@ var FileCell = (props) => {
   return /* @__PURE__ */ bn.createElement("div", {
     className: "mk-cell-file"
   }, value.map((v3, i4) => {
+    if (!props.editable) {
+      if (v3.file) {
+        return /* @__PURE__ */ bn.createElement("div", {
+          className: "mk-cell-file-title"
+        }, v3 ? v3.file instanceof import_obsidian10.TFile ? fileNameToString(v3.file.name) : v3.file.name : "");
+      } else {
+        return /* @__PURE__ */ bn.createElement("div", {
+          className: "mk-cell-file-title"
+        }, v3.path);
+      }
+    }
     if (v3.file) {
       return /* @__PURE__ */ bn.createElement(bn.Fragment, null, /* @__PURE__ */ bn.createElement("div", {
         className: "mk-cell-file-item",
@@ -41523,7 +41513,65 @@ var DataTypeView = (props) => {
   });
 };
 
+// src/components/ContextView/CardsView/KanbanColumn.tsx
+var KanbanColumn = k3(
+  ({
+    id: id2,
+    children,
+    columns = 1,
+    handleProps,
+    horizontal,
+    hover,
+    onClick,
+    onRemove,
+    field,
+    label,
+    file,
+    placeholder: placeholder2,
+    style,
+    scrollable,
+    shadow,
+    unstyled,
+    ...props
+  }, ref) => {
+    const Component2 = "div";
+    return /* @__PURE__ */ bn.createElement(Component2, {
+      ...props,
+      ref,
+      style: {
+        ...style,
+        "--columns": columns
+      },
+      className: (0, import_classnames.default)(
+        "mk-cards-col",
+        unstyled && "unstyled",
+        horizontal && "horizontal",
+        hover && "hover",
+        placeholder2 && "placeholder",
+        scrollable && "scrollable",
+        shadow && "shadow"
+      ),
+      onClick,
+      tabIndex: onClick ? 0 : void 0
+    }, label != null && field ? /* @__PURE__ */ bn.createElement("div", {
+      className: "Header"
+    }, /* @__PURE__ */ bn.createElement(DataTypeView, {
+      initialValue: label,
+      index: parseInt(id2) * -1,
+      table: field == null ? void 0 : field.table,
+      file,
+      field,
+      editable: false
+    }), /* @__PURE__ */ bn.createElement("div", {
+      className: "Actions",
+      ...handleProps
+    })) : null, placeholder2 ? children : /* @__PURE__ */ bn.createElement("ul", null, children));
+  }
+);
+
 // src/components/ContextView/CardsView/KanbanCard.tsx
+init_compat_module();
+var import_classnames2 = __toESM(require_classnames());
 var KanbanCard = bn.memo(
   bn.forwardRef(
     ({
@@ -41571,7 +41619,7 @@ var KanbanCard = bn.memo(
         value
       }) : /* @__PURE__ */ bn.createElement("li", {
         className: (0, import_classnames2.default)(
-          "Wrapper",
+          "mk-card",
           fadeIn && "fadeIn",
           sorting && "sorting",
           dragOverlay && "dragOverlay"
@@ -41589,7 +41637,6 @@ var KanbanCard = bn.memo(
         ref
       }, /* @__PURE__ */ bn.createElement("div", {
         className: (0, import_classnames2.default)(
-          "mk-card",
           dragging && "dragging",
           handle && "withHandle",
           dragOverlay && "dragOverlay",
@@ -41647,6 +41694,7 @@ function DroppableContainer({
   });
   const isOverContainer = over ? id2 === over.id && ((_a2 = active == null ? void 0 : active.data.current) == null ? void 0 : _a2.type) !== "container" || items.includes(over.id) : false;
   return /* @__PURE__ */ bn.createElement(KanbanColumn, {
+    id: id2,
     ref: disabled ? void 0 : setNodeRef,
     style: {
       ...style,
@@ -41664,7 +41712,6 @@ function DroppableContainer({
   }, children);
 }
 var PLACEHOLDER_ID = "placeholder";
-var empty = [];
 function CardsView({
   adjustScale: adjustScale2 = false,
   itemCount = 3,
@@ -41682,17 +41729,19 @@ function CardsView({
   vertical = false,
   scrollable
 }) {
+  var _a2;
   const { tableData, data, cols, predicate, tagContexts, contextTable, schema, saveDB: saveDB2, saveContextDB } = q2(MDBContext);
   const groupBy = cols.find((f4) => f4.name + f4.table == predicate.groupBy);
+  const displayCols = (_a2 = cols == null ? void 0 : cols.filter((f4) => !(f4.name == (groupBy == null ? void 0 : groupBy.name) && f4.table == groupBy.table))) != null ? _a2 : [];
   const items = F(() => {
-    var _a2, _b2, _c2;
+    var _a3, _b2, _c2;
     if (groupBy) {
       const options = uniq([
         "",
-        ...(_b2 = (_a2 = groupBy.value) == null ? void 0 : _a2.match(/(\\.|[^,])+/g)) != null ? _b2 : [],
+        ...(_b2 = (_a3 = groupBy.value) == null ? void 0 : _a3.match(/(\\.|[^,])+/g)) != null ? _b2 : [],
         ...data.reduce((p3, c4) => {
-          var _a3;
-          return [...p3, (_a3 = c4[groupBy.name + groupBy.table]) != null ? _a3 : ""];
+          var _a4;
+          return [...p3, (_a4 = c4[groupBy.name + groupBy.table]) != null ? _a4 : ""];
         }, [])
       ]);
       return options.reduce((p3, c4) => {
@@ -41702,10 +41751,10 @@ function CardsView({
     return {
       "": (_c2 = data == null ? void 0 : data.map((r3, index) => index.toString())) != null ? _c2 : []
     };
-  }, [tableData]);
-  const containers = F(() => Object.keys(items), [items]);
+  }, [data, predicate]);
+  const containers = F(() => Object.keys(items).map((f4, i4) => "-" + i4.toString()), [items]);
   const [activeId, setActiveId] = p2(null);
-  const lastOverId = _2(null);
+  const [overId, setOverId] = p2(null);
   const recentlyMovedToNewContainer = _2(false);
   const isSortingContainer = activeId ? containers.includes(activeId) : false;
   const sensors = useSensors(
@@ -41716,21 +41765,25 @@ function CardsView({
     })
   );
   const findContainer = (id2) => {
-    if (id2 in items) {
+    if (id2.charAt(0) == "-") {
       return id2;
     }
-    return Object.keys(items).find((key2) => items[key2].includes(id2));
+    return "-" + Object.keys(items).findIndex((key2) => items[key2].includes(id2)).toString();
   };
   const getIndex = (id2) => {
     const container = findContainer(id2);
     if (!container) {
       return -1;
     }
-    const index = items[container].indexOf(id2);
+    const index = items[Object.keys(items)[parseInt(container) * -1]].indexOf(id2);
     return index;
   };
-  const onDragCancel = () => {
+  const resetState = () => {
     setActiveId(null);
+    setOverId(null);
+  };
+  const onDragCancel = () => {
+    resetState();
   };
   h2(() => {
     requestAnimationFrame(() => {
@@ -41789,7 +41842,9 @@ function CardsView({
       setActiveId(active.id);
     },
     onDragOver: ({ active, over }) => {
-      const overId = over == null ? void 0 : over.id;
+      const overId2 = over == null ? void 0 : over.id;
+      if (overId2)
+        setOverId(overId2);
     },
     onDragEnd: ({ active, over }) => {
       if (active.id in items && (over == null ? void 0 : over.id)) {
@@ -41797,59 +41852,63 @@ function CardsView({
       }
       const activeContainer = findContainer(active.id);
       if (!activeContainer) {
-        setActiveId(null);
+        resetState();
         return;
       }
-      const overId = over == null ? void 0 : over.id;
-      if (!overId) {
-        setActiveId(null);
+      const overId2 = over == null ? void 0 : over.id;
+      if (!overId2) {
+        resetState();
         return;
       }
-      if (overId === PLACEHOLDER_ID) {
+      if (overId2 === PLACEHOLDER_ID) {
         return;
       }
-      const overContainer = findContainer(overId);
+      const overContainer = findContainer(overId2);
       if (overContainer) {
-        const activeIndex = items[activeContainer].indexOf(active.id);
-        const overIndex = items[overContainer].indexOf(overId);
-        if (activeIndex !== overIndex) {
-          saveValue(groupBy.table, overContainer, parseInt(activeId), groupBy.name);
+        const activeIndex = items[Object.keys(items)[parseInt(activeContainer) * -1]].indexOf(active.id);
+        const overIndex = items[Object.keys(items)[parseInt(overContainer) * -1]].indexOf(overId2);
+        console.log(activeIndex, overIndex, activeContainer, overContainer);
+        if (activeContainer != overContainer) {
+          saveValue(
+            groupBy.table,
+            Object.keys(items)[parseInt(overContainer) * -1],
+            groupBy.table == "" ? parseInt(activeId) : parseInt(data[parseInt(activeId)]["_index" + groupBy.table]),
+            groupBy.name
+          );
         }
       }
-      setActiveId(null);
+      resetState();
     },
     cancelDrop,
     onDragCancel,
     modifiers
   }, /* @__PURE__ */ bn.createElement("div", {
-    style: {
-      display: "inline-grid",
-      boxSizing: "border-box",
-      padding: 20,
-      gridAutoFlow: vertical ? "row" : "column"
-    }
+    className: "mk-cards-container"
+  }, /* @__PURE__ */ bn.createElement("div", {
+    className: "mk-cards-view"
   }, /* @__PURE__ */ bn.createElement(SortableContext, {
     items: [...containers, PLACEHOLDER_ID],
     strategy: vertical ? verticalListSortingStrategy : horizontalListSortingStrategy
   }, containers.map((containerId) => /* @__PURE__ */ bn.createElement(DroppableContainer, {
     key: containerId,
     id: containerId,
-    label: minimal ? void 0 : `${containerId}`,
+    label: minimal ? void 0 : `${Object.keys(items)[parseInt(containerId) * -1]}`,
+    field: groupBy,
     columns,
-    items: items[containerId],
+    items: items[Object.keys(items)[parseInt(containerId) * -1]],
     scrollable,
     style: containerStyle,
     unstyled: minimal
   }, /* @__PURE__ */ bn.createElement(SortableContext, {
-    items: items[containerId],
+    items: items[Object.keys(items)[parseInt(containerId) * -1]],
     strategy
-  }, items[containerId].map((value, index) => {
+  }, items[Object.keys(items)[parseInt(containerId) * -1]].map((value, index) => {
     return /* @__PURE__ */ bn.createElement(SortableItem, {
       disabled: isSortingContainer,
       key: value,
       id: value,
       value: data[parseInt(value)],
-      cols,
+      cols: displayCols,
       index,
       handle,
       style: getItemStyles,
@@ -41858,12 +41917,7 @@ function CardsView({
       containerId,
       getIndex
     });
-  })))), minimal ? void 0 : /* @__PURE__ */ bn.createElement(DroppableContainer, {
-    id: PLACEHOLDER_ID,
-    disabled: isSortingContainer,
-    items: empty,
-    placeholder: true
-  }, "+ Add column"))), j3(
+  }))))))), j3(
     /* @__PURE__ */ bn.createElement(DragOverlay, {
       adjustScale: adjustScale2
     }, activeId ? containers.includes(activeId) ? renderContainerDragOverlay(activeId) : renderSortableItemDragOverlay(activeId) : null),
@@ -41874,7 +41928,7 @@ function CardsView({
       value: data[parseInt(id2)],
       handle,
       id: id2,
-      cols,
+      cols: displayCols,
       style: getItemStyles({
         containerId: findContainer(id2),
         overIndex: -1,
@@ -41892,18 +41946,20 @@ function CardsView({
   }
   function renderContainerDragOverlay(containerId) {
     return /* @__PURE__ */ bn.createElement(KanbanColumn, {
+      id: containerId,
       label: `Column ${containerId}`,
+      field: groupBy,
       columns,
       style: {
         height: "100%"
       },
       shadow: true,
       unstyled: false
-    }, items[containerId].map((item, index) => /* @__PURE__ */ bn.createElement(KanbanCard, {
+    }, items[Object.keys(items)[parseInt(containerId) * -1]].map((item, index) => /* @__PURE__ */ bn.createElement(KanbanCard, {
       key: item,
       id: item,
       value: data[parseInt(item)],
-      cols,
+      cols: displayCols,
       handle,
       style: getItemStyles({
         containerId,
@@ -42034,6 +42090,10 @@ var filePropTypes = [
   {
     name: "Size",
     value: "size"
+  },
+  {
+    name: "Folder",
+    value: "folder"
   }
 ];
 var ColumnHeader = (props) => {
@@ -42307,7 +42367,7 @@ var TableView = (props) => {
         },
         filterFn: "includesString",
         sortingFn: "alphanumeric",
-        cell: ({ getValue, row: { index }, column: { id: id2 }, table: table2 }) => {
+        cell: ({ getValue, row: { index }, column: { id: id2 }, cell, table: table2 }) => {
           const initialValue = getValue();
           const rowIndex = f4.table == "" ? index : parseInt(data[index]["_index" + f4.table]);
           const saveValue = (value) => {
@@ -42322,7 +42382,7 @@ var TableView = (props) => {
           const props2 = {
             initialValue,
             saveValue,
-            editable: true
+            editable: !cell.getIsGrouped()
           };
           const fieldType = fieldTypes.find((t4) => f4.type == t4.type) || fieldTypes.find((t4) => f4.type == t4.multiType);
           if (!fieldType) {
@@ -42383,10 +42443,16 @@ var TableView = (props) => {
       };
     })) != null ? _a2 : [], { header: "+", meta: { schemaId: dbSchema == null ? void 0 : dbSchema.id }, accessorKey: "+", size: 20, cell: () => /* @__PURE__ */ bn.createElement(bn.Fragment, null) }];
   }, [cols, contextTable]);
+  const changeColSize = (size2) => {
+    savePredicate({
+      ...predicate,
+      colsSize: size2
+    });
+  };
   const groupBy = F(() => {
     var _a2;
-    return ((_a2 = predicate.groupBy) == null ? void 0 : _a2.length) > 0 ? [predicate.groupBy] : [];
-  }, [, predicate]);
+    return ((_a2 = predicate.groupBy) == null ? void 0 : _a2.length) > 0 && cols.find((f4) => f4.name + f4.table == predicate.groupBy) ? [predicate.groupBy] : [];
+  }, [predicate]);
   const table = (0, import_react_table.useReactTable)({
     data,
     columns,
@@ -46922,6 +46988,7 @@ init_compat_module();
 // src/components/FileContextView/FileContextList.tsx
 init_compat_module();
 var FileContextList = (props) => {
+  var _a2;
   const { path } = props;
   const { tableData, tagContexts, contextTable, setContextTable, saveDB: saveDB2, saveContextDB, dbPath } = q2(MDBContext);
   const fileContext = F(
@@ -46950,7 +47017,7 @@ var FileContextList = (props) => {
   );
   return /* @__PURE__ */ bn.createElement(bn.Fragment, null, /* @__PURE__ */ bn.createElement("div", {
     className: "mk-file-context-section"
-  }, fileContext.folder && fileContext.folder.cols.map(
+  }, ((_a2 = fileContext.folder) == null ? void 0 : _a2.data) && fileContext.folder.cols.map(
     (f4, i4) => /* @__PURE__ */ bn.createElement("div", {
       key: i4,
       className: "mk-file-context-row"
