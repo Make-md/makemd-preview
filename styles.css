@@ -707,7 +707,9 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
   margin: 0;
   border-radius: var(--he-popover-border-radius);
   overflow: hidden;
-  height: 100%;
+}
+.mk-floweditor.hover-editor .popover-content .workspace-split {
+  display: none;
 }
 .mk-floweditor.hover-editor .workspace-leaf,
 .mk-floweditor.hover-editor .workspace-split {
@@ -716,6 +718,9 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
 }
 .mk-floweditor .markdown-source-view.mod-cm6 .cm-editor {
   min-height: auto;
+}
+.mk-floweditor .workspace-leaf-content[data-type=canvas] .view-content {
+  height: 600px;
 }
 .mk-floweditor .cm-content {
   padding: 0 !important;
@@ -802,27 +807,27 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
   border-left: var(--embed-border-left);
   padding: var(--embed-padding);
 }
-.mk-flow-seamless .markdown-embed {
+.mk-flow-seamless .internal-embed.markdown-embed {
   padding: 8px;
   border-radius: 4px;
   border: thin solid var(--color-base-20);
   margin-top: 4px;
 }
-.mk-flow-classic .markdown-embed {
+.mk-flow-classic .internal-embed.markdown-embed {
   margin-top: 24px;
 }
-.markdown-embed .markdown-rendered h1,
-.markdown-embed .markdown-rendered h2,
-.markdown-embed .markdown-rendered h3,
-.markdown-embed .markdown-rendered h4,
-.markdown-embed .markdown-rendered h5,
-.markdown-embed .markdown-rendered h6 {
+.internal-embed.markdown-embed .markdown-rendered h1,
+.internal-embed.markdown-embed .markdown-rendered h2,
+.internal-embed.markdown-embed .markdown-rendered h3,
+.internal-embed.markdown-embed .markdown-rendered h4,
+.internal-embed.markdown-embed .markdown-rendered h5,
+.internal-embed.markdown-embed .markdown-rendered h6 {
   margin: 0;
 }
 .markdown-embed p {
   margin-bottom: 24px;
 }
-.mk-flow-seamless .markdown-embed {
+.mk-flow-seamless .internal-embed.markdown-embed {
   margin-top: 24px;
 }
 .mk-floweditor-container:not(.mk-floweditor-fix) > .mk-floweditor:hover {
@@ -852,13 +857,13 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
 .cm-line:hover > .mk-floweditor-selector {
   visibility: visible;
 }
-.markdown-embed:hover .mk-floweditor-selector {
+.internal-embed.markdown-embed:hover .mk-floweditor-selector {
   visibility: visible;
 }
-.mk-flow-classic .markdown-embed > .mk-floweditor-selector {
+.mk-flow-classic .internal-embed.markdown-embed > .mk-floweditor-selector {
   top: 5px !important;
 }
-.mk-flow-seamless .markdown-embed > .mk-floweditor-selector {
+.mk-flow-seamless .internal-embed.markdown-embed > .mk-floweditor-selector {
   top: -22px !important;
   right: 4px;
 }
@@ -1050,17 +1055,17 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
   display: flex;
   align-items: center;
 }
-.mk-cell-file-new .mk-cell-file-icon svg {
+.mk-cell-file-new .mk-file-icon svg {
   color: var(--text-faint);
 }
-.mk-cell-file-new .mk-cell-file-icon:hover {
+.mk-cell-file-new .mk-file-icon:hover {
   background: var(--interactive-hover);
 }
 .mk-cell-file-item {
   display: flex;
   align-items: center;
 }
-.mk-cell-file-item .mk-cell-file-icon:hover {
+.mk-cell-file-item .mk-file-icon:hover {
   background: var(--interactive-hover);
 }
 .mk-cell-file-item .mk-cell-file-name {
@@ -1070,18 +1075,13 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
 .mk-cell-file-item .mk-cell-file-name:hover {
   background: var(--interactive-hover);
 }
-.mk-cell-file-icon {
+.mk-cell-file .mk-file-icon {
   margin-right: 4px;
   align-items: center;
   display: flex;
   width: 24px;
   padding: 4px;
   border-radius: 4px;
-}
-.mk-cell-file-icon svg {
-  width: 16px;
-  height: 16px;
-  color: var(--text-muted);
 }
 .mk-cell-file-new .mk-cell-file-name {
   padding: 4px !important;
@@ -1253,6 +1253,20 @@ body:not(.is-mobile) .mk-tree-wrapper button:hover {
 .mk-file-icon {
   width: 24px;
   height: 24px;
+}
+.mk-file-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+.mk-file-icon button {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+  padding: 0;
 }
 .is-mobile .mk-file-icon {
   width: unset;
@@ -1616,7 +1630,14 @@ mark {
 }
 .mk-file-context {
   margin-bottom: 12px;
-  padding: var(--size-4-3) var(--size-4-3) var(--size-4-8);
+}
+.mk-file-context-section {
+  display: flex;
+  flex-direction: column;
+  padding: var(--size-4-3);
+  gap: 4px;
+  margin-top: 8px;
+  border-bottom: thin solid var(--divider-color);
 }
 .mk-file-context-row {
   display: flex;
@@ -1635,13 +1656,6 @@ mark {
   min-height: 40px;
 }
 .mk-file-context-title {
-  margin-top: 12px;
   font-size: var(--font-ui-small);
   color: var(--text-faint);
-}
-.mk-file-context-section {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 8px;
 }
