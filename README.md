@@ -2,6 +2,8 @@
 
 **This is the preview version of Make.md. If you're looking for the stable release, [click here](http://github.com/make-md/makemd)**
 
+[![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://GitHub.com/make-md/makemd/releases/)
+
 [Discord](https://make.md/community)
 
 ## Key Features
