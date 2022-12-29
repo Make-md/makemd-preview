@@ -25990,11 +25990,8 @@ var nodeIsAncestorOfTarget = (node, target) => {
     return false;
   return (_c2 = target.item) == null ? void 0 : _c2.path.contains(((_b2 = node.item) == null ? void 0 : _b2.path) + "/");
 };
-var excludeVaultItemPredicate = (plugin) => (f4) => !(f4.folder != "true" && plugin.settings.hiddenExtensions.find((e4) => fileExtensionForFile(f4.path) == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && !(f4.parent + "/" + folderPathToString(f4.parent) == fileNameToString(f4.path));
-var excludeFilePredicate = (plugin) => (f4) => {
-  var _a2;
-  return !(f4 instanceof import_obsidian2.TFile && plugin.settings.hiddenExtensions.find((e4) => f4.extension == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && !(((_a2 = f4.parent) == null ? void 0 : _a2.name) == fileNameToString(f4 == null ? void 0 : f4.name));
-};
+var excludeVaultItemPredicate = (plugin) => (f4, index, folder) => !(f4.folder != "true" && plugin.settings.hiddenExtensions.find((e4) => fileExtensionForFile(f4.path) == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && !folder.some((g4) => g4.path + ".md" == f4.path);
+var excludeFilePredicate = (plugin) => (f4, index, folder) => !(f4 instanceof import_obsidian2.TFile && plugin.settings.hiddenExtensions.find((e4) => f4.extension == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && !folder.some((g4) => g4.path + ".md" == f4.path);
 var folderChildren = (plugin, f4, exclusionList) => {
   return f4.children.filter(excludeFilePredicate(plugin));
 };
@@ -26254,7 +26251,7 @@ var replaceDB = (db, tables) => {
         return `'${(_b2 = (_a2 = curr == null ? void 0 : curr[c4]) == null ? void 0 : _a2.replace(`'`, `''`)) != null ? _b2 : ""}'`;
       }).join(", ")});`;
     }, "");
-    const idxQuery = tables[t4].uniques.reduce((p3, c4) => {
+    const idxQuery = tables[t4].uniques.filter((f4) => f4).reduce((p3, c4) => {
       return `${p3} CREATE UNIQUE INDEX IF NOT EXISTS idx_${t4}_${c4.replace(",", "_")} ON ${t4}(${c4});`;
     }, "");
     return `DROP TABLE IF EXISTS ${t4}; CREATE TABLE IF NOT EXISTS ${t4} (${fieldQuery}); ${idxQuery} ${rowsQuery}`;
@@ -39390,6 +39387,11 @@ var spaceItemsSchema = {
   rows: []
 };
 
+// src/utils/sanitize.ts
+var sanitizeSQLStatement = (name) => {
+  return name.replace(`'`, `''`);
+};
+
 // src/dispatch/spaces.ts
 var dispatchDatabaseFileChanged2 = (type) => {
   let evt = new CustomEvent(eventTypes.spacesChange, {
@@ -39418,8 +39420,8 @@ var onFileCreated2 = async (plugin, newPath, folder) => {
 };
 var onFileDeleted2 = (plugin, oldPath) => {
   const db = plugin.spaceDBInstance();
-  deleteFromDB(db, "vault", `path = '${oldPath}'`);
-  deleteFromDB(db, "spaceItems", `path = '${oldPath}'`);
+  deleteFromDB(db, "vault", `path = '${sanitizeSQLStatement(oldPath)}'`);
+  deleteFromDB(db, "spaceItems", `path = '${sanitizeSQLStatement(oldPath)}'`);
   plugin.saveSpacesDB();
   dispatchDatabaseFileChanged2("vault");
 };
@@ -39452,23 +39454,23 @@ var onFolderChanged2 = (plugin, oldPath, newPath) => {
       cols: ["path", "parent"],
       rows: [{ path: newPath, oldPath, parent: newFolderPath }]
     }
-  }, "oldPath", "path");
-  execQuery(db, `UPDATE vault SET parent=REPLACE(parent,'${oldPath}','${newPath}) WHERE parent LIKE '${oldPath}%';`);
-  execQuery(db, `UPDATE vault SET path=REPLACE(path,'${oldPath}','${newPath}) WHERE path LIKE '${oldPath}%/';`);
+  }, "path", "oldPath");
+  execQuery(db, `UPDATE vault SET parent=REPLACE(parent,'${sanitizeSQLStatement(oldPath)}','${sanitizeSQLStatement(newPath)}') WHERE parent LIKE '${sanitizeSQLStatement(oldPath)}%';`);
+  execQuery(db, `UPDATE vault SET path=REPLACE(path,'${sanitizeSQLStatement(oldPath)}','${sanitizeSQLStatement(newPath)}') WHERE path LIKE '${sanitizeSQLStatement(oldPath)}%/';`);
   updateDB(db, {
     "spaceItems": {
       uniques: [],
       cols: ["path"],
       rows: [{ path: newPath, oldPath }]
     }
-  }, "oldPath", "path");
+  }, "path", "oldPath");
   plugin.saveSpacesDB();
   dispatchDatabaseFileChanged2("vault");
 };
 var onFolderDeleted2 = (plugin, oldPath) => {
   const db = plugin.spaceDBInstance();
-  deleteFromDB(db, "vault", `path = '${oldPath}' OR parent LIKE '${oldPath}%'`);
-  deleteFromDB(db, "spaceItems", `path = '${oldPath}'`);
+  deleteFromDB(db, "vault", `path = '${sanitizeSQLStatement(oldPath)}' OR parent LIKE '${sanitizeSQLStatement(oldPath)}%'`);
+  deleteFromDB(db, "spaceItems", `path = '${sanitizeSQLStatement(oldPath)}'`);
   plugin.saveSpacesDB();
   dispatchDatabaseFileChanged2("vault");
 };
@@ -39538,8 +39540,10 @@ var flattenedTreeFromVaultItems = (root, space, vaultItems, openNodes, depth, so
 };
 var vaultItemForPath = (plugin, path) => {
   var _a2;
+  if (!path)
+    return null;
   const db = plugin.spaceDBInstance();
-  const table = selectDB(db, "vault", `path='${path}'`);
+  const table = selectDB(db, "vault", `path='${sanitizeSQLStatement(path)}'`);
   return (_a2 = table == null ? void 0 : table.rows) == null ? void 0 : _a2[0];
 };
 var saveFileSticker = (plugin, path, sticker) => {
@@ -39609,7 +39613,7 @@ var moveAFileToNewParentAtIndex = (plugin, item, newParent, vaultTree, index) =>
   if (Object.keys(vaultTree).includes(newParent)) {
     vaultTree[newParent] = insert(vaultTree[newParent], index, newItem);
     const db = plugin.spaceDBInstance();
-    const table = selectDB(db, "vault", `parent='${newParent}'`);
+    const table = selectDB(db, "vault", `parent='${sanitizeSQLStatement(newParent)}'`);
     const rows = insert((_a2 = table == null ? void 0 : table.rows.sort((a5, b4) => a5.rank.localeCompare(b4.rank, void 0, { numeric: true }))) != null ? _a2 : [], index, newItem).map((f4, index2) => ({ ...f4, rank: index2.toString() }));
     insertIntoDB(db, {
       vault: {
@@ -39617,7 +39621,7 @@ var moveAFileToNewParentAtIndex = (plugin, item, newParent, vaultTree, index) =>
         rows: [newItem]
       }
     });
-    deleteFromDB(db, "vault", `path='${item.path}'`);
+    deleteFromDB(db, "vault", `path='${sanitizeSQLStatement(item.path)}'`);
     updateDB(db, {
       vault: {
         ...vaultSchema,
@@ -39725,8 +39729,8 @@ var renameSpace = (plugin, space, newName) => {
 };
 var removeSpace = (plugin, space) => {
   const db = plugin.spaceDBInstance();
-  deleteFromDB(db, "spaces", `name='${space}'`);
-  deleteFromDB(db, "spaceItems", `space='${space}'`);
+  deleteFromDB(db, "spaces", `name='${sanitizeSQLStatement(space)}'`);
+  deleteFromDB(db, "spaceItems", `space='${sanitizeSQLStatement(space)}'`);
   plugin.saveSpacesDB();
   dispatchDatabaseFileChanged2("space");
 };
@@ -39767,7 +39771,7 @@ var addPathsToSpace = (plugin, space, paths) => {
 };
 var removePathsFromSpace = (plugin, space, paths) => {
   const db = plugin.spaceDBInstance();
-  paths.forEach((path) => deleteFromDB(db, "spaceItems", `space='${space}' AND path='${path}'`));
+  paths.forEach((path) => deleteFromDB(db, "spaceItems", `space='${sanitizeSQLStatement(space)}' AND path='${sanitizeSQLStatement(path)}'`));
   plugin.saveSpacesDB();
   dispatchDatabaseFileChanged2("space");
 };
@@ -39785,14 +39789,14 @@ var retrieveSpaceItems = (plugin, spaces2) => {
   let retrievedSpaces = {};
   spaces2.forEach((space) => {
     var _a2, _b2, _c2, _d2;
-    const table = selectDB(db, "spaceItems", `space='${space.name}'`);
+    const table = selectDB(db, "spaceItems", `space='${sanitizeSQLStatement(space.name)}'`);
     let rows = (_a2 = table == null ? void 0 : table.rows) != null ? _a2 : [];
     if (((_b2 = space.def) == null ? void 0 : _b2.length) > 0) {
-      const spaceItems = ((_d2 = (_c2 = selectDB(db, "vault", `parent='${space.def}'`)) == null ? void 0 : _c2.rows) != null ? _d2 : []).filter(excludeVaultItemPredicate(plugin));
+      const spaceItems = ((_d2 = (_c2 = selectDB(db, "vault", `parent='${sanitizeSQLStatement(space.def)}'`)) == null ? void 0 : _c2.rows) != null ? _d2 : []).filter(excludeVaultItemPredicate(plugin));
       const extraItems = rows.filter((f4) => !spaceItems.some((g4) => g4.path == f4.path));
       rows = rows.filter((f4) => !extraItems.some((g4) => f4.path == g4.path));
       extraItems.forEach(
-        (row) => deleteFromDB(db, "spaceItems", `space='${space.name}' AND path='${row.path}'`)
+        (row) => deleteFromDB(db, "spaceItems", `space='${sanitizeSQLStatement(space.name)}' AND path='${sanitizeSQLStatement(row.path)}'`)
       );
       spaceItems.forEach((row) => {
         if (!rows.some((f4) => f4.path == row.path)) {
@@ -39817,7 +39821,7 @@ var retrieveFolders = async (plugin, paths) => {
   const db = plugin.spaceDBInstance();
   let retrievedFolders = {};
   paths.forEach((folder) => {
-    const table = selectDB(db, "vault", `parent='${folder}'`);
+    const table = selectDB(db, "vault", `parent='${sanitizeSQLStatement(folder)}'`);
     if (table) {
       retrievedFolders[folder] = table.rows.filter(excludeVaultItemPredicate(plugin));
     }
@@ -39866,10 +39870,10 @@ var indexCurrentFileTree = (db) => {
     updateDB(db, { vault: { ...vaultSchema, rows: [row] } }, "path", "path");
   });
   deleteRows.forEach((path) => {
-    deleteFromDB(db, "vault", `path='${path.path}'`);
+    deleteFromDB(db, "vault", `path='${sanitizeSQLStatement(path.path)}'`);
   });
   deleteRows.forEach((path) => {
-    deleteFromDB(db, "spaceItems", `path='${path.path}'`);
+    deleteFromDB(db, "spaceItems", `path='${sanitizeSQLStatement(path.path)}'`);
   });
   return insertIntoDB(db, {
     "vault": {
@@ -40093,7 +40097,7 @@ var triggerSectionMenu = (plugin, spaceName, spaces2, e4) => {
   });
   fileMenu.addSeparator();
   fileMenu.addItem((menuItem) => {
-    const sortOption = ["created", true];
+    const sortOption = ["created", false];
     menuItem.setTitle("Created Time (new to old)");
     menuItem.setChecked(space.sort == JSON.stringify(sortOption));
     menuItem.onClick((ev) => {
@@ -40101,7 +40105,7 @@ var triggerSectionMenu = (plugin, spaceName, spaces2, e4) => {
     });
   });
   fileMenu.addItem((menuItem) => {
-    const sortOption = ["created", false];
+    const sortOption = ["created", true];
     menuItem.setTitle("Created Time (old to new)");
     menuItem.setChecked(space.sort == JSON.stringify(sortOption));
     menuItem.onClick((ev) => {
@@ -45397,7 +45401,7 @@ var FolderContextViewComponent = (props2) => {
   const path = folderContextFromFolder(props2.plugin, folder);
   const ref = _2(null);
   const [flowOpen, setFlowOpen] = p2(false);
-  const folderNotePath = `${folder}/${props2.folder.name}.md`;
+  const folderNotePath = props2.folder && props2.folder.parent.path == "/" ? `${props2.folder.name}.md` : `${props2.folder.parent.path}/${props2.folder.name}.md`;
   const loadFile = async () => {
     const folderNote = getAbstractFileAtPath(app, folderNotePath);
     if (folderNote) {
@@ -45670,6 +45674,8 @@ var openAFile = async (file, app2, newLeaf) => {
   } else if (file instanceof import_obsidian21.TFile) {
     openTFile(file, app2, newLeaf);
   }
+  let evt = new CustomEvent(eventTypes.activeFileChange, { detail: { filePath: file.path } });
+  window.dispatchEvent(evt);
 };
 var openTFile = async (file, app2, newLeaf) => {
   let leaf = app2.workspace.getLeaf(newLeaf);
@@ -46403,18 +46409,18 @@ var SectionItem = k3(
       fileMenu.addSeparator();
       fileMenu.addItem((menuItem) => {
         menuItem.setTitle("Created Time (new to old)");
-        menuItem.setChecked(plugin.settings.vaultSort[0] == "created" && plugin.settings.vaultSort[1] == true);
+        menuItem.setChecked(plugin.settings.vaultSort[0] == "created" && plugin.settings.vaultSort[1] == false);
         menuItem.onClick((ev) => {
-          plugin.settings.vaultSort = ["created", true];
+          plugin.settings.vaultSort = ["created", false];
           plugin.saveSettings();
           refreshFileList();
         });
       });
       fileMenu.addItem((menuItem) => {
         menuItem.setTitle("Created Time (old to new)");
-        menuItem.setChecked(plugin.settings.vaultSort[0] == "created" && plugin.settings.vaultSort[1] == false);
+        menuItem.setChecked(plugin.settings.vaultSort[0] == "created" && plugin.settings.vaultSort[1] == true);
         menuItem.onClick((ev) => {
-          plugin.settings.vaultSort = ["created", false];
+          plugin.settings.vaultSort = ["created", true];
           plugin.saveSettings();
           refreshFileList();
         });
@@ -47259,6 +47265,10 @@ var FileExplorerComponent = (props2) => {
     ;
   }, [vaultItems, activeSpaces, expandedSpaces, expandedFolders2, vaultSort, props2.activeSpace]);
   h2(() => {
+    if (selectedFiles2.length <= 1) {
+      setSelectedFiles([]);
+      revealFile(getAbstractFileAtPath(app, activeFile2));
+    }
     window.addEventListener(eventTypes.activeFileChange, changeActiveFile);
     return () => {
       window.removeEventListener(eventTypes.activeFileChange, changeActiveFile);
@@ -47276,22 +47286,26 @@ var FileExplorerComponent = (props2) => {
       window.removeEventListener(eventTypes.revealFile, handleRevealFileEvent);
     };
   }, []);
-  const handleRevealFileEvent = (evt) => {
+  const revealFile = (file) => {
     var _a2;
-    if (evt.detail) {
-      const folders = evt.detail.file.path.split("/");
-      const openPaths = folders.reduce((p3, c4, index) => [...p3, index == 0 ? c4 : `${p3[index]}/${c4}`], ["/"]).slice(0, -1);
-      const newOpenFolders = [
-        ...(_a2 = expandedFolders2["/"]) == null ? void 0 : _a2.filter((f4) => !openPaths.find((g4) => g4 == f4)),
-        ...openPaths
-      ];
-      plugin.settings.expandedFolders = {
-        ...expandedFolders2,
-        "/": newOpenFolders
-      };
-      nextTreeScrollPath.current = evt.detail.file.path;
-      plugin.saveSettings();
-    }
+    if (!file)
+      return;
+    const folders = file.path.split("/");
+    const openPaths = folders.reduce((p3, c4, index) => [...p3, index == 0 ? c4 : `${p3[index]}/${c4}`], ["/"]).slice(0, -1);
+    const newOpenFolders = [
+      ...(_a2 = expandedFolders2["/"]) == null ? void 0 : _a2.filter((f4) => !openPaths.find((g4) => g4 == f4)),
+      ...openPaths
+    ];
+    plugin.settings.expandedFolders = {
+      ...expandedFolders2,
+      "/": newOpenFolders
+    };
+    nextTreeScrollPath.current = file.path;
+    plugin.saveSettings();
+  };
+  const handleRevealFileEvent = (evt) => {
+    if (evt.detail)
+      revealFile(evt.detail.file);
   };
   h2(() => {
     const spaceItems = retrieveSpaceItems(plugin, spaces2);
@@ -49214,7 +49228,7 @@ var FileContextList = (props2) => {
     () => {
       const td = tableData ? {
         "folder": {
-          cols: tableData.cols.filter((f4) => f4.name != "File" && f4.type != "fileprop" && f4.hidden != "true"),
+          cols: tableData.cols.filter((f4) => f4.name != "File" && f4.type != "fileprop" && f4.hidden != "true" && f4.type != "preview"),
           data: tableData.rows.find((r3) => r3.File == path),
           dataIndex: tableData.rows.findIndex((r3) => r3.File == path)
         }
@@ -49222,7 +49236,7 @@ var FileContextList = (props2) => {
       const tags = tagContexts.reduce((p3, c4) => contextTable[c4] ? {
         ...p3,
         [c4]: {
-          cols: contextTable[c4].cols.filter((f4) => f4.name != "File" && f4.type != "fileprop" && f4.hidden != "true"),
+          cols: contextTable[c4].cols.filter((f4) => f4.name != "File" && f4.type != "fileprop" && f4.hidden != "true" && f4.type != "preview"),
           data: contextTable[c4].rows.find((r3, index) => index == parseInt(props2.path)),
           dataIndex: contextTable[c4].rows.findIndex((r3) => r3.File == path)
         }
@@ -49234,11 +49248,9 @@ var FileContextList = (props2) => {
     },
     [tableData, contextTable, tagContexts, path]
   );
-  return /* @__PURE__ */ bn.createElement(bn.Fragment, null, /* @__PURE__ */ bn.createElement("div", {
-    className: "mk-file-context-section"
-  }, /* @__PURE__ */ bn.createElement("div", {
+  return /* @__PURE__ */ bn.createElement(bn.Fragment, null, ((_a2 = fileContext.folder) == null ? void 0 : _a2.cols.length) > 0 && fileContext.folder.data && /* @__PURE__ */ bn.createElement(bn.Fragment, null, /* @__PURE__ */ bn.createElement("div", {
     className: "mk-file-context-title"
-  }, isFolderContext ? folderPathToString(folderPath) : folderPath), ((_a2 = fileContext.folder) == null ? void 0 : _a2.data) && fileContext.folder.cols.map(
+  }, isFolderContext ? folderPathToString(folderPath) : folderPath), fileContext.folder.cols.map(
     (f4, i4) => /* @__PURE__ */ bn.createElement("div", {
       key: i4,
       className: "mk-file-context-row"
@@ -49259,6 +49271,25 @@ var FileContextList = (props2) => {
 
 // src/components/FileContextView/FileContextView.tsx
 var import_obsidian34 = require("obsidian");
+
+// src/components/FileContextView/Backlinks.tsx
+var Backlinks = (props2) => {
+  const [backlinks, setBacklinks] = p2([]);
+  h2(() => {
+    if (!props2.path)
+      return;
+    setBacklinks(Object.keys(app.metadataCache.resolvedLinks).filter((f4) => props2.path in app.metadataCache.resolvedLinks[f4]));
+  }, [props2.path]);
+  return /* @__PURE__ */ bn.createElement("div", null, backlinks.map((f4) => /* @__PURE__ */ bn.createElement(bn.Fragment, null, /* @__PURE__ */ bn.createElement("div", {
+    className: "mk-file-context-title"
+  }, f4), /* @__PURE__ */ bn.createElement(FlowView, {
+    plugin: props2.plugin,
+    load: true,
+    path: f4
+  }))));
+};
+
+// src/components/FileContextView/FileContextView.tsx
 var FILE_CONTEXT_VIEW_TYPE = "make-context-view";
 var ICON2 = "component";
 var VIEW_DISPLAY_TEXT2 = "File Context";
@@ -49327,10 +49358,21 @@ var allTagsForFile = async (plugin, file) => {
 };
 var FileContextView = (props2) => {
   const [path, setPath] = p2(null);
-  const file = F(() => getAbstractFileAtPath(app, path), [path]);
+  const file = F(() => {
+    const afile = getAbstractFileAtPath(app, path);
+    return afile;
+  }, [path]);
+  const folderNoteFile = F(() => {
+    if (file instanceof import_obsidian34.TFolder) {
+      const afile2 = getAbstractFileAtPath(app, path + ".md");
+      return afile2;
+    }
+    return file;
+  }, [file]);
   const folderPath = file == null ? void 0 : file.parent.path;
   const dbPath = folderContextFromFolder(props2.plugin, folderPath);
   const [tags, setTags] = p2([]);
+  const [expandedSections, setExpandedSections] = p2({});
   h2(() => {
     allTagsForFile(props2.plugin, file).then((t4) => setTags(t4));
   }, [file]);
@@ -49345,14 +49387,27 @@ var FileContextView = (props2) => {
       window.removeEventListener(eventTypes.activeFileChange, changeActiveFile);
     };
   }, []);
-  return /* @__PURE__ */ bn.createElement("div", {
+  return file ? /* @__PURE__ */ bn.createElement("div", {
     className: "mk-file-context"
   }, /* @__PURE__ */ bn.createElement("div", {
     className: "mk-file-context-section"
   }, /* @__PURE__ */ bn.createElement(FileSticker, {
     plugin: props2.plugin,
-    filePath: file == null ? void 0 : file.path
-  }), /* @__PURE__ */ bn.createElement("div", null, file == null ? void 0 : file.name)), file && contextExists && /* @__PURE__ */ bn.createElement(MDBProvider, {
+    filePath: file.path
+  }), /* @__PURE__ */ bn.createElement("div", null, fileNameToString(file.name))), /* @__PURE__ */ bn.createElement("div", {
+    onClick: (e4) => {
+      setExpandedSections((f4) => ({ ...f4, context: !f4["context"] }));
+      e4.stopPropagation();
+    },
+    className: "mk-section-title"
+  }, /* @__PURE__ */ bn.createElement("div", {
+    className: "mk-tree-text"
+  }, "Context"), /* @__PURE__ */ bn.createElement("button", {
+    className: `mk-collapse mk-inline-button ${!expandedSections["context"] ? "mk-collapsed" : ""}`,
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-collapse-sm"] }
+  })), expandedSections["context"] && /* @__PURE__ */ bn.createElement("div", {
+    className: "mk-file-context-section"
+  }, file && contextExists && /* @__PURE__ */ bn.createElement(MDBProvider, {
     plugin: props2.plugin,
     dbPath,
     folder: folderPath
@@ -49366,7 +49421,23 @@ var FileContextView = (props2) => {
   }, /* @__PURE__ */ bn.createElement(FileContextList, {
     plugin: props2.plugin,
     path: file.path
-  }))));
+  })))), folderNoteFile && /* @__PURE__ */ bn.createElement(bn.Fragment, null, /* @__PURE__ */ bn.createElement("div", {
+    onClick: (e4) => {
+      setExpandedSections((f4) => ({ ...f4, backlinks: !f4["backlinks"] }));
+      e4.stopPropagation();
+    },
+    className: "mk-section-title"
+  }, /* @__PURE__ */ bn.createElement("div", {
+    className: "mk-tree-text"
+  }, "Backlinks"), /* @__PURE__ */ bn.createElement("button", {
+    className: `mk-collapse mk-inline-button ${!expandedSections["backlinks"] ? "mk-collapsed" : ""}`,
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-collapse-sm"] }
+  })), expandedSections["backlinks"] && /* @__PURE__ */ bn.createElement("div", {
+    className: "mk-file-context-section"
+  }, /* @__PURE__ */ bn.createElement(Backlinks, {
+    plugin: props2.plugin,
+    path: folderNoteFile.path
+  })))) : /* @__PURE__ */ bn.createElement(bn.Fragment, null);
 };
 
 // src/components/Blink/Blink.tsx
@@ -49608,9 +49679,7 @@ var MakeMDPlugin = class extends import_obsidian37.Plugin {
     };
   }
   async sqlJS() {
-    console.time("Loading SQlite");
     const sqljs = await loadSQL();
-    console.timeEnd("Loading SQlite");
     return sqljs;
   }
   spaceDBInstance() {
@@ -49741,7 +49810,7 @@ var MakeMDPlugin = class extends import_obsidian37.Plugin {
     this.registerExtensions(["mdb"], MDB_FILE_VIEWER_TYPE);
     this.app.workspace.onLayoutReady(async () => {
       await this.openFileContextLeaf();
-      this.activeFileChange();
+      setTimeout(() => this.activeFileChange(), 2e3);
     });
   }
   loadFlowEditor() {
