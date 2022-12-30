@@ -26165,6 +26165,13 @@ var defaultTagTables = {
 
 // src/utils/db/db.ts
 var import_obsidian3 = require("obsidian");
+
+// src/utils/sanitize.ts
+var sanitizeSQLStatement = (name) => {
+  return name == null ? void 0 : name.replace(/'/g, `''`);
+};
+
+// src/utils/db/db.ts
 var getDBFile = async (path) => {
   if (!await app.vault.adapter.exists((0, import_obsidian3.normalizePath)(path))) {
     return null;
@@ -26211,11 +26218,11 @@ var updateDB = (db, tables, updateCol, updateRef) => {
   const sqlstr = Object.keys(tables).map((t4) => {
     const tableFields = tables[t4].cols.filter((f4) => f4 != updateRef);
     const rowsQuery = tables[t4].rows.reduce((prev, curr) => {
-      var _a2, _b2;
+      var _a2;
       return `${prev} UPDATE ${t4} SET ${tableFields.map((c4) => {
-        var _a3, _b3;
-        return `${c4}='${(_b3 = (_a3 = curr == null ? void 0 : curr[c4]) == null ? void 0 : _a3.replace(`'`, `''`)) != null ? _b3 : ""}'`;
-      }).join(", ")} WHERE ${updateCol}='${(_b2 = (_a2 = curr == null ? void 0 : curr[updateRef]) == null ? void 0 : _a2.replace(`'`, `''`)) != null ? _b2 : ""}';`;
+        var _a3;
+        return `${c4}='${(_a3 = sanitizeSQLStatement(curr == null ? void 0 : curr[c4])) != null ? _a3 : ""}'`;
+      }).join(", ")} WHERE ${updateCol}='${(_a2 = sanitizeSQLStatement(curr == null ? void 0 : curr[updateRef])) != null ? _a2 : ""}';`;
     }, "");
     return rowsQuery;
   }).join("; ");
@@ -26233,12 +26240,13 @@ var insertIntoDB = (db, tables) => {
     const tableFields = tables[t4].cols;
     const rowsQuery = tables[t4].rows.reduce((prev, curr) => {
       return `${prev} REPLACE INTO ${t4} VALUES (${tableFields.map((c4) => {
-        var _a2, _b2;
-        return `'${(_b2 = (_a2 = curr == null ? void 0 : curr[c4]) == null ? void 0 : _a2.replace(`'`, `''`)) != null ? _b2 : ""}'`;
+        var _a2;
+        return `'${(_a2 = sanitizeSQLStatement(curr == null ? void 0 : curr[c4])) != null ? _a2 : ""}'`;
       }).join(", ")});`;
     }, "");
     return rowsQuery;
   }).join("; ");
+  console.log(sqlstr);
   db.exec(sqlstr);
 };
 var replaceDB = (db, tables) => {
@@ -26247,12 +26255,12 @@ var replaceDB = (db, tables) => {
     const fieldQuery = uniq(tableFields).map((f4) => `'${f4}' char`).join(", ");
     const rowsQuery = tables[t4].rows.reduce((prev, curr) => {
       return `${prev} REPLACE INTO ${t4} VALUES (${tableFields.map((c4) => {
-        var _a2, _b2;
-        return `'${(_b2 = (_a2 = curr == null ? void 0 : curr[c4]) == null ? void 0 : _a2.replace(`'`, `''`)) != null ? _b2 : ""}'`;
+        var _a2;
+        return `'${(_a2 = sanitizeSQLStatement(curr == null ? void 0 : curr[c4])) != null ? _a2 : ""}'`;
       }).join(", ")});`;
     }, "");
     const idxQuery = tables[t4].uniques.filter((f4) => f4).reduce((p3, c4) => {
-      return `${p3} CREATE UNIQUE INDEX IF NOT EXISTS idx_${t4}_${c4.replace(",", "_")} ON ${t4}(${c4});`;
+      return `${p3} CREATE UNIQUE INDEX IF NOT EXISTS idx_${t4}_${c4.replace(/,/g, "_")} ON ${t4}(${c4});`;
     }, "");
     return `DROP TABLE IF EXISTS ${t4}; CREATE TABLE IF NOT EXISTS ${t4} (${fieldQuery}); ${idxQuery} ${rowsQuery}`;
   }).join("; ");
@@ -26453,7 +26461,7 @@ var tagFromString = (tag) => {
   let string = tag;
   if (string.charAt(0) != "#")
     string = "#" + string;
-  return string.replace("/", "_");
+  return string.replace(/\//g, "_");
 };
 var loadTags = (plugin) => {
   var _a2;
@@ -39387,11 +39395,6 @@ var spaceItemsSchema = {
   rows: []
 };
 
-// src/utils/sanitize.ts
-var sanitizeSQLStatement = (name) => {
-  return name.replace(`'`, `''`);
-};
-
 // src/dispatch/spaces.ts
 var dispatchDatabaseFileChanged2 = (type) => {
   let evt = new CustomEvent(eventTypes.spacesChange, {
@@ -40451,7 +40454,7 @@ var FileCell = (props2) => {
     }
   };
   const newFile = async () => {
-    const filePath = ref.current.value.replace("/", "").replace(".", "");
+    const filePath = ref.current.value.replace(/\//g, "").replace(/./g, "");
     const path = `${props2.folder}/${filePath}.md`;
     if (filePath.length == 0)
       return;
@@ -45980,7 +45983,7 @@ var SectionChangeModal = class extends import_obsidian22.Modal {
       myModal.close();
     });
     const onClickAction = async () => {
-      let newName = inputEl.value.replace("/", "");
+      let newName = inputEl.value.replace(/\//g, "");
       if (newName.length == 0) {
         new import_obsidian22.Notice("Enter a name for your space");
         return;
