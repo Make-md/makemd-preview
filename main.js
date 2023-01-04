@@ -7623,9 +7623,9 @@ var require_lodash = __commonJS({
           return getMapData(this, key2).has(key2);
         }
         function mapCacheSet(key2, value) {
-          var data = getMapData(this, key2), size2 = data.size;
+          var data = getMapData(this, key2), size3 = data.size;
           data.set(key2, value);
-          this.size += data.size == size2 ? 0 : 1;
+          this.size += data.size == size3 ? 0 : 1;
           return this;
         }
         MapCache2.prototype.clear = mapCacheClear;
@@ -9435,19 +9435,19 @@ var require_lodash = __commonJS({
         function getView(start, end, transforms) {
           var index = -1, length = transforms.length;
           while (++index < length) {
-            var data = transforms[index], size2 = data.size;
+            var data = transforms[index], size3 = data.size;
             switch (data.type) {
               case "drop":
-                start += size2;
+                start += size3;
                 break;
               case "dropRight":
-                end -= size2;
+                end -= size3;
                 break;
               case "take":
-                end = nativeMin(end, start + size2);
+                end = nativeMin(end, start + size3);
                 break;
               case "takeRight":
-                start = nativeMax(start, end - size2);
+                start = nativeMax(start, end - size3);
                 break;
             }
           }
@@ -9707,15 +9707,15 @@ var require_lodash = __commonJS({
             return func.apply(undefined2, arguments);
           };
         }
-        function shuffleSelf(array, size2) {
+        function shuffleSelf(array, size3) {
           var index = -1, length = array.length, lastIndex = length - 1;
-          size2 = size2 === undefined2 ? length : size2;
-          while (++index < size2) {
+          size3 = size3 === undefined2 ? length : size3;
+          while (++index < size3) {
             var rand = baseRandom(index, lastIndex), value = array[rand];
             array[rand] = array[index];
             array[index] = value;
           }
-          array.length = size2;
+          array.length = size3;
           return array;
         }
         var stringToPath = memoizeCapped(function(string) {
@@ -9767,19 +9767,19 @@ var require_lodash = __commonJS({
           result2.__values__ = wrapper.__values__;
           return result2;
         }
-        function chunk(array, size2, guard) {
-          if (guard ? isIterateeCall(array, size2, guard) : size2 === undefined2) {
-            size2 = 1;
+        function chunk(array, size3, guard) {
+          if (guard ? isIterateeCall(array, size3, guard) : size3 === undefined2) {
+            size3 = 1;
           } else {
-            size2 = nativeMax(toInteger2(size2), 0);
+            size3 = nativeMax(toInteger2(size3), 0);
           }
           var length = array == null ? 0 : array.length;
-          if (!length || size2 < 1) {
+          if (!length || size3 < 1) {
             return [];
           }
-          var index = 0, resIndex = 0, result2 = Array2(nativeCeil(length / size2));
+          var index = 0, resIndex = 0, result2 = Array2(nativeCeil(length / size3));
           while (index < length) {
-            result2[resIndex++] = baseSlice(array, index, index += size2);
+            result2[resIndex++] = baseSlice(array, index, index += size3);
           }
           return result2;
         }
@@ -10360,7 +10360,7 @@ var require_lodash = __commonJS({
           var func = isArray(collection) ? arrayShuffle : baseShuffle;
           return func(collection);
         }
-        function size(collection) {
+        function size2(collection) {
           if (collection == null) {
             return 0;
           }
@@ -11897,7 +11897,7 @@ var require_lodash = __commonJS({
         lodash.round = round;
         lodash.runInContext = runInContext2;
         lodash.sample = sample;
-        lodash.size = size;
+        lodash.size = size2;
         lodash.snakeCase = snakeCase;
         lodash.some = some;
         lodash.sortedIndex = sortedIndex;
@@ -16893,11 +16893,11 @@ var hamt_1 = createCommonjsModule(function(module2) {
       _modify: IndexedNode__modify
     };
   };
-  var ArrayNode = function ArrayNode2(edit, size, children) {
+  var ArrayNode = function ArrayNode2(edit, size2, children) {
     return {
       type: ARRAY,
       edit,
-      size,
+      size: size2,
       children,
       _modify: ArrayNode__modify
     };
@@ -16939,7 +16939,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var subH2 = hashFragment(shift, h22);
     return IndexedNode(edit, toBitmap(subH1) | toBitmap(subH2), subH1 === subH2 ? [mergeLeaves2(edit, shift + SIZE, h1, n1, h22, n2)] : subH1 < subH2 ? [n1, n2] : [n2, n1]);
   };
-  var updateCollisionList = function updateCollisionList2(mutate2, edit, keyEq, h5, list, f4, k5, size) {
+  var updateCollisionList = function updateCollisionList2(mutate2, edit, keyEq, h5, list, f4, k5, size2) {
     var len = list.length;
     for (var i4 = 0; i4 < len; ++i4) {
       var child = list[i4];
@@ -16949,7 +16949,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
         if (_newValue === value)
           return list;
         if (_newValue === nothing) {
-          --size.value;
+          --size2.value;
           return arraySpliceOut(mutate2, i4, list);
         }
         return arrayUpdate(mutate2, i4, Leaf(edit, h5, k5, _newValue), list);
@@ -16958,19 +16958,19 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var newValue = f4();
     if (newValue === nothing)
       return list;
-    ++size.value;
+    ++size2.value;
     return arrayUpdate(mutate2, len, Leaf(edit, h5, k5, newValue), list);
   };
   var canEditNode = function canEditNode2(edit, node) {
     return edit === node.edit;
   };
-  var Leaf__modify = function Leaf__modify2(edit, keyEq, shift, f4, h5, k5, size) {
+  var Leaf__modify = function Leaf__modify2(edit, keyEq, shift, f4, h5, k5, size2) {
     if (keyEq(k5, this.key)) {
       var _v = f4(this.value);
       if (_v === this.value)
         return this;
       else if (_v === nothing) {
-        --size.value;
+        --size2.value;
         return empty;
       }
       if (canEditNode(edit, this)) {
@@ -16982,13 +16982,13 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var v3 = f4();
     if (v3 === nothing)
       return this;
-    ++size.value;
+    ++size2.value;
     return mergeLeaves(edit, shift, this.hash, this, h5, Leaf(edit, h5, k5, v3));
   };
-  var Collision__modify = function Collision__modify2(edit, keyEq, shift, f4, h5, k5, size) {
+  var Collision__modify = function Collision__modify2(edit, keyEq, shift, f4, h5, k5, size2) {
     if (h5 === this.hash) {
       var canEdit = canEditNode(edit, this);
-      var list = updateCollisionList(canEdit, edit, keyEq, this.hash, this.children, f4, k5, size);
+      var list = updateCollisionList(canEdit, edit, keyEq, this.hash, this.children, f4, k5, size2);
       if (list === this.children)
         return this;
       return list.length > 1 ? Collision2(edit, this.hash, list) : list[0];
@@ -16996,10 +16996,10 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var v3 = f4();
     if (v3 === nothing)
       return this;
-    ++size.value;
+    ++size2.value;
     return mergeLeaves(edit, shift, this.hash, this, h5, Leaf(edit, h5, k5, v3));
   };
-  var IndexedNode__modify = function IndexedNode__modify2(edit, keyEq, shift, f4, h5, k5, size) {
+  var IndexedNode__modify = function IndexedNode__modify2(edit, keyEq, shift, f4, h5, k5, size2) {
     var mask = this.mask;
     var children = this.children;
     var frag = hashFragment(shift, h5);
@@ -17007,7 +17007,7 @@ var hamt_1 = createCommonjsModule(function(module2) {
     var indx = fromBitmap(mask, bit);
     var exists = mask & bit;
     var current = exists ? children[indx] : empty;
-    var child = current._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size);
+    var child = current._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size2);
     if (current === child)
       return this;
     var canEdit = canEditNode(edit, this);
@@ -17035,12 +17035,12 @@ var hamt_1 = createCommonjsModule(function(module2) {
     }
     return IndexedNode(edit, bitmap, newChildren);
   };
-  var ArrayNode__modify = function ArrayNode__modify2(edit, keyEq, shift, f4, h5, k5, size) {
+  var ArrayNode__modify = function ArrayNode__modify2(edit, keyEq, shift, f4, h5, k5, size2) {
     var count3 = this.size;
     var children = this.children;
     var frag = hashFragment(shift, h5);
     var child = children[frag];
-    var newChild = (child || empty)._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size);
+    var newChild = (child || empty)._modify(edit, keyEq, shift + SIZE, f4, h5, k5, size2);
     if (child === newChild)
       return this;
     var canEdit = canEditNode(edit, this);
@@ -17063,19 +17063,19 @@ var hamt_1 = createCommonjsModule(function(module2) {
     }
     return ArrayNode(edit, count3, newChildren);
   };
-  empty._modify = function(edit, keyEq, shift, f4, h5, k5, size) {
+  empty._modify = function(edit, keyEq, shift, f4, h5, k5, size2) {
     var v3 = f4();
     if (v3 === nothing)
       return empty;
-    ++size.value;
+    ++size2.value;
     return Leaf(edit, h5, k5, v3);
   };
-  function Map2(editable, edit, config, root, size) {
+  function Map2(editable, edit, config, root, size2) {
     this._editable = editable;
     this._edit = edit;
     this._config = config;
     this._root = root;
-    this._size = size;
+    this._size = size2;
   }
   Map2.prototype.setTree = function(newRoot, newSize) {
     if (this._editable) {
@@ -17178,11 +17178,11 @@ var hamt_1 = createCommonjsModule(function(module2) {
     return isEmpty(this);
   };
   var modifyHash = hamt.modifyHash = function(f4, hash2, key2, map) {
-    var size = {
+    var size2 = {
       value: map._size
     };
-    var newRoot = map._root._modify(map._editable ? map._edit : NaN, map._config.keyEq, 0, f4, hash2, key2, size);
-    return map.setTree(newRoot, size.value);
+    var newRoot = map._root._modify(map._editable ? map._edit : NaN, map._config.keyEq, 0, f4, hash2, key2, size2);
+    return map.setTree(newRoot, size2.value);
   };
   Map2.prototype.modifyHash = function(hash2, key2, f4) {
     return modifyHash(f4, hash2, key2, this);
@@ -21456,13 +21456,13 @@ var ReactTags = bn.forwardRef((_props, ref) => {
   };
   const pressUpKey = (e4) => {
     e4.preventDefault();
-    const size = options.length - 1;
-    setIndex(index <= 0 ? size : index - 1);
+    const size2 = options.length - 1;
+    setIndex(index <= 0 ? size2 : index - 1);
   };
   const pressDownKey = (e4) => {
     e4.preventDefault();
-    const size = options.length - 1;
-    setIndex((i4) => i4 >= size ? 0 : i4 + 1);
+    const size2 = options.length - 1;
+    setIndex((i4) => i4 >= size2 ? 0 : i4 + 1);
   };
   function pressBackspaceKey() {
     if (!query.length) {
@@ -25986,7 +25986,8 @@ var nodeIsAncestorOfTarget = (node, target) => {
 var excludeVaultItemPredicate = (plugin) => (f4, index, folder) => !(f4.folder != "true" && plugin.settings.hiddenExtensions.find((e4) => fileExtensionForFile(f4.path) == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && !folder.some((g4) => g4.path + ".md" == f4.path);
 var excludeFilePredicate = (plugin) => (f4, index, folder) => !(f4 instanceof import_obsidian2.TFile && plugin.settings.hiddenExtensions.find((e4) => f4.extension == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && !folder.some((g4) => g4.path + ".md" == f4.path);
 var folderChildren = (plugin, f4, exclusionList) => {
-  return f4.children.filter(excludeFilePredicate(plugin));
+  var _a2;
+  return (_a2 = f4 == null ? void 0 : f4.children.filter(excludeFilePredicate(plugin))) != null ? _a2 : [];
 };
 var compareByField = (field, dir) => (_a2, _b2) => {
   const a5 = dir ? _a2 : _b2;
@@ -28592,16 +28593,16 @@ var tooltipPlugin = import_view2.ViewPlugin.fromClass(
       let others = [];
       for (let i4 = 0; i4 < this.manager.tooltips.length; i4++) {
         let tooltip = this.manager.tooltips[i4], tView = this.manager.tooltipViews[i4], { dom } = tView;
-        let pos = measured.pos[i4], size = measured.size[i4];
+        let pos = measured.pos[i4], size2 = measured.size[i4];
         if (!pos || pos.bottom <= Math.max(editor.top, space.top) || pos.top >= Math.min(editor.bottom, space.bottom) || pos.right < Math.max(editor.left, space.left) - 0.1 || pos.left > Math.min(editor.right, space.right) + 0.1) {
           dom.style.top = Outside2;
           continue;
         }
         let arrow = tooltip.arrow ? tView.dom.querySelector(".cm-tooltip-arrow") : null;
         let arrowHeight = arrow ? 7 /* Size */ : 0;
-        let width = size.right - size.left, height = size.bottom - size.top;
+        let width = size2.right - size2.left, height = size2.bottom - size2.top;
         let offset = tView.offset || noOffset, ltr = this.view.textDirection == import_view2.Direction.LTR;
-        let left = size.width > space.right - space.left ? ltr ? space.left : space.right - size.width : ltr ? Math.min(
+        let left = size2.width > space.right - space.left ? ltr ? space.left : space.right - size2.width : ltr ? Math.min(
           pos.left - (arrow ? 14 /* Offset */ : 0) + offset.x,
           space.right - width
         ) : Math.max(
@@ -28609,7 +28610,7 @@ var tooltipPlugin = import_view2.ViewPlugin.fromClass(
           pos.left - width + (arrow ? 14 /* Offset */ : 0) - offset.x
         );
         let above = !!tooltip.above;
-        if (!tooltip.strictSide && (above ? pos.top - (size.bottom - size.top) - offset.y < space.top : pos.bottom + (size.bottom - size.top) + offset.y > space.bottom) && above == space.bottom - pos.bottom > pos.top - space.top)
+        if (!tooltip.strictSide && (above ? pos.top - (size2.bottom - size2.top) - offset.y < space.top : pos.bottom + (size2.bottom - size2.top) + offset.y > space.bottom) && above == space.bottom - pos.bottom > pos.top - space.top)
           above = !above;
         let top = above ? pos.top - height - arrowHeight - offset.y : pos.bottom + arrowHeight + offset.y;
         let right = left + width;
@@ -44489,10 +44490,10 @@ var TableView = (props2) => {
       };
     })) != null ? _a2 : [], { header: "+", meta: { schemaId: dbSchema == null ? void 0 : dbSchema.id }, accessorKey: "+", size: 20, cell: () => /* @__PURE__ */ bn.createElement(bn.Fragment, null) }];
   }, [cols, currentEdit, predicate, contextTable, toggleFlow, openFlows]);
-  const changeColSize = (size) => {
+  const changeColSize = (size2) => {
     savePredicate({
       ...predicate,
-      colsSize: size
+      colsSize: size2
     });
   };
   const groupBy2 = F(() => {
@@ -44669,19 +44670,12 @@ var TableView = (props2) => {
     tabIndex: 1,
     onKeyDown
   }, /* @__PURE__ */ bn.createElement("table", {
-    ...{
-      style: {
-        width: table.getTotalSize()
-      }
-    }
+    ...{}
   }, /* @__PURE__ */ bn.createElement("thead", null, table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ bn.createElement("tr", {
     key: headerGroup.id
   }, headerGroup.headers.map((header) => /* @__PURE__ */ bn.createElement("th", {
     className: "mk-th",
-    key: header.id,
-    style: {
-      width: header.column.getIsGrouped() ? "0px" : header.getSize()
-    }
+    key: header.id
   }, header.isPlaceholder ? null : header.column.columnDef.header != "+" ? header.column.getIsGrouped() ? /* @__PURE__ */ bn.createElement(bn.Fragment, null) : /* @__PURE__ */ bn.createElement(ColumnHeader, {
     plugin: props2.plugin,
     editable: header.column.columnDef.meta.editable,
@@ -44712,7 +44706,7 @@ var TableView = (props2) => {
     },
     key: row.id
   }, row.getVisibleCells().map((cell) => {
-    var _a2;
+    var _a2, _b2;
     return cell.getIsGrouped() ? /* @__PURE__ */ bn.createElement("td", {
       className: "mk-td-group",
       colSpan: cols.length + 1
@@ -44736,7 +44730,7 @@ var TableView = (props2) => {
       className: `${cell.column.columnDef.accessorKey == selectedColumn ? "mk-selected-cell  " : ""} mk-td ${cell.getIsPlaceholder() ? "mk-td-empty" : ""}`,
       key: cell.id,
       style: {
-        width: cell.getIsPlaceholder() ? "0px" : cell.column.getSize()
+        minWidth: cell.getIsPlaceholder() ? "0px" : (_b2 = colsSize[cell.column.columnDef.accessorKey]) != null ? _b2 : "50px"
       }
     }, cell.getIsPlaceholder() ? null : flexRender(cell.column.columnDef.cell, cell.getContext()));
   }))))), /* @__PURE__ */ bn.createElement("tfoot", null, isFolderContext ? /* @__PURE__ */ bn.createElement("tr", null, /* @__PURE__ */ bn.createElement("th", {
@@ -44871,8 +44865,10 @@ var DataTypeView = (props2) => {
   const { tableData, saveDB: saveDB2, saveContextDB, contextTable } = q2(MDBContext);
   const table = column.table;
   const updateData = (column2, value) => {
-    const col = tableData.cols.find((f4) => f4.name == column2);
-    saveFrontmatterValue(file, column2, value, col.type);
+    var _a2;
+    const col = (_a2 = table == "" ? tableData : contextTable[table]) == null ? void 0 : _a2.cols.find((f4) => f4.name == column2);
+    if (col)
+      saveFrontmatterValue(file, column2, value, col.type);
     if (table == "") {
       saveDB2({
         ...tableData,
@@ -46252,7 +46248,7 @@ var ContextView = class extends import_obsidian21.ItemView {
 };
 
 // src/utils/file.ts
-var defaultNoteFolder = (plugin, activeFile2) => plugin.settings.newFileLocation == "folder" ? getFolderFromPath3(app, plugin.settings.newFileFolderPath) : plugin.settings.newFileLocation == "current" && activeFile2 ? getFolderFromPath3(app, getFileFromSpaceItem2(plugin.app, activeFile2)) : plugin.app.vault.getRoot();
+var defaultNoteFolder = (plugin, activeFile2) => plugin.settings.newFileLocation == "folder" ? getFolderFromPath3(app, plugin.settings.newFileFolderPath) : plugin.settings.newFileLocation == "current" && activeFile2 ? getFolderFromPath3(app, activeFile2) : plugin.app.vault.getRoot();
 var defaultConfigFile = async (app2) => {
   return await app2.vault.adapter.read((0, import_obsidian22.normalizePath)(app2.vault.configDir + "/app.json"));
 };
@@ -46315,28 +46311,16 @@ function getAllAbstractFilesInVault(plugin, app2) {
   recursiveFx(rootFolder);
   return files;
 }
-var getPosition = (string, subString, index) => {
-  return string.split(subString, index).join(subString).length;
-};
-var getFileFromSpaceItem2 = (app2, nodeId) => {
-  if (!nodeId)
-    return null;
-  const file = nodeId.slice(getPosition(nodeId, "/", 1) + 1);
-  return file;
-};
-var getFolderFromPath3 = (app2, file) => {
+var getFolderFromPath3 = (app2, path) => {
+  const file = path.slice(-1) == "/" ? path.substring(0, path.length - 1) : path;
   const afile = getAbstractFileAtPath(app2, file);
   if (!afile)
     return null;
   return afile instanceof import_obsidian22.TFolder ? afile : afile.parent;
 };
 var getFolderPathFromString2 = (file) => {
-  const folder = getAbstractFileAtPath(app, file);
-  if (folder instanceof import_obsidian22.TFolder)
-    return folder.path;
-  if (folder instanceof import_obsidian22.TFile)
-    return folder.parent.path;
-  return null;
+  var _a2;
+  return (_a2 = getFolderFromPath3(app, file)) == null ? void 0 : _a2.path;
 };
 var deleteFiles = (plugin, files) => {
   files.forEach((f4) => {
@@ -47028,19 +47012,22 @@ var SectionItem = k3(
     var _a2, _b2;
     const [activeFile2, setActiveFile] = Recoil_index_14(activeFile);
     const [spaces2, setSpaces] = Recoil_index_14(spaces);
+    const space = spaces2.find((f4) => f4.name == data.space);
     const newFolderInSection = () => {
+      var _a3;
       let vaultChangeModal = new VaultChangeModal(
         plugin,
-        defaultNoteFolder(plugin, activeFile2),
+        ((_a3 = space.def) == null ? void 0 : _a3.length) > 0 ? getFolderFromPath3(app, space.def) : defaultNoteFolder(plugin, activeFile2),
         "create folder",
         data.space
       );
       vaultChangeModal.open();
     };
     const newFileInSection = async () => {
+      var _a3;
       const newFile = await createNewMarkdownFile(
         plugin.app,
-        defaultNoteFolder(plugin, activeFile2),
+        ((_a3 = space.def) == null ? void 0 : _a3.length) > 0 ? getFolderFromPath3(app, space.def) : defaultNoteFolder(plugin, activeFile2),
         ""
       );
       if (data.space != "/")
@@ -47618,7 +47605,7 @@ var defaultRangeExtractor = function defaultRangeExtractor2(range) {
 };
 var useVirtual = function useVirtual2(_ref) {
   var _measurements;
-  var _ref$size = _ref.size, size = _ref$size === void 0 ? 0 : _ref$size, _ref$estimateSize = _ref.estimateSize, estimateSize = _ref$estimateSize === void 0 ? defaultEstimateSize : _ref$estimateSize, _ref$overscan = _ref.overscan, overscan = _ref$overscan === void 0 ? 1 : _ref$overscan, _ref$paddingStart = _ref.paddingStart, paddingStart = _ref$paddingStart === void 0 ? 0 : _ref$paddingStart, _ref$paddingEnd = _ref.paddingEnd, paddingEnd = _ref$paddingEnd === void 0 ? 0 : _ref$paddingEnd, parentRef = _ref.parentRef, _ref$horizontal = _ref.horizontal, horizontal = _ref$horizontal === void 0 ? false : _ref$horizontal, scrollToFn = _ref.scrollToFn, useObserver = _ref.useObserver, initialRect = _ref.initialRect, onScrollElement = _ref.onScrollElement, scrollOffsetFn = _ref.scrollOffsetFn, _ref$keyExtractor = _ref.keyExtractor, keyExtractor = _ref$keyExtractor === void 0 ? defaultKeyExtractor : _ref$keyExtractor, _ref$measureSize = _ref.measureSize, measureSize = _ref$measureSize === void 0 ? defaultMeasureSize : _ref$measureSize, _ref$rangeExtractor = _ref.rangeExtractor, rangeExtractor = _ref$rangeExtractor === void 0 ? defaultRangeExtractor : _ref$rangeExtractor;
+  var _ref$size = _ref.size, size2 = _ref$size === void 0 ? 0 : _ref$size, _ref$estimateSize = _ref.estimateSize, estimateSize = _ref$estimateSize === void 0 ? defaultEstimateSize : _ref$estimateSize, _ref$overscan = _ref.overscan, overscan = _ref$overscan === void 0 ? 1 : _ref$overscan, _ref$paddingStart = _ref.paddingStart, paddingStart = _ref$paddingStart === void 0 ? 0 : _ref$paddingStart, _ref$paddingEnd = _ref.paddingEnd, paddingEnd = _ref$paddingEnd === void 0 ? 0 : _ref$paddingEnd, parentRef = _ref.parentRef, _ref$horizontal = _ref.horizontal, horizontal = _ref$horizontal === void 0 ? false : _ref$horizontal, scrollToFn = _ref.scrollToFn, useObserver = _ref.useObserver, initialRect = _ref.initialRect, onScrollElement = _ref.onScrollElement, scrollOffsetFn = _ref.scrollOffsetFn, _ref$keyExtractor = _ref.keyExtractor, keyExtractor = _ref$keyExtractor === void 0 ? defaultKeyExtractor : _ref$keyExtractor, _ref$measureSize = _ref.measureSize, measureSize = _ref$measureSize === void 0 ? defaultMeasureSize : _ref$measureSize, _ref$rangeExtractor = _ref.rangeExtractor, rangeExtractor = _ref$rangeExtractor === void 0 ? defaultRangeExtractor : _ref$rangeExtractor;
   var sizeKey = horizontal ? "width" : "height";
   var scrollKey = horizontal ? "scrollLeft" : "scrollTop";
   var latestRef = _2({
@@ -47650,7 +47637,7 @@ var useVirtual = function useVirtual2(_ref) {
     var min3 = pendingMeasuredCacheIndexesRef.current.length > 0 ? Math.min.apply(Math, pendingMeasuredCacheIndexesRef.current) : 0;
     pendingMeasuredCacheIndexesRef.current = [];
     var measurements2 = latestRef.current.measurements.slice(0, min3);
-    for (var _i2 = min3; _i2 < size; _i2++) {
+    for (var _i2 = min3; _i2 < size2; _i2++) {
       var key2 = keyExtractor(_i2);
       var measuredSize = measuredCache[key2];
       var _start = measurements2[_i2 - 1] ? measurements2[_i2 - 1].end : paddingStart;
@@ -47665,8 +47652,8 @@ var useVirtual = function useVirtual2(_ref) {
       };
     }
     return measurements2;
-  }, [estimateSize, measuredCache, paddingStart, size, keyExtractor]);
-  var totalSize = (((_measurements = measurements[size - 1]) == null ? void 0 : _measurements.end) || paddingStart) + paddingEnd;
+  }, [estimateSize, measuredCache, paddingStart, size2, keyExtractor]);
+  var totalSize = (((_measurements = measurements[size2 - 1]) == null ? void 0 : _measurements.end) || paddingStart) + paddingEnd;
   latestRef.current.measurements = measurements;
   latestRef.current.totalSize = totalSize;
   var element = onScrollElement ? onScrollElement.current : parentRef.current;
@@ -47765,7 +47752,7 @@ var useVirtual = function useVirtual2(_ref) {
       align: "auto"
     } : _temp2, align = _ref3.align, rest = _objectWithoutPropertiesLoose(_ref3, _excluded);
     var _latestRef$current2 = latestRef.current, measurements2 = _latestRef$current2.measurements, scrollOffset2 = _latestRef$current2.scrollOffset, outerSize2 = _latestRef$current2.outerSize;
-    var measurement = measurements2[Math.max(0, Math.min(index, size - 1))];
+    var measurement = measurements2[Math.max(0, Math.min(index, size2 - 1))];
     if (!measurement) {
       return;
     }
@@ -47782,7 +47769,7 @@ var useVirtual = function useVirtual2(_ref) {
     scrollToOffset(toOffset, _extends({
       align
     }, rest));
-  }, [scrollToOffset, size]);
+  }, [scrollToOffset, size2]);
   var scrollToIndex = T2(function(index, options) {
     tryScrollToIndex(index, options);
     requestAnimationFrame(function() {
@@ -47817,13 +47804,13 @@ var findNearestBinarySearch = function findNearestBinarySearch2(low, high, getCu
 };
 function calculateRange(_ref4) {
   var measurements = _ref4.measurements, outerSize = _ref4.outerSize, scrollOffset = _ref4.scrollOffset;
-  var size = measurements.length - 1;
+  var size2 = measurements.length - 1;
   var getOffset = function getOffset2(index) {
     return measurements[index].start;
   };
-  var start = findNearestBinarySearch(0, size, getOffset, scrollOffset);
+  var start = findNearestBinarySearch(0, size2, getOffset, scrollOffset);
   var end = start;
-  while (end < size && measurements[end].end < scrollOffset + outerSize) {
+  while (end < size2 && measurements[end].end < scrollOffset + outerSize) {
     end++;
   }
   return {
