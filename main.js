@@ -13733,7 +13733,45 @@ var deleteTagContext = async (plugin, tag) => {
   }, app.workspace["rootSplit"]);
   plugin.index.deleteTag(tag);
 };
+var deleteSpaceContext = async (plugin, space) => {
+  const context = spaceContextFromSpace(plugin, spaceContextPathFromName(space));
+  if (getAbstractFileAtPath(app, context.dbPath)) {
+    await deleteFile(plugin, getAbstractFileAtPath(app, context.dbPath));
+  }
+  app.workspace.iterateLeaves((leaf) => {
+    if (leaf.view.getViewType() == CONTEXT_VIEW_TYPE && leaf.view.getState().contextPath == context.contextPath) {
+      leaf.setViewState({ type: "empty" });
+    }
+  }, app.workspace["rootSplit"]);
+};
 var connectContext = async (plugin, tag, source) => {
+};
+var renameSpaceContextFile = async (plugin, space, newSpace) => {
+  const context = spaceContextFromSpace(plugin, spaceContextPathFromName(space));
+  console.log(context.dbPath);
+  if (getAbstractFileAtPath(app, context.dbPath)) {
+    const newSpaceDBPath = newSpace + ".mdb";
+    if (!getAbstractFileAtPath(
+      app,
+      getAbstractFileAtPath(app, context.dbPath).parent.path + "/" + newSpaceDBPath
+    )) {
+      await renameFile(
+        plugin,
+        getAbstractFileAtPath(app, context.dbPath),
+        newSpaceDBPath
+      );
+    } else {
+      await deleteFile(plugin, getAbstractFileAtPath(app, context.dbPath));
+    }
+  }
+  app.workspace.iterateLeaves((leaf) => {
+    if (leaf.view.getViewType() == CONTEXT_VIEW_TYPE && leaf.view.getState().contextPath == context.contextPath) {
+      leaf.setViewState({
+        type: CONTEXT_VIEW_TYPE,
+        state: { contextPath: spaceContextPathFromName(newSpace) }
+      });
+    }
+  }, app.workspace["rootSplit"]);
 };
 var renameTagContextFile = async (plugin, tag, newTag) => {
   const context = tagContextFromTag(plugin, tag);
@@ -34168,6 +34206,7 @@ var saveSpace = (plugin, space, newSpace) => {
   );
   plugin.saveSettings();
   if (space != newSpace.name) {
+    renameSpaceContextFile(plugin, space, newSpace.name);
     plugin.index.renameSpace(space, newSpace.name);
   }
   plugin.index.reloadSpace(space).then((f4) => plugin.index.initalizeFiles());
@@ -34176,6 +34215,7 @@ var removeSpace = (plugin, space) => {
   const newSpaceRows = plugin.index.spacesDBCache.filter((f4) => f4.name != space);
   const newSpaceItemsRows = plugin.index.spacesItemsDBCache.filter((f4) => f4.space != space);
   plugin.index.saveSpacesDB({ spaces: { ...spaceSchema, rows: newSpaceRows }, spaceItems: { ...spaceItemsSchema, rows: newSpaceItemsRows } });
+  deleteSpaceContext(plugin, space);
   plugin.index.deleteSpace(space);
 };
 var updateSpaceSort = (plugin, spaceName, sort) => {
@@ -40708,6 +40748,7 @@ var renameFile = async (plugin, file, newName) => {
   const afile = tFileToAFile(file);
   const folderNotePath = folderNotePathFromAFile(plugin.settings, afile);
   const folderNote = getAbstractFileAtPath(app, folderNotePath);
+  console.log("rename", file.path, newName);
   await app.fileManager.renameFile(
     file,
     file.parent.path == "/" ? newName : file.parent.path + "/" + newName
@@ -48673,10 +48714,6 @@ var MainMenu = (props2) => {
   const newFile = async () => {
     await createNewMarkdownFile(props2.plugin, folder, "", "");
   };
-  const newSection = () => {
-    let vaultChangeModal = new EditSpaceModal(plugin, { name: "" }, "create");
-    vaultChangeModal.open();
-  };
   p2(() => {
     refreshLeafs();
   }, []);
@@ -48734,11 +48771,43 @@ var MainMenu = (props2) => {
     }
     menu.addItem((menuItem) => {
       menuItem.setIcon("plus");
-      menuItem.setTitle(i18n_default.menu.newSpace);
+      menuItem.setTitle(i18n_default.buttons.createSection);
       menuItem.onClick((ev) => {
-        newSection();
+        let vaultChangeModal = new EditSpaceModal(
+          plugin,
+          {
+            name: "",
+            def: {
+              type: "focus",
+              folder: "",
+              filters: []
+            }
+          },
+          "create"
+        );
+        vaultChangeModal.open();
       });
     });
+    menu.addItem((menuItem) => {
+      menuItem.setIcon("plus");
+      menuItem.setTitle(i18n_default.buttons.createSectionSmart);
+      menuItem.onClick((ev) => {
+        let vaultChangeModal = new EditSpaceModal(
+          plugin,
+          {
+            name: "",
+            def: {
+              type: "smart",
+              folder: "",
+              filters: []
+            }
+          },
+          "create"
+        );
+        vaultChangeModal.open();
+      });
+    });
+    menu.addSeparator();
     menu.addItem((menuItem) => {
       menuItem.setIcon("sync");
       menuItem.setTitle("Reload Spaces");
