@@ -34160,7 +34160,6 @@ var insertSpaceItemAtIndex = async (plugin, spaceName, path, rank) => {
   plugin.index.broadcast("vault");
 };
 var saveSpace = (plugin, space, newSpace) => {
-  console.log(newSpace);
   const newSpaceRows = plugin.index.spacesDBCache.map((f4) => f4.name == space ? serializeSpace(newSpace) : f4);
   let newSpaceItemsRows = plugin.index.spacesItemsDBCache.map((f4) => f4.space == space ? { ...f4, space: newSpace.name } : f4);
   plugin.index.saveSpacesDB({ spaces: { ...spaceSchema, rows: newSpaceRows }, spaceItems: { ...spaceItemsSchema, rows: newSpaceItemsRows } });
@@ -36514,7 +36513,6 @@ var SpaceEditor = k3(
         filters: [{ type: "any", trueFalse: true, filters: [] }]
       }
     );
-    console.log(def);
     const selectFilterValue = (e4, filter, i4, k5) => {
       var _a3;
       const saveFilterValue = (value) => {
@@ -50931,7 +50929,7 @@ var DEFAULT_SETTINGS = {
   dataviewInlineContext: false,
   inlineContextNameLayout: "vertical",
   spacesSyncResolver: "Context/spaces.md",
-  spacesSyncTimeoutSeconds: 25
+  spacesSyncTimeoutSeconds: 10
 };
 var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
   constructor(app2, plugin) {
@@ -51925,27 +51923,41 @@ var Superstate = class extends import_obsidian55.Component {
   async loadSpacesDB() {
     var _a2, _b2, _c2, _d2, _e2, _f;
     if (this.plugin.settings.spacesSyncResolver.length > 0) {
-      let resolverFile = getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver);
-      if (!resolverFile) {
-        await this.updateSpaceLastUpdated();
-      }
       const waitIfSpacesFileStillSyncing = async (timeout) => {
+        var _a3;
         const incomingSpaceTime = parseInt(await app.vault.read(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver)));
         const currentSpaceTime = this.plugin.spacesDBLastModify;
-        const spaceFileTime = (await app.vault.adapter.stat(this.plugin.spacesDBPath)).mtime;
+        const spaceFileTime = (_a3 = await app.vault.adapter.stat(this.plugin.spacesDBPath)) == null ? void 0 : _a3.mtime;
         if (Math.floor(incomingSpaceTime / 1e3) != Math.floor(spaceFileTime / 1e3)) {
           await sleep(timeout);
           return false;
         }
         return true;
       };
-      let counter = 0;
-      let spacesReady = false;
-      while (!spacesReady && counter++ <= this.plugin.settings.spacesSyncTimeoutSeconds * 2) {
-        this.syncStatus = 1;
-        spacesReady = await waitIfSpacesFileStillSyncing(500);
+      let resolverFile = getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver);
+      if (!resolverFile) {
+        await this.updateSpaceLastUpdated();
+      } else {
+        let counter = 0;
+        let spacesReady = await waitIfSpacesFileStillSyncing(500);
+        let notice;
+        if (!spacesReady) {
+          notice = new import_obsidian55.Notice(`Local Spaces File Out of Sync
+Waiting for Sync
+${this.plugin.settings.spacesSyncTimeoutSeconds} seconds`, 0);
+        }
+        while (!spacesReady && counter++ <= this.plugin.settings.spacesSyncTimeoutSeconds * 2) {
+          this.syncStatus = 1;
+          notice.setMessage(`Local Spaces File Out of Sync
+Waiting for Sync
+${this.plugin.settings.spacesSyncTimeoutSeconds - Math.floor(counter / 2)} seconds`);
+          spacesReady = await waitIfSpacesFileStillSyncing(500);
+        }
+        if (notice) {
+          notice.hide();
+        }
+        this.syncStatus = 0;
       }
-      this.syncStatus = 0;
     }
     const db = await getDB(await this.plugin.sqlJS(), this.plugin.spacesDBPath);
     const tables = dbResultsToDBTables(
@@ -52731,7 +52743,7 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
         return new FileTreeView(leaf, this);
       });
       this.app.workspace.onLayoutReady(async () => {
-        this.index.loadSpacesDB();
+        await this.index.loadSpacesDB();
         this.registerEvent(this.app.vault.on("create", this.onCreate));
         this.registerEvent(this.app.vault.on("delete", this.onDelete));
         this.registerEvent(this.app.vault.on("rename", this.onRename));
