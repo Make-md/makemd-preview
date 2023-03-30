@@ -560,7 +560,7 @@ var require_classnames = __commonJS({
       "use strict";
       var hasOwn = {}.hasOwnProperty;
       var nativeCodeString = "[native code]";
-      function classNames8() {
+      function classNames9() {
         var classes = [];
         for (var i4 = 0; i4 < arguments.length; i4++) {
           var arg = arguments[i4];
@@ -571,7 +571,7 @@ var require_classnames = __commonJS({
             classes.push(arg);
           } else if (Array.isArray(arg)) {
             if (arg.length) {
-              var inner = classNames8.apply(null, arg);
+              var inner = classNames9.apply(null, arg);
               if (inner) {
                 classes.push(inner);
               }
@@ -591,14 +591,14 @@ var require_classnames = __commonJS({
         return classes.join(" ");
       }
       if (typeof module2 !== "undefined" && module2.exports) {
-        classNames8.default = classNames8;
-        module2.exports = classNames8;
+        classNames9.default = classNames9;
+        module2.exports = classNames9;
       } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
         define("classnames", [], function() {
-          return classNames8;
+          return classNames9;
         });
       } else {
-        window.classNames = classNames8;
+        window.classNames = classNames9;
       }
     })();
   }
@@ -4380,7 +4380,7 @@ var require_lodash = __commonJS({
           result2.placeholder = curryRight.placeholder;
           return result2;
         }
-        function debounce3(func, wait, options) {
+        function debounce4(func, wait, options) {
           var lastArgs, lastThis, maxWait, result2, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
           if (typeof func != "function") {
             throw new TypeError2(FUNC_ERROR_TEXT);
@@ -4560,7 +4560,7 @@ var require_lodash = __commonJS({
             leading = "leading" in options ? !!options.leading : leading;
             trailing = "trailing" in options ? !!options.trailing : trailing;
           }
-          return debounce3(func, wait, {
+          return debounce4(func, wait, {
             "leading": leading,
             "maxWait": wait,
             "trailing": trailing
@@ -5574,7 +5574,7 @@ var require_lodash = __commonJS({
         lodash.create = create;
         lodash.curry = curry;
         lodash.curryRight = curryRight;
-        lodash.debounce = debounce3;
+        lodash.debounce = debounce4;
         lodash.defaults = defaults;
         lodash.defaultsDeep = defaultsDeep;
         lodash.defer = defer;
@@ -12400,9 +12400,10 @@ var T4 = class {
           selectDateFormat: "Select/Type Date Format",
           renameSectionSmart: "Edit Smart Space",
           renameSection: "Edit Space",
-          createSectionSmart: "Ne Smart Space",
+          createSectionSmart: "New Smart Space",
           createSection: "New Space",
           createNote: "New Note Name",
+          contextMaker: "Context Maker",
           select: "Select",
           collapse: "Collapse",
           expand: "Expand",
@@ -12768,6 +12769,14 @@ var uiIconSet = {
 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
 </svg>
 
+`,
+  "mk-ui-build": `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+</svg>
+`,
+  "mk-ui-check": `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+</svg>
 `
 };
 var makeIconSet = {
@@ -12862,7 +12871,11 @@ var makeIconSet = {
   <path fill-rule="evenodd" clip-rule="evenodd" d="M14 6H2V5H14V6Z" fill="currentColor"/>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M7 2L7 13L6 13L6 2L7 2Z" fill="currentColor"/>
   </svg>
-  `
+  `,
+  "mk-make-date": `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+</svg>
+`
 };
 var mkLogo = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" viewBox="0 0 100 100">
 <path d="m51.39 53.148 36.687-38.355v73.284H11.923V14.793L48.61 53.148 50 54.6l1.39-1.453Z"/>
@@ -12955,8 +12968,7 @@ var FlowEditorHover = (props2) => {
 
 // src/types/types.ts
 var eventTypes = {
-  selectedFileChange: "mkmd-selected-file-change",
-  activeFileChange: "mkmd-active-file-change",
+  activePathChange: "mkmd-active-path",
   refreshView: "mkmd-refresh-view",
   revealFile: "mkmd-reveal-file",
   collapseFolders: "mkmd-collapse-folders",
@@ -13006,10 +13018,10 @@ var openFileFlowEditor = (file, source) => {
 };
 
 // src/utils/tree.ts
-var import_obsidian34 = require("obsidian");
+var import_obsidian37 = require("obsidian");
 
 // src/components/ContextView/ContextView.tsx
-var import_obsidian30 = require("obsidian");
+var import_obsidian33 = require("obsidian");
 
 // src/utils/array.ts
 var insert = (arr, index, newItem) => [
@@ -13125,7 +13137,23 @@ var sanitizeSQLStatement = (name) => {
   return name == null ? void 0 : name.replace(/'/g, `''`);
 };
 
+// src/types/context.ts
+var FilePropertyName = "File";
+
+// src/utils/contexts/parsers.ts
+var parsePropString = (str) => {
+  var _a2;
+  const [p1, p22] = (_a2 = str == null ? void 0 : str.match(/(\\.|[^.])+/g)) != null ? _a2 : [];
+  if (p22)
+    return {
+      field: p1,
+      property: p22
+    };
+  return { field: "File", property: p1 };
+};
+
 // src/schemas/mdb.ts
+var fieldTypeForType = (type) => fieldTypes.find((t4) => type == t4.type) || fieldTypes.find((t4) => type == t4.multiType);
 var fieldTypes = [
   {
     type: "unknown",
@@ -13140,33 +13168,39 @@ var fieldTypes = [
   {
     type: "text",
     label: i18n_default.properties.text.label,
-    metadata: true
+    metadata: true,
+    icon: "mk-make-h3"
   },
   {
     type: "number",
     label: i18n_default.properties.number.label,
-    metadata: true
+    metadata: true,
+    icon: "mk-make-tag"
   },
   {
     type: "boolean",
     label: i18n_default.properties.boolean.label,
-    metadata: true
+    metadata: true,
+    icon: "mk-make-todo"
   },
   {
     type: "date",
     label: i18n_default.properties.date.label,
-    metadata: true
+    metadata: true,
+    icon: "mk-make-date"
   },
   {
     type: "option",
     label: i18n_default.properties.option.label,
     multi: true,
-    multiType: "option-multi"
+    multiType: "option-multi",
+    icon: "mk-make-list"
   },
   {
     type: "file",
     label: i18n_default.properties.file.label,
-    restricted: true
+    restricted: true,
+    icon: "mk-make-h3"
   },
   {
     type: "fileprop",
@@ -13177,13 +13211,15 @@ var fieldTypes = [
     label: i18n_default.properties.link.label,
     multi: true,
     multiType: "link-multi",
-    metadata: true
+    metadata: true,
+    icon: "mk-make-note"
   },
   {
     type: "context",
     label: i18n_default.properties.context.label,
     multi: true,
-    multiType: "context-multi"
+    multiType: "context-multi",
+    icon: "mk-make-note"
   },
   {
     type: "object",
@@ -13196,9 +13232,46 @@ var fieldTypes = [
     label: i18n_default.properties.image.label,
     multi: true,
     multiType: "image-multi",
-    metadata: true
+    metadata: true,
+    icon: "mk-make-image"
   }
 ];
+var defaultValueForPropertyType = (name, value, type) => {
+  if (type == "preview") {
+    return "https://images.unsplash.com/photo-1675789652575-0a5d2425b6c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80";
+  }
+  if (type == "fileprop") {
+    const { field, property } = parsePropString(value);
+    if (property == "ctime" || property == "mtime")
+      return (Date.now() - 60).toString();
+    return value;
+  }
+  if (type == "file") {
+    return "Note Name";
+  }
+  if (type == "date") {
+    return "2020-04-21";
+  }
+  if (type == "number") {
+    return "123";
+  }
+  if (type == "boolean") {
+    return "true";
+  }
+  if (type == "link") {
+    return "[[Select Note]]";
+  }
+  if (type == "option") {
+    return "one, two";
+  }
+  if (type == "text") {
+    return name;
+  }
+  if (type == "image") {
+    return "https://images.unsplash.com/photo-1675789652575-0a5d2425b6c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80";
+  }
+  return "";
+};
 var defaultFileDBSchema = {
   id: "files",
   name: "Files",
@@ -13254,7 +13327,7 @@ var defaultFolderFields = {
       primary: ""
     },
     {
-      name: "File",
+      name: FilePropertyName,
       schemaId: "files",
       type: "file",
       primary: "true",
@@ -13294,7 +13367,7 @@ var defaultTagFields = {
   ...fieldSchema,
   rows: [
     {
-      name: "File",
+      name: FilePropertyName,
       schemaId: "files",
       type: "file",
       primary: "true",
@@ -13496,10 +13569,6 @@ var parseMultiString = (str) => {
   var _a2;
   return (_a2 = str == null ? void 0 : str.match(/(\\.|[^,])+/g)) != null ? _a2 : [];
 };
-var parsePropString = (str) => {
-  var _a2;
-  return (_a2 = str == null ? void 0 : str.match(/(\\.|[^.])+/g)) != null ? _a2 : [];
-};
 var parseLinkString = (string) => {
   if (!string)
     return "";
@@ -13538,7 +13607,21 @@ var parseSpaceDefString = (str) => {
     return {
       folder: str,
       type: "focus",
-      filters: [{ "type": "any", trueFalse: true, filters: [{ type: "filemeta", fType: "string", field: "folder", fn: "equals", value: str }] }]
+      filters: [
+        {
+          type: "any",
+          trueFalse: true,
+          filters: [
+            {
+              type: "filemeta",
+              fType: "string",
+              field: "folder",
+              fn: "equals",
+              value: str
+            }
+          ]
+        }
+      ]
     };
   }
   return (_a2 = safelyParseJSON(str)) != null ? _a2 : [];
@@ -13563,6 +13646,8 @@ var updateFieldsToSchema = (fields, context) => {
   ];
 };
 var getMDBTable = async (plugin, context, table) => {
+  if (!context)
+    return null;
   const sqlJS = await plugin.sqlJS();
   const buf = await getDBFile(context.dbPath, context.isRemote);
   if (!buf) {
@@ -13639,25 +13724,6 @@ var getMDBTableSchemas = async (plugin, context) => {
     const [id2, name, type, def, predicate, primary] = f4;
     return { id: id2, name, type, def, predicate, primary };
   });
-};
-var getMDBSchema = async (plugin, context, schema) => {
-  const sqlJS = await plugin.sqlJS();
-  const buf = await getDBFile(context.dbPath, context.isRemote);
-  if (!buf) {
-    return null;
-  }
-  const db = new sqlJS.Database(new Uint8Array(buf));
-  const tables = db.exec(
-    `SELECT * FROM m_schema WHERE id='${sanitizeSQLStatement(schema)}'`
-  );
-  db.close();
-  if (!tables[0] || !tables[0].values[0]) {
-    return null;
-  }
-  return tables[0].values.map((f4) => {
-    const [id2, name, type, def, predicate, primary] = f4;
-    return { id: id2, name, type, def, predicate, primary };
-  })[0];
 };
 var saveMDBToPath = async (plugin, context, mdb) => {
   var _a2, _b2;
@@ -13748,7 +13814,6 @@ var connectContext = async (plugin, tag, source) => {
 };
 var renameSpaceContextFile = async (plugin, space, newSpace) => {
   const context = spaceContextFromSpace(plugin, spaceContextPathFromName(space));
-  console.log(context.dbPath);
   if (getAbstractFileAtPath(app, context.dbPath)) {
     const newSpaceDBPath = newSpace + ".mdb";
     if (!getAbstractFileAtPath(
@@ -14063,7 +14128,74 @@ var allTagsForFile = (file) => {
   return uniq(rt);
 };
 
+// src/utils/path.ts
+var import_obsidian3 = require("obsidian");
+var openPath = (plugin, _path) => {
+  const { type, path } = _path;
+  if (type == "file" || type == "folder") {
+    const afile = getAbstractFileAtPath(app, path);
+    if (afile) {
+      openAFile(afile, plugin, false);
+    } else {
+      if (type == "file")
+        createNewMarkdownFile(
+          plugin,
+          defaultNoteFolder(plugin, null),
+          path
+        );
+    }
+    return;
+  }
+  if (type == "tag") {
+    openTagContext(path, plugin, false);
+    return;
+  }
+  if (type == "url") {
+    openURL(path);
+    return;
+  }
+};
+var pathByString = (plugin, path) => {
+  const [str, alias] = path.split("|");
+  const refIndex = str.lastIndexOf("#");
+  const [link2, ref] = refIndex > 0 ? [str.substring(0, refIndex), str.substring(refIndex + 1)] : [str, void 0];
+  const type = pathTypeByString(link2);
+  return {
+    fullPath: path,
+    path: link2,
+    type,
+    alias,
+    ref
+  };
+};
+var pathTypeByString = (file) => {
+  if (file.charAt(0) == "#") {
+    return "tag";
+  }
+  if (file.slice(-2) == "//") {
+    return "space";
+  }
+  if (file.charAt(file.length - 1) == "/") {
+    return "folder";
+  }
+  const portalFile = app.vault.getAbstractFileByPath(file);
+  if (portalFile instanceof import_obsidian3.TFolder) {
+    return "folder";
+  }
+  if (portalFile instanceof import_obsidian3.TFile) {
+    return "file";
+  }
+  if (file.match(urlRegex))
+    return "url";
+  return "unknown";
+};
+
 // src/utils/contexts/contexts.ts
+var contextEmbedStringFromContext = (context, schema) => {
+  if (context.type == "folder")
+    return `![![${context.contextPath}/#^${schema}]]`;
+  return `![![${context.contextPath}#^${schema}]]`;
+};
 var spaceContextFromSpace = (plugin, space, readOnly) => {
   return {
     type: "space",
@@ -14109,17 +14241,17 @@ var remoteContextFromURL = (plugin, url) => {
     dbPath: url
   };
 };
-var mdbContextByContextPath = (plugin, contextPath) => {
+var mdbContextByPath = (plugin, contextPath) => {
   if (!contextPath)
     return;
   if (contextPath.match(urlRegex)) {
     return remoteContextFromURL(plugin, contextPath);
   }
-  const viewType = viewTypeByString(contextPath);
+  const viewType = pathTypeByString(contextPath);
   if (viewType == "space") {
     return spaceContextFromSpace(plugin, contextPath);
   } else if (viewType == "folder") {
-    return folderContextFromFolder(plugin, contextPath);
+    return folderContextFromFolder(plugin, removeTrailingSlashFromFolder(contextPath));
   } else if (viewType == "tag") {
     return tagContextFromTag(plugin, contextPath);
   }
@@ -14140,16 +14272,15 @@ var linkContextRow = (plugin, row, fields) => {
   return {
     ...row,
     ...fields.filter((f4) => f4.type == "fileprop").reduce((p3, c4) => {
-      const refCol = parsePropString(c4.value);
-      const col = refCol.length == 1 ? fields.find((f4) => f4.name == "File") : fields.find((f4) => f4.name == refCol[0]);
-      const prop = refCol.length == 1 ? refCol[0] : refCol[1];
-      if (!col || !prop) {
+      const { field, property } = parsePropString(c4.value);
+      const col = fields.find((f4) => f4.name == field);
+      if (!col || !property) {
         return p3;
       }
       if (col.type == "file" || col.type == "link") {
         return {
           ...p3,
-          [c4.name]: appendFilesMetaData(plugin, prop, row[col.name])
+          [c4.name]: appendFilesMetaData(plugin, property, row[col.name])
         };
       }
       if (col.type.includes("context")) {
@@ -14159,7 +14290,7 @@ var linkContextRow = (plugin, row, fields) => {
           return {
             ...p3,
             [c4.name]: linkContextProp(
-              prop,
+              property,
               row[col.name],
               contextCache.rows
             )
@@ -14404,7 +14535,7 @@ var atomicSelect = import_state4.EditorState.transactionFilter.of(
 );
 
 // src/components/ContextView/EmbedContextView.tsx
-var import_obsidian27 = require("obsidian");
+var import_obsidian29 = require("obsidian");
 
 // node_modules/@dnd-kit/utilities/dist/utilities.esm.js
 function useCombinedRefs() {
@@ -18690,7 +18821,7 @@ function isAfter(a5, b4) {
 }
 
 // src/components/ContextView/CardsView/CardsView.tsx
-var import_classnames3 = __toESM(require_classnames());
+var import_classnames4 = __toESM(require_classnames());
 
 // src/utils/ui/selection.ts
 var selectNextIndex = (currIndex, array) => {
@@ -18729,7 +18860,7 @@ function matchExact(string) {
 
 // src/components/ContextView/MDBContext.tsx
 var import_lodash2 = __toESM(require_lodash());
-var import_obsidian5 = require("obsidian");
+var import_obsidian6 = require("obsidian");
 
 // src/utils/contexts/predicate/filterFns/filterFnTypes.ts
 var filterFnTypes = {
@@ -21137,10 +21268,10 @@ function setYear(dirtyDate, dirtyYear) {
 
 // src/utils/metadata/frontmatter/fm.ts
 var import_lodash = __toESM(require_lodash());
-var import_obsidian4 = require("obsidian");
+var import_obsidian5 = require("obsidian");
 
 // src/utils/metadata/dv.ts
-var import_obsidian3 = require("obsidian");
+var import_obsidian4 = require("obsidian");
 var LocationWrapper = {
   fullLine: { start: "", end: "" },
   brackets: { start: "[", end: "]" },
@@ -21208,11 +21339,11 @@ var matchInlineFields = (regex, line, attribute, input, location = "fullLine") =
 async function replaceValues(plugin, fileOrFilePath, attribute, input, previousItemsCount = 0) {
   var _a2, _b2;
   let file;
-  if (fileOrFilePath instanceof import_obsidian3.TFile) {
+  if (fileOrFilePath instanceof import_obsidian4.TFile) {
     file = fileOrFilePath;
   } else {
     const _file = plugin.app.vault.getAbstractFileByPath(fileOrFilePath);
-    if (_file instanceof import_obsidian3.TFile && _file.extension == "md") {
+    if (_file instanceof import_obsidian4.TFile && _file.extension == "md") {
       file = _file;
     } else {
       throw Error("path doesn't correspond to a proper file");
@@ -21289,7 +21420,7 @@ async function replaceValues(plugin, fileOrFilePath, attribute, input, previousI
     file,
     newContent.filter((line, i4) => !skippedLines.includes(i4)).join("\n")
   );
-  const editor = (_b2 = plugin.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView)) == null ? void 0 : _b2.editor;
+  const editor = (_b2 = plugin.app.workspace.getActiveViewOfType(import_obsidian4.MarkdownView)) == null ? void 0 : _b2.editor;
   if (editor) {
     const lineNumber = editor.getCursor().line;
     editor.setCursor({
@@ -21382,7 +21513,7 @@ var saveContextToFile = (file, cols, context, plugin) => {
 };
 var frontMatterForFile = (file) => {
   let currentCache;
-  if (file instanceof import_obsidian4.TFile && app.metadataCache.getFileCache(file) !== null) {
+  if (file instanceof import_obsidian5.TFile && app.metadataCache.getFileCache(file) !== null) {
     currentCache = app.metadataCache.getFileCache(file);
   }
   return currentCache == null ? void 0 : currentCache.frontmatter;
@@ -21468,7 +21599,7 @@ var valueForDataview = (type, value) => {
 };
 var renameFrontmatterKey = (plugin, path, key2, name) => {
   const afile = getAbstractFileAtPath(app, path);
-  if (afile && afile instanceof import_obsidian4.TFile) {
+  if (afile && afile instanceof import_obsidian5.TFile) {
     if (app.fileManager.processFrontMatter) {
       app.fileManager.processFrontMatter(afile, (frontmatter) => {
         if (key2 in frontmatter) {
@@ -21504,7 +21635,7 @@ var defaultValueForType = (value, type) => {
 };
 var changeFrontmatterType = (plugin, path, key2, type) => {
   const afile = getAbstractFileAtPath(app, path);
-  if (afile && afile instanceof import_obsidian4.TFile) {
+  if (afile && afile instanceof import_obsidian5.TFile) {
     if (app.fileManager.processFrontMatter) {
       app.fileManager.processFrontMatter(afile, (frontmatter) => {
         if (key2 in frontmatter) {
@@ -21516,7 +21647,7 @@ var changeFrontmatterType = (plugin, path, key2, type) => {
 };
 var deleteFrontmatterValue = (plugin, path, key2) => {
   const afile = getAbstractFileAtPath(app, path);
-  if (afile && afile instanceof import_obsidian4.TFile) {
+  if (afile && afile instanceof import_obsidian5.TFile) {
     if (app.fileManager.processFrontMatter) {
       app.fileManager.processFrontMatter(afile, (frontmatter) => {
         if (plugin.dataViewAPI()) {
@@ -21543,7 +21674,7 @@ var saveFrontmatterValue = (plugin, path, key2, value, type, forceSave) => {
     if (fileCache.isFolder && fileCache.folderNote) {
       afile = getAbstractFileAtPath(app, path + ".md");
     }
-    if (afile instanceof import_obsidian4.TFile) {
+    if (afile instanceof import_obsidian5.TFile) {
       if (app.fileManager.processFrontMatter) {
         app.fileManager.processFrontMatter(afile, (frontmatter) => {
           if (plugin.dataViewAPI()) {
@@ -21754,7 +21885,9 @@ var MDBProvider = (props2) => {
             var _a4, _b2;
             return [
               ...p3,
-              ...(_b2 = (_a4 = contextTable[c4]) == null ? void 0 : _a4.cols.filter((f4) => f4.name != "File" && f4.type != "fileprop").map((f4) => ({ ...f4, table: c4 }))) != null ? _b2 : []
+              ...(_b2 = (_a4 = contextTable[c4]) == null ? void 0 : _a4.cols.filter(
+                (f4) => f4.name != FilePropertyName && f4.type != "fileprop"
+              ).map((f4) => ({ ...f4, table: c4 }))) != null ? _b2 : []
             ];
           },
           []
@@ -22032,43 +22165,58 @@ var MDBProvider = (props2) => {
     }
   };
   p2(() => {
-    if (props2.schema && schemaTable && (dbSchema == null ? void 0 : dbSchema.id) != props2.schema) {
-      const preselectSchema = schemaTable.rows.find(
-        (g4) => g4.id == props2.schema
-      );
-      if (preselectSchema) {
-        if (preselectSchema.type == "db") {
-          setDBSchema(preselectSchema);
-          return;
-        } else {
-          const preselectDBSchema = schemaTable.rows.find(
-            (g4) => g4.id == preselectSchema.def
+    var _a3, _b2;
+    if (schemaTable) {
+      if (props2.schema) {
+        if ((dbSchema == null ? void 0 : dbSchema.id) != props2.schema) {
+          const preselectSchema = schemaTable.rows.find(
+            (g4) => g4.id == props2.schema
           );
-          if (preselectDBSchema) {
-            setDBSchema(preselectDBSchema);
-            return;
+          if (preselectSchema) {
+            if (preselectSchema.type == "db") {
+              setDBSchema(preselectSchema);
+              return;
+            } else {
+              const preselectDBSchema = schemaTable.rows.find(
+                (g4) => g4.id == preselectSchema.def
+              );
+              if (preselectDBSchema) {
+                setDBSchema(preselectDBSchema);
+                return;
+              }
+            }
+          } else {
+            const newSchema = {
+              id: uniqueNameFromString(
+                sanitizeTableName(props2.schema),
+                schemaTable.rows.map((g4) => g4.id)
+              ),
+              name: props2.schema,
+              type: "db"
+            };
+            setDBSchema(newSchema);
+            saveSchema(newSchema).then((f4) => {
+              saveDB2({
+                schema: newSchema,
+                cols: defaultTableFields.map((g4) => ({
+                  ...g4,
+                  schemaId: newSchema.id
+                })),
+                rows: []
+              });
+            });
           }
         }
       } else {
-        const newSchema = {
-          id: uniqueNameFromString(
-            sanitizeTableName(props2.schema),
-            schemaTable.rows.map((g4) => g4.id)
-          ),
-          name: props2.schema,
-          type: "db"
-        };
-        setDBSchema(newSchema);
-        saveSchema(newSchema).then((f4) => {
-          saveDB2({
-            schema: newSchema,
-            cols: defaultTableFields.map((g4) => ({
-              ...g4,
-              schemaId: newSchema.id
-            })),
-            rows: []
-          });
-        });
+        if (!dbSchema) {
+          setDBSchema(
+            (_a3 = schemaTable.rows) == null ? void 0 : _a3.find((g4) => g4.type == "db")
+          );
+        } else {
+          setDBSchema(
+            (_b2 = schemaTable.rows) == null ? void 0 : _b2.find((g4) => g4.id == dbSchema.id)
+          );
+        }
       }
     }
   }, [schemaTable]);
@@ -22076,21 +22224,19 @@ var MDBProvider = (props2) => {
     if (getAbstractFileAtPath(app, contextInfo.dbPath) || contextInfo.isRemote) {
       setDBFileExists(true);
       getMDBTableSchemas(props2.plugin, contextInfo).then((f4) => {
-        setSchemaTable({
+        setSchemaTable((prev) => ({
           ...defaultSchema,
           rows: f4
-        });
-        if (!props2.schema)
-          setDBSchema(f4 == null ? void 0 : f4.find((g4) => g4.type == "db"));
+        }));
       });
     } else {
       if (props2.schema) {
         saveDB2(defaultMDBTableForContext(contextInfo)).then((f4) => {
-          setSchemaTable(defaultSchema);
+          setSchemaTable((prev) => defaultSchema);
         });
       } else {
-        setSchemaTable(defaultSchema);
-        setDBSchema(defaultFileDBSchema);
+        setSchemaTable((prev) => defaultSchema);
+        setDBSchema((prev) => defaultFileDBSchema);
       }
     }
   };
@@ -22119,6 +22265,7 @@ var MDBProvider = (props2) => {
   const refreshSpace = async (evt) => {
     if (evt.detail.type == "context") {
       refreshMDB(evt.detail.name);
+      return;
     }
     if (evt.detail.type == "file") {
       refreshFile(getAbstractFileAtPath(app, evt.detail.name));
@@ -22126,6 +22273,8 @@ var MDBProvider = (props2) => {
     }
     if ((evt.detail.type == "space" || evt.detail.type == "vault") && !dbFileExists) {
       loadDefaultTableData();
+    } else if (evt.detail.type == "vault") {
+      refreshMDB(contextInfo.contextPath);
     }
   };
   const getMDBData = () => {
@@ -22139,20 +22288,7 @@ var MDBProvider = (props2) => {
     }
     if (contextPath == contextInfo.contextPath) {
       if (dbSchema) {
-        if (schema)
-          getMDBSchema(props2.plugin, contextInfo, schema.id).then((f4) => {
-            if (f4) {
-              setSchema(f4);
-              const newSchemaTable = {
-                ...schemaTable,
-                rows: schemaTable.rows.map((s5) => s5.id == f4.id ? f4 : s5)
-              };
-              setSchemaTable(newSchemaTable);
-            }
-          });
-        getMDBTable(props2.plugin, contextInfo, dbSchema.id).then(
-          (f4) => setTableData(f4)
-        );
+        loadTables();
       }
     } else {
       const tag = Object.keys(contextTable).find(
@@ -22194,13 +22330,13 @@ var MDBProvider = (props2) => {
       await saveDBToPath(props2.plugin, contextInfo.dbPath, dbField).then(
         (f4) => {
           setDBFileExists(true);
-          f4 ? setTableData(newTable) : new import_obsidian5.Notice("DB ERROR");
+          f4 ? setTableData(newTable) : new import_obsidian6.Notice("DB ERROR");
         }
       );
     } else {
       await saveMDBToPath(props2.plugin, contextInfo, newTable).then((f4) => {
         setDBFileExists(true);
-        f4 ? setTableData(newTable) : new import_obsidian5.Notice("DB ERROR");
+        f4 ? setTableData(newTable) : new import_obsidian6.Notice("DB ERROR");
       });
     }
   };
@@ -22208,7 +22344,7 @@ var MDBProvider = (props2) => {
     var _a3;
     if (!schemaTable || !dbSchema)
       return;
-    const _schema = (schema == null ? void 0 : schema.def) == dbSchema.id ? schema : (_a3 = schemaTable.rows.find((f4) => f4.def == dbSchema.id)) != null ? _a3 : {
+    const _schema = (schema == null ? void 0 : schema.def) == dbSchema.id ? schemaTable.rows.find((f4) => f4.id == schema.id) : (_a3 = schemaTable.rows.find((f4) => f4.def == dbSchema.id)) != null ? _a3 : {
       ...dbSchema,
       id: uniqueNameFromString(
         dbSchema.id + "View",
@@ -22234,7 +22370,6 @@ var MDBProvider = (props2) => {
     if (dbFileExists && schema) {
       parsePredicate(schema.predicate);
     }
-    ;
   }, [schema]);
   p2(() => {
     if (dbFileExists && tableData)
@@ -22243,13 +22378,25 @@ var MDBProvider = (props2) => {
   const selectRows = (lastSelected, rows) => {
     if (lastSelected) {
       const path = tableData.rows[parseInt(lastSelected)].File;
-      let evt = new CustomEvent(eventTypes.selectedFileChange, {
-        detail: { filePath: path }
+      let evt = new CustomEvent(eventTypes.activePathChange, {
+        detail: {
+          selection: path,
+          path: {
+            ...pathByString(props2.plugin, contextInfo.contextPath),
+            ref: schema == null ? void 0 : schema.id
+          }
+        }
       });
       window.dispatchEvent(evt);
     } else {
-      let evt = new CustomEvent(eventTypes.selectedFileChange, {
-        detail: { filePath: null }
+      let evt = new CustomEvent(eventTypes.activePathChange, {
+        detail: {
+          path: {
+            ...pathByString(props2.plugin, contextInfo.contextPath),
+            ref: schema == null ? void 0 : schema.id
+          },
+          selection: null
+        }
       });
       window.dispatchEvent(evt);
     }
@@ -22268,9 +22415,7 @@ var MDBProvider = (props2) => {
       );
       setTableData({
         ...defaultMDBTableForContext(contextInfo),
-        rows: files.map(
-          (f4) => ({ File: f4.path })
-        )
+        rows: files.map((f4) => ({ File: f4.path }))
       });
     } else if (contextInfo.type == "tag") {
       files = getAllFilesForTag(contextInfo.contextPath).map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4);
@@ -22279,7 +22424,14 @@ var MDBProvider = (props2) => {
         rows: files.map((f4) => ({ File: f4.path }))
       });
     } else if (contextInfo.type == "space") {
-      files = [...(_b2 = (_a3 = props2.plugin.index.spaces) == null ? void 0 : _a3.getInverse(contextInfo.contextPath.substring(0, contextInfo.contextPath.length - 2))) != null ? _b2 : []].map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4);
+      files = [
+        ...(_b2 = (_a3 = props2.plugin.index.spaces) == null ? void 0 : _a3.getInverse(
+          contextInfo.contextPath.substring(
+            0,
+            contextInfo.contextPath.length - 2
+          )
+        )) != null ? _b2 : []
+      ].map((f4) => getAbstractFileAtPath(app, f4)).filter((f4) => f4);
       setTableData({
         ...defaultMDBTableForContext(contextInfo),
         rows: files.map((f4) => ({ File: f4.path }))
@@ -22294,11 +22446,7 @@ var MDBProvider = (props2) => {
   };
   const runDef = async () => {
     if (contextInfo.type == "folder") {
-      getMDBTable(
-        props2.plugin,
-        contextInfo,
-        "files"
-      ).then((f4) => {
+      getMDBTable(props2.plugin, contextInfo, "files").then((f4) => {
         for (let c4 of tagContexts) {
           loadTagContext(c4, f4.rows);
         }
@@ -22306,11 +22454,7 @@ var MDBProvider = (props2) => {
         return f4;
       });
     } else if (contextInfo.type == "tag") {
-      getMDBTable(
-        props2.plugin,
-        contextInfo,
-        "files"
-      ).then((f4) => {
+      getMDBTable(props2.plugin, contextInfo, "files").then((f4) => {
         for (let c4 of tagContexts) {
           loadTagContext(c4, f4.rows);
         }
@@ -22318,11 +22462,7 @@ var MDBProvider = (props2) => {
         return f4;
       });
     } else if (contextInfo.type == "space") {
-      getMDBTable(
-        props2.plugin,
-        contextInfo,
-        "files"
-      ).then((f4) => {
+      getMDBTable(props2.plugin, contextInfo, "files").then((f4) => {
         setTableData(f4);
         return f4;
       });
@@ -22433,7 +22573,7 @@ var MDBProvider = (props2) => {
       mdbtable = contextTable[table];
     }
     if (column.name == "") {
-      new import_obsidian5.Notice(i18n_default.notice.noPropertyName);
+      new import_obsidian6.Notice(i18n_default.notice.noPropertyName);
       return false;
     }
     if (!oldColumn && mdbtable.cols.find(
@@ -22441,7 +22581,7 @@ var MDBProvider = (props2) => {
     ) || oldColumn && oldColumn.name != column.name && mdbtable.cols.find(
       (f4) => f4.name.toLowerCase() == column.name.toLowerCase()
     )) {
-      new import_obsidian5.Notice(i18n_default.notice.duplicatePropertyName);
+      new import_obsidian6.Notice(i18n_default.notice.duplicatePropertyName);
       return false;
     }
     const oldFieldIndex = oldColumn ? mdbtable.cols.findIndex((f4) => f4.name == oldColumn.name) : -1;
@@ -22529,7 +22669,7 @@ var MDBProvider = (props2) => {
 };
 
 // src/components/ContextView/CardsView/CardColumnView.tsx
-var import_classnames = __toESM(require_classnames());
+var import_classnames2 = __toESM(require_classnames());
 
 // node_modules/@tanstack/table-core/build/lib/index.mjs
 function functionalUpdate(updater, input) {
@@ -25366,7 +25506,7 @@ function useReactTable(options) {
 
 // src/dispatch/mdb.ts
 var import_lodash3 = __toESM(require_lodash());
-var import_obsidian6 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 
 // src/utils/contexts/file.ts
 var renameRowForFile = (folder, filePath, toFilePath) => {
@@ -25395,25 +25535,25 @@ var removeRowsForFile = (folder, filePaths) => {
 };
 
 // src/utils/contexts/links.ts
-var valueContainsLink = (link, value) => {
-  return parseMultiString(value).some((f4) => link == parseLinkString(f4));
+var valueContainsLink = (link2, value) => {
+  return parseMultiString(value).some((f4) => link2 == parseLinkString(f4));
 };
-var replaceLinkInValue = (link, newLink, value) => {
-  return serializeMultiString(parseMultiString(value).map((f4) => parseLinkString(f4) == link ? newLink : link));
+var replaceLinkInValue = (link2, newLink, value) => {
+  return serializeMultiString(parseMultiString(value).map((f4) => parseLinkString(f4) == link2 ? newLink : link2));
 };
-var removeLinkInValue = (link, value) => {
-  return serializeMultiString(parseMultiString(value).filter((f4) => f4 != link));
+var removeLinkInValue = (link2, value) => {
+  return serializeMultiString(parseMultiString(value).filter((f4) => f4 != link2));
 };
 var linkColumns = (cols) => {
   return cols.filter((f4) => f4.type.startsWith("link") || f4.type.startsWith("context"));
 };
-var removeLinksInRow = (plugin, row, link, cols) => {
+var removeLinksInRow = (plugin, row, link2, cols) => {
   if (cols.length == 0) {
     return row;
   }
   const deltaRow = cols.reduce((p3, c4) => {
-    if (valueContainsLink(link, row[c4.name])) {
-      const newValue = removeLinkInValue(link, row[c4.name]);
+    if (valueContainsLink(link2, row[c4.name])) {
+      const newValue = removeLinkInValue(link2, row[c4.name]);
       saveFrontmatterValue(
         plugin,
         row.File,
@@ -25428,13 +25568,13 @@ var removeLinksInRow = (plugin, row, link, cols) => {
   }, {});
   return { ...row, ...deltaRow };
 };
-var renameLinksInRow = (plugin, row, link, newLink, cols) => {
+var renameLinksInRow = (plugin, row, link2, newLink, cols) => {
   if (cols.length == 0) {
     return row;
   }
   const deltaRow = cols.reduce((p3, c4) => {
-    if (valueContainsLink(link, row[c4.name])) {
-      const newValue = replaceLinkInValue(link, newLink, row[c4.name]);
+    if (valueContainsLink(link2, row[c4.name])) {
+      const newValue = replaceLinkInValue(link2, newLink, row[c4.name]);
       saveFrontmatterValue(
         plugin,
         row.File,
@@ -25537,7 +25677,7 @@ var saveDB = async (plugin, context, newTable) => {
 };
 var insertColumns = (table, column) => {
   if (table.cols.find((f4) => f4.name == column.name)) {
-    new import_obsidian6.Notice(i18n_default.notice.duplicatePropertyName);
+    new import_obsidian7.Notice(i18n_default.notice.duplicatePropertyName);
     return;
   }
   return {
@@ -25561,7 +25701,7 @@ var insertRowsIfUnique = (folder, rows) => {
 };
 var saveContextToFrontmatter = (file, cols, context, plugin) => {
   const afile = getAbstractFileAtPath(app, file);
-  if (afile && afile instanceof import_obsidian6.TFile)
+  if (afile && afile instanceof import_obsidian7.TFile)
     saveContextToFile(afile, cols, context, plugin);
 };
 var initiateContextIfNotExists = async (plugin, tag) => {
@@ -25578,7 +25718,7 @@ var updateContextValue = async (plugin, context, file, field, value) => {
   }
   await getMDBTable(plugin, context, "files").then(
     (tagDB) => {
-      const newMDB = updateValue(tagDB, "File", file, field, value);
+      const newMDB = updateValue(tagDB, FilePropertyName, file, field, value);
       return saveDB(plugin, context, newMDB).then((f4) => newMDB);
     }
   );
@@ -25653,8 +25793,9 @@ var onMetadataChange = async (plugin, file, contexts) => {
           } : f4
         )
       };
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25669,8 +25810,9 @@ var renameTagInContexts = async (plugin, oldTag, newTag, contexts) => {
   const promises = contexts.map((context) => {
     return processContextFile(plugin, context, async (mdb, context2) => {
       const newDB = changeTagInContextMDB(mdb);
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25685,8 +25827,9 @@ var removeTagInContexts = async (plugin, tag, contexts) => {
   const promises = contexts.map((context) => {
     return processContextFile(plugin, context, async (mdb, context2) => {
       const newDB = deleteTagInContextMDB(mdb);
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25696,8 +25839,9 @@ var addFileInContexts = async (plugin, path, contexts) => {
   const promises = contexts.map((context) => {
     return processContextFile(plugin, context, async (mdb, context2) => {
       const newDB = insertRowsIfUnique(mdb, [{ File: path }]);
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25711,8 +25855,9 @@ var renameLinkInContexts = async (plugin, oldPath, newPath, contexts) => {
         ...mdb,
         rows: mdb.rows.map((r3) => renameLinksInRow(plugin, r3, oldPath, newPath, linkCols))
       };
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25726,8 +25871,9 @@ var removeLinkInContexts = async (plugin, path, contexts) => {
         ...mdb,
         rows: mdb.rows.map((r3) => removeLinksInRow(plugin, r3, path, linkCols))
       };
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25737,8 +25883,9 @@ var renameFileInContexts = async (plugin, oldPath, newPath, contexts) => {
   const promises = contexts.map((context) => {
     return processContextFile(plugin, context, async (mdb, context2) => {
       const newDB = renameRowForFile(mdb, oldPath, newPath);
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25752,8 +25899,9 @@ var removeFileInContexts = async (plugin, path, contexts) => {
         saveContextToFrontmatter(path, mdb.cols, removeRow, plugin);
       }
       const newDB = removeRowForFile(mdb, path);
-      if (!import_lodash3.default.isEqual(mdb, newDB))
+      if (!import_lodash3.default.isEqual(mdb, newDB)) {
         await saveDB(plugin, context2, newDB);
+      }
       return newDB;
     });
   });
@@ -25766,14 +25914,15 @@ var removeFilesInContext = async (plugin, paths, context) => {
         saveContextToFrontmatter(row.File, mdb.cols, row, plugin);
     });
     const newDB = removeRowsForFile(mdb, paths);
-    if (!import_lodash3.default.isEqual(mdb, newDB))
+    if (!import_lodash3.default.isEqual(mdb, newDB)) {
       await saveDB(plugin, context2, newDB);
+    }
     return newDB;
   });
 };
 
 // src/components/ui/menus/menuItems.tsx
-var import_obsidian7 = require("obsidian");
+var import_obsidian8 = require("obsidian");
 
 // src/components/ui/menus/selectMenu/SelectMenuComponent.tsx
 var import_lodash4 = __toESM(require_lodash());
@@ -25810,7 +25959,7 @@ var STYLE_PROPS = [
 ];
 var SelectMenuInput = k3(
   (props2, input) => {
-    const { classNames: classNames8, inputAttributes, inputEventHandlers, index } = props2;
+    const { classNames: classNames9, inputAttributes, inputEventHandlers, index } = props2;
     const sizer = _2(null);
     const [inputWidth, setInputWidth] = h2(null);
     const [query, setQuery] = h2("");
@@ -25843,14 +25992,14 @@ var SelectMenuInput = k3(
       }
     };
     return /* @__PURE__ */ Cn.createElement("div", {
-      className: classNames8.searchWrapper
+      className: classNames9.searchWrapper
     }, /* @__PURE__ */ Cn.createElement("input", {
       ...inputAttributes,
       ...inputEventHandlers,
       ref: input,
       value: query,
       placeholder: placeholderText,
-      className: classNames8.searchInput,
+      className: classNames9.searchInput,
       role: "combobox",
       style: { width: "100%" }
     }), /* @__PURE__ */ Cn.createElement("div", {
@@ -25910,18 +26059,18 @@ var SelectMenuSuggestions = (props2) => {
   };
   const options = props2.options.map((item, index) => {
     const key2 = `${props2.id}-${index}`;
-    const classNames8 = [];
+    const classNames9 = [];
     if (props2.index === index) {
-      classNames8.push(props2.classNames.suggestionActive);
+      classNames9.push(props2.classNames.suggestionActive);
     }
     if (item.disabled) {
-      classNames8.push(props2.classNames.suggestionDisabled);
+      classNames9.push(props2.classNames.suggestionDisabled);
     }
     return /* @__PURE__ */ Cn.createElement("li", {
       id: key2,
       key: key2,
       role: "option",
-      className: classNames8.join(" "),
+      className: classNames9.join(" "),
       "aria-disabled": Boolean(item.disabled),
       onMouseDown: (e4) => e4.preventDefault(),
       onClick: () => props2.addTag(item),
@@ -26176,29 +26325,29 @@ var SelectMenuComponent = Cn.forwardRef(
       onCompositionStart: onInput
     };
     const expanded = focused && query.length >= props2.minQueryLength;
-    const classNames8 = Object.assign({}, CLASS_NAMES, props2.classNames);
-    const rootClassNames = [classNames8.root];
-    focused && rootClassNames.push(classNames8.rootFocused);
+    const classNames9 = Object.assign({}, CLASS_NAMES, props2.classNames);
+    const rootClassNames = [classNames9.root];
+    focused && rootClassNames.push(classNames9.rootFocused);
     return /* @__PURE__ */ Cn.createElement("div", {
       ref: container,
       className: rootClassNames.join(" ")
     }, !props2.suggestionsOnly ? /* @__PURE__ */ Cn.createElement("div", {
-      className: classNames8.selected,
+      className: classNames9.selected,
       "aria-relevant": "additions removals",
       "aria-live": "polite"
     }, /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, props2.tags.map((tag, i4) => /* @__PURE__ */ Cn.createElement(SelectMenuPill_default, {
       key: i4,
       tag,
-      classNames: classNames8,
+      classNames: classNames9,
       onDelete: (e4) => onDeleteTag(i4, e4)
     }))), /* @__PURE__ */ Cn.createElement("div", {
-      className: classNames8.search
+      className: classNames9.search
     }, /* @__PURE__ */ Cn.createElement(SelectMenuInput_default, {
       ref: inputRef,
       query,
       index,
       id: props2.id,
-      classNames: classNames8,
+      classNames: classNames9,
       inputAttributes: props2.inputAttributes,
       inputEventHandlers,
       expanded,
@@ -26210,7 +26359,7 @@ var SelectMenuComponent = Cn.forwardRef(
       setIndex,
       index,
       id: props2.id,
-      classNames: classNames8,
+      classNames: classNames9,
       expanded,
       addTag: addTag2,
       allowNew: props2.allowNew
@@ -26352,7 +26501,7 @@ var inputMenuItem = (menuItem, value, setValue) => {
   return menuItem;
 };
 var showSelectMenu = (point, optionProps) => {
-  const menu = new import_obsidian7.Menu();
+  const menu = new import_obsidian8.Menu();
   menu.dom.toggleClass("mk-menu", true);
   menu.setUseNativeMenu(false);
   const frag = document.createDocumentFragment();
@@ -26478,6 +26627,7 @@ var OptionCell = (props2) => {
     onHide: () => props2.setEditMode(null)
   });
   return /* @__PURE__ */ Cn.createElement(OptionCellBase, {
+    baseClass: "mk-cell-option",
     value,
     menuProps,
     multi: props2.multi,
@@ -26511,7 +26661,7 @@ var OptionCellBase = (props2) => {
   };
   const editable = props2.editMode > 0;
   return /* @__PURE__ */ Cn.createElement("div", {
-    className: "mk-cell-option",
+    className: props2.baseClass,
     ref
   }, value.length > 0 ? value.map((o3) => /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-cell-option-item"
@@ -26557,7 +26707,7 @@ var ContextCell = (props2) => {
   );
   const ref = _2(null);
   const options = stringValueToLink(
-    (_c2 = (_b2 = props2.contextTable) == null ? void 0 : _b2.rows.map((f4) => f4["File"])) != null ? _c2 : []
+    (_c2 = (_b2 = props2.contextTable) == null ? void 0 : _b2.rows.map((f4) => f4[FilePropertyName])) != null ? _c2 : []
   ).map((f4) => ({
     name: f4.label,
     value: f4.path
@@ -26621,6 +26771,7 @@ var ContextCell = (props2) => {
     };
   };
   return /* @__PURE__ */ Cn.createElement(OptionCellBase, {
+    baseClass: "mk-cell-context",
     menuProps,
     openItem: openLink,
     getLabelString: (o3) => o3.label,
@@ -26632,7 +26783,7 @@ var ContextCell = (props2) => {
 };
 
 // src/components/ui/menus/datePickerMenu.tsx
-var import_obsidian8 = require("obsidian");
+var import_obsidian9 = require("obsidian");
 
 // node_modules/react-day-picker/dist/index.esm.js
 var __assign2 = function() {
@@ -26782,7 +26933,7 @@ var labels = /* @__PURE__ */ Object.freeze({
 });
 function getDefaultContextValues() {
   var captionLayout = "buttons";
-  var classNames8 = defaultClassNames;
+  var classNames9 = defaultClassNames;
   var locale2 = en_US_default;
   var modifiersClassNames = {};
   var modifiers = {};
@@ -26791,7 +26942,7 @@ function getDefaultContextValues() {
   var today = new Date();
   return {
     captionLayout,
-    classNames: classNames8,
+    classNames: classNames9,
     formatters: formatters3,
     labels,
     locale: locale2,
@@ -26846,8 +26997,8 @@ function useDayPicker() {
   return context;
 }
 function CaptionLabel(props2) {
-  var _a2 = useDayPicker(), locale2 = _a2.locale, classNames8 = _a2.classNames, styles = _a2.styles, formatCaption2 = _a2.formatters.formatCaption;
-  return Cn.createElement("div", { className: classNames8.caption_label, style: styles.caption_label, "aria-live": "polite", role: "presentation", id: props2.id }, formatCaption2(props2.displayMonth, { locale: locale2 }));
+  var _a2 = useDayPicker(), locale2 = _a2.locale, classNames9 = _a2.classNames, styles = _a2.styles, formatCaption2 = _a2.formatters.formatCaption;
+  return Cn.createElement("div", { className: classNames9.caption_label, style: styles.caption_label, "aria-live": "polite", role: "presentation", id: props2.id }, formatCaption2(props2.displayMonth, { locale: locale2 }));
 }
 function IconDropdown(props2) {
   return Cn.createElement(
@@ -26876,7 +27027,7 @@ function Dropdown(props2) {
 }
 function MonthsDropdown(props2) {
   var _a2;
-  var _b2 = useDayPicker(), fromDate = _b2.fromDate, toDate2 = _b2.toDate, styles = _b2.styles, locale2 = _b2.locale, formatMonthCaption2 = _b2.formatters.formatMonthCaption, classNames8 = _b2.classNames, components = _b2.components, labelMonthDropdown2 = _b2.labels.labelMonthDropdown;
+  var _b2 = useDayPicker(), fromDate = _b2.fromDate, toDate2 = _b2.toDate, styles = _b2.styles, locale2 = _b2.locale, formatMonthCaption2 = _b2.formatters.formatMonthCaption, classNames9 = _b2.classNames, components = _b2.components, labelMonthDropdown2 = _b2.labels.labelMonthDropdown;
   if (!fromDate)
     return Cn.createElement(Cn.Fragment, null);
   if (!toDate2)
@@ -26899,14 +27050,14 @@ function MonthsDropdown(props2) {
     props2.onChange(newMonth);
   };
   var DropdownComponent2 = (_a2 = components === null || components === void 0 ? void 0 : components.Dropdown) !== null && _a2 !== void 0 ? _a2 : Dropdown;
-  return Cn.createElement(DropdownComponent2, { name: "months", "aria-label": labelMonthDropdown2(), className: classNames8.dropdown_month, style: styles.dropdown_month, onChange: handleChange, value: props2.displayMonth.getMonth(), caption: formatMonthCaption2(props2.displayMonth, { locale: locale2 }) }, dropdownMonths.map(function(m5) {
+  return Cn.createElement(DropdownComponent2, { name: "months", "aria-label": labelMonthDropdown2(), className: classNames9.dropdown_month, style: styles.dropdown_month, onChange: handleChange, value: props2.displayMonth.getMonth(), caption: formatMonthCaption2(props2.displayMonth, { locale: locale2 }) }, dropdownMonths.map(function(m5) {
     return Cn.createElement("option", { key: m5.getMonth(), value: m5.getMonth() }, formatMonthCaption2(m5, { locale: locale2 }));
   }));
 }
 function YearsDropdown(props2) {
   var _a2;
   var displayMonth = props2.displayMonth;
-  var _b2 = useDayPicker(), fromDate = _b2.fromDate, toDate2 = _b2.toDate, locale2 = _b2.locale, styles = _b2.styles, classNames8 = _b2.classNames, components = _b2.components, formatYearCaption2 = _b2.formatters.formatYearCaption, labelYearDropdown2 = _b2.labels.labelYearDropdown;
+  var _b2 = useDayPicker(), fromDate = _b2.fromDate, toDate2 = _b2.toDate, locale2 = _b2.locale, styles = _b2.styles, classNames9 = _b2.classNames, components = _b2.components, formatYearCaption2 = _b2.formatters.formatYearCaption, labelYearDropdown2 = _b2.labels.labelYearDropdown;
   var years = [];
   if (!fromDate)
     return Cn.createElement(Cn.Fragment, null);
@@ -26922,7 +27073,7 @@ function YearsDropdown(props2) {
     props2.onChange(newMonth);
   };
   var DropdownComponent2 = (_a2 = components === null || components === void 0 ? void 0 : components.Dropdown) !== null && _a2 !== void 0 ? _a2 : Dropdown;
-  return Cn.createElement(DropdownComponent2, { name: "years", "aria-label": labelYearDropdown2(), className: classNames8.dropdown_year, style: styles.dropdown_year, onChange: handleChange, value: displayMonth.getFullYear(), caption: formatYearCaption2(displayMonth, { locale: locale2 }) }, years.map(function(year2) {
+  return Cn.createElement(DropdownComponent2, { name: "years", "aria-label": labelYearDropdown2(), className: classNames9.dropdown_year, style: styles.dropdown_year, onChange: handleChange, value: displayMonth.getFullYear(), caption: formatYearCaption2(displayMonth, { locale: locale2 }) }, years.map(function(year2) {
     return Cn.createElement("option", { key: year2.getFullYear(), value: year2.getFullYear() }, formatYearCaption2(year2, { locale: locale2 }));
   }));
 }
@@ -27046,7 +27197,7 @@ function useNavigation() {
 }
 function CaptionDropdowns(props2) {
   var _a2;
-  var _b2 = useDayPicker(), classNames8 = _b2.classNames, styles = _b2.styles, components = _b2.components;
+  var _b2 = useDayPicker(), classNames9 = _b2.classNames, styles = _b2.styles, components = _b2.components;
   var goToMonth = useNavigation().goToMonth;
   var handleMonthChange = function(newMonth) {
     goToMonth(newMonth);
@@ -27055,8 +27206,8 @@ function CaptionDropdowns(props2) {
   var captionLabel = Cn.createElement(CaptionLabelComponent, { id: props2.id, displayMonth: props2.displayMonth });
   return Cn.createElement(
     "div",
-    { className: classNames8.caption_dropdowns, style: styles.caption_dropdowns },
-    Cn.createElement("div", { className: classNames8.vhidden }, captionLabel),
+    { className: classNames9.caption_dropdowns, style: styles.caption_dropdowns },
+    Cn.createElement("div", { className: classNames9.vhidden }, captionLabel),
     Cn.createElement(MonthsDropdown, { onChange: handleMonthChange, displayMonth: props2.displayMonth }),
     Cn.createElement(YearsDropdown, { onChange: handleMonthChange, displayMonth: props2.displayMonth })
   );
@@ -27076,8 +27227,8 @@ function IconRight(props2) {
   );
 }
 var Button = k3(function(props2, ref) {
-  var _a2 = useDayPicker(), classNames8 = _a2.classNames, styles = _a2.styles;
-  var classNamesArr = [classNames8.button_reset, classNames8.button];
+  var _a2 = useDayPicker(), classNames9 = _a2.classNames, styles = _a2.styles;
+  var classNamesArr = [classNames9.button_reset, classNames9.button];
   if (props2.className) {
     classNamesArr.push(props2.className);
   }
@@ -27090,27 +27241,27 @@ var Button = k3(function(props2, ref) {
 });
 function Navigation(props2) {
   var _a2, _b2;
-  var _c2 = useDayPicker(), dir = _c2.dir, locale2 = _c2.locale, classNames8 = _c2.classNames, styles = _c2.styles, _d2 = _c2.labels, labelPrevious2 = _d2.labelPrevious, labelNext2 = _d2.labelNext, components = _c2.components;
+  var _c2 = useDayPicker(), dir = _c2.dir, locale2 = _c2.locale, classNames9 = _c2.classNames, styles = _c2.styles, _d2 = _c2.labels, labelPrevious2 = _d2.labelPrevious, labelNext2 = _d2.labelNext, components = _c2.components;
   if (!props2.nextMonth && !props2.previousMonth) {
     return Cn.createElement(Cn.Fragment, null);
   }
   var previousLabel = labelPrevious2(props2.previousMonth, { locale: locale2 });
   var previousClassName = [
-    classNames8.nav_button,
-    classNames8.nav_button_previous
+    classNames9.nav_button,
+    classNames9.nav_button_previous
   ].join(" ");
   var nextLabel = labelNext2(props2.nextMonth, { locale: locale2 });
   var nextClassName = [
-    classNames8.nav_button,
-    classNames8.nav_button_next
+    classNames9.nav_button,
+    classNames9.nav_button_next
   ].join(" ");
   var IconRightComponent = (_a2 = components === null || components === void 0 ? void 0 : components.IconRight) !== null && _a2 !== void 0 ? _a2 : IconRight;
   var IconLeftComponent = (_b2 = components === null || components === void 0 ? void 0 : components.IconLeft) !== null && _b2 !== void 0 ? _b2 : IconLeft;
   return Cn.createElement(
     "div",
-    { className: classNames8.nav, style: styles.nav },
-    !props2.hidePrevious && Cn.createElement(Button, { name: "previous-month", "aria-label": previousLabel, className: previousClassName, style: styles.nav_button_previous, disabled: !props2.previousMonth, onClick: props2.onPreviousClick }, dir === "rtl" ? Cn.createElement(IconRightComponent, { className: classNames8.nav_icon, style: styles.nav_icon }) : Cn.createElement(IconLeftComponent, { className: classNames8.nav_icon, style: styles.nav_icon })),
-    !props2.hideNext && Cn.createElement(Button, { name: "next-month", "aria-label": nextLabel, className: nextClassName, style: styles.nav_button_next, disabled: !props2.nextMonth, onClick: props2.onNextClick }, dir === "rtl" ? Cn.createElement(IconLeftComponent, { className: classNames8.nav_icon, style: styles.nav_icon }) : Cn.createElement(IconRightComponent, { className: classNames8.nav_icon, style: styles.nav_icon }))
+    { className: classNames9.nav, style: styles.nav },
+    !props2.hidePrevious && Cn.createElement(Button, { name: "previous-month", "aria-label": previousLabel, className: previousClassName, style: styles.nav_button_previous, disabled: !props2.previousMonth, onClick: props2.onPreviousClick }, dir === "rtl" ? Cn.createElement(IconRightComponent, { className: classNames9.nav_icon, style: styles.nav_icon }) : Cn.createElement(IconLeftComponent, { className: classNames9.nav_icon, style: styles.nav_icon })),
+    !props2.hideNext && Cn.createElement(Button, { name: "next-month", "aria-label": nextLabel, className: nextClassName, style: styles.nav_button_next, disabled: !props2.nextMonth, onClick: props2.onNextClick }, dir === "rtl" ? Cn.createElement(IconLeftComponent, { className: classNames9.nav_icon, style: styles.nav_icon }) : Cn.createElement(IconRightComponent, { className: classNames9.nav_icon, style: styles.nav_icon }))
   );
 }
 function CaptionNavigation(props2) {
@@ -27141,7 +27292,7 @@ function CaptionNavigation(props2) {
 }
 function Caption(props2) {
   var _a2;
-  var _b2 = useDayPicker(), classNames8 = _b2.classNames, disableNavigation = _b2.disableNavigation, styles = _b2.styles, captionLayout = _b2.captionLayout, components = _b2.components;
+  var _b2 = useDayPicker(), classNames9 = _b2.classNames, disableNavigation = _b2.disableNavigation, styles = _b2.styles, captionLayout = _b2.captionLayout, components = _b2.components;
   var CaptionLabelComponent = (_a2 = components === null || components === void 0 ? void 0 : components.CaptionLabel) !== null && _a2 !== void 0 ? _a2 : CaptionLabel;
   var caption;
   if (disableNavigation) {
@@ -27163,7 +27314,7 @@ function Caption(props2) {
       Cn.createElement(CaptionNavigation, { displayMonth: props2.displayMonth, id: props2.id })
     );
   }
-  return Cn.createElement("div", { className: classNames8.caption, style: styles.caption }, caption);
+  return Cn.createElement("div", { className: classNames9.caption, style: styles.caption }, caption);
 }
 function Footer(props2) {
   var _a2 = useDayPicker(), footer = _a2.footer, styles = _a2.styles, tfoot = _a2.classNames.tfoot;
@@ -27189,24 +27340,24 @@ function getWeekdays(locale2, weekStartsOn, ISOWeek) {
   return days;
 }
 function HeadRow() {
-  var _a2 = useDayPicker(), classNames8 = _a2.classNames, styles = _a2.styles, showWeekNumber = _a2.showWeekNumber, locale2 = _a2.locale, weekStartsOn = _a2.weekStartsOn, ISOWeek = _a2.ISOWeek, formatWeekdayName2 = _a2.formatters.formatWeekdayName, labelWeekday2 = _a2.labels.labelWeekday;
+  var _a2 = useDayPicker(), classNames9 = _a2.classNames, styles = _a2.styles, showWeekNumber = _a2.showWeekNumber, locale2 = _a2.locale, weekStartsOn = _a2.weekStartsOn, ISOWeek = _a2.ISOWeek, formatWeekdayName2 = _a2.formatters.formatWeekdayName, labelWeekday2 = _a2.labels.labelWeekday;
   var weekdays = getWeekdays(locale2, weekStartsOn, ISOWeek);
   return Cn.createElement(
     "tr",
-    { style: styles.head_row, className: classNames8.head_row },
-    showWeekNumber && Cn.createElement("th", { scope: "col", style: styles.head_cell, className: classNames8.head_cell }),
+    { style: styles.head_row, className: classNames9.head_row },
+    showWeekNumber && Cn.createElement("th", { scope: "col", style: styles.head_cell, className: classNames9.head_cell }),
     weekdays.map(function(weekday, i4) {
-      return Cn.createElement("th", { key: i4, scope: "col", className: classNames8.head_cell, style: styles.head_cell, "aria-label": labelWeekday2(weekday, { locale: locale2 }) }, formatWeekdayName2(weekday, { locale: locale2 }));
+      return Cn.createElement("th", { key: i4, scope: "col", className: classNames9.head_cell, style: styles.head_cell, "aria-label": labelWeekday2(weekday, { locale: locale2 }) }, formatWeekdayName2(weekday, { locale: locale2 }));
     })
   );
 }
 function Head() {
   var _a2;
-  var _b2 = useDayPicker(), classNames8 = _b2.classNames, styles = _b2.styles, components = _b2.components;
+  var _b2 = useDayPicker(), classNames9 = _b2.classNames, styles = _b2.styles, components = _b2.components;
   var HeadRowComponent = (_a2 = components === null || components === void 0 ? void 0 : components.HeadRow) !== null && _a2 !== void 0 ? _a2 : HeadRow;
   return Cn.createElement(
     "thead",
-    { style: styles.head, className: classNames8.head },
+    { style: styles.head, className: classNames9.head },
     Cn.createElement(HeadRowComponent, null)
   );
 }
@@ -27894,19 +28045,19 @@ function isInternalModifier(modifier) {
   return Object.values(InternalModifier).includes(modifier);
 }
 function getDayClassNames(dayPicker, activeModifiers) {
-  var classNames8 = [dayPicker.classNames.day];
+  var classNames9 = [dayPicker.classNames.day];
   Object.keys(activeModifiers).forEach(function(modifier) {
     var customClassName = dayPicker.modifiersClassNames[modifier];
     if (customClassName) {
-      classNames8.push(customClassName);
+      classNames9.push(customClassName);
     } else if (isInternalModifier(modifier)) {
       var internalClassName = dayPicker.classNames["day_".concat(modifier)];
       if (internalClassName) {
-        classNames8.push(internalClassName);
+        classNames9.push(internalClassName);
       }
     }
   });
-  return classNames8;
+  return classNames9;
 }
 function getDayStyle(dayPicker, activeModifiers) {
   var style = __assign2({}, dayPicker.styles.day);
@@ -27980,38 +28131,38 @@ function Day(props2) {
 }
 function WeekNumber(props2) {
   var weekNumber = props2.number, dates = props2.dates;
-  var _a2 = useDayPicker(), onWeekNumberClick = _a2.onWeekNumberClick, styles = _a2.styles, classNames8 = _a2.classNames, locale2 = _a2.locale, labelWeekNumber2 = _a2.labels.labelWeekNumber, formatWeekNumber2 = _a2.formatters.formatWeekNumber;
+  var _a2 = useDayPicker(), onWeekNumberClick = _a2.onWeekNumberClick, styles = _a2.styles, classNames9 = _a2.classNames, locale2 = _a2.locale, labelWeekNumber2 = _a2.labels.labelWeekNumber, formatWeekNumber2 = _a2.formatters.formatWeekNumber;
   var content = formatWeekNumber2(Number(weekNumber), { locale: locale2 });
   if (!onWeekNumberClick) {
-    return Cn.createElement("span", { className: classNames8.weeknumber, style: styles.weeknumber }, content);
+    return Cn.createElement("span", { className: classNames9.weeknumber, style: styles.weeknumber }, content);
   }
   var label = labelWeekNumber2(Number(weekNumber), { locale: locale2 });
   var handleClick = function(e4) {
     onWeekNumberClick(weekNumber, dates, e4);
   };
-  return Cn.createElement(Button, { name: "week-number", "aria-label": label, className: classNames8.weeknumber, style: styles.weeknumber, onClick: handleClick }, content);
+  return Cn.createElement(Button, { name: "week-number", "aria-label": label, className: classNames9.weeknumber, style: styles.weeknumber, onClick: handleClick }, content);
 }
 function Row(props2) {
   var _a2, _b2;
-  var _c2 = useDayPicker(), styles = _c2.styles, classNames8 = _c2.classNames, showWeekNumber = _c2.showWeekNumber, components = _c2.components;
+  var _c2 = useDayPicker(), styles = _c2.styles, classNames9 = _c2.classNames, showWeekNumber = _c2.showWeekNumber, components = _c2.components;
   var DayComponent = (_a2 = components === null || components === void 0 ? void 0 : components.Day) !== null && _a2 !== void 0 ? _a2 : Day;
   var WeeknumberComponent = (_b2 = components === null || components === void 0 ? void 0 : components.WeekNumber) !== null && _b2 !== void 0 ? _b2 : WeekNumber;
   var weekNumberCell;
   if (showWeekNumber) {
     weekNumberCell = Cn.createElement(
       "td",
-      { className: classNames8.cell, style: styles.cell },
+      { className: classNames9.cell, style: styles.cell },
       Cn.createElement(WeeknumberComponent, { number: props2.weekNumber, dates: props2.dates })
     );
   }
   return Cn.createElement(
     "tr",
-    { className: classNames8.row, style: styles.row },
+    { className: classNames9.row, style: styles.row },
     weekNumberCell,
     props2.dates.map(function(date) {
       return Cn.createElement(
         "td",
-        { className: classNames8.cell, style: styles.cell, key: getUnixTime(date), role: "presentation" },
+        { className: classNames9.cell, style: styles.cell, key: getUnixTime(date), role: "presentation" },
         Cn.createElement(DayComponent, { displayMonth: props2.displayMonth, date })
       );
     })
@@ -28058,7 +28209,7 @@ function getMonthWeeks(month, options) {
 }
 function Table(props2) {
   var _a2, _b2, _c2;
-  var _d2 = useDayPicker(), locale2 = _d2.locale, classNames8 = _d2.classNames, styles = _d2.styles, hideHead = _d2.hideHead, fixedWeeks = _d2.fixedWeeks, components = _d2.components, weekStartsOn = _d2.weekStartsOn, firstWeekContainsDate = _d2.firstWeekContainsDate, ISOWeek = _d2.ISOWeek;
+  var _d2 = useDayPicker(), locale2 = _d2.locale, classNames9 = _d2.classNames, styles = _d2.styles, hideHead = _d2.hideHead, fixedWeeks = _d2.fixedWeeks, components = _d2.components, weekStartsOn = _d2.weekStartsOn, firstWeekContainsDate = _d2.firstWeekContainsDate, ISOWeek = _d2.ISOWeek;
   var weeks = getMonthWeeks(props2.displayMonth, {
     useFixedWeeks: Boolean(fixedWeeks),
     ISOWeek,
@@ -28071,9 +28222,9 @@ function Table(props2) {
   var FooterComponent = (_c2 = components === null || components === void 0 ? void 0 : components.Footer) !== null && _c2 !== void 0 ? _c2 : Footer;
   return Cn.createElement(
     "table",
-    { className: classNames8.table, style: styles.table, role: "grid", "aria-labelledby": props2["aria-labelledby"] },
+    { className: classNames9.table, style: styles.table, role: "grid", "aria-labelledby": props2["aria-labelledby"] },
     !hideHead && Cn.createElement(HeadComponent, null),
-    Cn.createElement("tbody", { className: classNames8.tbody, style: styles.tbody, role: "rowgroup" }, weeks.map(function(week) {
+    Cn.createElement("tbody", { className: classNames9.tbody, style: styles.tbody, role: "rowgroup" }, weeks.map(function(week) {
       return Cn.createElement(RowComponent, { displayMonth: props2.displayMonth, key: week.weekNumber, dates: week.dates, weekNumber: week.weekNumber });
     })),
     Cn.createElement(FooterComponent, { displayMonth: props2.displayMonth })
@@ -28108,10 +28259,10 @@ function Month(props2) {
   var _a2;
   var _b2;
   var dayPicker = useDayPicker();
-  var dir = dayPicker.dir, classNames8 = dayPicker.classNames, styles = dayPicker.styles, components = dayPicker.components;
+  var dir = dayPicker.dir, classNames9 = dayPicker.classNames, styles = dayPicker.styles, components = dayPicker.components;
   var displayMonths = useNavigation().displayMonths;
   var captionId = useId(dayPicker.id ? "".concat(dayPicker.id, "-").concat(props2.displayIndex) : void 0);
-  var className = [classNames8.month];
+  var className = [classNames9.month];
   var style = styles.month;
   var isStart = props2.displayIndex === 0;
   var isEnd = props2.displayIndex === displayMonths.length - 1;
@@ -28120,15 +28271,15 @@ function Month(props2) {
     _a2 = [isStart, isEnd], isEnd = _a2[0], isStart = _a2[1];
   }
   if (isStart) {
-    className.push(classNames8.caption_start);
+    className.push(classNames9.caption_start);
     style = __assign2(__assign2({}, style), styles.caption_start);
   }
   if (isEnd) {
-    className.push(classNames8.caption_end);
+    className.push(classNames9.caption_end);
     style = __assign2(__assign2({}, style), styles.caption_end);
   }
   if (isCenter) {
-    className.push(classNames8.caption_between);
+    className.push(classNames9.caption_between);
     style = __assign2(__assign2({}, style), styles.caption_between);
   }
   var CaptionComponent = (_b2 = components === null || components === void 0 ? void 0 : components.Caption) !== null && _b2 !== void 0 ? _b2 : Caption;
@@ -28160,17 +28311,17 @@ function Root() {
     focusContext.focusTarget,
     focusContext
   ]);
-  var classNames8 = [dayPicker.classNames.root, dayPicker.className];
+  var classNames9 = [dayPicker.classNames.root, dayPicker.className];
   if (dayPicker.numberOfMonths > 1) {
-    classNames8.push(dayPicker.classNames.multiple_months);
+    classNames9.push(dayPicker.classNames.multiple_months);
   }
   if (dayPicker.showWeekNumber) {
-    classNames8.push(dayPicker.classNames.with_weeknumber);
+    classNames9.push(dayPicker.classNames.with_weeknumber);
   }
   var style = __assign2(__assign2({}, dayPicker.styles.root), dayPicker.style);
   return Cn.createElement(
     "div",
-    { className: classNames8.join(" "), style, dir: dayPicker.dir },
+    { className: classNames9.join(" "), style, dir: dayPicker.dir },
     Cn.createElement("div", { className: dayPicker.classNames.months, style: dayPicker.styles.months }, navigation.displayMonths.map(function(month, i4) {
       return Cn.createElement(Month, { key: i4, displayIndex: i4, displayMonth: month });
     }))
@@ -28214,7 +28365,7 @@ function DayPicker(props2) {
 
 // src/components/ui/menus/datePickerMenu.tsx
 var showDatePickerMenu = (point, value, setValue, format2) => {
-  const menu = new import_obsidian8.Menu();
+  const menu = new import_obsidian9.Menu();
   menu.dom.toggleClass("mk-menu", true);
   menu.setUseNativeMenu(false);
   const frag = document.createDocumentFragment();
@@ -33728,8 +33879,8 @@ var emojis = {
 };
 
 // src/components/ui/modals/stickerModal.tsx
-var import_obsidian9 = require("obsidian");
-var stickerModal = class extends import_obsidian9.FuzzySuggestModal {
+var import_obsidian10 = require("obsidian");
+var stickerModal = class extends import_obsidian10.FuzzySuggestModal {
   constructor(app2, setIcon) {
     super(app2);
     this.setIcon = setIcon;
@@ -33771,11 +33922,11 @@ function isMouseEvent(e4) {
 }
 
 // src/components/FileSticker/FileSticker.tsx
-var import_obsidian12 = require("obsidian");
+var import_obsidian13 = require("obsidian");
 
 // src/components/ui/modals/vaultChangeModals.ts
-var import_obsidian10 = require("obsidian");
-var VaultChangeModal = class extends import_obsidian10.Modal {
+var import_obsidian11 = require("obsidian");
+var VaultChangeModal = class extends import_obsidian11.Modal {
   constructor(plugin, file, action, space) {
     super(plugin.app);
     this.file = file;
@@ -33831,7 +33982,7 @@ var VaultChangeModal = class extends import_obsidian10.Modal {
       } else if (this.action === "create folder") {
         const path = !this.file || this.file.path == "/" ? newName : this.file.path + "/" + newName;
         if (getAbstractFileAtPath(app, path)) {
-          new import_obsidian10.Notice(i18n_default.notice.folderExists);
+          new import_obsidian11.Notice(i18n_default.notice.folderExists);
           return;
         }
         this.app.vault.createFolder(path);
@@ -33851,7 +34002,7 @@ var VaultChangeModal = class extends import_obsidian10.Modal {
     contentEl.empty();
   }
 };
-var MoveSuggestionModal = class extends import_obsidian10.FuzzySuggestModal {
+var MoveSuggestionModal = class extends import_obsidian11.FuzzySuggestModal {
   constructor(app2, files) {
     super(app2);
     this.files = files;
@@ -33877,7 +34028,7 @@ function getAllFoldersInVault(app2) {
   folders.push(rootFolder);
   function recursiveFx(folder) {
     for (let child of folder.children) {
-      if (child instanceof import_obsidian10.TFolder) {
+      if (child instanceof import_obsidian11.TFolder) {
         let childFolder = child;
         folders.push(childFolder);
         if (childFolder.children)
@@ -33888,7 +34039,7 @@ function getAllFoldersInVault(app2) {
   recursiveFx(rootFolder);
   return folders;
 }
-var AddToSpaceModal = class extends import_obsidian10.FuzzySuggestModal {
+var AddToSpaceModal = class extends import_obsidian11.FuzzySuggestModal {
   constructor(plugin, files) {
     super(app);
     this.plugin = plugin;
@@ -33912,7 +34063,7 @@ var AddToSpaceModal = class extends import_obsidian10.FuzzySuggestModal {
 
 // src/utils/spaces/spaces.ts
 var import_lodash6 = __toESM(require_lodash());
-var import_obsidian11 = require("obsidian");
+var import_obsidian12 = require("obsidian");
 
 // src/schemas/spaces.ts
 var vaultSchema = {
@@ -33933,6 +34084,15 @@ var spaceItemsSchema = {
 
 // src/superstate/cacheParsers.ts
 var import_lodash5 = __toESM(require_lodash());
+
+// src/types/space.ts
+var FMBannerKey = "banner";
+var FMAliasKey = "alias";
+var FMStickerKey = "sticker";
+var FMColorKey = "color";
+var FMMetadataKeys = [FMBannerKey, FMAliasKey, FMStickerKey, FMColorKey];
+
+// src/superstate/cacheParsers.ts
 var fileMetadataToVaultItem = (cache) => {
   var _a2, _b2;
   return {
@@ -33954,11 +34114,12 @@ var parseSpaceCache = (space, spaceItems) => {
 };
 
 // src/utils/spaces/spaces.ts
-var rebuildIndex = async (plugin) => {
+var rebuildIndex = async (plugin, save) => {
+  var _a2, _b2;
   console.time("Reindex Spaces Data");
-  const newTables = indexCurrentFileTree(plugin.index.vaultDBCache, plugin.index.spacesItemsDBCache);
-  if (!import_lodash6.default.isEqual(newTables.vault.rows, plugin.index.vaultDBCache) || !import_lodash6.default.isEqual(newTables.spaceItems.rows, plugin.index.spacesItemsDBCache)) {
-    plugin.index.saveSpacesDB(newTables);
+  const newTables = indexCurrentFileTree((_a2 = plugin.index.vaultDBCache) != null ? _a2 : [], (_b2 = plugin.index.spacesItemsDBCache) != null ? _b2 : []);
+  if (save && (!import_lodash6.default.isEqual(newTables.vault.rows, plugin.index.vaultDBCache) || !import_lodash6.default.isEqual(newTables.spaceItems.rows, plugin.index.spacesItemsDBCache))) {
+    plugin.index.saveSpacesDB(newTables, save);
   }
   plugin.index.initialize();
   console.timeEnd("Reindex Spaces Data");
@@ -33971,6 +34132,7 @@ var spaceToTreeNode = (space, collapsed, sortable) => {
     depth: 0,
     index: 0,
     space: space.name,
+    path: space.name + "//",
     item: null,
     collapsed,
     sortable,
@@ -33984,6 +34146,7 @@ var vaulItemToTreeNode = (item, space, path, depth, i4, collapsed, sortable, chi
   id: (space == "/" ? "" : space) + "//" + item.path,
   parentId: (space == "/" ? "" : space) + "//" + path,
   depth,
+  path,
   index: i4,
   collapsed,
   sortable,
@@ -34042,13 +34205,33 @@ var vaultItemForPath = (plugin, path) => {
   return plugin.index.vaultDBCache.find((f4) => f4.path == path);
 };
 var saveFileSticker = (plugin, path, sticker) => {
-  const newVaultDB = plugin.index.vaultDBCache.map((f4) => f4.path == path ? { ...f4, sticker } : f4);
-  plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultDB } });
+  if (plugin.settings.spacesEnabled) {
+    const newVaultDB = plugin.index.vaultDBCache.map((f4) => f4.path == path ? { ...f4, sticker } : f4);
+    plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultDB } });
+  }
+  saveFrontmatterValue(
+    plugin,
+    path,
+    FMStickerKey,
+    sticker,
+    "text",
+    true
+  );
   plugin.index.reloadFile(getAbstractFileAtPath(app, path)).then((f4) => plugin.index.broadcast("space"));
 };
 var saveFileColor = (plugin, path, color) => {
-  const newVaultDB = plugin.index.vaultDBCache.map((f4) => f4.path == path ? { ...f4, color } : f4);
-  plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultDB } });
+  if (plugin.settings.spacesEnabled) {
+    const newVaultDB = plugin.index.vaultDBCache.map((f4) => f4.path == path ? { ...f4, color } : f4);
+    plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultDB } });
+  }
+  saveFrontmatterValue(
+    plugin,
+    path,
+    FMColorKey,
+    color,
+    "text",
+    true
+  );
   plugin.index.reloadFile(getAbstractFileAtPath(app, path)).then((f4) => plugin.index.broadcast("space"));
 };
 var saveSpaceSticker = (plugin, name, sticker) => {
@@ -34056,30 +34239,33 @@ var saveSpaceSticker = (plugin, name, sticker) => {
   plugin.index.saveSpacesDB({ spaces: { ...spaceSchema, rows: newSpaceDB } });
   plugin.index.reloadSpace(name);
 };
-var updateFileRank = async (plugin, item, vaultTree, rank) => {
-  if (Object.keys(vaultTree).includes(item.parent)) {
-    let fixedRank = rank;
-    if (parseInt(item.rank) > rank)
-      fixedRank = rank + 1;
-    const newItems = insert(
-      vaultTree[item.parent].filter((f4) => f4.path != item.path),
-      fixedRank,
-      item
-    ).map((f4, index) => ({ path: f4.path, rank: index.toString() }));
-    const newVaultDB = plugin.index.vaultDBCache.map((f4) => {
-      const newItem = newItems.find((g4) => g4.path == f4.path);
-      if (newItem) {
-        return { ...f4, ...newItem };
+var updateFileRank = async (plugin, item, rank) => {
+  let fixedRank = rank;
+  if (parseInt(item.rank) > rank)
+    fixedRank = rank + 1;
+  const newItems = insert(
+    plugin.index.vaultDBCache.filter((f4) => f4.parent == item.parent).filter((f4) => f4.path != item.path).sort(
+      (a5, b4) => {
+        var _a2, _b2;
+        return ((_a2 = a5.rank) != null ? _a2 : "0").localeCompare((_b2 = b4.rank) != null ? _b2 : "0", void 0, { numeric: true });
       }
-      return f4;
-    });
-    plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultDB } });
-    let promises = newItems.map((f4) => plugin.index.reloadFile(getAbstractFileAtPath(app, f4.path)));
-    await Promise.all(promises);
-    plugin.index.broadcast("space");
-  }
+    ),
+    fixedRank,
+    item
+  ).map((f4, index) => ({ path: f4.path, rank: index.toString() }));
+  const newVaultDB = plugin.index.vaultDBCache.map((f4) => {
+    const newItem = newItems.find((g4) => g4.path == f4.path);
+    if (newItem) {
+      return { ...f4, ...newItem };
+    }
+    return f4;
+  });
+  plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultDB } });
+  let promises = newItems.map((f4) => plugin.index.files.set(f4.path, { ...plugin.index.files.get(f4.path), rank: f4.rank }));
+  await Promise.all(promises);
+  plugin.index.broadcast("space");
 };
-var moveAFileToNewParentAtIndex = (plugin, item, newParent, vaultTree, index) => {
+var moveAFileToNewParentAtIndex = async (plugin, item, newParent, index) => {
   var _a2;
   const currFile = getAbstractFileAtPath(app, item.path);
   const newPath = newParent == "/" ? currFile.name : newParent + "/" + currFile.name;
@@ -34089,33 +34275,30 @@ var moveAFileToNewParentAtIndex = (plugin, item, newParent, vaultTree, index) =>
     parent: newParent,
     rank: index.toString()
   };
-  if (Object.keys(vaultTree).includes(newParent)) {
-    vaultTree[newParent] = insert(vaultTree[newParent], index, newItem);
-    const allRows = plugin.index.vaultDBCache.filter((f4) => f4.parent == newParent);
-    const rows = insert(
-      (_a2 = allRows.sort(
-        (a5, b4) => {
-          var _a3, _b2;
-          return ((_a3 = a5.rank) != null ? _a3 : "").localeCompare((_b2 = b4.rank) != null ? _b2 : "", void 0, { numeric: true });
-        }
-      )) != null ? _a2 : [],
-      index,
-      newItem
-    ).map((f4, index2) => ({ ...f4, rank: index2.toString() }));
-    const newVaultTable = [...rows, newItem].filter((f4) => f4.path != item.path).map((f4) => {
-      const newItem2 = rows.find((g4) => g4.path == f4.path);
-      if (newItem2) {
-        return { ...f4, ...newItem2 };
+  const allRows = plugin.index.vaultDBCache.filter((f4) => f4.parent == newParent);
+  const rows = insert(
+    (_a2 = allRows.sort(
+      (a5, b4) => {
+        var _a3, _b2;
+        return ((_a3 = a5.rank) != null ? _a3 : "").localeCompare((_b2 = b4.rank) != null ? _b2 : "", void 0, { numeric: true });
       }
-      return f4;
-    });
-    plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultTable } });
-    const afile = getAbstractFileAtPath(app, item.path);
-    moveFile(getAbstractFileAtPath(app, newParent), afile);
-  } else {
-    const afile = getAbstractFileAtPath(app, item.path);
-    moveFile(getAbstractFileAtPath(app, newParent), afile);
-  }
+    )) != null ? _a2 : [],
+    index,
+    newItem
+  ).map((f4, index2) => ({ ...f4, rank: index2.toString() }));
+  const newVaultTable = [...plugin.index.vaultDBCache, newItem].filter((f4) => f4.path != item.path).map((f4) => {
+    const newItem2 = rows.find((g4) => g4.path == f4.path);
+    if (newItem2) {
+      return { ...f4, ...newItem2 };
+    }
+    return f4;
+  });
+  plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultTable } });
+  const afile = getAbstractFileAtPath(app, item.path);
+  await moveFile(getAbstractFileAtPath(app, newParent), afile);
+  let promises = rows.map((f4) => plugin.index.files.set(f4.path, { ...plugin.index.files.get(f4.path), rank: f4.rank }));
+  await Promise.all(promises);
+  plugin.index.broadcast("space");
 };
 var insertSpaceAtIndex = (plugin, newSpace, rank) => {
   const spaces2 = plugin.index.allSpaces();
@@ -34298,14 +34481,14 @@ var initiateDB = (db) => {
 };
 var indexCurrentFileTree = (vaultDB, spaceItemsDB) => {
   let treeItems = [];
-  import_obsidian11.Vault.recurseChildren(app.vault.getRoot(), (file) => {
+  import_obsidian12.Vault.recurseChildren(app.vault.getRoot(), (file) => {
     var _a2;
     if (file.path != "/")
       treeItems.push({
         path: file.path,
         parent: (_a2 = file.parent) == null ? void 0 : _a2.path,
-        created: file instanceof import_obsidian11.TFile ? file.stat.ctime.toString() : void 0,
-        folder: file instanceof import_obsidian11.TFolder ? "true" : "false"
+        created: file instanceof import_obsidian12.TFile ? file.stat.ctime.toString() : void 0,
+        folder: file instanceof import_obsidian12.TFolder ? "true" : "false"
       });
   });
   const currentPaths = vaultDB;
@@ -34422,8 +34605,10 @@ var removeFileIcon = (plugin, data) => {
 var FileSticker = (props2) => {
   const { fileCache } = props2;
   const triggerStickerContextMenu = (e4) => {
+    if (!fileCache)
+      return;
     e4.preventDefault();
-    const fileMenu = new import_obsidian12.Menu();
+    const fileMenu = new import_obsidian13.Menu();
     fileMenu.addSeparator();
     fileMenu.addItem((menuItem) => {
       menuItem.setTitle(i18n_default.buttons.changeIcon);
@@ -34431,7 +34616,7 @@ var FileSticker = (props2) => {
       menuItem.onClick((ev) => {
         let vaultChangeModal = new stickerModal(
           props2.plugin.app,
-          (emoji) => saveFileSticker(props2.plugin, fileCache.path, emoji)
+          (emoji) => saveFileSticker(props2.plugin, fileCache == null ? void 0 : fileCache.path, emoji)
         );
         vaultChangeModal.open();
       });
@@ -34462,88 +34647,28 @@ var FileSticker = (props2) => {
     vaultChangeModal.open();
   };
   return /* @__PURE__ */ Cn.createElement("div", {
-    className: `mk-file-icon ${fileCache.sticker ? "" : "mk-file-icon-placeholder"}`
+    className: `mk-file-icon ${(fileCache == null ? void 0 : fileCache.sticker) ? "" : "mk-file-icon-placeholder"}`
   }, /* @__PURE__ */ Cn.createElement("button", {
     "aria-label": i18n_default.buttons.changeIcon,
     onContextMenu: triggerStickerContextMenu,
-    style: fileCache.color.length > 0 ? {
+    style: (fileCache == null ? void 0 : fileCache.color.length) > 0 ? {
       "--label-color": `${fileCache.color}`,
       "--icon-color": `#ffffff`
     } : {
       "--icon-color": `var(--text-muted)`
     },
-    dangerouslySetInnerHTML: fileCache.sticker ? { __html: stickerFromString(fileCache.sticker) } : {
+    dangerouslySetInnerHTML: (fileCache == null ? void 0 : fileCache.sticker) ? { __html: stickerFromString(fileCache.sticker) } : {
       __html: defaultIconForExtension(
-        fileCache.folderNote ? "md" : fileCache.extension,
-        fileCache.color ? true : false
+        (fileCache == null ? void 0 : fileCache.folderNote) ? "md" : fileCache == null ? void 0 : fileCache.extension,
+        (fileCache == null ? void 0 : fileCache.color) ? true : false
       )
     },
     onClick: (e4) => triggerStickerMenu(e4)
   }));
 };
-var FileStickerContainer = (props2) => {
-  const [fileCache, setFileCache] = h2(null);
-  const reloadCache = () => {
-    const fileCache2 = props2.plugin.index.files.get(props2.filePath);
-    setFileCache(fileCache2);
-  };
-  const reloadIcon = (e4) => {
-    if (e4.detail.type == "file" && e4.detail.name == props2.filePath) {
-      reloadCache();
-    }
-  };
-  p2(() => {
-    reloadCache();
-  }, []);
-  p2(() => {
-    window.addEventListener(eventTypes.spacesChange, reloadIcon);
-    return () => {
-      window.removeEventListener(eventTypes.spacesChange, reloadIcon);
-    };
-  }, [props2.filePath]);
-  return fileCache ? /* @__PURE__ */ Cn.createElement(FileSticker, {
-    plugin: props2.plugin,
-    fileCache: props2.plugin.index.files.get(props2.filePath)
-  }) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null);
-};
 
-// src/components/ui/modals/syncMetadataModal.tsx
-var import_obsidian13 = require("obsidian");
-var SyncMetadataModal = class extends import_obsidian13.Modal {
-  constructor(plugin, files, syncColumns, fields) {
-    super(plugin.app);
-    this.plugin = plugin;
-    this.files = files;
-    let closeButton = this.modalEl.querySelector(
-      ".modal-close-button"
-    );
-    closeButton.style.display = "none";
-    this.syncColumns = syncColumns;
-    this.fields = fields;
-  }
-  onOpen() {
-    let { contentEl } = this;
-    let myModal = this;
-    let headerText;
-    const headerEl = contentEl.createEl("div", { text: headerText });
-    headerEl.addClass("modal-title");
-    headerEl.innerHTML = i18n_default.labels.syncMetadata;
-    const root = createRoot(contentEl);
-    root.render(
-      /* @__PURE__ */ Cn.createElement(SyncMetadataComponent, {
-        plugin: this.plugin,
-        files: this.files,
-        syncColumns: this.syncColumns,
-        close: () => this.close(),
-        columns: this.fields
-      })
-    );
-  }
-  onClose() {
-    let { contentEl } = this;
-    contentEl.empty();
-  }
-};
+// src/components/ContextView/ContextBuilder/BuilderMetadataFields.tsx
+var import_obsidian14 = require("obsidian");
 var allMetadataForFiles = (plugin, files) => {
   return files.reduce((p3, c4) => {
     const fm = frontMatterForFile(c4);
@@ -34575,97 +34700,27 @@ var metadatTypeFilterPredicate = (value, index, self2) => {
   ) === index;
 };
 var SyncMetadataComponent = (props2) => {
-  const cols = allMetadataForFiles(props2.plugin, props2.files.filter((f4) => f4 instanceof import_obsidian13.TFile));
-  const [syncColumns, setSyncColumns] = h2(
-    cols.filter(
-      (f4) => props2.columns ? !props2.columns.some((g4) => g4.name == f4.name) : true
-    )
+  const cols = allMetadataForFiles(
+    props2.plugin,
+    props2.files.filter((f4) => f4 instanceof import_obsidian14.TFile)
+  ).filter(
+    (f4) => props2.columns ? !props2.columns.some((g4) => g4.name == f4.name) : true
   );
-  const [table, setTable] = h2("");
-  const toggleColumn = (column) => {
-    if (syncColumns.find((f4) => f4.name == column.name && f4.type == column.type)) {
-      setSyncColumns(
-        (s5) => s5.filter((f4) => !(f4.name == column.name && f4.type == column.type))
-      );
-    } else {
-      setSyncColumns((s5) => [...s5, column]);
-    }
-  };
-  const saveContexts = (_9, value) => {
-    setTable(value[0]);
-  };
-  const showContextMenu = (e4) => {
-    const offset = e4.target.getBoundingClientRect();
-    const f4 = loadTags(props2.plugin);
-    showSelectMenu(
-      { x: offset.left, y: offset.top + 30 },
-      {
-        multi: false,
-        editable: true,
-        value: [],
-        options: [
-          { name: "Folder", value: "" },
-          ...f4.map((m5) => ({ name: m5, value: m5 }))
-        ],
-        saveOptions: saveContexts,
-        placeholder: i18n_default.labels.tagItemSelectPlaceholder,
-        searchable: true,
-        showAll: true
-      }
-    );
-  };
-  const sync = () => {
-    props2.syncColumns(syncColumns, table);
-    props2.close();
-  };
   return /* @__PURE__ */ Cn.createElement("div", {
-    className: "modal-content"
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item setting-item-heading"
-  }, i18n_default.labels.syncProperties), /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item"
-  }, i18n_default.descriptions.syncProperties), /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item"
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-info"
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-name"
-  }, i18n_default.labels.selectContext), /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-description"
-  }, i18n_default.descriptions.selectContext)), /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-control"
-  }, /* @__PURE__ */ Cn.createElement("button", {
-    onClick: (e4) => showContextMenu(e4)
-  }, table == "" ? i18n_default.buttons.currentFolder : table))), /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item"
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-info"
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-name"
-  }, i18n_default.labels.syncProperties), /* @__PURE__ */ Cn.createElement("div", {
-    className: "setting-item-description"
-  }, i18n_default.descriptions.syncMetadata), cols.map((f4, index) => /* @__PURE__ */ Cn.createElement("div", {
-    className: "mobile-option-setting-item"
-  }, /* @__PURE__ */ Cn.createElement("input", {
-    type: "checkbox",
-    checked: syncColumns.some(
-      (g4) => g4.name == f4.name && g4.type == f4.type
-    ),
-    onChange: () => toggleColumn(f4)
-  }), /* @__PURE__ */ Cn.createElement("span", {
-    className: "mobile-option-setting-item-name"
-  }, f4.name, /* @__PURE__ */ Cn.createElement("span", {
-    className: "nav-file-tag"
-  }, f4.type)))))), /* @__PURE__ */ Cn.createElement("button", {
-    style: { marginRight: 8 },
-    onClick: () => sync()
-  }, i18n_default.buttons.sync), /* @__PURE__ */ Cn.createElement("button", {
-    onClick: () => props2.close()
-  }, i18n_default.buttons.cancel));
+    className: "mk-cell-option"
+  }, cols.map((f4, index) => /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-cell-option-item",
+    onClick: () => props2.syncColumn(f4, "")
+  }, /* @__PURE__ */ Cn.createElement("div", null, f4.name), /* @__PURE__ */ Cn.createElement("div", {
+    className: `mk-icon-xsmall`,
+    dangerouslySetInnerHTML: {
+      __html: uiIconSet["mk-ui-plus"]
+    }
+  }))));
 };
 
 // src/components/Spaces/SpaceEditor.tsx
-var import_obsidian20 = require("obsidian");
+var import_obsidian22 = require("obsidian");
 
 // src/types/metadata.ts
 var fileProps = {
@@ -34773,7 +34828,7 @@ var filterFnLabels = {
 };
 
 // src/components/ui/menus/newPropertyMenu.tsx
-var import_obsidian14 = require("obsidian");
+var import_obsidian15 = require("obsidian");
 var NewPropertyMenuComponent = (props2) => {
   const [fieldName, setFieldName] = h2("");
   const [fieldSource, setFieldSource] = h2(
@@ -34781,7 +34836,6 @@ var NewPropertyMenuComponent = (props2) => {
   );
   const [fieldValue, setFieldValue] = h2("");
   const [fieldType, setFieldType] = h2("text");
-  const [context, setContext] = h2(null);
   const options = F2(() => {
     let options2 = [];
     if (props2.fileMetadata) {
@@ -34844,7 +34898,7 @@ var NewPropertyMenuComponent = (props2) => {
   const type = F2(
     () => {
       var _a2;
-      return (_a2 = fieldTypes.find((f4) => f4.type == fieldType || f4.multiType == fieldType)) != null ? _a2 : fieldTypes[0];
+      return (_a2 = fieldTypeForType(fieldType)) != null ? _a2 : fieldTypes[0];
     },
     [fieldType]
   );
@@ -34861,7 +34915,7 @@ var NewPropertyMenuComponent = (props2) => {
   };
   const saveField = () => {
     if (fieldName.length == 0) {
-      new import_obsidian14.Notice(i18n_default.notice.noPropertyName);
+      new import_obsidian15.Notice(i18n_default.notice.noPropertyName);
       return;
     }
     props2.saveField(fieldSource, {
@@ -34914,7 +34968,7 @@ var NewPropertyMenuComponent = (props2) => {
     fields: props2.fields,
     fieldType,
     value: fieldValue,
-    context,
+    contextPath: props2.contextPath,
     saveValue: selectedValue,
     saveContext: selectedContext
   }) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null), /* @__PURE__ */ Cn.createElement("div", {
@@ -34928,7 +34982,7 @@ var NewPropertyMenuComponent = (props2) => {
   }, /* @__PURE__ */ Cn.createElement("span", null, "Cancel")));
 };
 var showNewPropertyMenu = (plugin, position, tags, fields, saveField, schemaId, contextPath, fileMetadata) => {
-  const menu = new import_obsidian14.Menu();
+  const menu = new import_obsidian15.Menu();
   menu.setUseNativeMenu(false);
   const frag = document.createDocumentFragment();
   const div = frag.createDiv();
@@ -35105,7 +35159,7 @@ var ColumnHeader = (props2) => {
         options,
         field,
         cols,
-        contextTable,
+        contextInfo.contextPath,
         saveField,
         saveContext,
         hideColumn,
@@ -35134,7 +35188,7 @@ var ColumnHeader = (props2) => {
 };
 
 // src/components/ui/menus/propertyMenu.tsx
-var import_obsidian15 = require("obsidian");
+var import_obsidian16 = require("obsidian");
 var PropertyValueComponent = (props2) => {
   const selectContext = (e4) => {
     var _a2;
@@ -35149,16 +35203,17 @@ var PropertyValueComponent = (props2) => {
     });
   };
   const selectFileProp = (e4) => {
-    const properties2 = props2.fields.filter(
-      (f4) => f4.type == "file" || f4.type == "context" && f4.table == props2.table
+    var _a2;
+    const properties2 = (_a2 = props2.plugin.index.contextsCache.get(props2.contextPath)) == null ? void 0 : _a2.cols.filter(
+      (f4) => f4.type == "file" || f4.type == "link" || f4.type == "context"
     ).reduce((p3, c4) => {
-      var _a2, _b2;
+      var _a3, _b2;
       return [
         ...p3,
-        ...c4.type == "file" ? filePropTypes.map((f4) => ({
+        ...c4.type == "file" || c4.type == "link" ? filePropTypes.map((f4) => ({
           name: c4.name + "." + f4.name,
           value: c4.name + "." + f4.value
-        })) : (_b2 = (_a2 = props2.context[c4.value]) == null ? void 0 : _a2.cols.filter((f4) => f4.hidden != "true").map((f4) => ({
+        })) : (_b2 = (_a3 = props2.plugin.index.contextsCache.get(c4.value)) == null ? void 0 : _a3.cols.filter((f4) => f4.hidden != "true").map((f4) => ({
           name: c4.name + "." + f4.name,
           value: c4.name + "." + f4.name
         }))) != null ? _b2 : []
@@ -35241,7 +35296,7 @@ var PropertyMenuComponent = (props2) => {
     setField(newField);
     props2.saveField(newField);
   };
-  const fieldType = (_a2 = fieldTypes.find((f4) => f4.type == field.type || f4.multiType == field.type)) != null ? _a2 : fieldTypes[0];
+  const fieldType = (_a2 = fieldTypeForType(field.type)) != null ? _a2 : fieldTypes[0];
   const getNewValueForType = (f4, value) => {
     if (value[0].startsWith("option")) {
       return serializeMultiString(props2.options);
@@ -35281,13 +35336,13 @@ var PropertyMenuComponent = (props2) => {
     fields: props2.fields,
     fieldType: fieldType.type,
     value: field.value,
-    context: props2.context,
+    contextPath: props2.contextPath,
     saveValue: selectedValue,
     saveContext: selectedContext
   }));
 };
-var showPropertyMenu = (plugin, position, editable, options, field, fields, contextTables, saveField, saveContext, hide, deleteColumn, sortColumn, hidden) => {
-  const menu = new import_obsidian15.Menu();
+var showPropertyMenu = (plugin, position, editable, options, field, fields, contextPath, saveField, saveContext, hide, deleteColumn, sortColumn, hidden) => {
+  const menu = new import_obsidian16.Menu();
   menu.setUseNativeMenu(false);
   if (editable) {
     menu.addItem((menuItem) => {
@@ -35313,7 +35368,7 @@ var showPropertyMenu = (plugin, position, editable, options, field, fields, cont
         plugin,
         field,
         fields,
-        context: contextTables,
+        contextPath,
         options,
         saveField,
         saveContext
@@ -35377,164 +35432,21 @@ var showPropertyMenu = (plugin, position, editable, options, field, fields, cont
   return menu;
 };
 
-// src/components/ui/modals/mergeColumnModal.ts
-var import_obsidian16 = require("obsidian");
-var MergeColumnModal = class extends import_obsidian16.Modal {
-  constructor(columns, mergeColumn) {
-    super(app);
-    this.columns = columns;
-    this.mergeColumn = mergeColumn;
-  }
-  onOpen() {
-    let { contentEl } = this;
-    let myModal = this;
-    let headerText = i18n_default.labels.mergeProperties;
-    const headerEl = contentEl.createEl("div", { text: headerText });
-    headerEl.addClass("modal-title");
-    const containerEl = contentEl.createEl("div");
-    containerEl.style.cssText = "width: 100%; height: 2.5em; margin-bottom: 15px;";
-    const select = containerEl.createEl("select");
-    for (var i4 = 0; i4 < this.columns.length; i4++) {
-      var opt = document.createElement("option");
-      opt.value = i4.toString();
-      opt.innerHTML = this.columns[i4].name + this.columns[i4].table;
-      select.appendChild(opt);
-    }
-    const select2 = containerEl.createEl("select");
-    for (var i4 = 0; i4 < this.columns.length; i4++) {
-      var opt = document.createElement("option");
-      opt.value = i4.toString();
-      opt.innerHTML = this.columns[i4].name + this.columns[i4].table;
-      select2.appendChild(opt);
-    }
-    let changeButtonText = i18n_default.buttons.merge;
-    const changeButton = contentEl.createEl("button", {
-      text: changeButtonText
-    });
-    const cancelButton = contentEl.createEl("button", {
-      text: i18n_default.buttons.cancel
-    });
-    cancelButton.style.cssText = "float: right;";
-    cancelButton.addEventListener("click", () => {
-      myModal.close();
-    });
-    const onClickAction = async () => {
-      this.mergeColumn(
-        this.columns[parseInt(select.value)],
-        this.columns[parseInt(select2.value)]
-      );
-      myModal.close();
-    };
-    changeButton.addEventListener("click", onClickAction);
-  }
-  onClose() {
-    let { contentEl } = this;
-    contentEl.empty();
-  }
-};
-
-// src/components/ui/modals/saveViewModal.ts
-var import_obsidian17 = require("obsidian");
-var SaveViewModal = class extends import_obsidian17.Modal {
-  constructor(schema, saveSchema, action) {
-    super(app);
-    this.schema = schema;
-    this.saveSchema = saveSchema;
-    this.action = action;
-  }
-  onOpen() {
-    let { contentEl } = this;
-    let myModal = this;
-    let headerText;
-    if (this.action == "new view")
-      headerText = i18n_default.labels.saveView;
-    if (this.action == "new table")
-      headerText = i18n_default.labels.saveTable;
-    if (this.action == "rename view")
-      headerText = i18n_default.labels.renameView;
-    if (this.action == "rename table")
-      headerText = i18n_default.labels.renameTable;
-    const headerEl = contentEl.createEl("div", { text: headerText });
-    headerEl.addClass("modal-title");
-    const inputEl = contentEl.createEl("input");
-    inputEl.style.cssText = "width: 100%; height: 2.5em; margin-bottom: 15px;";
-    inputEl.focus();
-    let changeButtonText;
-    if (this.action == "new view")
-      changeButtonText = i18n_default.buttons.saveView;
-    if (this.action == "new table")
-      changeButtonText = i18n_default.buttons.saveTable;
-    if (this.action == "rename view")
-      changeButtonText = i18n_default.buttons.renameView;
-    if (this.action == "rename table")
-      changeButtonText = i18n_default.buttons.renameTable;
-    const changeButton = contentEl.createEl("button", {
-      text: changeButtonText
-    });
-    const cancelButton = contentEl.createEl("button", {
-      text: i18n_default.buttons.cancel
-    });
-    cancelButton.style.cssText = "float: right;";
-    cancelButton.addEventListener("click", () => {
-      myModal.close();
-    });
-    const onClickAction = async () => {
-      let newName = inputEl.value;
-      if (this.action == "new view" || this.action == "new table") {
-        this.saveSchema({ ...this.schema, id: newName, name: newName });
-      } else {
-        this.saveSchema({ ...this.schema, name: newName });
-      }
-      myModal.close();
-    };
-    changeButton.addEventListener("click", onClickAction);
-    inputEl.addEventListener("keydown", (e4) => {
-      if (e4.key === "Enter") {
-        e4.preventDefault();
-        onClickAction();
-      }
-    });
-  }
-  onClose() {
-    let { contentEl } = this;
-    contentEl.empty();
-  }
-};
-
-// src/components/ContextView/FilterBar/FilterBar.tsx
-var import_obsidian19 = require("obsidian");
-
-// src/components/ContextView/FilterBar/SearchBar.tsx
-var SearchBar = (props2) => {
-  const clearSearch = () => {
-    props2.setSearchString("");
-  };
-  return /* @__PURE__ */ Cn.createElement("div", {
-    className: "mk-view-search"
-  }, /* @__PURE__ */ Cn.createElement("button", {
-    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-search"] }
-  }), /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("input", {
-    onChange: (e4) => props2.setSearchString(e4.target.value),
-    placeholder: i18n_default.labels.searchPlaceholder,
-    className: "mk-search-bar"
-  }), /* @__PURE__ */ Cn.createElement("button", {
-    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-clear"] },
-    onClick: () => clearSearch()
-  })));
-};
+// src/components/ContextView/ContextBuilder/ContextBuilderView.tsx
+var import_classnames = __toESM(require_classnames());
 
 // src/components/ContextView/TagsView/TagsView.tsx
-var import_obsidian18 = require("obsidian");
+var import_obsidian17 = require("obsidian");
 var TagsView = (props2) => {
   const showTagMenu = (e4, tag) => {
     e4.stopPropagation();
     e4.preventDefault();
-    const menu = new import_obsidian18.Menu();
+    const menu = new import_obsidian17.Menu();
     menu.addItem((menuItem) => {
       menuItem.setIcon("hash");
       menuItem.setTitle(i18n_default.menu.openTag);
       menuItem.onClick(() => {
-        openContext(tag, props2.plugin, e4.metaKey);
+        openTagContext(tag, props2.plugin, e4.metaKey);
       });
     });
     if (props2.removeTag)
@@ -35569,27 +35481,21 @@ var TagsView = (props2) => {
     className: "mk-tag-selector"
   }, props2.tags.map((f4, i4) => /* @__PURE__ */ Cn.createElement("div", {
     onContextMenu: (e4) => showTagMenu(e4, f4),
-    onClick: (e4) => openContext(f4, props2.plugin, e4.metaKey)
+    onClick: (e4) => !props2.canOpen ? showTagMenu(e4, f4) : openTagContext(f4, props2.plugin, e4.metaKey)
   }, /* @__PURE__ */ Cn.createElement("span", {
     className: "cm-hashtag cm-hashtag-begin"
   }, "#"), /* @__PURE__ */ Cn.createElement("span", {
     className: "cm-hashtag cm-hashtag-end"
-  }, stringFromTag(f4)))), props2.addTag && /* @__PURE__ */ Cn.createElement("button", {
+  }, stringFromTag(f4)))), props2.addTag && /* @__PURE__ */ Cn.createElement("div", {
     "aria-label": i18n_default.buttons.addTag,
     onClick: (e4) => showContextMenu(e4)
   }, /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-icon-xsmall",
     dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-plus"] }
-  })), props2.syncTags && /* @__PURE__ */ Cn.createElement("button", {
-    "aria-label": i18n_default.buttons.syncFields,
-    onClick: (e4) => props2.syncTags()
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "mk-icon-xsmall",
-    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-sync"] }
   })));
 };
 
-// src/components/ContextView/FilterBar/TagSelector.tsx
+// src/components/ContextView/ContextBuilder/TagSelector.tsx
 var TagSelector = (props2) => {
   const {
     data,
@@ -35616,13 +35522,206 @@ var TagSelector = (props2) => {
   const addTag2 = async (tag) => {
     const tags = uniq([...tagContexts, tag]);
     tags.forEach((tag2) => {
-      initiateContextIfNotExists(props2.plugin, tag2).then((f4) => loadContextFields(tag2));
+      initiateContextIfNotExists(props2.plugin, tag2).then(
+        (f4) => loadContextFields(tag2)
+      );
     });
     saveSchema({
       ...dbSchema,
       def: updateTagsForDefString(dbSchema.def, tags)
     });
     connectContext(props2.plugin, tag, contextInfo.dbPath);
+  };
+  return /* @__PURE__ */ Cn.createElement(TagsView, {
+    plugin: props2.plugin,
+    tags: tagContexts,
+    canOpen: false,
+    addTag: props2.canAdd && addTag2,
+    removeTag: removeContext
+  });
+};
+
+// src/components/ContextView/ContextBuilder/ContextDesigner.tsx
+var ContextDesigner = (props2) => {
+  const { sortedColumns, predicate, savePredicate } = q2(MDBContext);
+  const [activeId, setActiveId] = h2("");
+  const [overId, setOverId] = h2("");
+  const items = sortedColumns.map((f4) => ({ ...f4, id: f4.name + f4.table }));
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 10
+      }
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5
+      }
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates
+    })
+  );
+  const resetState = () => {
+    setActiveId(null);
+    setOverId(null);
+  };
+  return /* @__PURE__ */ Cn.createElement(DndContext, {
+    sensors,
+    collisionDetection: closestCenter,
+    measuring: {
+      droppable: {
+        strategy: MeasuringStrategy.Always
+      }
+    },
+    onDragStart: ({ active }) => {
+      setActiveId(active.id);
+    },
+    onDragOver: ({ active, over }) => {
+      const overId2 = over == null ? void 0 : over.id;
+      if (overId2)
+        setOverId(overId2);
+    },
+    onDragEnd: ({ active, over }) => {
+      const overId2 = over == null ? void 0 : over.id;
+      if (!overId2) {
+        resetState();
+        return;
+      }
+      savePredicate({
+        ...predicate,
+        colsOrder: arrayMove(
+          predicate.colsOrder,
+          predicate.colsOrder.findIndex((f4) => f4 == activeId),
+          predicate.colsOrder.findIndex((f4) => f4 == overId2)
+        )
+      });
+      resetState();
+    },
+    onDragCancel: resetState
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-context-maker-layout"
+  }, /* @__PURE__ */ Cn.createElement("div", null, /* @__PURE__ */ Cn.createElement(SortableContext, {
+    items,
+    strategy: verticalListSortingStrategy
+  }, items.map((value, index) => {
+    return /* @__PURE__ */ Cn.createElement(SortableItem, {
+      id: value.id,
+      value: value.name
+    });
+  })))), z3(
+    /* @__PURE__ */ Cn.createElement(DragOverlay, {
+      adjustScale: false
+    }, activeId ? /* @__PURE__ */ Cn.createElement(SortableItem, {
+      id: items.find((f4) => f4.id == activeId).id,
+      value: items.find((f4) => f4.id == activeId).name
+    }) : null),
+    document.body
+  ));
+};
+function SortableItem(props2) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: props2.id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition
+  };
+  return /* @__PURE__ */ Cn.createElement("div", {
+    ref: setNodeRef,
+    style,
+    ...attributes,
+    ...listeners
+  }, props2.value);
+}
+
+// src/components/ContextView/ContextBuilder/ContextBuilderView.tsx
+var ContextBuilderView = (props2) => {
+  const {
+    data,
+    cols,
+    sortedColumns,
+    dbSchema,
+    schema,
+    contextInfo,
+    tableData,
+    contextTable,
+    saveColumn,
+    loadContextFields,
+    tagContexts,
+    hideColumn,
+    sortColumn,
+    delColumn,
+    saveDB: saveDB2,
+    saveContextDB,
+    dbFileExists,
+    predicate,
+    saveSchema
+  } = q2(MDBContext);
+  const [section, setSection] = h2(0);
+  const saveField = (field, oldField) => {
+    if (field.name.length > 0) {
+      if (field.name != oldField.name || field.type != oldField.type || field.value != oldField.value || field.attrs != oldField.attrs) {
+        const saveResult = saveColumn(field, oldField);
+      }
+    }
+  };
+  const saveContext = (field, oldField, value) => {
+    const newContext = value[0];
+    initiateContextIfNotExists(props2.plugin, newContext).then((f4) => {
+      if (f4) {
+        return insertContextItems(
+          props2.plugin,
+          optionValuesForColumn(
+            field.name,
+            field.table == "" ? tableData : contextTable[field.table]
+          ),
+          newContext
+        );
+      }
+    }).then((f4) => loadContextFields(newContext));
+    const newField = {
+      ...field,
+      value: newContext != null ? newContext : ""
+    };
+    saveColumn(newField, oldField);
+  };
+  const showMenu = (e4, field) => {
+    const offset = e4.target.getBoundingClientRect();
+    const options = optionValuesForColumn(
+      field.name,
+      field.table == "" ? tableData : contextTable[field.table]
+    );
+    showPropertyMenu(
+      props2.plugin,
+      { x: offset.left, y: offset.top + 30 },
+      true,
+      options,
+      field,
+      cols,
+      contextInfo.contextPath,
+      (newField) => saveField(newField, field),
+      (newField, val) => saveContext(newField, field, val),
+      hideColumn,
+      delColumn,
+      sortColumn,
+      predicate.colsHidden.includes(field.name + field.table)
+    );
+  };
+  const saveNewField = (source, field) => {
+    saveColumn({ ...field, table: "" });
+  };
+  const newProperty = (e4) => {
+    const offset = e4.target.getBoundingClientRect();
+    showNewPropertyMenu(
+      props2.plugin,
+      { x: offset.left, y: offset.top + 30 },
+      tagContexts,
+      [],
+      saveNewField,
+      "files",
+      contextInfo.contextPath,
+      false
+    );
   };
   const saveMetadata = (keys, table) => {
     const files = data.map((f4) => f4.File);
@@ -35712,14 +35811,14 @@ var TagSelector = (props2) => {
     } else {
       if (!dbFileExists) {
         saveDB2(tableData).then(
-          () => saveContext(yamlTableData, yamlTypes, table)
+          () => syncMetadataContext(yamlTableData, yamlTypes, table)
         );
       } else {
-        saveContext(yamlTableData, yamlTypes, table);
+        syncMetadataContext(yamlTableData, yamlTypes, table);
       }
     }
   };
-  const saveContext = (yamlTableData, yamlTypes, table) => {
+  const syncMetadataContext = (yamlTableData, yamlTypes, table) => {
     if (contextTable[table]) {
       const newTable = mergeTableData(
         contextTable[table],
@@ -35729,14 +35828,13 @@ var TagSelector = (props2) => {
       saveContextDB(newTable, table);
       saveSchema({
         ...dbSchema,
-        def: updateTagsForDefString(dbSchema.def, uniq([...tagContexts, table]))
+        def: updateTagsForDefString(
+          dbSchema.def,
+          uniq([...tagContexts, table])
+        )
       });
     } else {
-      getMDBTable(
-        props2.plugin,
-        tagContextFromTag(props2.plugin, table),
-        "files"
-      ).then((f4) => {
+      getMDBTable(props2.plugin, tagContextFromTag(props2.plugin, table), "files").then((f4) => {
         if (f4) {
           const newTable = mergeTableData(f4, yamlTableData, yamlTypes);
           return saveContextDB(newTable, table);
@@ -35744,32 +35842,327 @@ var TagSelector = (props2) => {
       }).then(() => {
         saveSchema({
           ...dbSchema,
-          def: updateTagsForDefString(dbSchema.def, uniq([...tagContexts, table]))
+          def: updateTagsForDefString(
+            dbSchema.def,
+            uniq([...tagContexts, table])
+          )
         });
       });
     }
   };
-  const syncMetadata = () => {
-    let vaultChangeModal = new SyncMetadataModal(
-      props2.plugin,
-      data.map((f4) => getAbstractFileAtPath(app, f4.File)).filter((f4) => f4),
-      saveMetadata,
-      cols
-    );
-    vaultChangeModal.open();
-  };
-  return /* @__PURE__ */ Cn.createElement(TagsView, {
+  return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-context-maker-preview"
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (schema == null ? void 0 : schema.type) == "card" ? "mk-cards-container mk-cards-grid" : "mk-list-container"
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-list-item"
+  }, sortedColumns.filter((f4) => f4.type == "preview" && f4.table == "").map((f4) => /* @__PURE__ */ Cn.createElement(DataTypeView, {
     plugin: props2.plugin,
-    tags: tagContexts,
-    addTag: props2.canAdd && addTag2,
-    removeTag: removeContext,
-    syncTags: contextInfo.type != "unknown" && syncMetadata
-  });
+    initialValue: defaultValueForPropertyType(
+      f4.name,
+      f4.value,
+      f4.type
+    ),
+    column: f4,
+    index: 0,
+    file: "",
+    editable: false
+  })), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-list-fields"
+  }, sortedColumns.filter((f4) => f4.type != "preview").map((f4, i4) => /* @__PURE__ */ Cn.createElement(DataTypeView, {
+    plugin: props2.plugin,
+    initialValue: defaultValueForPropertyType(
+      f4.name,
+      f4.value,
+      f4.type
+    ),
+    index: 0,
+    file: "",
+    column: { ...f4, table: "" },
+    editable: false,
+    updateValue: (v3) => {
+    },
+    updateFieldValue: (fv, v3) => {
+    },
+    contextTable: {}
+  })))))), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-context-maker-selector"
+  }, section == 0 ? /* @__PURE__ */ Cn.createElement("div", null, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)("mk-section-title")
+  }, (dbSchema == null ? void 0 : dbSchema.primary) == "true" ? contextDisplayName(contextInfo) : "Properties"), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-cell-option"
+  }, cols.filter(
+    (f4) => !(f4.type == "preview" && f4.table != "") && f4.table == ""
+  ).map((f4, i4) => /* @__PURE__ */ Cn.createElement("div", {
+    key: i4
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(
+      "mk-cell-option-item",
+      !predicate.colsHidden.includes(f4.name + f4.table) && "mk-is-active"
+    ),
+    onClick: (e4) => hideColumn(
+      f4,
+      !predicate.colsHidden.includes(f4.name + f4.table)
+    ),
+    onContextMenu: (e4) => showMenu(e4, f4)
+  }, /* @__PURE__ */ Cn.createElement("div", null, f4.name, " ")))), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-cell-option-item"
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(`mk-icon-xsmall`),
+    onClick: (e4) => newProperty(e4),
+    dangerouslySetInnerHTML: {
+      __html: uiIconSet["mk-ui-plus"]
+    }
+  }))), (dbSchema == null ? void 0 : dbSchema.primary) == "true" && contextInfo.type != "tag" && /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)("mk-section-title")
+  }, "Contexts"), /* @__PURE__ */ Cn.createElement(TagSelector, {
+    plugin: props2.plugin,
+    canAdd: true
+  }), tagContexts.map((t4) => /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)("mk-section-title")
+  }, t4 == "" ? contextDisplayName(contextInfo) : t4), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-cell-option"
+  }, cols.filter(
+    (f4) => !(f4.type == "preview" && f4.table != "") && f4.table == t4
+  ).map((f4, i4) => /* @__PURE__ */ Cn.createElement("div", {
+    key: i4
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(
+      "mk-cell-option-item",
+      !predicate.colsHidden.includes(
+        f4.name + f4.table
+      ) && "mk-is-active"
+    ),
+    onClick: (e4) => hideColumn(
+      f4,
+      !predicate.colsHidden.includes(
+        f4.name + f4.table
+      )
+    ),
+    onContextMenu: (e4) => showMenu(e4, f4)
+  }, /* @__PURE__ */ Cn.createElement("div", null, f4.name, " ")))), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-cell-option-item"
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(`mk-icon-xsmall`),
+    onClick: (e4) => newProperty(e4),
+    dangerouslySetInnerHTML: {
+      __html: uiIconSet["mk-ui-plus"]
+    }
+  })))))), (dbSchema == null ? void 0 : dbSchema.primary) == "true" && /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)("mk-section-title")
+  }, "Metadata"), /* @__PURE__ */ Cn.createElement(SyncMetadataComponent, {
+    plugin: props2.plugin,
+    columns: cols,
+    syncColumn: (columns, table) => saveMetadata([columns], table),
+    files: data.map((f4) => getAbstractFileAtPath(app, f4.File)).filter((f4) => f4)
+  }))) : /* @__PURE__ */ Cn.createElement(ContextDesigner, null)), /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-section-tabs"
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(
+      "mk-section-title",
+      section == 0 && "mk-is-active"
+    ),
+    onClick: () => setSection(0)
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(`mk-icon-small`),
+    dangerouslySetInnerHTML: {
+      __html: uiIconSet["mk-ui-edit"]
+    }
+  }), "Properties"), /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(
+      "mk-section-title",
+      section == 1 && "mk-is-active"
+    ),
+    onClick: () => setSection(1)
+  }, /* @__PURE__ */ Cn.createElement("div", {
+    className: (0, import_classnames.default)(`mk-icon-small`),
+    dangerouslySetInnerHTML: {
+      __html: uiIconSet["mk-ui-stack"]
+    }
+  }), "Layout")));
+};
+
+// src/components/ui/modals/contextEditorModal.tsx
+var import_obsidian18 = require("obsidian");
+var ContextEditorModal = class extends import_obsidian18.Modal {
+  constructor(plugin, context, view) {
+    super(plugin.app);
+    this.context = context;
+    this.view = view;
+    this.plugin = plugin;
+  }
+  onOpen() {
+    let { contentEl } = this;
+    let myModal = this;
+    myModal.modalEl.toggleClass("mk-context-maker", true);
+    let headerText;
+    headerText = i18n_default.labels.contextMaker;
+    const queryEl = contentEl.createDiv("mk-context-maker-container");
+    const root = createRoot(queryEl);
+    root.render(
+      /* @__PURE__ */ Cn.createElement(MDBProvider, {
+        plugin: this.plugin,
+        context: this.context,
+        schema: this.view
+      }, /* @__PURE__ */ Cn.createElement(ContextBuilderView, {
+        plugin: this.plugin
+      }))
+    );
+  }
+  onClose() {
+    let { contentEl } = this;
+    contentEl.empty();
+  }
+};
+
+// src/components/ui/modals/mergeColumnModal.ts
+var import_obsidian19 = require("obsidian");
+var MergeColumnModal = class extends import_obsidian19.Modal {
+  constructor(columns, mergeColumn) {
+    super(app);
+    this.columns = columns;
+    this.mergeColumn = mergeColumn;
+  }
+  onOpen() {
+    let { contentEl } = this;
+    let myModal = this;
+    let headerText = i18n_default.labels.mergeProperties;
+    const headerEl = contentEl.createEl("div", { text: headerText });
+    headerEl.addClass("modal-title");
+    const containerEl = contentEl.createEl("div");
+    containerEl.style.cssText = "width: 100%; height: 2.5em; margin-bottom: 15px;";
+    const select = containerEl.createEl("select");
+    for (var i4 = 0; i4 < this.columns.length; i4++) {
+      var opt = document.createElement("option");
+      opt.value = i4.toString();
+      opt.innerHTML = this.columns[i4].name + this.columns[i4].table;
+      select.appendChild(opt);
+    }
+    const select2 = containerEl.createEl("select");
+    for (var i4 = 0; i4 < this.columns.length; i4++) {
+      var opt = document.createElement("option");
+      opt.value = i4.toString();
+      opt.innerHTML = this.columns[i4].name + this.columns[i4].table;
+      select2.appendChild(opt);
+    }
+    let changeButtonText = i18n_default.buttons.merge;
+    const changeButton = contentEl.createEl("button", {
+      text: changeButtonText
+    });
+    const cancelButton = contentEl.createEl("button", {
+      text: i18n_default.buttons.cancel
+    });
+    cancelButton.style.cssText = "float: right;";
+    cancelButton.addEventListener("click", () => {
+      myModal.close();
+    });
+    const onClickAction = async () => {
+      this.mergeColumn(
+        this.columns[parseInt(select.value)],
+        this.columns[parseInt(select2.value)]
+      );
+      myModal.close();
+    };
+    changeButton.addEventListener("click", onClickAction);
+  }
+  onClose() {
+    let { contentEl } = this;
+    contentEl.empty();
+  }
+};
+
+// src/components/ui/modals/saveViewModal.ts
+var import_obsidian20 = require("obsidian");
+var SaveViewModal = class extends import_obsidian20.Modal {
+  constructor(schema, saveSchema, action) {
+    super(app);
+    this.schema = schema;
+    this.saveSchema = saveSchema;
+    this.action = action;
+  }
+  onOpen() {
+    let { contentEl } = this;
+    let myModal = this;
+    let headerText;
+    if (this.action == "new view")
+      headerText = i18n_default.labels.saveView;
+    if (this.action == "new table")
+      headerText = i18n_default.labels.saveTable;
+    if (this.action == "rename view")
+      headerText = i18n_default.labels.renameView;
+    if (this.action == "rename table")
+      headerText = i18n_default.labels.renameTable;
+    const headerEl = contentEl.createEl("div", { text: headerText });
+    headerEl.addClass("modal-title");
+    const inputEl = contentEl.createEl("input");
+    inputEl.style.cssText = "width: 100%; height: 2.5em; margin-bottom: 15px;";
+    inputEl.focus();
+    let changeButtonText;
+    if (this.action == "new view")
+      changeButtonText = i18n_default.buttons.saveView;
+    if (this.action == "new table")
+      changeButtonText = i18n_default.buttons.saveTable;
+    if (this.action == "rename view")
+      changeButtonText = i18n_default.buttons.renameView;
+    if (this.action == "rename table")
+      changeButtonText = i18n_default.buttons.renameTable;
+    const changeButton = contentEl.createEl("button", {
+      text: changeButtonText
+    });
+    const cancelButton = contentEl.createEl("button", {
+      text: i18n_default.buttons.cancel
+    });
+    cancelButton.style.cssText = "float: right;";
+    cancelButton.addEventListener("click", () => {
+      myModal.close();
+    });
+    const onClickAction = async () => {
+      let newName = inputEl.value;
+      if (this.action == "new view" || this.action == "new table") {
+        this.saveSchema({ ...this.schema, id: newName, name: newName });
+      } else {
+        this.saveSchema({ ...this.schema, name: newName });
+      }
+      myModal.close();
+    };
+    changeButton.addEventListener("click", onClickAction);
+    inputEl.addEventListener("keydown", (e4) => {
+      if (e4.key === "Enter") {
+        e4.preventDefault();
+        onClickAction();
+      }
+    });
+  }
+  onClose() {
+    let { contentEl } = this;
+    contentEl.empty();
+  }
+};
+
+// src/components/ContextView/FilterBar/FilterBar.tsx
+var import_obsidian21 = require("obsidian");
+
+// src/components/ContextView/FilterBar/SearchBar.tsx
+var SearchBar = (props2) => {
+  const clearSearch = () => {
+    props2.setSearchString("");
+  };
+  return /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-view-search"
+  }, /* @__PURE__ */ Cn.createElement("button", {
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-search"] }
+  }), /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("input", {
+    onChange: (e4) => props2.setSearchString(e4.target.value),
+    placeholder: i18n_default.labels.searchPlaceholder,
+    className: "mk-search-bar"
+  }), /* @__PURE__ */ Cn.createElement("button", {
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-clear"] },
+    onClick: () => clearSearch()
+  })));
 };
 
 // src/components/ContextView/FilterBar/FilterBar.tsx
 var FilterBar = (props2) => {
-  const { folderNoteOpen, viewFolderNote } = props2;
   const ctxRef = _2(null);
   const {
     tables,
@@ -35803,22 +36196,21 @@ var FilterBar = (props2) => {
       type
     });
   };
+  const views = tables.filter((f4) => f4.type != "db" && f4.def == (dbSchema == null ? void 0 : dbSchema.id));
   const selectView = (_dbschema, value) => {
-    viewFolderNote && folderNoteOpen && viewFolderNote(false);
     setDBSchema(_dbschema);
     value && setSchema(tables.find((f4) => f4.id == value));
   };
-  const openView = (e4, _dbschema) => {
-    const views = tables.filter((f4) => f4.type != "db" && f4.def == _dbschema.id);
-    if (views.length == 0) {
-      selectView(_dbschema);
+  const openView = (e4, view) => {
+    const dbSchema2 = tables.find((f4) => f4.type == "db" && f4.id == view.def);
+    if (dbSchema2) {
+      selectView(dbSchema2, view.id);
       return;
     }
-    selectView(_dbschema, views[0].id);
     return;
   };
   const showViewMenu = (e4, _dbschema) => {
-    const views = tables.filter((f4) => f4.type != "db" && f4.def == _dbschema.id);
+    const views2 = tables.filter((f4) => f4.type != "db" && f4.def == _dbschema.id);
     const offset = e4.target.getBoundingClientRect();
     showSelectMenu(
       { x: offset.left, y: offset.top + 30 },
@@ -35826,7 +36218,7 @@ var FilterBar = (props2) => {
         multi: false,
         editable: false,
         value: tagContexts,
-        options: views.map((m5) => ({ name: m5.name, value: m5.id })),
+        options: views2.map((m5) => ({ name: m5.name, value: m5.id })),
         saveOptions: (_9, value) => selectView(_dbschema, value[0]),
         placeholder: i18n_default.labels.viewItemSelectPlaceholder,
         searchable: false,
@@ -35856,8 +36248,45 @@ var FilterBar = (props2) => {
       filters: newFilters
     });
   };
+  const viewContextMenu = (e4, _schema) => {
+    const fileMenu = new import_obsidian21.Menu();
+    fileMenu.addSeparator();
+    fileMenu.addItem((menuItem) => {
+      menuItem.setTitle("Copy Embed Link");
+      menuItem.onClick(() => {
+        navigator.clipboard.writeText(
+          contextEmbedStringFromContext(contextInfo, _schema.id)
+        );
+      });
+    });
+    fileMenu.addItem((menuItem) => {
+      menuItem.setTitle("Rename View");
+      menuItem.onClick(() => {
+        let vaultChangeModal = new SaveViewModal(
+          _schema,
+          (s5) => saveSchema(s5),
+          "rename view"
+        );
+        vaultChangeModal.open();
+      });
+    });
+    fileMenu.addItem((menuItem) => {
+      menuItem.setTitle("Delete View");
+      menuItem.onClick(() => {
+        deleteSchema(_schema);
+      });
+    });
+    if (isMouseEvent(e4)) {
+      fileMenu.showAtPosition({ x: e4.pageX, y: e4.pageY });
+    } else {
+      fileMenu.showAtPosition({
+        x: e4.nativeEvent.locationX,
+        y: e4.nativeEvent.locationY
+      });
+    }
+  };
   const showFilterMenu = (e4) => {
-    const menu = new import_obsidian19.Menu();
+    const menu = new import_obsidian21.Menu();
     menu.addItem((item) => {
       item.setTitle(i18n_default.menu.tableView);
       item.setIcon("table-2");
@@ -36022,26 +36451,12 @@ var FilterBar = (props2) => {
     );
   };
   const showColsMenu = (e4) => {
-    const offset = e4.target.getBoundingClientRect();
-    showSelectMenu(
-      { x: offset.left, y: offset.top + 30 },
-      {
-        multi: false,
-        editable: false,
-        value: [],
-        options: cols.map((f4) => ({
-          name: f4.name + f4.table,
-          value: f4.name + f4.table
-        })),
-        saveOptions: (_9, values) => showMenu(
-          e4,
-          cols.find((f4) => f4.name + f4.table == values[0])
-        ),
-        placeholder: i18n_default.labels.propertyItemSelectPlaceholder,
-        searchable: true,
-        showAll: true
-      }
+    let vaultChangeModal = new ContextEditorModal(
+      props2.plugin,
+      contextInfo,
+      schema == null ? void 0 : schema.id
     );
+    vaultChangeModal.open();
   };
   const saveField = (field, oldField) => {
     if (field.name.length > 0) {
@@ -36063,7 +36478,7 @@ var FilterBar = (props2) => {
       options,
       field,
       cols,
-      contextTable,
+      contextInfo.contextPath,
       (newField) => saveField(newField, field),
       (newField, val) => {
       },
@@ -36169,7 +36584,7 @@ var FilterBar = (props2) => {
     );
   };
   const showAddMenu = (e4) => {
-    const fileMenu = new import_obsidian19.Menu();
+    const fileMenu = new import_obsidian21.Menu();
     const folder = getAbstractFileAtPath(
       app,
       contextInfo.contextPath
@@ -36212,7 +36627,7 @@ var FilterBar = (props2) => {
     return false;
   };
   const showFMMenu2 = (e4) => {
-    const menu = new import_obsidian19.Menu();
+    const menu = new import_obsidian21.Menu();
     menu.addItem((menuItem) => {
       menuItem.setIcon("log-in");
       menuItem.setTitle(i18n_default.menu.mergeProperties);
@@ -36257,7 +36672,7 @@ var FilterBar = (props2) => {
             return [
               ...p3,
               ...(_b2 = (_a3 = contextTable[c4]) == null ? void 0 : _a3.cols.filter(
-                (f4) => f4.name != "File" && f4.hidden != "true" && f4.type != "fileprop"
+                (f4) => f4.name != FilePropertyName && f4.hidden != "true" && f4.type != "fileprop"
               ).map((f4) => ({ ...f4, table: c4 }))) != null ? _b2 : []
             ];
           },
@@ -36272,13 +36687,17 @@ var FilterBar = (props2) => {
     let vaultChangeModal = new SaveViewModal(schema, saveSchema, "new view");
     vaultChangeModal.open();
   };
+  const editViewModal = () => {
+    let vaultChangeModal = new SaveViewModal(schema, saveSchema, "rename view");
+    vaultChangeModal.open();
+  };
   const selectFilterValue = (e4, filter) => {
     var _a2, _b2, _c2;
     switch (filterFnTypes[filter.fn].valueType) {
       case "text":
       case "number":
         {
-          const menu = new import_obsidian19.Menu();
+          const menu = new import_obsidian21.Menu();
           menu.setUseNativeMenu(false);
           const saveFilterValue = (value) => {
             const newFilter = {
@@ -36372,8 +36791,8 @@ var FilterBar = (props2) => {
                 editable: false,
                 value: parseMultiString(filter.value),
                 options: (_c2 = contextData.map((f4) => ({
-                  name: filePathToString(f4["File"]),
-                  value: f4["File"]
+                  name: filePathToString(f4[FilePropertyName]),
+                  value: f4[FilePropertyName]
                 }))) != null ? _c2 : [],
                 saveOptions,
                 placeholder: i18n_default.labels.optionItemSelectPlaceholder,
@@ -36386,87 +36805,18 @@ var FilterBar = (props2) => {
         break;
     }
   };
-  const saveNewSchemas = (_schema) => {
-    const newSchema = {
-      ..._schema,
-      id: uniqueNameFromString(
-        sanitizeTableName(_schema.id),
-        tables.map((f4) => f4.id)
-      )
-    };
-    saveSchema(newSchema).then(
-      (f4) => saveDB2({
-        schema: newSchema,
-        cols: defaultTableFields.map((f5) => ({ ...f5, schemaId: newSchema.id })),
-        rows: []
-      })
-    );
-  };
-  const newTable = (e4) => {
-    let vaultChangeModal = new SaveViewModal(
-      {
-        id: "",
-        name: "",
-        type: "db"
-      },
-      saveNewSchemas,
-      "new table"
-    );
-    vaultChangeModal.open();
-  };
-  const viewContextMenu = (e4, _schema) => {
-    const fileMenu = new import_obsidian19.Menu();
-    fileMenu.addSeparator();
-    fileMenu.addItem((menuItem) => {
-      menuItem.setTitle("Rename Table");
-      menuItem.onClick(() => {
-        let vaultChangeModal = new SaveViewModal(
-          _schema,
-          (s5) => saveSchema(s5),
-          "rename table"
-        );
-        vaultChangeModal.open();
-      });
-    });
-    fileMenu.addItem((menuItem) => {
-      menuItem.setTitle("Delete Table");
-      menuItem.onClick(() => {
-        deleteSchema(_schema);
-      });
-    });
-    if (isMouseEvent(e4)) {
-      fileMenu.showAtPosition({ x: e4.pageX, y: e4.pageY });
-    } else {
-      fileMenu.showAtPosition({
-        x: e4.nativeEvent.locationX,
-        y: e4.nativeEvent.locationY
-      });
-    }
-  };
-  return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement(TagSelector, {
-    plugin: props2.plugin,
-    canAdd: contextInfo.type == "folder"
-  }), /* @__PURE__ */ Cn.createElement("div", {
-    className: "mk-view-selector"
+  return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-view-config"
   }, /* @__PURE__ */ Cn.createElement("div", {
-    className: "mk-table-selector"
-  }, viewFolderNote && /* @__PURE__ */ Cn.createElement("button", {
-    className: `mk-folder-note ${folderNoteOpen ? "mk-is-active" : ""}`,
-    onClick: () => viewFolderNote(true)
-  }, props2.folderNoteName), tables.filter((f4) => f4.type == "db").map((f4) => /* @__PURE__ */ Cn.createElement("div", {
-    className: `${!folderNoteOpen && (dbSchema == null ? void 0 : dbSchema.id) == f4.id ? "mk-is-active" : ""}`,
-    onContextMenu: (e4) => !f4.primary && viewContextMenu(e4, f4)
+    className: "mk-view-selector"
+  }, views.map((f4) => /* @__PURE__ */ Cn.createElement("div", {
+    className: `${(schema == null ? void 0 : schema.id) == f4.id ? "mk-is-active" : ""}`,
+    onContextMenu: (e4) => viewContextMenu(e4, f4)
   }, /* @__PURE__ */ Cn.createElement("button", {
     onClick: (e4) => openView(e4, f4)
-  }, f4.name), tables.filter((g4) => g4.type != "db" && g4.def == f4.id).length > 1 && /* @__PURE__ */ Cn.createElement("button", {
-    className: "mk-icon-xsmall mk-collapse",
-    onClick: (e4) => showViewMenu(e4, f4),
-    dangerouslySetInnerHTML: {
-      __html: uiIconSet["mk-ui-collapse"]
-    }
-  }))), contextInfo.type == "folder" && /* @__PURE__ */ Cn.createElement("button", {
-    onClick: (e4) => newTable(e4)
-  }, "+ Table")), /* @__PURE__ */ Cn.createElement("span", null), !props2.folderNoteOpen && /* @__PURE__ */ Cn.createElement("div", {
+  }, f4.name))), /* @__PURE__ */ Cn.createElement("button", {
+    onClick: (e4) => showSaveViewModal()
+  }, "+")), /* @__PURE__ */ Cn.createElement("span", null), /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-view-options"
   }, /* @__PURE__ */ Cn.createElement(SearchBar, {
     setSearchString
@@ -36477,15 +36827,12 @@ var FilterBar = (props2) => {
     }
   }), /* @__PURE__ */ Cn.createElement("button", {
     onClick: (e4) => showColsMenu(e4),
-    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-list"] }
-  }), /* @__PURE__ */ Cn.createElement("button", {
-    onClick: (e4) => showFMMenu2(e4),
-    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-options"] }
+    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-build"] }
   }), contextInfo.type == "folder" && (dbSchema == null ? void 0 : dbSchema.id) == "files" && /* @__PURE__ */ Cn.createElement("button", {
     className: "mk-button-new",
     onClick: (e4) => showAddMenu(e4),
     dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-plus"] }
-  }))), (predicate.filters.length > 0 || predicate.sort.length > 0 || predicate.groupBy.length > 0) && !folderNoteOpen && /* @__PURE__ */ Cn.createElement("div", {
+  }))), (predicate.filters.length > 0 || predicate.sort.length > 0 || predicate.groupBy.length > 0) && /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-filter-bar"
   }, predicate.groupBy.length > 0 && /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-filter"
@@ -36515,12 +36862,7 @@ var FilterBar = (props2) => {
       onClick: () => removeFilter(f4),
       dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-close"] }
     }));
-  }), /* @__PURE__ */ Cn.createElement("span", null), /* @__PURE__ */ Cn.createElement("button", {
-    className: "mk-filter-add mk-icon-small",
-    onClick: () => showSaveViewModal()
-  }, /* @__PURE__ */ Cn.createElement("div", {
-    dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-stack"] }
-  }), "Save View")));
+  }), /* @__PURE__ */ Cn.createElement("span", null)));
 };
 var FilterValueSpan = (props2) => {
   const { filter, selectFilterValue, fieldType } = props2;
@@ -36562,7 +36904,7 @@ var SpaceEditor = k3(
         case "text":
         case "number":
           {
-            const menu = new import_obsidian20.Menu();
+            const menu = new import_obsidian22.Menu();
             menu.setUseNativeMenu(false);
             menu.addItem((menuItem) => {
               inputMenuItem(
@@ -36888,7 +37230,7 @@ var SpaceEditor = k3(
       );
       const frontmatter = allMetadataForFiles(
         props2.plugin,
-        allFiles.map((f5) => getAbstractFileAtPath(app, f5.path)).filter((f5) => f5 instanceof import_obsidian20.TFile)
+        allFiles.map((f5) => getAbstractFileAtPath(app, f5.path)).filter((f5) => f5 instanceof import_obsidian22.TFile)
       );
       const fmTypes = guestimateTypes(
         allFiles.map((f5) => f5.path),
@@ -37041,8 +37383,8 @@ var DefFilterGroup = (props2) => {
 };
 
 // src/components/ui/modals/editSpaceModal.tsx
-var import_obsidian21 = require("obsidian");
-var EditSpaceModal = class extends import_obsidian21.Modal {
+var import_obsidian23 = require("obsidian");
+var EditSpaceModal = class extends import_obsidian23.Modal {
   constructor(plugin, space, action) {
     super(plugin.app);
     this.space = space;
@@ -37104,11 +37446,11 @@ var EditSpaceModal = class extends import_obsidian21.Modal {
     const onClickAction = async () => {
       let newName = inputEl.value.replace(/\//g, "");
       if (newName.length == 0) {
-        new import_obsidian21.Notice(i18n_default.notice.newSpaceName);
+        new import_obsidian23.Notice(i18n_default.notice.newSpaceName);
         return;
       }
       if (this.plugin.index.spacesCache.has(newName) && newName != this.space.name) {
-        new import_obsidian21.Notice(i18n_default.notice.duplicateSpaceName);
+        new import_obsidian23.Notice(i18n_default.notice.duplicateSpaceName);
         return;
       }
       if (this.action === "rename") {
@@ -37139,7 +37481,7 @@ var EditSpaceModal = class extends import_obsidian21.Modal {
 };
 
 // src/components/ui/menus/fileMenu.tsx
-var import_obsidian22 = require("obsidian");
+var import_obsidian24 = require("obsidian");
 
 // src/utils/color.ts
 var colors = [
@@ -37156,7 +37498,7 @@ var colors = [
 
 // src/components/ui/menus/fileMenu.tsx
 var triggerSectionAddMenu = (plugin, e4) => {
-  const fileMenu = new import_obsidian22.Menu();
+  const fileMenu = new import_obsidian24.Menu();
   fileMenu.addItem((menuItem) => {
     menuItem.setIcon("plus");
     menuItem.setTitle(i18n_default.buttons.createSection);
@@ -37208,7 +37550,7 @@ var triggerSectionAddMenu = (plugin, e4) => {
 var triggerSectionMenu = (plugin, space, spaces2, e4, activeFile2) => {
   if (!space)
     return;
-  const fileMenu = new import_obsidian22.Menu();
+  const fileMenu = new import_obsidian24.Menu();
   const spaceName = space.name;
   fileMenu.addItem((menuItem) => {
     menuItem.setIcon("edit");
@@ -37369,7 +37711,7 @@ var triggerMultiFileMenu = (plugin, selectedFiles2, e4) => {
   const files = selectedFiles2.map((s5) => s5.item.path);
   const spaces2 = plugin.index.allSpaces();
   const spaceItems = retrieveSpaceItems(plugin, spaces2);
-  const fileMenu = new import_obsidian22.Menu();
+  const fileMenu = new import_obsidian24.Menu();
   fileMenu.addSeparator();
   fileMenu.addItem((menuItem) => {
     menuItem.setTitle(i18n_default.menu.spaceTitle);
@@ -37478,7 +37820,7 @@ var triggerMultiFileMenu = (plugin, selectedFiles2, e4) => {
 var triggerFileMenu = (plugin, file, isFolder, e4) => {
   const spaces2 = plugin.index.allSpaces();
   const spaceItems = retrieveSpaceItems(plugin, spaces2);
-  const fileMenu = new import_obsidian22.Menu();
+  const fileMenu = new import_obsidian24.Menu();
   if (isFolder) {
     fileMenu.addSeparator();
     fileMenu.addItem((menuItem) => {
@@ -37660,7 +38002,7 @@ var triggerFileMenu = (plugin, file, isFolder, e4) => {
 };
 
 // src/components/ContextView/DataTypeView/FileCell.tsx
-var import_obsidian23 = require("obsidian");
+var import_obsidian25 = require("obsidian");
 var FileCell = (props2) => {
   const fileOrCleanPath = (f4) => {
     if (!f4)
@@ -37689,7 +38031,7 @@ var FileCell = (props2) => {
     if (!ref.current)
       return;
     if (fileExists((_a2 = ref.current) == null ? void 0 : _a2.value)) {
-      new import_obsidian23.Notice(i18n_default.notice.fileExists);
+      new import_obsidian25.Notice(i18n_default.notice.fileExists);
     } else {
       props2.saveValue(ref.current.value);
       props2.setEditMode(null);
@@ -37702,7 +38044,7 @@ var FileCell = (props2) => {
       return;
     }
     if (fileExists(path)) {
-      new import_obsidian23.Notice(i18n_default.notice.fileExists);
+      new import_obsidian25.Notice(i18n_default.notice.fileExists);
     } else {
       await createNewMarkdownFile(
         props2.plugin,
@@ -37809,10 +38151,10 @@ var humanFileSize = (bytes, si = false, dp = 1) => {
   return bytes.toFixed(dp) + " " + units[u4];
 };
 var LookUpCell = (props2) => {
-  const { propertyValue } = props2;
   const [cache, setCache] = h2(null);
   const initialValue = props2.initialValue;
-  if (propertyValue == "folder" || propertyValue == "File.folder") {
+  const { field, property } = parsePropString(props2.propertyValue);
+  if (property == "folder") {
     return /* @__PURE__ */ Cn.createElement("div", {
       className: "mk-cell-fileprop",
       onClick: () => {
@@ -37824,16 +38166,16 @@ var LookUpCell = (props2) => {
       }
     }, folderPathToString(initialValue));
   }
-  if (propertyValue == "extension" || propertyValue == "File.extension") {
+  if (property == "extension") {
     return /* @__PURE__ */ Cn.createElement("div", {
       className: "mk-cell-fileprop"
     }, initialValue);
-  } else if (propertyValue == "ctime" || propertyValue == "mtime" || propertyValue == "File.mtime" || propertyValue == "File.ctime") {
+  } else if (property == "ctime" || property == "mtime") {
     const date = new Date(parseInt(initialValue)).getTime() ? new Date(parseInt(initialValue)) : null;
     return /* @__PURE__ */ Cn.createElement("div", {
       className: "mk-cell-fileprop"
     }, date && formatDistance3(new Date(date), new Date(), { addSuffix: true }));
-  } else if (propertyValue == "size" || propertyValue == "File.size") {
+  } else if (property == "size" || property == "File.size") {
     return /* @__PURE__ */ Cn.createElement("div", {
       className: "mk-cell-fileprop"
     }, humanFileSize(parseInt(initialValue)));
@@ -37933,11 +38275,11 @@ var TextCell = (props2) => {
 
 // src/components/ContextView/TableView/TableView.tsx
 var import_lodash7 = __toESM(require_lodash());
-var import_obsidian25 = require("obsidian");
+var import_obsidian27 = require("obsidian");
 
 // src/components/ui/modals/imageModal.tsx
-var import_obsidian24 = require("obsidian");
-var imageModal = class extends import_obsidian24.FuzzySuggestModal {
+var import_obsidian26 = require("obsidian");
+var imageModal = class extends import_obsidian26.FuzzySuggestModal {
   constructor(plugin, app2, selectImage) {
     super(app2);
     this.plugin = plugin;
@@ -37946,7 +38288,7 @@ var imageModal = class extends import_obsidian24.FuzzySuggestModal {
     this.inputEl.focus();
     this.inputEl.placeholder = "Select an image or paste a URL";
     this.emptyStateText = "No Images Found";
-    this.limit = 0;
+    this.limit = 30;
   }
   renderSuggestion(item, el) {
     var oImg = el.createEl("img");
@@ -37968,7 +38310,7 @@ var imageModal = class extends import_obsidian24.FuzzySuggestModal {
       allImages.push(query);
     allImages.push(
       ...getAllAbstractFilesInVault(this.plugin, app).filter(
-        (f4) => f4 instanceof import_obsidian24.TFile && ["png", "jpg", "jpeg"].contains(f4.extension)
+        (f4) => f4 instanceof import_obsidian26.TFile && ["png", "jpg", "jpeg"].contains(f4.extension)
       ).map((f4) => f4.path)
     );
     return allImages.filter((f4) => f4.contains(query)).map((f4, i4) => ({
@@ -37983,7 +38325,7 @@ var imageModal = class extends import_obsidian24.FuzzySuggestModal {
     let allImages = [];
     allImages.push(
       ...getAllAbstractFilesInVault(this.plugin, app).filter(
-        (f4) => f4 instanceof import_obsidian24.TFile && ["png", "jpg", "jpeg"].contains(f4.extension)
+        (f4) => f4 instanceof import_obsidian26.TFile && ["png", "jpg", "jpeg"].contains(f4.extension)
       ).map((f4) => f4.path)
     );
     return allImages;
@@ -38115,6 +38457,7 @@ var LinkCell = (props2) => {
     }
   };
   return /* @__PURE__ */ Cn.createElement(OptionCellBase, {
+    baseClass: "mk-cell-link",
     menuProps,
     getLabelString: (o3) => o3.label,
     valueClass: (o3) => o3.file ? "mk-cell-link-item" : "mk-cell-link-unresolved",
@@ -38174,6 +38517,7 @@ var TagCell = (props2) => {
     };
   };
   return /* @__PURE__ */ Cn.createElement(OptionCellBase, {
+    baseClass: "mk-cell-tag",
     menuProps,
     value,
     multi: props2.multi,
@@ -38428,7 +38772,7 @@ var TableView = (props2) => {
                 editMode,
                 propertyValue: f4.value
               };
-              const fieldType = fieldTypes.find((t4) => f4.type == t4.type) || fieldTypes.find((t4) => f4.type == t4.multiType);
+              const fieldType = fieldTypeForType(f4.type);
               if (!fieldType) {
                 return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, initialValue);
               }
@@ -38467,7 +38811,7 @@ var TableView = (props2) => {
               } else if (fieldType.type == "fileprop") {
                 return /* @__PURE__ */ Cn.createElement(LookUpCell, {
                   ...cellProps,
-                  file: data[index]["File"]
+                  file: data[index][FilePropertyName]
                 });
               } else if (fieldType.type == "tag") {
                 return /* @__PURE__ */ Cn.createElement(TagCell, {
@@ -38482,7 +38826,7 @@ var TableView = (props2) => {
                 return /* @__PURE__ */ Cn.createElement(LinkCell, {
                   ...cellProps,
                   multi: fieldType.multiType == f4.type,
-                  file: data[index]["File"]
+                  file: data[index][FilePropertyName]
                 });
               } else if (fieldType.type == "image") {
                 return /* @__PURE__ */ Cn.createElement(ImageCell, {
@@ -38596,7 +38940,7 @@ var TableView = (props2) => {
   };
   const showContextMenu = (e4, index) => {
     e4.preventDefault();
-    const menu = new import_obsidian25.Menu();
+    const menu = new import_obsidian27.Menu();
     menu.addItem((item) => {
       item.setIcon("trash");
       item.setTitle(i18n_default.menu.deleteRow);
@@ -38775,7 +39119,7 @@ var BooleanCell = (props2) => {
   }, [initialValue]);
   if (props2.editMode < 1 /* EditModeView */) {
     return /* @__PURE__ */ Cn.createElement("div", {
-      className: "mk-cell-checkbox-item"
+      className: "mk-cell-boolean"
     }, /* @__PURE__ */ Cn.createElement("input", {
       type: "checkbox",
       checked: value,
@@ -38837,6 +39181,8 @@ var PreviewCell = (props2) => {
   const previewImage = F2(() => {
     if (vaultItem == null ? void 0 : vaultItem.banner)
       return vaultItem.banner;
+    if (props2.initialValue)
+      return props2.initialValue;
     if (!props2.row || !props2.columns)
       return null;
     const imageCol = props2.columns.find((f4) => f4.type == "image");
@@ -38897,7 +39243,7 @@ var DataTypeView = (props2) => {
     plugin: props2.plugin,
     propertyValue: column.value
   };
-  const fieldType = fieldTypes.find((t4) => column.type == t4.type) || fieldTypes.find((t4) => column.type == t4.multiType);
+  const fieldType = fieldTypeForType(column.type);
   if (!fieldType) {
     return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null);
   }
@@ -39003,7 +39349,7 @@ var CardColumnView = k3(
         ...style,
         "--columns": columns
       },
-      className: (0, import_classnames.default)(
+      className: (0, import_classnames2.default)(
         "mk-list-group",
         unstyled && "unstyled",
         horizontal && "horizontal",
@@ -39047,19 +39393,22 @@ var CardColumnView = k3(
 );
 
 // src/components/ContextView/CardsView/CardView.tsx
-var import_classnames2 = __toESM(require_classnames());
+var import_classnames3 = __toESM(require_classnames());
 
 // src/components/FlowEditor/FlowView.tsx
 var FlowView = (props2) => {
   const ref = _2(null);
   const loadFile = async () => {
     const div = ref.current;
-    const [link, refStr] = parseOutReferences(props2.path);
-    const type = viewTypeByString(link);
+    const {
+      path: link2,
+      ref: refStr,
+      type
+    } = pathByString(props2.plugin, props2.path);
     const portalType = type == "tag" || type == "folder" ? "context" : "doc";
-    const leaf = await spawnLeafFromFile(
+    await spawnLeafFromFile(
       props2.plugin,
-      link,
+      link2,
       div,
       portalType,
       refStr,
@@ -39145,7 +39494,7 @@ var CardView = Cn.memo(
         transition,
         value
       }) : /* @__PURE__ */ Cn.createElement("li", {
-        className: (0, import_classnames2.default)(
+        className: (0, import_classnames3.default)(
           "mk-list-item",
           fadeIn && "fadeIn",
           sorting && "sorting",
@@ -39171,22 +39520,28 @@ var CardView = Cn.memo(
         initialValue: value[f4.name + f4.table],
         column: f4,
         index: parseInt(id2),
-        file: value["File"],
+        file: value[FilePropertyName],
         editable: false,
-        updateValue: (v3) => updateValue2(f4.name, v3, f4.table, parseInt(id2), value["File"]),
+        updateValue: (v3) => updateValue2(
+          f4.name,
+          v3,
+          f4.table,
+          parseInt(id2),
+          value[FilePropertyName]
+        ),
         updateFieldValue: (v3, fv) => updateFieldValue(
           f4.name,
           fv,
           v3,
           f4.table,
           parseInt(id2),
-          value["File"]
+          value[FilePropertyName]
         ),
         contextTable
       })), /* @__PURE__ */ Cn.createElement("div", {
         className: "mk-list-content"
       }, /* @__PURE__ */ Cn.createElement("div", {
-        className: (0, import_classnames2.default)(
+        className: (0, import_classnames3.default)(
           "mk-list-fields",
           dragging && "dragging",
           handle && "withHandle",
@@ -39207,14 +39562,14 @@ var CardView = Cn.memo(
           initialValue: value[f4.name + f4.table],
           column: f4,
           index: parseInt(id2),
-          file: value["File"],
+          file: value[FilePropertyName],
           editable: false,
           updateValue: (v3) => updateValue2(
             f4.name,
             v3,
             f4.table,
             parseInt(id2),
-            value["File"]
+            value[FilePropertyName]
           ),
           updateFieldValue: (v3, fv) => updateFieldValue(
             f4.name,
@@ -39222,7 +39577,7 @@ var CardView = Cn.memo(
             v3,
             f4.table,
             parseInt(id2),
-            value["File"]
+            value[FilePropertyName]
           ),
           contextTable
         }) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null);
@@ -39526,7 +39881,7 @@ var CardsView = ({
     onDragCancel,
     modifiers
   }, /* @__PURE__ */ Cn.createElement("div", {
-    className: (0, import_classnames3.default)(
+    className: (0, import_classnames4.default)(
       viewType == "card" ? "mk-cards-container" : "mk-list-container",
       viewType == "card" && containers.length == 1 && "mk-cards-grid"
     ),
@@ -39552,7 +39907,7 @@ var CardsView = ({
     strategy
   }, items[Object.keys(items)[parseInt(containerId) * -1]].map(
     (value, index) => {
-      return /* @__PURE__ */ Cn.createElement(SortableItem, {
+      return /* @__PURE__ */ Cn.createElement(SortableItem2, {
         disabled: isSortingContainer,
         key: value,
         id: value,
@@ -39656,7 +40011,7 @@ function getColor(id2) {
   }
   return void 0;
 }
-function SortableItem({
+function SortableItem2({
   disabled,
   id: id2,
   plugin,
@@ -39725,11 +40080,11 @@ function useMountStatus() {
 }
 
 // src/components/ContextView/FlowListView/FlowListView.tsx
-var import_obsidian26 = require("obsidian");
+var import_obsidian28 = require("obsidian");
 var FlowListView = (props2) => {
   const { filteredData: data } = q2(MDBContext);
   const flowItems = F2(() => {
-    return data.map((f4) => getAbstractFileAtPath(app, f4.File)).filter((f4) => f4 instanceof import_obsidian26.TFile && f4.extension == "md");
+    return data.map((f4) => getAbstractFileAtPath(app, f4.File)).filter((f4) => f4 instanceof import_obsidian28.TFile && f4.extension == "md");
   }, [data]);
   return /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-flow-container"
@@ -39757,7 +40112,7 @@ var ContextListView = (props2) => {
 
 // src/components/ContextView/EmbedContextViewComponent.tsx
 var EmbedContextViewComponent = (props2) => {
-  const context = mdbContextByContextPath(props2.plugin, props2.path);
+  const context = mdbContextByPath(props2.plugin, props2.path);
   return /* @__PURE__ */ Cn.createElement(MDBProvider, {
     plugin: props2.plugin,
     context,
@@ -39769,7 +40124,7 @@ var EmbedContextViewComponent = (props2) => {
 
 // src/components/ContextView/EmbedContextView.tsx
 var EMBED_CONTEXT_VIEW_TYPE = "make-inline-context";
-var EmbedContextView = class extends import_obsidian27.ItemView {
+var EmbedContextView = class extends import_obsidian29.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.navigation = true;
@@ -39779,7 +40134,7 @@ var EmbedContextView = class extends import_obsidian27.ItemView {
     return EMBED_CONTEXT_VIEW_TYPE;
   }
   getDisplayText() {
-    return this.file;
+    return this.contextPath;
   }
   async onClose() {
     this.destroy();
@@ -39792,13 +40147,12 @@ var EmbedContextView = class extends import_obsidian27.ItemView {
     this.destroy();
   }
   async setState(state, result) {
-    var _a2, _b2;
-    this.file = state.file;
+    this.contextPath = state.contextPath;
     this.ref = state.ref ? state.ref.substring(1, state.ref.length) : null;
-    this.constructInlineContext(this.file);
+    this.constructInlineContext(this.contextPath);
     await super.setState(state, result);
-    const type = viewTypeByString(this.file);
-    const title = type == "tag" ? this.file : (_b2 = (_a2 = getAbstractFileAtPath(app, this.file)) == null ? void 0 : _a2.name) != null ? _b2 : this.file;
+    const context = mdbContextByPath(this.plugin, this.contextPath);
+    const title = contextDisplayName(context);
     this.leaf.tabHeaderInnerTitleEl.innerText = title;
     this.leaf.view.titleEl = title;
     const headerEl = this.leaf.view.headerEl;
@@ -39809,7 +40163,7 @@ var EmbedContextView = class extends import_obsidian27.ItemView {
   }
   getState() {
     let state = super.getState();
-    state.file = this.file;
+    state.contextPath = this.contextPath;
     return state;
   }
   constructInlineContext(file) {
@@ -39818,7 +40172,7 @@ var EmbedContextView = class extends import_obsidian27.ItemView {
     this.root.render(
       /* @__PURE__ */ Cn.createElement("div", null, /* @__PURE__ */ Cn.createElement(EmbedContextViewComponent, {
         plugin: this.plugin,
-        path: this.file,
+        path: this.contextPath,
         schema: this.ref
       }))
     );
@@ -39826,27 +40180,27 @@ var EmbedContextView = class extends import_obsidian27.ItemView {
 };
 
 // src/components/FlowEditor/FlowEditor.tsx
-var import_obsidian28 = require("obsidian");
+var import_obsidian30 = require("obsidian");
 var popovers = /* @__PURE__ */ new WeakMap();
 var mouseCoords = { x: 0, y: 0 };
 function nosuper(base) {
   const derived = function() {
-    return Object.setPrototypeOf(new import_obsidian28.Component(), new.target.prototype);
+    return Object.setPrototypeOf(new import_obsidian30.Component(), new.target.prototype);
   };
   derived.prototype = base.prototype;
   return Object.setPrototypeOf(derived, base);
 }
 var _a, _b, _c, _d, _e;
-var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
+var FlowEditor = class extends nosuper(import_obsidian30.HoverPopover) {
   constructor(parent, targetEl, plugin, waitTime, onShowCallback) {
     super();
     this.targetEl = targetEl;
     this.plugin = plugin;
     this.onShowCallback = onShowCallback;
-    this.abortController = this.addChild(new import_obsidian28.Component());
+    this.abortController = this.addChild(new import_obsidian30.Component());
     this.detaching = false;
     this.opening = false;
-    this.rootSplit = new import_obsidian28.WorkspaceSplit(
+    this.rootSplit = new import_obsidian30.WorkspaceSplit(
       window.app.workspace,
       "vertical"
     );
@@ -39864,7 +40218,7 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
     this.onTarget = true;
     this.parent = parent;
     this.waitTime = waitTime;
-    this.state = import_obsidian28.PopoverState.Showing;
+    this.state = import_obsidian30.PopoverState.Showing;
     const { hoverEl } = this;
     this.abortController.load();
     this.timer = window.setTimeout(this.show.bind(this), waitTime);
@@ -39954,7 +40308,7 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
     this.registerEvent(
       app.workspace.on("layout-change", () => {
         this.rootSplit.children.forEach((item, index) => {
-          if (item instanceof import_obsidian28.WorkspaceTabs) {
+          if (item instanceof import_obsidian30.WorkspaceTabs) {
             this.rootSplit.replaceChild(index, item.children[0]);
           }
         });
@@ -39996,16 +40350,16 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
   }
   transition() {
     if (this.shouldShow()) {
-      if (this.state === import_obsidian28.PopoverState.Hiding) {
-        this.state = import_obsidian28.PopoverState.Shown;
+      if (this.state === import_obsidian30.PopoverState.Hiding) {
+        this.state = import_obsidian30.PopoverState.Shown;
         clearTimeout(this.timer);
       }
     } else {
-      if (this.state === import_obsidian28.PopoverState.Showing) {
+      if (this.state === import_obsidian30.PopoverState.Showing) {
         this.hide();
       } else {
-        if (this.state === import_obsidian28.PopoverState.Shown) {
-          this.state = import_obsidian28.PopoverState.Hiding;
+        if (this.state === import_obsidian30.PopoverState.Shown) {
+          this.state = import_obsidian30.PopoverState.Hiding;
           this.timer = window.setTimeout(() => {
             if (this.shouldShow()) {
               this.transition();
@@ -40029,13 +40383,13 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
     });
   }
   shouldShowSelf() {
-    return !this.detaching && !!(this.onTarget || this.state == import_obsidian28.PopoverState.Shown || this.document.querySelector(
+    return !this.detaching && !!(this.onTarget || this.state == import_obsidian30.PopoverState.Shown || this.document.querySelector(
       `body>.modal-container, body > #he${this.id} ~ .menu, body > #he${this.id} ~ .suggestion-container`
     ));
   }
   show() {
     if (!this.targetEl || this.document.body.contains(this.targetEl)) {
-      this.state = import_obsidian28.PopoverState.Shown;
+      this.state = import_obsidian30.PopoverState.Shown;
       this.timer = 0;
       this.shownPos = mouseCoords;
       this.targetEl.replaceChildren(this.hoverEl);
@@ -40077,7 +40431,7 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
   nativeHide() {
     var _a2;
     const { hoverEl, targetEl } = this;
-    this.state = import_obsidian28.PopoverState.Hidden;
+    this.state = import_obsidian30.PopoverState.Hidden;
     hoverEl.detach();
     if (targetEl) {
       const parent = targetEl.matchParent(".mk-hover-popover");
@@ -40088,9 +40442,9 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
     this.unload();
   }
   resolveLink(linkText, sourcePath) {
-    const link = (0, import_obsidian28.parseLinktext)(linkText);
-    const tFile = link ? this.plugin.app.metadataCache.getFirstLinkpathDest(
-      link.path,
+    const link2 = (0, import_obsidian30.parseLinktext)(linkText);
+    const tFile = link2 ? this.plugin.app.metadataCache.getFirstLinkpathDest(
+      link2.path,
       sourcePath != null ? sourcePath : ""
     ) : null;
     return tFile;
@@ -40119,10 +40473,10 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
       eState
     };
   }
-  buildEphemeralState(file, link) {
+  buildEphemeralState(file, link2) {
     const cache = this.plugin.app.metadataCache.getFileCache(file);
-    const subpath = cache ? (0, import_obsidian28.resolveSubpath)(cache, (link == null ? void 0 : link.subpath) || "") : void 0;
-    const eState = { subpath: link == null ? void 0 : link.subpath };
+    const subpath = cache ? (0, import_obsidian30.resolveSubpath)(cache, (link2 == null ? void 0 : link2.subpath) || "") : void 0;
+    const eState = { subpath: link2 == null ? void 0 : link2.subpath };
     if (subpath) {
       eState.line = subpath.start.line;
       eState.startLoc = subpath.start;
@@ -40133,11 +40487,11 @@ var FlowEditor = class extends nosuper(import_obsidian28.HoverPopover) {
 };
 
 // src/utils/flow/flowEditor.ts
-var import_obsidian29 = require("obsidian");
+var import_obsidian31 = require("obsidian");
 var parseOutReferences = (ostr) => {
   const str = ostr.split("|")[0];
   const refIndex = str.lastIndexOf("#");
-  return refIndex != -1 ? [str.substring(0, refIndex), str.substring(refIndex + 1)] : [str, void 0];
+  return refIndex > 0 ? [str.substring(0, refIndex), str.substring(refIndex + 1)] : [str, void 0];
 };
 var getFileFromString = (url, source) => {
   return app.metadataCache.getFirstLinkpathDest(url, source != null ? source : "");
@@ -40231,77 +40585,66 @@ var loadFlowEditor = (cm, flowEditorInfo2, source, make) => {
   const dom = cm.dom.querySelector(
     "#mk-flow-" + flowEditorInfo2.id
   );
-  const [link, ref] = parseOutReferences(flowEditorInfo2.link);
+  const { path, type, ref } = pathByString(make, flowEditorInfo2.link);
   if (dom) {
-    if (link.charAt(0) == "#") {
-      if (!dom.hasAttribute("ready")) {
-        dom.setAttribute("ready", "");
-        createFlowEditorInElement(
-          flowEditorInfo2.id,
-          dom,
-          ref ? "block" : "flow",
-          link
-        );
-      }
-      return;
-    }
-    if (link.charAt(link.length - 1) == "/") {
-      const folder = getAbstractFileAtPath(
-        app,
-        link.substring(0, link.length - 1)
+    if (type == "folder" || type == "tag" || type == "space") {
+      const context = mdbContextByPath(
+        make,
+        path
       );
-      if (!dom.hasAttribute("ready") && folder) {
+      if (!dom.hasAttribute("ready")) {
         dom.setAttribute("ready", "");
         createFlowEditorInElement(
           flowEditorInfo2.id,
           dom,
           "context",
-          folder.path,
+          context.contextPath,
           ref
         );
         return;
       }
-    }
-    const file = getFileFromString(link, source);
-    const aFile = getAbstractFileAtPath(app, link);
-    if (file) {
-      const selectiveRange = getLineRangeFromRef(file, ref, make);
-      if (!dom.hasAttribute("ready")) {
-        dom.setAttribute("ready", "");
-        createFlowEditorInElement(
-          flowEditorInfo2.id,
-          dom,
-          ref ? "block" : "flow",
-          file.path,
-          ref,
-          selectiveRange[0],
-          selectiveRange[1]
-        );
-      }
-    } else {
-      if (aFile instanceof import_obsidian29.TFolder) {
+    } else if (type == "file") {
+      const file = getFileFromString(path, source);
+      const aFile = getAbstractFileAtPath(app, path);
+      if (file) {
+        const selectiveRange = getLineRangeFromRef(file, ref, make);
         if (!dom.hasAttribute("ready")) {
           dom.setAttribute("ready", "");
           createFlowEditorInElement(
             flowEditorInfo2.id,
             dom,
             ref ? "block" : "flow",
-            link
+            file.path,
+            ref,
+            selectiveRange[0],
+            selectiveRange[1]
           );
         }
-        return;
+      } else {
+        if (aFile instanceof import_obsidian31.TFolder) {
+          if (!dom.hasAttribute("ready")) {
+            dom.setAttribute("ready", "");
+            createFlowEditorInElement(
+              flowEditorInfo2.id,
+              dom,
+              ref ? "block" : "flow",
+              path
+            );
+          }
+          return;
+        }
+        dom.empty();
+        const createDiv = dom.createDiv("file-embed");
+        createDiv.toggleClass("mod-empty", true);
+        const createFile = async (e4) => {
+          e4.stopPropagation();
+          e4.stopImmediatePropagation();
+          await app.fileManager.createNewMarkdownFile(app.vault.getRoot(), link);
+          loadFlowEditor(cm, flowEditorInfo2, source, make);
+        };
+        createDiv.setText(`"${path}" ` + i18n_default.labels.noFile);
+        createDiv.addEventListener("click", createFile);
       }
-      dom.empty();
-      const createDiv = dom.createDiv("file-embed");
-      createDiv.toggleClass("mod-empty", true);
-      const createFile = async (e4) => {
-        e4.stopPropagation();
-        e4.stopImmediatePropagation();
-        await app.fileManager.createNewMarkdownFile(app.vault.getRoot(), link);
-        loadFlowEditor(cm, flowEditorInfo2, source, make);
-      };
-      createDiv.setText(`"${link}" ` + i18n_default.labels.noFile);
-      createDiv.addEventListener("click", createFile);
     }
   }
 };
@@ -40372,8 +40715,8 @@ var focusPortal = async (plugin, evt) => {
 };
 var openFileFromPortal = (plugin, evt) => {
   const { file: fullLink, source } = evt.detail;
-  const [link, ref] = parseOutReferences(fullLink);
-  const file = getFileFromString(link, source);
+  const [link2, ref] = parseOutReferences(fullLink);
+  const file = getFileFromString(link2, source);
   openAFile(file, plugin, false);
 };
 var spawnLeafFromFile = async (plugin, file, el, type, ref, from, to) => {
@@ -40382,7 +40725,7 @@ var spawnLeafFromFile = async (plugin, file, el, type, ref, from, to) => {
     const newLeaf2 = spawnPortal(plugin, el);
     newLeaf2.setViewState({
       type: EMBED_CONTEXT_VIEW_TYPE,
-      state: { file: removeTrailingSlashFromFolder(file), ref }
+      state: { contextPath: file, ref }
     });
     return newLeaf2;
   }
@@ -40465,11 +40808,127 @@ var spawnPortal = (plugin, initiatingEl, fileName, onShowCallback) => {
   return hoverPopover.attachLeaf();
 };
 
+// src/components/ContextView/FilterBar/TableSelector.tsx
+var import_obsidian32 = require("obsidian");
+var TableSelector = (props2) => {
+  const { folderNoteOpen, viewFolderNote } = props2;
+  const {
+    tables,
+    data,
+    setDBSchema,
+    loadContextFields,
+    cols,
+    deleteSchema,
+    saveSchema,
+    saveDB: saveDB2,
+    saveContextDB,
+    setSchema,
+    setSearchString,
+    predicate,
+    tagContexts,
+    savePredicate,
+    hideColumn,
+    saveColumn,
+    sortColumn,
+    delColumn,
+    schema,
+    dbSchema,
+    contextInfo,
+    contextTable,
+    tableData
+  } = q2(MDBContext);
+  const saveNewSchemas = (_schema) => {
+    const newSchema = {
+      ..._schema,
+      id: uniqueNameFromString(
+        sanitizeTableName(_schema.id),
+        tables.map((f4) => f4.id)
+      )
+    };
+    saveSchema(newSchema).then(
+      (f4) => saveDB2({
+        schema: newSchema,
+        cols: defaultTableFields.map((f5) => ({ ...f5, schemaId: newSchema.id })),
+        rows: []
+      })
+    );
+  };
+  const newTable = (e4) => {
+    let vaultChangeModal = new SaveViewModal(
+      {
+        id: "",
+        name: "",
+        type: "db"
+      },
+      saveNewSchemas,
+      "new table"
+    );
+    vaultChangeModal.open();
+  };
+  const selectView = (_dbschema, value) => {
+    viewFolderNote(false);
+    setDBSchema(_dbschema);
+    value && setSchema(tables.find((f4) => f4.id == value));
+  };
+  const openView = (e4, _dbschema) => {
+    const views = tables.filter((f4) => f4.type != "db" && f4.def == _dbschema.id);
+    if (views.length == 0) {
+      selectView(_dbschema);
+      return;
+    }
+    selectView(_dbschema, views[0].id);
+    return;
+  };
+  const viewContextMenu = (e4, _schema) => {
+    const fileMenu = new import_obsidian32.Menu();
+    fileMenu.addSeparator();
+    fileMenu.addItem((menuItem) => {
+      menuItem.setTitle("Rename Table");
+      menuItem.onClick(() => {
+        let vaultChangeModal = new SaveViewModal(
+          _schema,
+          (s5) => saveSchema(s5),
+          "rename table"
+        );
+        vaultChangeModal.open();
+      });
+    });
+    fileMenu.addItem((menuItem) => {
+      menuItem.setTitle("Delete Table");
+      menuItem.onClick(() => {
+        deleteSchema(_schema);
+      });
+    });
+    if (isMouseEvent(e4)) {
+      fileMenu.showAtPosition({ x: e4.pageX, y: e4.pageY });
+    } else {
+      fileMenu.showAtPosition({
+        x: e4.nativeEvent.locationX,
+        y: e4.nativeEvent.locationY
+      });
+    }
+  };
+  return /* @__PURE__ */ Cn.createElement("div", {
+    className: "mk-table-selector"
+  }, viewFolderNote && /* @__PURE__ */ Cn.createElement("button", {
+    className: `mk-folder-note ${folderNoteOpen ? "mk-is-active" : ""}`,
+    onClick: () => viewFolderNote(true)
+  }, props2.folderNoteName), tables.filter((f4) => f4.type == "db").map((f4) => /* @__PURE__ */ Cn.createElement("button", {
+    className: `${!folderNoteOpen && (dbSchema == null ? void 0 : dbSchema.id) == f4.id ? "mk-is-active" : ""}`,
+    onClick: (e4) => openView(e4, f4),
+    onContextMenu: (e4) => !f4.primary && viewContextMenu(e4, f4)
+  }, f4.name)), contextInfo.type == "folder" && /* @__PURE__ */ Cn.createElement("button", {
+    onClick: (e4) => newTable(e4)
+  }, "+"));
+};
+
 // src/components/ContextView/ContextViewComponent.tsx
 var ContextViewComponent = (props2) => {
   var _a2;
   const context = props2.context;
-  const contextCache = props2.plugin.index.contextsCache.get(context.contextPath);
+  const contextCache = props2.plugin.index.contextsCache.get(
+    context.contextPath
+  );
   const folder = F2(() => {
     if (props2.context.type == "folder") {
       return props2.context.contextPath;
@@ -40481,7 +40940,10 @@ var ContextViewComponent = (props2) => {
   const [flowOpen, setFlowOpen] = h2(false);
   const loadFile = async () => {
     const fileCache = props2.plugin.index.files.get(folder);
-    const folderNotePath = folderNotePathFromAFile(props2.plugin.settings, fileCache);
+    const folderNotePath = folderNotePathFromAFile(
+      props2.plugin.settings,
+      fileCache
+    );
     const folderNote = getAbstractFileAtPath(app, folderNotePath);
     if (folderNote) {
       const div = ref.current;
@@ -40517,14 +40979,15 @@ var ContextViewComponent = (props2) => {
   }, name)), props2.plugin.settings.enableFolderNote && props2.context.type == "folder" ? /* @__PURE__ */ Cn.createElement(MDBProvider, {
     plugin: props2.plugin,
     context
-  }, /* @__PURE__ */ Cn.createElement(FilterBar, {
-    plugin: props2.plugin,
+  }, /* @__PURE__ */ Cn.createElement(TableSelector, {
     folderNoteName: getFolderFromPath(app, folder).name,
     folderNoteOpen: flowOpen,
     viewFolderNote
-  }), context && !flowOpen && /* @__PURE__ */ Cn.createElement(ContextListView, {
+  }), context && !flowOpen && /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement(FilterBar, {
     plugin: props2.plugin
-  }), flowOpen && /* @__PURE__ */ Cn.createElement("div", {
+  }), /* @__PURE__ */ Cn.createElement(ContextListView, {
+    plugin: props2.plugin
+  })), flowOpen && /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-flowspace-editor mk-foldernote",
     ref
   })) : /* @__PURE__ */ Cn.createElement(MDBProvider, {
@@ -40539,7 +41002,7 @@ var ContextViewComponent = (props2) => {
 
 // src/components/ContextView/ContextView.tsx
 var CONTEXT_VIEW_TYPE = "make-folder-view";
-var ContextView = class extends import_obsidian30.ItemView {
+var ContextView = class extends import_obsidian33.ItemView {
   constructor(leaf, plugin, viewType) {
     super(leaf);
     this.navigation = true;
@@ -40564,7 +41027,7 @@ var ContextView = class extends import_obsidian30.ItemView {
   }
   async setState(state, result) {
     this.contextPath = state.contextPath;
-    this.context = mdbContextByContextPath(this.plugin, this.contextPath);
+    this.context = mdbContextByPath(this.plugin, this.contextPath);
     if (!this.context)
       return;
     this.constructContext(this.context);
@@ -40599,16 +41062,16 @@ var ContextView = class extends import_obsidian30.ItemView {
 };
 
 // src/components/FileView/FileView.tsx
-var import_obsidian32 = require("obsidian");
+var import_obsidian35 = require("obsidian");
 
 // src/components/FileView/FileLinkViewComponent.tsx
-var import_obsidian31 = require("obsidian");
+var import_obsidian34 = require("obsidian");
 var FileLinkViewComponent = (props2) => {
   const ref = _2(null);
   const [markdown, setMarkdown] = h2("");
   p2(() => {
     if (ref.current)
-      import_obsidian31.MarkdownRenderer.renderMarkdown(markdown, ref.current, props2.path, null);
+      import_obsidian34.MarkdownRenderer.renderMarkdown(markdown, ref.current, props2.path, null);
   }, [markdown]);
   p2(() => {
     fetch(props2.path).then((res) => res.text()).then((f4) => setMarkdown(f4));
@@ -40623,7 +41086,7 @@ var FileLinkViewComponent = (props2) => {
 
 // src/components/FileView/FileView.tsx
 var FILE_VIEW_TYPE = "make-file-view";
-var FileLinkView = class extends import_obsidian32.ItemView {
+var FileLinkView = class extends import_obsidian35.ItemView {
   constructor(leaf, plugin, viewType) {
     super(leaf);
     this.navigation = true;
@@ -40680,11 +41143,11 @@ var FileLinkView = class extends import_obsidian32.ItemView {
 };
 
 // src/utils/file.ts
-var import_obsidian33 = require("obsidian");
+var import_obsidian36 = require("obsidian");
 var tFileToAFile = (file) => {
   if (!file)
     return null;
-  if (file instanceof import_obsidian33.TFile && file.stat) {
+  if (file instanceof import_obsidian36.TFile && file.stat) {
     return {
       isFolder: false,
       name: file.name,
@@ -40703,11 +41166,11 @@ var tFileToAFile = (file) => {
 };
 var defaultNoteFolder = (plugin, activeFile2) => {
   var _a2;
-  return (_a2 = plugin.settings.newFileLocation == "folder" ? getFolderFromPath(app, plugin.settings.newFileFolderPath) : plugin.settings.newFileLocation == "current" && activeFile2 ? getFolderFromPath(app, activeFile2) : plugin.app.vault.getRoot()) != null ? _a2 : plugin.app.vault.getRoot();
+  return (_a2 = plugin.settings.newFileLocation == "folder" ? getFolderFromPath(app, plugin.settings.newFileFolderPath) : plugin.settings.newFileLocation == "current" && activeFile2 ? getFolderFromPath(app, activeFile2.path) : plugin.app.vault.getRoot()) != null ? _a2 : plugin.app.vault.getRoot();
 };
 var defaultConfigFile = async (app2) => {
   return await app2.vault.adapter.read(
-    (0, import_obsidian33.normalizePath)(app2.vault.configDir + "/app.json")
+    (0, import_obsidian36.normalizePath)(app2.vault.configDir + "/app.json")
   );
 };
 var fileExtensionForFile = (path) => path == null ? void 0 : path.split(".").pop();
@@ -40748,7 +41211,6 @@ var renameFile = async (plugin, file, newName) => {
   const afile = tFileToAFile(file);
   const folderNotePath = folderNotePathFromAFile(plugin.settings, afile);
   const folderNote = getAbstractFileAtPath(app, folderNotePath);
-  console.log("rename", file.path, newName);
   await app.fileManager.renameFile(
     file,
     file.parent.path == "/" ? newName : file.parent.path + "/" + newName
@@ -40760,33 +41222,12 @@ var renameFile = async (plugin, file, newName) => {
     );
   }
 };
-var viewTypeByString = (file) => {
-  if (file.charAt(0) == "#") {
-    return "tag";
-  }
-  if (file.slice(-2) == "//") {
-    return "space";
-  }
-  if (file.charAt(file.length - 1) == "/") {
-    return "folder";
-  }
-  const portalFile = app.vault.getAbstractFileByPath(file);
-  if (portalFile instanceof import_obsidian33.TFolder) {
-    return "folder";
-  }
-  if (portalFile instanceof import_obsidian33.TFile) {
-    return "file";
-  }
-  if (file.match(urlRegex))
-    return "url";
-  return null;
-};
 function getAllAbstractFilesInVault(plugin, app2) {
   let files = [];
   let rootFolder = app2.vault.getRoot();
   function recursiveFx(folder) {
     for (let child of folderChildren(plugin, folder)) {
-      if (child instanceof import_obsidian33.TFolder) {
+      if (child instanceof import_obsidian36.TFolder) {
         let childFolder = child;
         if (childFolder.children)
           recursiveFx(childFolder);
@@ -40804,7 +41245,7 @@ var getFolderFromPath = (app2, path) => {
   const afile = getAbstractFileAtPath(app2, removeTrailingSlashFromFolder(path));
   if (!afile)
     return null;
-  return afile instanceof import_obsidian33.TFolder ? afile : afile.parent;
+  return afile instanceof import_obsidian36.TFolder ? afile : afile.parent;
 };
 var getFolderPathFromString = (file) => {
   var _a2;
@@ -40850,6 +41291,10 @@ var openSpace = async (spaceName, plugin, newLeaf) => {
   if (platformIsMobile()) {
     app.workspace.leftSplit.collapse();
   }
+  let evt = new CustomEvent(eventTypes.activePathChange, {
+    detail: { path: pathByString(plugin, spaceContextPathFromName(spaceName)) }
+  });
+  window.dispatchEvent(evt);
 };
 var openURL = async (url) => {
   let leaf = app.workspace.getLeaf(false);
@@ -40875,13 +41320,13 @@ var openURL = async (url) => {
   }
 };
 var openAFile = async (file, plugin, newLeaf) => {
-  if (file instanceof import_obsidian33.TFolder) {
+  if (file instanceof import_obsidian36.TFolder) {
     openTFolder(file, plugin, newLeaf);
-  } else if (file instanceof import_obsidian33.TFile) {
+  } else if (file instanceof import_obsidian36.TFile) {
     openTFile(file, plugin, newLeaf);
   }
-  let evt = new CustomEvent(eventTypes.activeFileChange, {
-    detail: { filePath: file.path }
+  let evt = new CustomEvent(eventTypes.activePathChange, {
+    detail: { path: pathByString(plugin, file.path) }
   });
   window.dispatchEvent(evt);
 };
@@ -40905,7 +41350,7 @@ var openTFolder = async (file, plugin, newLeaf) => {
     app.workspace.leftSplit.collapse();
   }
 };
-var openContext = async (tag, plugin, newLeaf) => {
+var openTagContext = async (tag, plugin, newLeaf) => {
   let leaf = app.workspace.getLeaf(newLeaf);
   const viewType = CONTEXT_VIEW_TYPE;
   app.workspace.setActiveLeaf(leaf, { focus: true });
@@ -40914,6 +41359,10 @@ var openContext = async (tag, plugin, newLeaf) => {
   if (platformIsMobile()) {
     app.workspace.leftSplit.collapse();
   }
+  let evt = new CustomEvent(eventTypes.activePathChange, {
+    detail: { path: pathByString(plugin, tag) }
+  });
+  window.dispatchEvent(evt);
 };
 var getAbstractFileAtPath = (app2, path) => {
   return app2.vault.getAbstractFileByPath(path);
@@ -40939,8 +41388,8 @@ var createNewCanvasFile = async (plugin, folder, newFileName, dontOpen) => {
     return newFile;
   }
   await openAFile(newFile, plugin, false);
-  let evt = new CustomEvent(eventTypes.activeFileChange, {
-    detail: { filePath: newFile.path }
+  let evt = new CustomEvent(eventTypes.activePathChange, {
+    detail: { path: pathByString(plugin, newFile.path) }
   });
   window.dispatchEvent(evt);
   return newFile;
@@ -40963,14 +41412,14 @@ var createNewMarkdownFile = async (plugin, folder, newFileName, content, dontOpe
     titleEl.focus();
     selectElementContents(titleEl);
   }
-  let evt = new CustomEvent(eventTypes.activeFileChange, {
-    detail: { filePath: newFile.path }
+  let evt = new CustomEvent(eventTypes.activePathChange, {
+    detail: { path: pathByString(plugin, newFile.path) }
   });
   window.dispatchEvent(evt);
   return newFile;
 };
 var platformIsMobile = () => {
-  return import_obsidian33.Platform.isMobile;
+  return import_obsidian36.Platform.isMobile;
 };
 var newFileInFolder = async (plugin, data, dontOpen) => {
   await createNewMarkdownFile(
@@ -40992,7 +41441,7 @@ var nodeIsAncestorOfTarget = (node, target) => {
 var excludeVaultItemPredicate = (settings) => (f4, index, folder) => !(f4.folder != "true" && settings.hiddenExtensions.find(
   (e4) => fileExtensionForFile(f4.path) == e4
 )) && !settings.hiddenFiles.find((e4) => e4 == f4.path) && (!settings.enableFolderNote || !settings.folderNoteInsideFolder && !folder.some((g4) => g4.path + ".md" == f4.path) || settings.folderNoteInsideFolder && !(f4.parent + "/" + folderPathToString(f4.parent) + ".md" == f4.path));
-var excludeFilePredicate = (plugin) => (f4, index, folder) => !(f4 instanceof import_obsidian34.TFile && plugin.settings.hiddenExtensions.find((e4) => f4.extension == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && (!plugin.settings.enableFolderNote || !plugin.settings.folderNoteInsideFolder && !folder.some((g4) => g4.path + ".md" == f4.path) || plugin.settings.folderNoteInsideFolder && !(f4.parent.path + "/" + f4.parent.name + ".md" == f4.path));
+var excludeFilePredicate = (plugin) => (f4, index, folder) => !(f4 instanceof import_obsidian37.TFile && plugin.settings.hiddenExtensions.find((e4) => f4.extension == e4)) && !plugin.settings.hiddenFiles.find((e4) => e4 == f4.path) && (!plugin.settings.enableFolderNote || !plugin.settings.folderNoteInsideFolder && !folder.some((g4) => g4.path + ".md" == f4.path) || plugin.settings.folderNoteInsideFolder && !(f4.parent.path + "/" + f4.parent.name + ".md" == f4.path));
 var folderChildren = (plugin, f4, exclusionList) => {
   var _a2, _b2;
   return (_b2 = (_a2 = f4 == null ? void 0 : f4.children) == null ? void 0 : _a2.filter(excludeFilePredicate(plugin))) != null ? _b2 : [];
@@ -41143,12 +41592,12 @@ var flowEditorInfo = import_state6.StateField.define({
       return news;
     };
     for (let match2 of str.matchAll(/(?:!\[!\[|!!\[\[)([^\]]+)\]\]/g)) {
-      const link = match2[1];
-      const existingLinks = previous.filter((f4) => f4.link == link);
-      const offset = usedContainers.filter((f4) => f4 == link).length;
+      const link2 = match2[1];
+      const existingLinks = previous.filter((f4) => f4.link == link2);
+      const offset = usedContainers.filter((f4) => f4 == link2).length;
       const existingInfo = existingLinks[offset];
       const id2 = existingInfo ? existingInfo.id : genId();
-      usedContainers.push(link);
+      usedContainers.push(link2);
       const info = {
         id: id2,
         link: match2[1],
@@ -41163,12 +41612,12 @@ var flowEditorInfo = import_state6.StateField.define({
     }
     for (let match2 of str.matchAll(/\[\[([^\]]+)\]\]/g)) {
       if (str.charAt(match2.index - 1) != "!") {
-        const link = match2[1];
-        const existingLinks = previous.filter((f4) => f4.link == link);
-        const offset = usedContainers.filter((f4) => f4 == link).length;
+        const link2 = match2[1];
+        const existingLinks = previous.filter((f4) => f4.link == link2);
+        const offset = usedContainers.filter((f4) => f4 == link2).length;
         const existingInfo = existingLinks[offset];
         const id2 = existingInfo ? existingInfo.id : genId();
-        usedContainers.push(link);
+        usedContainers.push(link2);
         const info = {
           id: id2,
           link: match2[1],
@@ -41181,12 +41630,12 @@ var flowEditorInfo = import_state6.StateField.define({
         };
         newValues.push(info);
       } else if (str.charAt(match2.index - 2) != "!") {
-        const link = match2[1];
-        const existingLinks = previous.filter((f4) => f4.link == link);
-        const offset = usedContainers.filter((f4) => f4 == link).length;
+        const link2 = match2[1];
+        const existingLinks = previous.filter((f4) => f4.link == link2);
+        const offset = usedContainers.filter((f4) => f4 == link2).length;
         const existingInfo = existingLinks[offset];
         const id2 = existingInfo ? existingInfo.id : genId();
-        usedContainers.push(link);
+        usedContainers.push(link2);
         const info = {
           id: id2,
           link: match2[1],
@@ -41363,7 +41812,7 @@ var flowViewUpdates = import_view5.EditorView.updateListener.of((v3) => {
 var import_state8 = require("@codemirror/state");
 
 // src/cm-extensions/inlineStylerView/InlineMenu.tsx
-var import_classnames4 = __toESM(require_classnames());
+var import_classnames5 = __toESM(require_classnames());
 
 // src/cm-extensions/inlineStylerView/marks.ts
 var import_state7 = require("@codemirror/state");
@@ -41782,7 +42231,7 @@ var InlineMenuComponent = (props2) => {
     }
   })) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null));
   return /* @__PURE__ */ Cn.createElement("div", {
-    className: (0, import_classnames4.default)("mk-style-menu", props2.mobile ? "" : "menu"),
+    className: (0, import_classnames5.default)("mk-style-menu", props2.mobile ? "" : "menu"),
     onMouseDown: (e4) => e4.preventDefault()
   }, mode == 0 && props2.mobile ? makeMode() : mode == 2 ? colorsMode() : marksMode());
 };
@@ -41864,12 +42313,12 @@ var BacklinkItem = (props2) => {
   p2(() => {
     var _a2, _b2;
     const fCache = app.metadataCache.getCache(props2.path);
-    const link = [...(_a2 = fCache.links) != null ? _a2 : [], ...(_b2 = fCache.embeds) != null ? _b2 : []].find(
+    const link2 = [...(_a2 = fCache.links) != null ? _a2 : [], ...(_b2 = fCache.embeds) != null ? _b2 : []].find(
       (f4) => props2.source.includes(f4.displayText)
     );
-    if (link) {
+    if (link2) {
       const block2 = fCache.sections.find(
-        (f4) => f4.position.start.offset <= link.position.start.offset && f4.position.end.offset >= link.position.end.offset
+        (f4) => f4.position.start.offset <= link2.position.start.offset && f4.position.end.offset >= link2.position.end.offset
       );
       setBlock([
         Math.max(1, block2.position.start.line),
@@ -41962,7 +42411,7 @@ var Backlinks = (props2) => {
 };
 
 // src/components/FileContextView/InlineFileContextView.tsx
-var import_obsidian38 = require("obsidian");
+var import_obsidian41 = require("obsidian");
 
 // src/components/FileContextView/FileContextList.tsx
 var FileContextList = (props2) => {
@@ -41988,7 +42437,7 @@ var FileContextList = (props2) => {
     const td = tableData ? {
       folder: {
         cols: tableData.cols.filter(
-          (f4) => f4.name != "File" && !(f4.type == "fileprop" && (f4.value.startsWith("File") || f4.value.indexOf(".") == -1)) && f4.hidden != "true" && f4.type != "preview"
+          (f4) => f4.name != FilePropertyName && !(f4.type == "fileprop" && (f4.value.startsWith(FilePropertyName) || f4.value.indexOf(".") == -1)) && f4.hidden != "true" && f4.type != "preview"
         ),
         data: tableData.rows.find((r3) => r3.File == path),
         dataIndex: tableData.rows.findIndex((r3) => r3.File == path)
@@ -41999,7 +42448,7 @@ var FileContextList = (props2) => {
         ...p3,
         [c4]: {
           cols: contextTable[c4].cols.filter(
-            (f4) => f4.name != "File" && f4.type != "fileprop" && f4.hidden != "true" && f4.type != "preview"
+            (f4) => f4.name != FilePropertyName && f4.type != "fileprop" && f4.hidden != "true" && f4.type != "preview"
           ),
           data: contextTable[c4].rows.find(
             (r3, index) => index == parseInt(props2.path)
@@ -42056,7 +42505,7 @@ var FileContextList = (props2) => {
       options,
       field,
       cols,
-      contextTable,
+      contextInfo.contextPath,
       (newField) => saveField(newField, field),
       (newField, val) => saveContext(newField, field, val),
       hideColumn,
@@ -42095,7 +42544,7 @@ var FileContextList = (props2) => {
     plugin: props2.plugin,
     initialValue: fileContext.folder.data[f4.name],
     index: fileContext.folder.dataIndex,
-    file: fileContext.folder.data["File"],
+    file: fileContext.folder.data[FilePropertyName],
     column: { ...f4, table: "" },
     editable: !contextInfo.readOnly,
     updateValue: (v3) => updateValue2(
@@ -42103,7 +42552,7 @@ var FileContextList = (props2) => {
       v3,
       "",
       fileContext.folder.dataIndex,
-      fileContext.folder.data["File"]
+      fileContext.folder.data[FilePropertyName]
     ),
     updateFieldValue: (fv, v3) => updateFieldValue(
       f4.name,
@@ -42111,16 +42560,16 @@ var FileContextList = (props2) => {
       v3,
       "",
       fileContext.folder.dataIndex,
-      fileContext.folder.data["File"]
+      fileContext.folder.data[FilePropertyName]
     ),
     contextTable
   }))))) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null)));
 };
 
 // src/components/ui/menus/fmMenu.tsx
-var import_obsidian35 = require("obsidian");
+var import_obsidian38 = require("obsidian");
 var showFMMenu = (plugin, position, property, deleteProperty, syncProperty, renameProperty, changeType) => {
-  const menu = new import_obsidian35.Menu();
+  const menu = new import_obsidian38.Menu();
   menu.setUseNativeMenu(false);
   menu.addItem((menuItem) => {
     var _a2;
@@ -42160,8 +42609,8 @@ var showFMMenu = (plugin, position, property, deleteProperty, syncProperty, rena
 };
 
 // src/components/ui/modals/moveMetadataModal.tsx
-var import_obsidian36 = require("obsidian");
-var MovePropertyModal = class extends import_obsidian36.Modal {
+var import_obsidian39 = require("obsidian");
+var MovePropertyModal = class extends import_obsidian39.Modal {
   constructor(plugin, syncProperty, property, file) {
     super(plugin.app);
     this.plugin = plugin;
@@ -42433,7 +42882,7 @@ var FrontmatterView = (props2) => {
 };
 
 // src/components/FileContextView/NoteBannerView.tsx
-var import_obsidian37 = require("obsidian");
+var import_obsidian40 = require("obsidian");
 var NoteBannerView = (props2) => {
   const [banner, setBanner] = h2(null);
   p2(() => {
@@ -42449,7 +42898,7 @@ var NoteBannerView = (props2) => {
     if (!props2.file)
       return;
     e4.preventDefault();
-    const fileMenu = new import_obsidian37.Menu();
+    const fileMenu = new import_obsidian40.Menu();
     fileMenu.addSeparator();
     fileMenu.addItem((menuItem) => {
       menuItem.setTitle(i18n_default.buttons.changeBanner);
@@ -42461,7 +42910,7 @@ var NoteBannerView = (props2) => {
           (image) => saveFrontmatterValue(
             props2.plugin,
             props2.file.path,
-            "banner",
+            FMBannerKey,
             image,
             "image",
             true
@@ -42474,7 +42923,7 @@ var NoteBannerView = (props2) => {
       menuItem.setTitle(i18n_default.buttons.removeBanner);
       menuItem.setIcon("lucide-file-minus");
       menuItem.onClick((ev) => {
-        deleteFrontmatterValue(props2.plugin, props2.file.path, "banner");
+        deleteFrontmatterValue(props2.plugin, props2.file.path, FMBannerKey);
       });
     });
     if (isMouseEvent(e4)) {
@@ -42491,7 +42940,7 @@ var NoteBannerView = (props2) => {
     className: `mk-note-header`,
     onContextMenu: triggerBannerContextMenu
   }, banner && /* @__PURE__ */ Cn.createElement("img", {
-    src: banner instanceof import_obsidian37.TFile ? app.vault.getResourcePath(banner) : banner
+    src: banner instanceof import_obsidian40.TFile ? app.vault.getResourcePath(banner) : banner
   }));
 };
 
@@ -42503,7 +42952,9 @@ var InlineFileContextView = (props2) => {
   const [collapsed, setCollapsed] = h2(
     !props2.showHeader ? false : !props2.plugin.settings.inlineContextExpanded
   );
-  const [fileCache, setFileCache] = h2(null);
+  const [fileCache, setFileCache] = h2(
+    props2.plugin.index.files.get(file.path)
+  );
   const tags = (_b2 = fileCache == null ? void 0 : fileCache.tags) != null ? _b2 : [];
   const contexts = F2(() => {
     var _a3;
@@ -42541,7 +42992,7 @@ var InlineFileContextView = (props2) => {
       (image) => saveFrontmatterValue(
         props2.plugin,
         file.path,
-        "banner",
+        FMBannerKey,
         image,
         "image",
         true
@@ -42567,11 +43018,11 @@ var InlineFileContextView = (props2) => {
     );
   };
   const addTag2 = (tag) => {
-    if (file instanceof import_obsidian38.TFile && file.extension == "md")
+    if (file instanceof import_obsidian41.TFile && file.extension == "md")
       addTagToNote(tag, file);
   };
   const removeTag = (tag) => {
-    if (file instanceof import_obsidian38.TFile && file.extension == "md")
+    if (file instanceof import_obsidian41.TFile && file.extension == "md")
       removeTagFromFile(tag, file);
   };
   const saveField = (source, field) => {
@@ -42680,9 +43131,9 @@ var InlineFileContextView = (props2) => {
     onContextMenu: (e4) => e4.preventDefault()
   }), /* @__PURE__ */ Cn.createElement("div", {
     className: `mk-file-context-file ${props2.plugin.settings.inlineContextNameLayout == "horizontal" ? "mk-file-context-file-horizontal" : ""}`
-  }, /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, props2.plugin.settings.spacesStickers ? /* @__PURE__ */ Cn.createElement(FileStickerContainer, {
+  }, /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, props2.plugin.settings.spacesStickers && fileCache ? /* @__PURE__ */ Cn.createElement(FileSticker, {
     plugin: props2.plugin,
-    filePath: file.path
+    fileCache
   }) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null), /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-inline-title inline-title",
     ref: fileNameRef,
@@ -42723,7 +43174,8 @@ var InlineFileContextView = (props2) => {
   }), platformIsMobile() ? "Cover" : "Change Cover") : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null)), tags.length > 0 ? /* @__PURE__ */ Cn.createElement(TagsView, {
     plugin: props2.plugin,
     tags,
-    removeTag
+    removeTag,
+    canOpen: true
   }) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null)) : /* @__PURE__ */ Cn.createElement("div", {
     style: { height: 16 }
   })), !collapsed ? /* @__PURE__ */ Cn.createElement("div", {
@@ -42733,7 +43185,7 @@ var InlineFileContextView = (props2) => {
     path: file.path,
     folder: folderPath,
     tags,
-    excludeKeys: props2.showHeader ? ["banner"] : [],
+    excludeKeys: props2.showHeader ? FMMetadataKeys : [],
     editable: props2.editable
   }), contexts.map((context, i4) => /* @__PURE__ */ Cn.createElement(MDBProvider, {
     key: i4,
@@ -42750,7 +43202,7 @@ var InlineFileContextView = (props2) => {
 };
 
 // src/cm-extensions/inlineContext/inlineContext.tsx
-var import_obsidian39 = require("obsidian");
+var import_obsidian42 = require("obsidian");
 var InlineContextWidget = class extends import_view7.WidgetType {
   constructor(plugin, file, contentEl) {
     super();
@@ -42838,9 +43290,9 @@ var StatefulDecorationSet = class {
   async computeAsyncDecorations(state, show) {
     if (!show)
       return import_view7.Decoration.none;
-    if (!state.field(import_obsidian39.editorInfoField))
+    if (!state.field(import_obsidian42.editorInfoField))
       return null;
-    const infoField = state.field(import_obsidian39.editorInfoField);
+    const infoField = state.field(import_obsidian42.editorInfoField);
     if (!infoField.editor.cm)
       return null;
     const file = infoField.file;
@@ -42899,7 +43351,7 @@ var frontmatterHider = (plugin) => import_state10.StateField.define({
         }
       }
     });
-    const livePreview = tr.state.field(import_obsidian39.editorLivePreviewField);
+    const livePreview = tr.state.field(import_obsidian42.editorLivePreviewField);
     if (fmEnd > 0 && fmEnd < tr.state.doc.length && plugin.settings.hideFrontmatter && livePreview) {
       builder.add(fmStart, fmEnd + 1, import_view7.Decoration.replace({ inclusive: true }));
     }
@@ -42915,10 +43367,10 @@ var headerViewPlugin = (plugin) => import_view7.ViewPlugin.fromClass(
       this.flowTypeState = view.state.field(flowTypeStateField, false);
       if (this.flowTypeState == "doc" || !this.flowTypeState)
         this.statefulDecorationsSet.updateAsyncDecorations(view.state, true);
-      this.livePreview = view.state.field(import_obsidian39.editorLivePreviewField, false);
+      this.livePreview = view.state.field(import_obsidian42.editorLivePreviewField, false);
     }
     showHeader(view) {
-      if ((view.state.field(flowTypeStateField, false) == "doc" || view.state.field(flowTypeStateField, false) == null) && view.state.field(import_obsidian39.editorLivePreviewField, false)) {
+      if ((view.state.field(flowTypeStateField, false) == "doc" || view.state.field(flowTypeStateField, false) == null) && view.state.field(import_obsidian42.editorLivePreviewField, false)) {
         if (!this.headerEnabled) {
           this.statefulDecorationsSet.updateAsyncDecorations(view.state, true);
           this.headerEnabled = true;
@@ -42930,10 +43382,10 @@ var headerViewPlugin = (plugin) => import_view7.ViewPlugin.fromClass(
     }
     update(update) {
       var _a2, _b2;
-      const infoField = update.state.field(import_obsidian39.editorInfoField, false);
-      if (update.docChanged || update.state.field(flowTypeStateField, false) != this.flowTypeState || this.filePath != ((_a2 = infoField.file) == null ? void 0 : _a2.path) || this.livePreview != update.state.field(import_obsidian39.editorLivePreviewField, false)) {
+      const infoField = update.state.field(import_obsidian42.editorInfoField, false);
+      if (update.docChanged || update.state.field(flowTypeStateField, false) != this.flowTypeState || this.filePath != ((_a2 = infoField.file) == null ? void 0 : _a2.path) || this.livePreview != update.state.field(import_obsidian42.editorLivePreviewField, false)) {
         this.filePath = (_b2 = infoField.file) == null ? void 0 : _b2.path;
-        this.livePreview = update.state.field(import_obsidian39.editorLivePreviewField, false);
+        this.livePreview = update.state.field(import_obsidian42.editorLivePreviewField, false);
         this.flowTypeState = update.state.field(flowTypeStateField, false);
         this.showHeader(update.view);
       }
@@ -43005,7 +43457,7 @@ var cmExtensions = (plugin, mobile) => {
 };
 
 // src/components/MakeMenu/MakeMenu.tsx
-var import_obsidian40 = require("obsidian");
+var import_obsidian43 = require("obsidian");
 
 // src/components/MakeMenu/commands/default.ts
 var default_default2 = [
@@ -43110,7 +43562,7 @@ function resolveCommands(plugin) {
 }
 
 // src/components/MakeMenu/MakeMenu.tsx
-var MakeMenu = class extends import_obsidian40.EditorSuggest {
+var MakeMenu = class extends import_obsidian43.EditorSuggest {
   constructor(app2, plugin) {
     super(app2);
     this.inCmd = false;
@@ -43167,7 +43619,10 @@ var MakeMenu = class extends import_obsidian40.EditorSuggest {
     if (cmd.value == "table") {
       this.plugin.createTable(this.file.parent.path).then((f4) => {
         this.context.editor.replaceRange(
-          `![![${this.file.parent.path}/#^${f4}]]`,
+          contextEmbedStringFromContext(
+            folderContextFromFolder(this.plugin, this.file.parent.path),
+            f4
+          ),
           { ...this.context.start, ch: this.cmdStartCh },
           this.context.end
         );
@@ -43200,8 +43655,8 @@ var MakeMenu = class extends import_obsidian40.EditorSuggest {
 };
 
 // src/components/StickerMenu/StickerMenu.tsx
-var import_obsidian41 = require("obsidian");
-var StickerMenu = class extends import_obsidian41.EditorSuggest {
+var import_obsidian44 = require("obsidian");
+var StickerMenu = class extends import_obsidian44.EditorSuggest {
   constructor(app2, plugin) {
     super(app2);
     this.inCmd = false;
@@ -43271,7 +43726,7 @@ var StickerMenu = class extends import_obsidian41.EditorSuggest {
 };
 
 // src/main.ts
-var import_obsidian58 = require("obsidian");
+var import_obsidian61 = require("obsidian");
 
 // src/utils/flow/markdownPost.tsx
 var getCMFromElement = (el) => {
@@ -43298,12 +43753,12 @@ var replaceAllTables = (plugin, el, ctx) => {
     for (let match2 of element.textContent.matchAll(
       /(?:!\[!\[|!!\[\[)([^\]]+)\]\]/g
     )) {
-      const link = match2[1];
+      const link2 = match2[1];
       const reactEl = createRoot(element.parentElement);
       reactEl.render(
         /* @__PURE__ */ Cn.createElement(FlowView, {
           plugin,
-          path: link,
+          path: link2,
           load: true
         })
       );
@@ -43410,7 +43865,7 @@ var replaceAllEmbed = (el, ctx) => {
 };
 
 // src/components/Spaces/FileTreeView.tsx
-var import_obsidian49 = require("obsidian");
+var import_obsidian52 = require("obsidian");
 
 // node_modules/recoil/es/recoil.js
 function isPromise(p3) {
@@ -48505,8 +48960,8 @@ var Recoil_index_34 = Recoil_index.setBatcher;
 var Recoil_index_35 = Recoil_index.snapshot_UNSTABLE;
 
 // src/components/ui/modals/hiddenFilesModal.tsx
-var import_obsidian42 = require("obsidian");
-var HiddenItemsModal = class extends import_obsidian42.Modal {
+var import_obsidian45 = require("obsidian");
+var HiddenItemsModal = class extends import_obsidian45.Modal {
   constructor(plugin) {
     super(plugin.app);
     this.plugin = plugin;
@@ -48645,11 +49100,11 @@ var HiddenFiles = (props2) => {
 };
 
 // src/components/Spaces/MainMenu.tsx
-var import_obsidian43 = require("obsidian");
+var import_obsidian46 = require("obsidian");
 
 // src/recoil/pluginState.ts
 var activeFile = Recoil_index_4({
-  key: "spacesActiveFile",
+  key: "spacesActivePath",
   default: null,
   dangerouslyAllowMutability: true
 });
@@ -48733,7 +49188,7 @@ var MainMenu = (props2) => {
   };
   const showMenu = (e4) => {
     const { spaceActive, leafs } = refreshLeafs();
-    const menu = new import_obsidian43.Menu();
+    const menu = new import_obsidian46.Menu();
     !spaceActive && menu.addItem((menuItem) => {
       menuItem.setIcon("lucide-arrow-left");
       menuItem.setTitle(i18n_default.menu.backToSpace);
@@ -49280,12 +49735,12 @@ function calculateRange(_ref4) {
 }
 
 // src/components/Spaces/TreeView/FolderTreeView.tsx
-var import_obsidian45 = require("obsidian");
-var import_classnames6 = __toESM(require_classnames());
+var import_obsidian48 = require("obsidian");
+var import_classnames7 = __toESM(require_classnames());
 
 // src/components/Spaces/TreeView/SectionView.tsx
-var import_classnames5 = __toESM(require_classnames());
-var import_obsidian44 = require("obsidian");
+var import_classnames6 = __toESM(require_classnames());
+var import_obsidian47 = require("obsidian");
 var SectionItem = k3(
   ({
     childCount,
@@ -49303,7 +49758,8 @@ var SectionItem = k3(
     onCollapse,
     wrapperRef,
     plugin,
-    disabled
+    disabled,
+    active
   }, ref) => {
     var _a2, _b2;
     const [activeFile2, setActiveFile] = Recoil_index_14(activeFile);
@@ -49318,7 +49774,7 @@ var SectionItem = k3(
       );
     };
     const triggerVaultMenu = (e4) => {
-      const fileMenu = new import_obsidian44.Menu();
+      const fileMenu = new import_obsidian47.Menu();
       fileMenu.addItem((menuItem) => {
         menuItem.setIcon("edit");
         menuItem.setTitle(i18n_default.buttons.createNote);
@@ -49414,7 +49870,7 @@ var SectionItem = k3(
       return false;
     };
     return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
-      className: (0, import_classnames5.default)(
+      className: (0, import_classnames6.default)(
         "mk-tree-wrapper",
         "mk-section-wrapper",
         clone && "mk-clone",
@@ -49429,7 +49885,7 @@ var SectionItem = k3(
       }
     }, /* @__PURE__ */ Cn.createElement("div", {
       onContextMenu: (e4) => triggerMenu(e4),
-      className: (0, import_classnames5.default)(
+      className: (0, import_classnames6.default)(
         "mk-section",
         indicator ? indicator.state == 2 /* Bottom */ ? "mk-indicator-bottom" : indicator.state == 1 /* Top */ ? "mk-indicator-top" : indicator.state == 3 /* Row */ ? "mk-indicator-row" : "" : ""
       )
@@ -49440,7 +49896,11 @@ var SectionItem = k3(
       },
       onClick: (e4) => onCollapse(data)
     }), /* @__PURE__ */ Cn.createElement("div", {
-      className: "mk-tree-item \n                nav-folder-title",
+      className: (0, import_classnames6.default)(
+        "mk-tree-item",
+        "nav-folder-title",
+        active && "is-selected"
+      ),
       ref,
       ...handleProps
     }, /* @__PURE__ */ Cn.createElement("div", {
@@ -49580,16 +50040,17 @@ var TreeItem = k3(
         onSelectRange(file.id);
         return;
       }
+      if (file.item.isFolder) {
+        onCollapse(data);
+      }
       if (!plugin.settings.contextEnabled) {
-        if (file.item.isFolder) {
-          onCollapse(data);
-        } else {
+        if (!file.item.isFolder) {
           openAFile(
             getAbstractFileAtPath(app, file.item.path),
             plugin,
             e4.ctrlKey || e4.metaKey
           );
-          setActiveFile(file.item.path);
+          setActiveFile(pathByString(plugin, file.item.path));
           setSelectedFiles([file]);
         }
       } else {
@@ -49598,7 +50059,7 @@ var TreeItem = k3(
           plugin,
           e4.ctrlKey || e4.metaKey
         );
-        setActiveFile(file.item.path);
+        setActiveFile(pathByString(plugin, file.item.path));
         setSelectedFiles([file]);
       }
     };
@@ -49619,7 +50080,7 @@ var TreeItem = k3(
         return;
       }
       const file = getAbstractFileAtPath(app, data.item.path);
-      if (file instanceof import_obsidian45.TFolder) {
+      if (file instanceof import_obsidian48.TFolder) {
         app.dragManager.onDragStart(e4, {
           icon: "lucide-folder",
           source: void 0,
@@ -49684,7 +50145,7 @@ var TreeItem = k3(
       onDragStart: dragStarted
     } : handleProps;
     return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
-      className: (0, import_classnames6.default)(
+      className: (0, import_classnames7.default)(
         "mk-tree-wrapper",
         clone && "mk-clone",
         ghost && "mk-ghost",
@@ -49694,7 +50155,7 @@ var TreeItem = k3(
       ref: wrapperRef,
       style
     }, /* @__PURE__ */ Cn.createElement("div", {
-      className: (0, import_classnames6.default)(
+      className: (0, import_classnames7.default)(
         data.item.isFolder ? "nav-folder" : "nav-file",
         indicator ? indicator.state == 2 /* Bottom */ ? "mk-indicator-bottom" : indicator.state == 1 /* Top */ ? "mk-indicator-top" : indicator.state == 3 /* Row */ ? "mk-indicator-row" : "" : ""
       ),
@@ -49706,7 +50167,7 @@ var TreeItem = k3(
       dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-handle"] },
       ...handleProps
     }), /* @__PURE__ */ Cn.createElement("div", {
-      className: (0, import_classnames6.default)(
+      className: (0, import_classnames7.default)(
         `mk-tree-item 
                 ${data.item.isFolder ? "nav-folder-title" : "nav-file-title"}
                  ${active ? "is-active" : ""} ${selected ? "is-selected" : ""}`
@@ -49772,7 +50233,7 @@ function useForceUpdate() {
 }
 
 // src/components/Spaces/TreeView/FileExplorerVirtualized.tsx
-var import_obsidian46 = require("obsidian");
+var import_obsidian49 = require("obsidian");
 
 // src/utils/ui/dnd.ts
 function getMaxDepth({ previousItem }) {
@@ -49899,39 +50360,36 @@ var VirtualizedList = Cn.memo(
         width: "100%",
         position: "relative"
       }
-    }, rowVirtualizer.virtualItems.map((virtualRow) => {
-      var _a2;
-      return /* @__PURE__ */ Cn.createElement("div", {
-        key: virtualRow.index,
-        ref: virtualRow.measureRef,
-        style: {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: `${rowHeight(virtualRow.index)}px`,
-          transform: `translateY(${virtualRow.start}px)`
-        }
-      }, /* @__PURE__ */ Cn.createElement(SortableTreeItem, {
-        key: flattenedTree[virtualRow.index].id,
-        id: flattenedTree[virtualRow.index].id,
-        data: flattenedTree[virtualRow.index],
-        disabled: false,
-        depth: flattenedTree[virtualRow.index].depth,
-        childCount: flattenedTree[virtualRow.index].childrenCount,
-        indentationWidth,
-        indicator: (projected == null ? void 0 : projected.overId) == flattenedTree[virtualRow.index].id ? flattenedTree[virtualRow.index].parentId == null && projected.parentId == null ? { state: 1 /* Top */, depth: projected.depth } : { state: 2 /* Bottom */, depth: projected.depth } : null,
-        plugin,
-        style: {},
-        onSelectRange: selectRange2,
-        active: activeFile2 == ((_a2 = flattenedTree[virtualRow.index].item) == null ? void 0 : _a2.path),
-        selected: selectedFiles2.some(
-          (g4) => g4.id == flattenedTree[virtualRow.index].id
-        ),
-        collapsed: flattenedTree[virtualRow.index].collapsed,
-        onCollapse: handleCollapse
-      }));
-    })));
+    }, rowVirtualizer.virtualItems.map((virtualRow) => /* @__PURE__ */ Cn.createElement("div", {
+      key: virtualRow.index,
+      ref: virtualRow.measureRef,
+      style: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: `${rowHeight(virtualRow.index)}px`,
+        transform: `translateY(${virtualRow.start}px)`
+      }
+    }, /* @__PURE__ */ Cn.createElement(SortableTreeItem, {
+      key: flattenedTree[virtualRow.index].id,
+      id: flattenedTree[virtualRow.index].id,
+      data: flattenedTree[virtualRow.index],
+      disabled: false,
+      depth: flattenedTree[virtualRow.index].depth,
+      childCount: flattenedTree[virtualRow.index].childrenCount,
+      indentationWidth,
+      indicator: (projected == null ? void 0 : projected.overId) == flattenedTree[virtualRow.index].id ? flattenedTree[virtualRow.index].parentId == null && projected.parentId == null ? { state: 1 /* Top */, depth: projected.depth } : { state: 2 /* Bottom */, depth: projected.depth } : null,
+      plugin,
+      style: {},
+      onSelectRange: selectRange2,
+      active: (activeFile2 == null ? void 0 : activeFile2.path) == flattenedTree[virtualRow.index].path,
+      selected: selectedFiles2.some(
+        (g4) => g4.id == flattenedTree[virtualRow.index].id
+      ),
+      collapsed: flattenedTree[virtualRow.index].collapsed,
+      onCollapse: handleCollapse
+    })))));
   }
 );
 var FileExplorerComponent = (props2) => {
@@ -50033,6 +50491,7 @@ var FileExplorerComponent = (props2) => {
         depth: 0,
         index: 0,
         space: "/",
+        path: "/",
         item: null,
         collapsed: vaultCollapsed,
         sortable: vaultSort[0] == "rank",
@@ -50063,14 +50522,14 @@ var FileExplorerComponent = (props2) => {
   ]);
   p2(() => {
     if (selectedFiles2.length <= 1) {
-      if (!selectedFiles2[0] || selectedFiles2[0].item.path != activeFile2)
+      if (!selectedFiles2[0] || selectedFiles2[0].item.path != (activeFile2 == null ? void 0 : activeFile2.path))
         setSelectedFiles([]);
       if (plugin.settings.revealActiveFile)
-        revealFile(getAbstractFileAtPath(app, activeFile2));
+        revealFile(activeFile2);
     }
-    window.addEventListener(eventTypes.activeFileChange, changeActiveFile);
+    window.addEventListener(eventTypes.activePathChange, changeActiveFile);
     return () => {
-      window.removeEventListener(eventTypes.activeFileChange, changeActiveFile);
+      window.removeEventListener(eventTypes.activePathChange, changeActiveFile);
     };
   }, [activeFile2]);
   p2(() => {
@@ -50083,10 +50542,11 @@ var FileExplorerComponent = (props2) => {
       window.removeEventListener(eventTypes.revealFile, handleRevealFileEvent);
     };
   }, []);
-  const revealFile = (file) => {
+  const revealFile = (path) => {
     var _a2, _b2;
-    if (!file)
+    if (!path || path.type != "file" && path.type != "folder")
       return;
+    const file = getAbstractFileAtPath(app, path.path);
     const folders = file.path.split("/");
     const openPaths = folders.reduce(
       (p3, c4, index) => [...p3, index == 0 ? c4 : `${p3[index]}/${c4}`],
@@ -50105,7 +50565,7 @@ var FileExplorerComponent = (props2) => {
   };
   const handleRevealFileEvent = (evt) => {
     if (evt.detail)
-      revealFile(evt.detail.file);
+      revealFile(pathByString(plugin, evt.detail.file.path));
   };
   const retrieveData = async (folders) => {
     setSpaces(plugin.index.allSpaces());
@@ -50155,8 +50615,8 @@ var FileExplorerComponent = (props2) => {
     }
   };
   const changeActiveFile = (evt) => {
-    let filePath = evt.detail.filePath;
-    setActiveFile(filePath);
+    let path = evt.detail.path;
+    setActiveFile(path);
   };
   const settingsChanged = () => {
     setVaultSort(plugin.settings.vaultSort);
@@ -50302,7 +50762,7 @@ var FileExplorerComponent = (props2) => {
             return;
           } else {
             if (plugin.app.vault.getAbstractFileByPath(newPath)) {
-              new import_obsidian46.Notice(i18n_default.notice.duplicateFile);
+              new import_obsidian49.Notice(i18n_default.notice.duplicateFile);
               return;
             }
           }
@@ -50321,7 +50781,6 @@ var FileExplorerComponent = (props2) => {
             plugin,
             activeTreeItem.item,
             newParent,
-            vaultItems,
             parseInt(newRank)
           );
           return;
@@ -50338,15 +50797,10 @@ var FileExplorerComponent = (props2) => {
             return;
           }
           if (activeTreeItem.parentId == overItem2.id) {
-            updateFileRank(plugin, activeTreeItem.item, vaultItems, -1);
+            updateFileRank(plugin, activeTreeItem.item, -1);
             return;
           }
-          updateFileRank(
-            plugin,
-            activeTreeItem.item,
-            vaultItems,
-            parseInt(newRank)
-          );
+          updateFileRank(plugin, activeTreeItem.item, parseInt(newRank));
           return;
         }
         if (overItem2.space == "/") {
@@ -50360,7 +50814,6 @@ var FileExplorerComponent = (props2) => {
             plugin,
             activeTreeItem.item,
             (_k = overSpace.def) == null ? void 0 : _k.folder,
-            vaultItems,
             parseInt(overItem2.item.rank)
           );
           if (activeItem.space != "/") {
@@ -50380,32 +50833,30 @@ var FileExplorerComponent = (props2) => {
       }
       if (parentId != activeTreeItem.parentId) {
         if (overIsSection && activeTreeItem.parentId == "///") {
-          updateFileRank(plugin, activeTreeItem.item, vaultItems, -1);
+          updateFileRank(plugin, activeTreeItem.item, -1);
           return;
         }
         const newParent = (parentItem == null ? void 0 : parentItem.item) ? parentItem.item.isFolder ? parentItem.item.path : parentItem.item.parent : "/";
         const newRank = (_n2 = (_m = overItem2.item) == null ? void 0 : _m.rank) != null ? _n2 : "-1";
         const newPath = newParent == "/" ? activeItem.file.name : `${newParent}/${activeItem.file.name}`;
         if (plugin.app.vault.getAbstractFileByPath(newPath)) {
-          new import_obsidian46.Notice(i18n_default.notice.duplicateFile);
+          new import_obsidian49.Notice(i18n_default.notice.duplicateFile);
           return;
         }
         moveAFileToNewParentAtIndex(
           plugin,
           activeTreeItem.item,
           newParent,
-          vaultItems,
           parseInt(newRank)
         );
       } else {
         if (activeTreeItem.parentId == overItem2.id) {
-          updateFileRank(plugin, activeTreeItem.item, vaultItems, -1);
+          updateFileRank(plugin, activeTreeItem.item, -1);
           return;
         }
         updateFileRank(
           plugin,
           activeTreeItem.item,
-          vaultItems,
           parseInt(overItem2.item.rank)
         );
       }
@@ -50500,7 +50951,7 @@ var FileExplorerComponent = (props2) => {
 };
 
 // src/components/Spaces/SpaceSwitcher/SpaceSwitcher.tsx
-var import_classnames7 = __toESM(require_classnames());
+var import_classnames8 = __toESM(require_classnames());
 var SpaceSwitcher = (props2) => {
   const [activeView2, setActiveView] = Recoil_index_14(activeView);
   const [spaces2, setSpaces] = h2([]);
@@ -50517,21 +50968,6 @@ var SpaceSwitcher = (props2) => {
   const [activeViewSpace2, setActiveViewSpace] = Recoil_index_14(
     activeViewSpace
   );
-  const newSection = () => {
-    let vaultChangeModal = new EditSpaceModal(
-      props2.plugin,
-      {
-        name: "",
-        def: {
-          type: "focus",
-          folder: "",
-          filters: []
-        }
-      },
-      "create"
-    );
-    vaultChangeModal.open();
-  };
   p2(() => {
     loadCachedSpaces();
   }, []);
@@ -50568,7 +51004,7 @@ var SpaceSwitcher = (props2) => {
   }))), /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-sidebar-switcher"
   }, /* @__PURE__ */ Cn.createElement("div", {
-    className: (0, import_classnames7.default)(
+    className: (0, import_classnames8.default)(
       "mk-sidebar-item",
       activeView2 == "root" && "mk-sidebar-item-active"
     ),
@@ -50577,7 +51013,7 @@ var SpaceSwitcher = (props2) => {
     className: "mk-icon-small",
     dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-home"] }
   })), /* @__PURE__ */ Cn.createElement("div", {
-    className: (0, import_classnames7.default)(
+    className: (0, import_classnames8.default)(
       "mk-sidebar-item",
       activeView2 == "tags" && "mk-sidebar-item-active"
     ),
@@ -50586,7 +51022,7 @@ var SpaceSwitcher = (props2) => {
     className: "mk-icon-small",
     dangerouslySetInnerHTML: { __html: uiIconSet["mk-ui-tags"] }
   })), /* @__PURE__ */ Cn.createElement("div", {
-    className: (0, import_classnames7.default)(
+    className: (0, import_classnames8.default)(
       "mk-sidebar-item",
       activeView2 == "all" && "mk-sidebar-item-active"
     ),
@@ -50600,7 +51036,7 @@ var SpaceSwitcher = (props2) => {
     var _a2;
     return /* @__PURE__ */ Cn.createElement("div", {
       onContextMenu: (e4) => triggerSectionMenu(props2.plugin, pin, spaces2, e4, activeFile2),
-      className: (0, import_classnames7.default)(
+      className: (0, import_classnames8.default)(
         "mk-sidebar-item mk-sidebar-space",
         activeView2 == "space" && activeViewSpace2 == pin.name && "mk-sidebar-item-active"
       ),
@@ -50608,7 +51044,7 @@ var SpaceSwitcher = (props2) => {
       dangerouslySetInnerHTML: ((_a2 = pin.sticker) == null ? void 0 : _a2.length) > 0 ? { __html: stickerFromString(pin.sticker) } : null
     }, pin.name.substring(0, 1));
   })), /* @__PURE__ */ Cn.createElement("div", {
-    className: (0, import_classnames7.default)("mk-sidebar-item"),
+    className: (0, import_classnames8.default)("mk-sidebar-item"),
     onClick: (e4) => triggerSectionAddMenu(plugin, e4)
   }, /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-icon-small",
@@ -50617,8 +51053,8 @@ var SpaceSwitcher = (props2) => {
 };
 
 // src/components/ui/modals/tagChangeModal.ts
-var import_obsidian47 = require("obsidian");
-var TagChangeModal = class extends import_obsidian47.Modal {
+var import_obsidian50 = require("obsidian");
+var TagChangeModal = class extends import_obsidian50.Modal {
   constructor(plugin, action, tag) {
     super(plugin.app);
     this.action = action;
@@ -50683,12 +51119,12 @@ var TagChangeModal = class extends import_obsidian47.Modal {
 
 // src/components/Spaces/TagContextList/TagContextList.tsx
 var import_lodash8 = __toESM(require_lodash());
-var import_obsidian48 = require("obsidian");
+var import_obsidian51 = require("obsidian");
 var TagContextList = (props2) => {
   const [allTags, setAllTags] = h2([]);
   const [allQueries, setAllQueries] = h2([]);
   const openContextMenu = async (e4, tag) => {
-    const fileMenu = new import_obsidian48.Menu();
+    const fileMenu = new import_obsidian51.Menu();
     fileMenu.addItem((menuItem) => {
       menuItem.setTitle("Rename Tag");
       menuItem.setIcon("edit");
@@ -50714,7 +51150,7 @@ var TagContextList = (props2) => {
     }
   };
   const openContextView = async (tag) => {
-    openContext(tag, props2.plugin, false);
+    openTagContext(tag, props2.plugin, false);
   };
   p2(() => {
     window.addEventListener(eventTypes.spacesChange, refreshData);
@@ -50732,7 +51168,7 @@ var TagContextList = (props2) => {
       getFolderPathFromString(props2.plugin.settings.tagContextFolder)
     );
     const f4 = (_a2 = folder == null ? void 0 : folder.children.filter(
-      (f5) => f5 instanceof import_obsidian48.TFile && f5.extension == "mdb" && f5.name.charAt(0) == "#"
+      (f5) => f5 instanceof import_obsidian51.TFile && f5.extension == "mdb" && f5.name.charAt(0) == "#"
     ).map((f5) => tagPathToTag(fileNameToString(f5.name)))) != null ? _a2 : [];
     setAllTags(
       (0, import_lodash8.uniq)([...f4.filter((g4) => g4), ...Object.keys(app.metadataCache.getTags())])
@@ -50880,14 +51316,14 @@ var MainList = (props2) => {
 var FILE_TREE_VIEW_TYPE = "mk-file-view";
 var VIEW_DISPLAY_TEXT = "Spaces";
 var ICON = "layout-grid";
-var FileTreeView = class extends import_obsidian49.ItemView {
+var FileTreeView = class extends import_obsidian52.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.navigation = false;
     this.plugin = plugin;
   }
   revealInFolder(file) {
-    if (file instanceof import_obsidian49.TFolder) {
+    if (file instanceof import_obsidian52.TFolder) {
       this.plugin.app.workspace.activeLeaf.setViewState({
         type: CONTEXT_VIEW_TYPE,
         state: { contextPath: file.path }
@@ -50942,7 +51378,7 @@ var FileTreeView = class extends import_obsidian49.ItemView {
 };
 
 // src/settings/settings.ts
-var import_obsidian50 = require("obsidian");
+var import_obsidian53 = require("obsidian");
 var DEFAULT_SETTINGS = {
   defaultInitialization: false,
   filePreviewOnHover: false,
@@ -50997,10 +51433,10 @@ var DEFAULT_SETTINGS = {
   inlineContextExpanded: true,
   dataviewInlineContext: false,
   inlineContextNameLayout: "vertical",
-  spacesSyncResolver: "Context/spaces.md",
+  spacesSyncLastUpdated: "Context/spacesLastSync.log",
   spacesSyncTimeoutSeconds: 10
 };
-var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
+var MakeMDPluginSettingsTab = class extends import_obsidian53.PluginSettingTab {
   constructor(app2, plugin) {
     super(app2, plugin);
     this.plugin = plugin;
@@ -51013,49 +51449,49 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
     let { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h2", { text: i18n_default.settings.sectionAppearance });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.sidebarTabs.name).setDesc(i18n_default.settings.sidebarTabs.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.sidebarTabs.name).setDesc(i18n_default.settings.sidebarTabs.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.sidebarTabs).onChange((value) => {
         this.plugin.settings.sidebarTabs = value;
         this.plugin.saveSettings();
         document.body.classList.toggle("mk-hide-tabs", !value);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.hideRibbon.name).setDesc(i18n_default.settings.hideRibbon.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.hideRibbon.name).setDesc(i18n_default.settings.hideRibbon.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.showRibbon).onChange((value) => {
         this.plugin.settings.showRibbon = value;
         this.plugin.saveSettings();
         document.body.classList.toggle("mk-hide-ribbon", !value);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.compactMode.name).setDesc(i18n_default.settings.compactMode.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.compactMode.name).setDesc(i18n_default.settings.compactMode.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesCompactMode).onChange((value) => {
         this.plugin.settings.spacesCompactMode = value;
         this.plugin.detachFileTreeLeafs();
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.lineNumbers.name).setDesc(i18n_default.settings.lineNumbers.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.lineNumbers.name).setDesc(i18n_default.settings.lineNumbers.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.lineNumbers).onChange(async (value) => {
         this.plugin.settings.lineNumbers = value;
         await this.plugin.saveSettings();
         this.plugin.reloadExtensions(false);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.folderIndentationLines.name).setDesc(i18n_default.settings.folderIndentationLines.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.folderIndentationLines.name).setDesc(i18n_default.settings.folderIndentationLines.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.folderIndentationLines).onChange((value) => {
         this.plugin.settings.folderIndentationLines = value;
         this.plugin.saveSettings();
         document.body.classList.toggle("mk-folder-lines", value);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.defaultDateFormat.name).setDesc(i18n_default.settings.defaultDateFormat.desc).addText((text2) => {
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.defaultDateFormat.name).setDesc(i18n_default.settings.defaultDateFormat.desc).addText((text2) => {
       text2.setValue(this.plugin.settings.defaultDateFormat).onChange(async (value) => {
         this.plugin.settings.defaultDateFormat = value;
         await this.plugin.saveSettings();
       });
     });
     containerEl.createEl("h2", { text: i18n_default.settings.sectionSidebar });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.spaces.name).setDesc(i18n_default.settings.spaces.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.spaces.name).setDesc(i18n_default.settings.spaces.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesEnabled).onChange((value) => {
         this.plugin.settings.spacesEnabled = value;
         this.plugin.saveSettings();
@@ -51067,47 +51503,47 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
         this.refreshView();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.spacesStickers.name).setDesc(i18n_default.settings.spacesStickers.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.spacesStickers.name).setDesc(i18n_default.settings.spacesStickers.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesStickers).onChange((value) => {
         this.plugin.settings.spacesStickers = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.folderNote.name).setDesc(i18n_default.settings.folderNote.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.folderNote.name).setDesc(i18n_default.settings.folderNote.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.enableFolderNote).onChange((value) => {
         this.plugin.settings.enableFolderNote = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.hoverPreview.name).setDesc(i18n_default.settings.hoverPreview.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.hoverPreview.name).setDesc(i18n_default.settings.hoverPreview.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.filePreviewOnHover).onChange((value) => {
         this.plugin.settings.filePreviewOnHover = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.activeFile.name).setDesc(i18n_default.settings.activeFile.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.activeFile.name).setDesc(i18n_default.settings.activeFile.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.revealActiveFile).onChange((value) => {
         this.plugin.settings.revealActiveFile = value;
         this.plugin.saveSettings();
       })
     );
     containerEl.createEl("h2", { text: "Context" });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.contexts.name).setDesc(i18n_default.settings.contexts.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.contexts.name).setDesc(i18n_default.settings.contexts.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.contextEnabled).onChange((value) => {
         this.plugin.settings.contextEnabled = value;
         this.plugin.saveSettings();
         this.plugin.reloadExtensions(false);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.inlineContextExplorer.name).setDesc(i18n_default.settings.inlineContextExplorer.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.inlineContextExplorer.name).setDesc(i18n_default.settings.inlineContextExplorer.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.inlineContext).onChange((value) => {
         this.plugin.settings.inlineContext = value;
         this.plugin.saveSettings();
         this.plugin.reloadExtensions(false);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.inlineContextHorizontal.name).setDesc(i18n_default.settings.inlineContextHorizontal.desc).addDropdown((dropdown) => {
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.inlineContextHorizontal.name).setDesc(i18n_default.settings.inlineContextHorizontal.desc).addDropdown((dropdown) => {
       dropdown.addOption("vertical", i18n_default.settings.layoutVertical);
       dropdown.addOption("horizontal", i18n_default.settings.layoutHorizontal);
       dropdown.setValue(this.plugin.settings.inlineContextNameLayout);
@@ -51116,41 +51552,41 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.hideFrontmatter.name).setDesc(i18n_default.settings.hideFrontmatter.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.hideFrontmatter.name).setDesc(i18n_default.settings.hideFrontmatter.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.hideFrontmatter).onChange(async (value) => {
         this.plugin.settings.hideFrontmatter = value;
         await this.plugin.saveSettings();
         this.plugin.reloadExtensions(false);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.openFileContext.name).setDesc(i18n_default.settings.openFileContext.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.openFileContext.name).setDesc(i18n_default.settings.openFileContext.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.autoOpenFileContext).onChange((value) => {
         this.plugin.settings.autoOpenFileContext = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.syncContextToFrontmatter.name).setDesc(i18n_default.settings.syncContextToFrontmatter.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.syncContextToFrontmatter.name).setDesc(i18n_default.settings.syncContextToFrontmatter.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.saveAllContextToFrontmatter).onChange((value) => {
         this.plugin.settings.saveAllContextToFrontmatter = value;
         this.plugin.saveSettings();
       })
     );
     containerEl.createEl("h2", { text: i18n_default.settings.sectionFlow });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.internalLinkFlowEditor.name).setDesc(i18n_default.settings.internalLinkFlowEditor.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.internalLinkFlowEditor.name).setDesc(i18n_default.settings.internalLinkFlowEditor.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.internalLinkClickFlow).onChange(async (value) => {
         this.plugin.settings.internalLinkClickFlow = value;
         await this.plugin.saveSettings();
         this.plugin.reloadExtensions(false);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.editorFlowReplace.name).setDesc(i18n_default.settings.editorFlowReplace.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.editorFlowReplace.name).setDesc(i18n_default.settings.editorFlowReplace.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.editorFlow).onChange((value) => {
         this.plugin.settings.editorFlow = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.editorFlowStyle.name).setDesc(i18n_default.settings.editorFlowStyle.desc).addDropdown((dropdown) => {
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.editorFlowStyle.name).setDesc(i18n_default.settings.editorFlowStyle.desc).addDropdown((dropdown) => {
       dropdown.addOption("classic", i18n_default.settings.editorFlowStyle.classic);
       dropdown.addOption("seamless", i18n_default.settings.editorFlowStyle.seamless);
       dropdown.addOption("minimal", i18n_default.settings.editorFlowStyle.minimal);
@@ -51167,7 +51603,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
           document.body.classList.toggle("mk-flow-minimal", true);
       });
     });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.inlineBacklinks.name).setDesc(i18n_default.settings.inlineBacklinks.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.inlineBacklinks.name).setDesc(i18n_default.settings.inlineBacklinks.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.inlineBacklinks).onChange(async (value) => {
         this.plugin.settings.inlineBacklinks = value;
         await this.plugin.saveSettings();
@@ -51175,14 +51611,14 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
       })
     );
     containerEl.createEl("h2", { text: i18n_default.settings.sectionEditor });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.editorMakerMode.name).setDesc(i18n_default.settings.editorMakerMode.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.editorMakerMode.name).setDesc(i18n_default.settings.editorMakerMode.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.makerMode).onChange((value) => {
         this.plugin.settings.makerMode = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.makeChar.name).setDesc(i18n_default.settings.makeChar.desc).addText((text2) => {
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.makeChar.name).setDesc(i18n_default.settings.makeChar.desc).addText((text2) => {
       text2.setValue(this.plugin.settings.menuTriggerChar).onChange(async (value) => {
         if (value.trim().length < 1) {
           text2.setValue(this.plugin.settings.menuTriggerChar);
@@ -51197,21 +51633,21 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
         await this.plugin.saveSettings();
       });
     });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.editorMakePlacholder.name).setDesc(i18n_default.settings.editorMakePlacholder.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.editorMakePlacholder.name).setDesc(i18n_default.settings.editorMakePlacholder.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.makeMenuPlaceholder).onChange(async (value) => {
         this.plugin.settings.makeMenuPlaceholder = value;
         await this.plugin.saveSettings();
         this.plugin.reloadExtensions(false);
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.mobileMakeBar.name).setDesc(i18n_default.settings.mobileMakeBar.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.mobileMakeBar.name).setDesc(i18n_default.settings.mobileMakeBar.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.mobileMakeBar).onChange((value) => {
         this.plugin.settings.mobileMakeBar = value;
         this.plugin.saveSettings();
         this.refreshView();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.inlineStyler.name).setDesc(i18n_default.settings.inlineStyler.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.inlineStyler.name).setDesc(i18n_default.settings.inlineStyler.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.inlineStyler).onChange(async (value) => {
         this.plugin.settings.inlineStyler = value;
         await this.plugin.saveSettings();
@@ -51219,32 +51655,32 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
       })
     );
     containerEl.createEl("h2", { text: i18n_default.settings.sectionDataview });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.dataviewInlineContext.name).setDesc(i18n_default.settings.dataviewInlineContext.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.dataviewInlineContext.name).setDesc(i18n_default.settings.dataviewInlineContext.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.dataviewInlineContext).onChange((value) => {
         this.plugin.settings.dataviewInlineContext = value;
         this.plugin.saveSettings();
       })
     );
     containerEl.createEl("h2", { text: i18n_default.settings.sectionAdvanced });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.spacesFileExplorerDual.name).setDesc(i18n_default.settings.spacesFileExplorerDual.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.spacesFileExplorerDual.name).setDesc(i18n_default.settings.spacesFileExplorerDual.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesDisablePatch).onChange((value) => {
         this.plugin.settings.spacesDisablePatch = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.folderNoteLocation.name).setDesc(i18n_default.settings.folderNoteLocation.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.folderNoteLocation.name).setDesc(i18n_default.settings.folderNoteLocation.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.folderNoteInsideFolder).onChange((value) => {
         this.plugin.settings.folderNoteInsideFolder = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.spacesPerformance.name).setDesc(i18n_default.settings.spacesPerformance.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.spacesPerformance.name).setDesc(i18n_default.settings.spacesPerformance.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.spacesPerformance).onChange((value) => {
         this.plugin.settings.spacesPerformance = value;
         this.plugin.saveSettings();
       })
     );
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.spacesDeleteOption.name).setDesc(i18n_default.settings.spacesDeleteOption.desc).addDropdown((dropdown) => {
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.spacesDeleteOption.name).setDesc(i18n_default.settings.spacesDeleteOption.desc).addDropdown((dropdown) => {
       dropdown.addOption(
         "permanent",
         i18n_default.settings.spacesDeleteOptions.permanant
@@ -51260,7 +51696,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian50.Setting(containerEl).setName(i18n_default.settings.inlineStylerColor.name).setDesc(i18n_default.settings.inlineStylerColor.desc).addToggle(
+    new import_obsidian53.Setting(containerEl).setName(i18n_default.settings.inlineStylerColor.name).setDesc(i18n_default.settings.inlineStylerColor.desc).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.inlineStylerColors).onChange((value) => {
         this.plugin.settings.inlineStylerColors = value;
         this.plugin.saveSettings();
@@ -51271,7 +51707,7 @@ var MakeMDPluginSettingsTab = class extends import_obsidian50.PluginSettingTab {
 };
 
 // src/components/Blink/Blink.tsx
-var import_obsidian51 = require("obsidian");
+var import_obsidian54 = require("obsidian");
 
 // src/components/Blink/BlinkComponent.tsx
 var BlinkComponent = Cn.forwardRef(
@@ -51312,24 +51748,7 @@ var BlinkComponent = Cn.forwardRef(
     const selectItem = (item) => {
       if (!item)
         return;
-      const type = viewTypeByString(item);
-      if (type == "file" || type == "folder") {
-        openAFile(getAbstractFileAtPath(app, item), props2.plugin, false);
-        return;
-      }
-      if (type == "tag") {
-        openContext(item, props2.plugin, false);
-        return;
-      }
-      if (type == "url") {
-        openURL(item);
-        return;
-      }
-      createNewMarkdownFile(
-        props2.plugin,
-        defaultNoteFolder(props2.plugin, null),
-        item
-      );
+      openPath(props2.plugin, pathByString(props2.plugin, item));
     };
     const optionProps = {
       multi: false,
@@ -51359,7 +51778,7 @@ var BlinkComponent = Cn.forwardRef(
 );
 
 // src/components/Blink/Blink.tsx
-var Blink = class extends import_obsidian51.Modal {
+var Blink = class extends import_obsidian54.Modal {
   constructor(app2, plugin) {
     super(app2);
     this.ref = Cn.createRef();
@@ -51392,9 +51811,9 @@ var Blink = class extends import_obsidian51.Modal {
 };
 
 // src/components/ContextView/MDBFileViewer.tsx
-var import_obsidian52 = require("obsidian");
+var import_obsidian55 = require("obsidian");
 var MDB_FILE_VIEWER_TYPE = "make-mdb-viewer";
-var MDBFileViewer = class extends import_obsidian52.FileView {
+var MDBFileViewer = class extends import_obsidian55.FileView {
   constructor(leaf, plugin) {
     super(leaf);
     this.navigation = true;
@@ -51450,11 +51869,11 @@ var MDBFileViewer = class extends import_obsidian52.FileView {
 };
 
 // src/components/FileContextView/FileContextView.tsx
-var import_obsidian53 = require("obsidian");
+var import_obsidian56 = require("obsidian");
 var FILE_CONTEXT_VIEW_TYPE = "make-context-view";
 var ICON2 = "component";
 var VIEW_DISPLAY_TEXT2 = "Context Explorer";
-var FileContextLeafView = class extends import_obsidian53.ItemView {
+var FileContextLeafView = class extends import_obsidian56.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.navigation = false;
@@ -51498,55 +51917,65 @@ var FileContextLeafView = class extends import_obsidian53.ItemView {
   }
 };
 var FileContextView = (props2) => {
-  const [activeFilePath, setActiveFilePath] = h2(null);
-  const [selectedFilePath, setSelectedFilePath] = h2(null);
-  const path = F2(
-    () => selectedFilePath != null ? selectedFilePath : activeFilePath,
-    [selectedFilePath, activeFilePath]
-  );
+  const [selectedPath, setSelectedPath] = h2(null);
+  const [selectedRow, setSelectedRow] = h2(null);
+  const selectedContext = F2(() => {
+    var _a2;
+    if (!selectedPath)
+      return null;
+    if (selectedPath.type == "folder" || selectedPath.type == "space" || selectedPath.type == "tag") {
+      return (_a2 = props2.plugin.index.contextsCache.get(selectedPath.path)) == null ? void 0 : _a2.info;
+    } else {
+      return null;
+    }
+  }, [selectedPath]);
   const file = F2(() => {
-    const afile = getAbstractFileAtPath(app, path);
+    const afile = getAbstractFileAtPath(app, selectedPath == null ? void 0 : selectedPath.path);
     return afile;
-  }, [path]);
+  }, [selectedPath]);
   const folderNoteFile = F2(() => {
-    if (file instanceof import_obsidian53.TFolder) {
-      const afile2 = getAbstractFileAtPath(app, path + ".md");
+    if (file instanceof import_obsidian56.TFolder) {
+      const afile2 = getAbstractFileAtPath(app, file.path + ".md");
       return afile2;
     }
     return file;
   }, [file]);
-  const changeActiveFile = (evt) => {
-    setActiveFilePath(evt.detail.filePath);
-    setSelectedFilePath(null);
-  };
   const changeSelectedFile = (evt) => {
-    setSelectedFilePath(evt.detail.filePath);
+    const path = evt.detail.path;
+    if (evt.detail.selection) {
+      setSelectedPath(pathByString(props2.plugin, evt.detail.selection));
+    } else {
+      setSelectedPath(path);
+    }
   };
   p2(() => {
     props2.plugin.activeFileChange();
   }, []);
   p2(() => {
-    window.addEventListener(eventTypes.activeFileChange, changeActiveFile);
-    window.addEventListener(eventTypes.selectedFileChange, changeSelectedFile);
+    window.addEventListener(eventTypes.activePathChange, changeSelectedFile);
     return () => {
-      window.removeEventListener(eventTypes.activeFileChange, changeActiveFile);
       window.removeEventListener(
-        eventTypes.selectedFileChange,
+        eventTypes.activePathChange,
         changeSelectedFile
       );
     };
   }, [file]);
-  return file ? /* @__PURE__ */ Cn.createElement("div", {
+  return /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-file-context"
-  }, /* @__PURE__ */ Cn.createElement(InlineFileContextView, {
+  }, file && /* @__PURE__ */ Cn.createElement(InlineFileContextView, {
     plugin: props2.plugin,
     file,
     showHeader: false,
     editable: true
-  }), /* @__PURE__ */ Cn.createElement(Backlinks, {
+  }), selectedRow && /* @__PURE__ */ Cn.createElement(InlineFileContextView, {
+    plugin: props2.plugin,
+    file: selectedRow,
+    showHeader: false,
+    editable: true
+  }), file && /* @__PURE__ */ Cn.createElement(Backlinks, {
     plugin: props2.plugin,
     file: folderNoteFile
-  })) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null);
+  }));
 };
 
 // src/dispatch/spaces.ts
@@ -51617,11 +52046,11 @@ var onFolderChanged = (plugin, oldPath, newPath) => {
 };
 var onFolderDeleted = (plugin, oldPath) => {
   const allChildren = retrieveAllRecursiveChildren(plugin.index.vaultDBCache, plugin.settings, oldPath);
-  const newVaultRows = plugin.index.vaultDBCache.filter((f4) => f4.path != oldPath || f4.parent.startsWith(oldPath));
-  const newSpaceItemsRows = plugin.index.vaultDBCache.filter((f4) => f4.path != oldPath || f4.parent.startsWith(oldPath));
+  const newVaultRows = plugin.index.vaultDBCache.filter((f4) => f4.path != oldPath && !f4.parent.startsWith(oldPath));
+  const newSpaceItemsRows = plugin.index.vaultDBCache.filter((f4) => f4.path != oldPath && !f4.parent.startsWith(oldPath));
   plugin.index.saveSpacesDB({ vault: { ...vaultSchema, rows: newVaultRows }, spaceItems: { ...spaceItemsSchema, rows: newSpaceItemsRows } });
-  plugin.index.deleteFile(oldPath);
   allChildren.forEach((f4) => plugin.index.deleteFile(f4.path));
+  plugin.index.deleteFile(oldPath);
 };
 
 // src/main.ts
@@ -51629,7 +52058,7 @@ var import_obsidian_dataview = __toESM(require_lib());
 
 // src/superstate/superstate.ts
 var import_lodash9 = __toESM(require_lodash());
-var import_obsidian55 = require("obsidian");
+var import_obsidian58 = require("obsidian");
 
 // src/types/indexMap.ts
 var _IndexMap = class {
@@ -51799,7 +52228,7 @@ var LocalStorageCache = class {
 };
 
 // src/superstate/workers/manager.ts
-var import_obsidian54 = require("obsidian");
+var import_obsidian57 = require("obsidian");
 
 // inline-worker:__inline-worker
 function inlineWorker(scriptText) {
@@ -51812,11 +52241,11 @@ function inlineWorker(scriptText) {
 
 // src/superstate/workers/entry.worker.ts
 function Worker2() {
-  return inlineWorker('var q_=Object.create;var ki=Object.defineProperty,H_=Object.defineProperties,$_=Object.getOwnPropertyDescriptor,z_=Object.getOwnPropertyDescriptors,K_=Object.getOwnPropertyNames,Oo=Object.getOwnPropertySymbols,k_=Object.getPrototypeOf,Do=Object.prototype.hasOwnProperty,Y_=Object.prototype.propertyIsEnumerable;var bo=(i,h,m)=>h in i?ki(i,h,{enumerable:!0,configurable:!0,writable:!0,value:m}):i[h]=m,Et=(i,h)=>{for(var m in h||(h={}))Do.call(h,m)&&bo(i,m,h[m]);if(Oo)for(var m of Oo(h))Y_.call(h,m)&&bo(i,m,h[m]);return i},Ot=(i,h)=>H_(i,z_(h));var Z_=(i,h)=>()=>(h||i((h={exports:{}}).exports,h),h.exports);var J_=(i,h,m,A)=>{if(h&&typeof h=="object"||typeof h=="function")for(let y of K_(h))!Do.call(i,y)&&y!==m&&ki(i,y,{get:()=>h[y],enumerable:!(A=$_(h,y))||A.enumerable});return i};var X_=(i,h,m)=>(m=i!=null?q_(k_(i)):{},J_(h||!i||!i.__esModule?ki(m,"default",{value:i,enumerable:!0}):m,i));var Po=Z_((Qt,Ae)=>{(function(){var i,h="4.17.21",m=200,A="Unsupported core-js use. Try https://npms.io/search?q=ponyfill.",y="Expected a function",E="Invalid `variable` option passed into `_.template`",X="__lodash_hash_undefined__",sn=500,rn="__lodash_placeholder__",H=1,wn=2,an=4,K=1,Yn=2,j=1,Rn=2,nn=4,ln=8,cn=16,hn=32,Vn=64,Ln=128,An=256,bt=512,Dt=30,Pt="...",Te=800,Cr=16,jt=1,Ie=2,Fe=3,Zn=1/0,Nn=9007199254740991,dn=17976931348623157e292,Gn=0/0,Y=4294967295,ct=Y-1,ns=Y>>>1,ts=[["ary",Ln],["bind",j],["bindKey",Rn],["curry",ln],["curryRight",cn],["flip",bt],["partial",hn],["partialRight",Vn],["rearg",An]],Bt="[object Arguments]",Me="[object Array]",es="[object AsyncFunction]",ne="[object Boolean]",te="[object Date]",rs="[object DOMException]",Re="[object Error]",Le="[object Function]",ji="[object GeneratorFunction]",qn="[object Map]",ee="[object Number]",is="[object Null]",jn="[object Object]",nu="[object Promise]",us="[object Proxy]",re="[object RegExp]",Hn="[object Set]",ie="[object String]",Ee="[object Symbol]",fs="[object Undefined]",ue="[object WeakMap]",os="[object WeakSet]",fe="[object ArrayBuffer]",Wt="[object DataView]",Tr="[object Float32Array]",Ir="[object Float64Array]",Fr="[object Int8Array]",Mr="[object Int16Array]",Rr="[object Int32Array]",Lr="[object Uint8Array]",Er="[object Uint8ClampedArray]",Or="[object Uint16Array]",br="[object Uint32Array]",ss=/\\b__p \\+= \'\';/g,as=/\\b(__p \\+=) \'\' \\+/g,ls=/(__e\\(.*?\\)|\\b__t\\)) \\+\\n\'\';/g,tu=/&(?:amp|lt|gt|quot|#39);/g,eu=/[&<>"\']/g,cs=RegExp(tu.source),hs=RegExp(eu.source),ps=/<%-([\\s\\S]+?)%>/g,gs=/<%([\\s\\S]+?)%>/g,ru=/<%=([\\s\\S]+?)%>/g,_s=/\\.|\\[(?:[^[\\]]*|(["\'])(?:(?!\\1)[^\\\\]|\\\\.)*?\\1)\\]/,ds=/^\\w*$/,vs=/[^.[\\]]+|\\[(?:(-?\\d+(?:\\.\\d+)?)|(["\'])((?:(?!\\2)[^\\\\]|\\\\.)*?)\\2)\\]|(?=(?:\\.|\\[\\])(?:\\.|\\[\\]|$))/g,Dr=/[\\\\^$.*+?()[\\]{}|]/g,xs=RegExp(Dr.source),Pr=/^\\s+/,ms=/\\s/,ys=/\\{(?:\\n\\/\\* \\[wrapped with .+\\] \\*\\/)?\\n?/,ws=/\\{\\n\\/\\* \\[wrapped with (.+)\\] \\*/,As=/,? & /,Ss=/[^\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\x7f]+/g,Cs=/[()=,{}\\[\\]\\/\\s]/,Ts=/\\\\(\\\\)?/g,Is=/\\$\\{([^\\\\}]*(?:\\\\.[^\\\\}]*)*)\\}/g,iu=/\\w*$/,Fs=/^[-+]0x[0-9a-f]+$/i,Ms=/^0b[01]+$/i,Rs=/^\\[object .+?Constructor\\]$/,Ls=/^0o[0-7]+$/i,Es=/^(?:0|[1-9]\\d*)$/,Os=/[\\xc0-\\xd6\\xd8-\\xf6\\xf8-\\xff\\u0100-\\u017f]/g,Oe=/($^)/,bs=/[\'\\n\\r\\u2028\\u2029\\\\]/g,be="\\\\ud800-\\\\udfff",Ds="\\\\u0300-\\\\u036f",Ps="\\\\ufe20-\\\\ufe2f",Bs="\\\\u20d0-\\\\u20ff",uu=Ds+Ps+Bs,fu="\\\\u2700-\\\\u27bf",ou="a-z\\\\xdf-\\\\xf6\\\\xf8-\\\\xff",Ws="\\\\xac\\\\xb1\\\\xd7\\\\xf7",Us="\\\\x00-\\\\x2f\\\\x3a-\\\\x40\\\\x5b-\\\\x60\\\\x7b-\\\\xbf",Ns="\\\\u2000-\\\\u206f",Gs=" \\\\t\\\\x0b\\\\f\\\\xa0\\\\ufeff\\\\n\\\\r\\\\u2028\\\\u2029\\\\u1680\\\\u180e\\\\u2000\\\\u2001\\\\u2002\\\\u2003\\\\u2004\\\\u2005\\\\u2006\\\\u2007\\\\u2008\\\\u2009\\\\u200a\\\\u202f\\\\u205f\\\\u3000",su="A-Z\\\\xc0-\\\\xd6\\\\xd8-\\\\xde",au="\\\\ufe0e\\\\ufe0f",lu=Ws+Us+Ns+Gs,Br="[\'\\u2019]",qs="["+be+"]",cu="["+lu+"]",De="["+uu+"]",hu="\\\\d+",Hs="["+fu+"]",pu="["+ou+"]",gu="[^"+be+lu+hu+fu+ou+su+"]",Wr="\\\\ud83c[\\\\udffb-\\\\udfff]",$s="(?:"+De+"|"+Wr+")",_u="[^"+be+"]",Ur="(?:\\\\ud83c[\\\\udde6-\\\\uddff]){2}",Nr="[\\\\ud800-\\\\udbff][\\\\udc00-\\\\udfff]",Ut="["+su+"]",du="\\\\u200d",vu="(?:"+pu+"|"+gu+")",zs="(?:"+Ut+"|"+gu+")",xu="(?:"+Br+"(?:d|ll|m|re|s|t|ve))?",mu="(?:"+Br+"(?:D|LL|M|RE|S|T|VE))?",yu=$s+"?",wu="["+au+"]?",Ks="(?:"+du+"(?:"+[_u,Ur,Nr].join("|")+")"+wu+yu+")*",ks="\\\\d*(?:1st|2nd|3rd|(?![123])\\\\dth)(?=\\\\b|[A-Z_])",Ys="\\\\d*(?:1ST|2ND|3RD|(?![123])\\\\dTH)(?=\\\\b|[a-z_])",Au=wu+yu+Ks,Zs="(?:"+[Hs,Ur,Nr].join("|")+")"+Au,Js="(?:"+[_u+De+"?",De,Ur,Nr,qs].join("|")+")",Xs=RegExp(Br,"g"),Qs=RegExp(De,"g"),Gr=RegExp(Wr+"(?="+Wr+")|"+Js+Au,"g"),Vs=RegExp([Ut+"?"+pu+"+"+xu+"(?="+[cu,Ut,"$"].join("|")+")",zs+"+"+mu+"(?="+[cu,Ut+vu,"$"].join("|")+")",Ut+"?"+vu+"+"+xu,Ut+"+"+mu,Ys,ks,hu,Zs].join("|"),"g"),js=RegExp("["+du+be+uu+au+"]"),na=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,ta=["Array","Buffer","DataView","Date","Error","Float32Array","Float64Array","Function","Int8Array","Int16Array","Int32Array","Map","Math","Object","Promise","RegExp","Set","String","Symbol","TypeError","Uint8Array","Uint8ClampedArray","Uint16Array","Uint32Array","WeakMap","_","clearTimeout","isFinite","parseInt","setTimeout"],ea=-1,q={};q[Tr]=q[Ir]=q[Fr]=q[Mr]=q[Rr]=q[Lr]=q[Er]=q[Or]=q[br]=!0,q[Bt]=q[Me]=q[fe]=q[ne]=q[Wt]=q[te]=q[Re]=q[Le]=q[qn]=q[ee]=q[jn]=q[re]=q[Hn]=q[ie]=q[ue]=!1;var G={};G[Bt]=G[Me]=G[fe]=G[Wt]=G[ne]=G[te]=G[Tr]=G[Ir]=G[Fr]=G[Mr]=G[Rr]=G[qn]=G[ee]=G[jn]=G[re]=G[Hn]=G[ie]=G[Ee]=G[Lr]=G[Er]=G[Or]=G[br]=!0,G[Re]=G[Le]=G[ue]=!1;var ra={\\u00C0:"A",\\u00C1:"A",\\u00C2:"A",\\u00C3:"A",\\u00C4:"A",\\u00C5:"A",\\u00E0:"a",\\u00E1:"a",\\u00E2:"a",\\u00E3:"a",\\u00E4:"a",\\u00E5:"a",\\u00C7:"C",\\u00E7:"c",\\u00D0:"D",\\u00F0:"d",\\u00C8:"E",\\u00C9:"E",\\u00CA:"E",\\u00CB:"E",\\u00E8:"e",\\u00E9:"e",\\u00EA:"e",\\u00EB:"e",\\u00CC:"I",\\u00CD:"I",\\u00CE:"I",\\u00CF:"I",\\u00EC:"i",\\u00ED:"i",\\u00EE:"i",\\u00EF:"i",\\u00D1:"N",\\u00F1:"n",\\u00D2:"O",\\u00D3:"O",\\u00D4:"O",\\u00D5:"O",\\u00D6:"O",\\u00D8:"O",\\u00F2:"o",\\u00F3:"o",\\u00F4:"o",\\u00F5:"o",\\u00F6:"o",\\u00F8:"o",\\u00D9:"U",\\u00DA:"U",\\u00DB:"U",\\u00DC:"U",\\u00F9:"u",\\u00FA:"u",\\u00FB:"u",\\u00FC:"u",\\u00DD:"Y",\\u00FD:"y",\\u00FF:"y",\\u00C6:"Ae",\\u00E6:"ae",\\u00DE:"Th",\\u00FE:"th",\\u00DF:"ss",\\u0100:"A",\\u0102:"A",\\u0104:"A",\\u0101:"a",\\u0103:"a",\\u0105:"a",\\u0106:"C",\\u0108:"C",\\u010A:"C",\\u010C:"C",\\u0107:"c",\\u0109:"c",\\u010B:"c",\\u010D:"c",\\u010E:"D",\\u0110:"D",\\u010F:"d",\\u0111:"d",\\u0112:"E",\\u0114:"E",\\u0116:"E",\\u0118:"E",\\u011A:"E",\\u0113:"e",\\u0115:"e",\\u0117:"e",\\u0119:"e",\\u011B:"e",\\u011C:"G",\\u011E:"G",\\u0120:"G",\\u0122:"G",\\u011D:"g",\\u011F:"g",\\u0121:"g",\\u0123:"g",\\u0124:"H",\\u0126:"H",\\u0125:"h",\\u0127:"h",\\u0128:"I",\\u012A:"I",\\u012C:"I",\\u012E:"I",\\u0130:"I",\\u0129:"i",\\u012B:"i",\\u012D:"i",\\u012F:"i",\\u0131:"i",\\u0134:"J",\\u0135:"j",\\u0136:"K",\\u0137:"k",\\u0138:"k",\\u0139:"L",\\u013B:"L",\\u013D:"L",\\u013F:"L",\\u0141:"L",\\u013A:"l",\\u013C:"l",\\u013E:"l",\\u0140:"l",\\u0142:"l",\\u0143:"N",\\u0145:"N",\\u0147:"N",\\u014A:"N",\\u0144:"n",\\u0146:"n",\\u0148:"n",\\u014B:"n",\\u014C:"O",\\u014E:"O",\\u0150:"O",\\u014D:"o",\\u014F:"o",\\u0151:"o",\\u0154:"R",\\u0156:"R",\\u0158:"R",\\u0155:"r",\\u0157:"r",\\u0159:"r",\\u015A:"S",\\u015C:"S",\\u015E:"S",\\u0160:"S",\\u015B:"s",\\u015D:"s",\\u015F:"s",\\u0161:"s",\\u0162:"T",\\u0164:"T",\\u0166:"T",\\u0163:"t",\\u0165:"t",\\u0167:"t",\\u0168:"U",\\u016A:"U",\\u016C:"U",\\u016E:"U",\\u0170:"U",\\u0172:"U",\\u0169:"u",\\u016B:"u",\\u016D:"u",\\u016F:"u",\\u0171:"u",\\u0173:"u",\\u0174:"W",\\u0175:"w",\\u0176:"Y",\\u0177:"y",\\u0178:"Y",\\u0179:"Z",\\u017B:"Z",\\u017D:"Z",\\u017A:"z",\\u017C:"z",\\u017E:"z",\\u0132:"IJ",\\u0133:"ij",\\u0152:"Oe",\\u0153:"oe",\\u0149:"\'n",\\u017F:"s"},ia={"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;","\'":"&#39;"},ua={"&amp;":"&","&lt;":"<","&gt;":">","&quot;":\'"\',"&#39;":"\'"},fa={"\\\\":"\\\\","\'":"\'","\\n":"n","\\r":"r","\\u2028":"u2028","\\u2029":"u2029"},oa=parseFloat,sa=parseInt,Su=typeof global=="object"&&global&&global.Object===Object&&global,aa=typeof self=="object"&&self&&self.Object===Object&&self,tn=Su||aa||Function("return this")(),qr=typeof Qt=="object"&&Qt&&!Qt.nodeType&&Qt,At=qr&&typeof Ae=="object"&&Ae&&!Ae.nodeType&&Ae,Cu=At&&At.exports===qr,Hr=Cu&&Su.process,En=function(){try{var l=At&&At.require&&At.require("util").types;return l||Hr&&Hr.binding&&Hr.binding("util")}catch(g){}}(),Tu=En&&En.isArrayBuffer,Iu=En&&En.isDate,Fu=En&&En.isMap,Mu=En&&En.isRegExp,Ru=En&&En.isSet,Lu=En&&En.isTypedArray;function Sn(l,g,p){switch(p.length){case 0:return l.call(g);case 1:return l.call(g,p[0]);case 2:return l.call(g,p[0],p[1]);case 3:return l.call(g,p[0],p[1],p[2])}return l.apply(g,p)}function la(l,g,p,w){for(var F=-1,B=l==null?0:l.length;++F<B;){var Q=l[F];g(w,Q,p(Q),l)}return w}function On(l,g){for(var p=-1,w=l==null?0:l.length;++p<w&&g(l[p],p,l)!==!1;);return l}function ca(l,g){for(var p=l==null?0:l.length;p--&&g(l[p],p,l)!==!1;);return l}function Eu(l,g){for(var p=-1,w=l==null?0:l.length;++p<w;)if(!g(l[p],p,l))return!1;return!0}function ht(l,g){for(var p=-1,w=l==null?0:l.length,F=0,B=[];++p<w;){var Q=l[p];g(Q,p,l)&&(B[F++]=Q)}return B}function Pe(l,g){var p=l==null?0:l.length;return!!p&&Nt(l,g,0)>-1}function $r(l,g,p){for(var w=-1,F=l==null?0:l.length;++w<F;)if(p(g,l[w]))return!0;return!1}function $(l,g){for(var p=-1,w=l==null?0:l.length,F=Array(w);++p<w;)F[p]=g(l[p],p,l);return F}function pt(l,g){for(var p=-1,w=g.length,F=l.length;++p<w;)l[F+p]=g[p];return l}function zr(l,g,p,w){var F=-1,B=l==null?0:l.length;for(w&&B&&(p=l[++F]);++F<B;)p=g(p,l[F],F,l);return p}function ha(l,g,p,w){var F=l==null?0:l.length;for(w&&F&&(p=l[--F]);F--;)p=g(p,l[F],F,l);return p}function Kr(l,g){for(var p=-1,w=l==null?0:l.length;++p<w;)if(g(l[p],p,l))return!0;return!1}var pa=kr("length");function ga(l){return l.split("")}function _a(l){return l.match(Ss)||[]}function Ou(l,g,p){var w;return p(l,function(F,B,Q){if(g(F,B,Q))return w=B,!1}),w}function Be(l,g,p,w){for(var F=l.length,B=p+(w?1:-1);w?B--:++B<F;)if(g(l[B],B,l))return B;return-1}function Nt(l,g,p){return g===g?Fa(l,g,p):Be(l,bu,p)}function da(l,g,p,w){for(var F=p-1,B=l.length;++F<B;)if(w(l[F],g))return F;return-1}function bu(l){return l!==l}function Du(l,g){var p=l==null?0:l.length;return p?Zr(l,g)/p:Gn}function kr(l){return function(g){return g==null?i:g[l]}}function Yr(l){return function(g){return l==null?i:l[g]}}function Pu(l,g,p,w,F){return F(l,function(B,Q,N){p=w?(w=!1,B):g(p,B,Q,N)}),p}function va(l,g){var p=l.length;for(l.sort(g);p--;)l[p]=l[p].value;return l}function Zr(l,g){for(var p,w=-1,F=l.length;++w<F;){var B=g(l[w]);B!==i&&(p=p===i?B:p+B)}return p}function Jr(l,g){for(var p=-1,w=Array(l);++p<l;)w[p]=g(p);return w}function xa(l,g){return $(g,function(p){return[p,l[p]]})}function Bu(l){return l&&l.slice(0,Gu(l)+1).replace(Pr,"")}function Cn(l){return function(g){return l(g)}}function Xr(l,g){return $(g,function(p){return l[p]})}function oe(l,g){return l.has(g)}function Wu(l,g){for(var p=-1,w=l.length;++p<w&&Nt(g,l[p],0)>-1;);return p}function Uu(l,g){for(var p=l.length;p--&&Nt(g,l[p],0)>-1;);return p}function ma(l,g){for(var p=l.length,w=0;p--;)l[p]===g&&++w;return w}var ya=Yr(ra),wa=Yr(ia);function Aa(l){return"\\\\"+fa[l]}function Sa(l,g){return l==null?i:l[g]}function Gt(l){return js.test(l)}function Ca(l){return na.test(l)}function Ta(l){for(var g,p=[];!(g=l.next()).done;)p.push(g.value);return p}function Qr(l){var g=-1,p=Array(l.size);return l.forEach(function(w,F){p[++g]=[F,w]}),p}function Nu(l,g){return function(p){return l(g(p))}}function gt(l,g){for(var p=-1,w=l.length,F=0,B=[];++p<w;){var Q=l[p];(Q===g||Q===rn)&&(l[p]=rn,B[F++]=p)}return B}function We(l){var g=-1,p=Array(l.size);return l.forEach(function(w){p[++g]=w}),p}function Ia(l){var g=-1,p=Array(l.size);return l.forEach(function(w){p[++g]=[w,w]}),p}function Fa(l,g,p){for(var w=p-1,F=l.length;++w<F;)if(l[w]===g)return w;return-1}function Ma(l,g,p){for(var w=p+1;w--;)if(l[w]===g)return w;return w}function qt(l){return Gt(l)?La(l):pa(l)}function $n(l){return Gt(l)?Ea(l):ga(l)}function Gu(l){for(var g=l.length;g--&&ms.test(l.charAt(g)););return g}var Ra=Yr(ua);function La(l){for(var g=Gr.lastIndex=0;Gr.test(l);)++g;return g}function Ea(l){return l.match(Gr)||[]}function Oa(l){return l.match(Vs)||[]}var ba=function l(g){g=g==null?tn:_t.defaults(tn.Object(),g,_t.pick(tn,ta));var p=g.Array,w=g.Date,F=g.Error,B=g.Function,Q=g.Math,N=g.Object,Vr=g.RegExp,Da=g.String,bn=g.TypeError,Ue=p.prototype,Pa=B.prototype,Ht=N.prototype,Ne=g["__core-js_shared__"],Ge=Pa.toString,U=Ht.hasOwnProperty,Ba=0,qu=function(){var n=/[^.]+$/.exec(Ne&&Ne.keys&&Ne.keys.IE_PROTO||"");return n?"Symbol(src)_1."+n:""}(),qe=Ht.toString,Wa=Ge.call(N),Ua=tn._,Na=Vr("^"+Ge.call(U).replace(Dr,"\\\\$&").replace(/hasOwnProperty|(function).*?(?=\\\\\\()| for .+?(?=\\\\\\])/g,"$1.*?")+"$"),He=Cu?g.Buffer:i,dt=g.Symbol,$e=g.Uint8Array,Hu=He?He.allocUnsafe:i,ze=Nu(N.getPrototypeOf,N),$u=N.create,zu=Ht.propertyIsEnumerable,Ke=Ue.splice,Ku=dt?dt.isConcatSpreadable:i,se=dt?dt.iterator:i,St=dt?dt.toStringTag:i,ke=function(){try{var n=Mt(N,"defineProperty");return n({},"",{}),n}catch(t){}}(),Ga=g.clearTimeout!==tn.clearTimeout&&g.clearTimeout,qa=w&&w.now!==tn.Date.now&&w.now,Ha=g.setTimeout!==tn.setTimeout&&g.setTimeout,Ye=Q.ceil,Ze=Q.floor,jr=N.getOwnPropertySymbols,$a=He?He.isBuffer:i,ku=g.isFinite,za=Ue.join,Ka=Nu(N.keys,N),V=Q.max,fn=Q.min,ka=w.now,Ya=g.parseInt,Yu=Q.random,Za=Ue.reverse,ni=Mt(g,"DataView"),ae=Mt(g,"Map"),ti=Mt(g,"Promise"),$t=Mt(g,"Set"),le=Mt(g,"WeakMap"),ce=Mt(N,"create"),Je=le&&new le,zt={},Ja=Rt(ni),Xa=Rt(ae),Qa=Rt(ti),Va=Rt($t),ja=Rt(le),Xe=dt?dt.prototype:i,he=Xe?Xe.valueOf:i,Zu=Xe?Xe.toString:i;function f(n){if(k(n)&&!M(n)&&!(n instanceof D)){if(n instanceof Dn)return n;if(U.call(n,"__wrapped__"))return Xf(n)}return new Dn(n)}var Kt=function(){function n(){}return function(t){if(!z(t))return{};if($u)return $u(t);n.prototype=t;var e=new n;return n.prototype=i,e}}();function Qe(){}function Dn(n,t){this.__wrapped__=n,this.__actions__=[],this.__chain__=!!t,this.__index__=0,this.__values__=i}f.templateSettings={escape:ps,evaluate:gs,interpolate:ru,variable:"",imports:{_:f}},f.prototype=Qe.prototype,f.prototype.constructor=f,Dn.prototype=Kt(Qe.prototype),Dn.prototype.constructor=Dn;function D(n){this.__wrapped__=n,this.__actions__=[],this.__dir__=1,this.__filtered__=!1,this.__iteratees__=[],this.__takeCount__=Y,this.__views__=[]}function nl(){var n=new D(this.__wrapped__);return n.__actions__=vn(this.__actions__),n.__dir__=this.__dir__,n.__filtered__=this.__filtered__,n.__iteratees__=vn(this.__iteratees__),n.__takeCount__=this.__takeCount__,n.__views__=vn(this.__views__),n}function tl(){if(this.__filtered__){var n=new D(this);n.__dir__=-1,n.__filtered__=!0}else n=this.clone(),n.__dir__*=-1;return n}function el(){var n=this.__wrapped__.value(),t=this.__dir__,e=M(n),r=t<0,u=e?n.length:0,o=gc(0,u,this.__views__),s=o.start,a=o.end,c=a-s,_=r?a:s-1,d=this.__iteratees__,v=d.length,x=0,S=fn(c,this.__takeCount__);if(!e||!r&&u==c&&S==c)return mf(n,this.__actions__);var T=[];n:for(;c--&&x<S;){_+=t;for(var L=-1,I=n[_];++L<v;){var b=d[L],P=b.iteratee,Fn=b.type,_n=P(I);if(Fn==Ie)I=_n;else if(!_n){if(Fn==jt)continue n;break n}}T[x++]=I}return T}D.prototype=Kt(Qe.prototype),D.prototype.constructor=D;function Ct(n){var t=-1,e=n==null?0:n.length;for(this.clear();++t<e;){var r=n[t];this.set(r[0],r[1])}}function rl(){this.__data__=ce?ce(null):{},this.size=0}function il(n){var t=this.has(n)&&delete this.__data__[n];return this.size-=t?1:0,t}function ul(n){var t=this.__data__;if(ce){var e=t[n];return e===X?i:e}return U.call(t,n)?t[n]:i}function fl(n){var t=this.__data__;return ce?t[n]!==i:U.call(t,n)}function ol(n,t){var e=this.__data__;return this.size+=this.has(n)?0:1,e[n]=ce&&t===i?X:t,this}Ct.prototype.clear=rl,Ct.prototype.delete=il,Ct.prototype.get=ul,Ct.prototype.has=fl,Ct.prototype.set=ol;function nt(n){var t=-1,e=n==null?0:n.length;for(this.clear();++t<e;){var r=n[t];this.set(r[0],r[1])}}function sl(){this.__data__=[],this.size=0}function al(n){var t=this.__data__,e=Ve(t,n);if(e<0)return!1;var r=t.length-1;return e==r?t.pop():Ke.call(t,e,1),--this.size,!0}function ll(n){var t=this.__data__,e=Ve(t,n);return e<0?i:t[e][1]}function cl(n){return Ve(this.__data__,n)>-1}function hl(n,t){var e=this.__data__,r=Ve(e,n);return r<0?(++this.size,e.push([n,t])):e[r][1]=t,this}nt.prototype.clear=sl,nt.prototype.delete=al,nt.prototype.get=ll,nt.prototype.has=cl,nt.prototype.set=hl;function tt(n){var t=-1,e=n==null?0:n.length;for(this.clear();++t<e;){var r=n[t];this.set(r[0],r[1])}}function pl(){this.size=0,this.__data__={hash:new Ct,map:new(ae||nt),string:new Ct}}function gl(n){var t=lr(this,n).delete(n);return this.size-=t?1:0,t}function _l(n){return lr(this,n).get(n)}function dl(n){return lr(this,n).has(n)}function vl(n,t){var e=lr(this,n),r=e.size;return e.set(n,t),this.size+=e.size==r?0:1,this}tt.prototype.clear=pl,tt.prototype.delete=gl,tt.prototype.get=_l,tt.prototype.has=dl,tt.prototype.set=vl;function Tt(n){var t=-1,e=n==null?0:n.length;for(this.__data__=new tt;++t<e;)this.add(n[t])}function xl(n){return this.__data__.set(n,X),this}function ml(n){return this.__data__.has(n)}Tt.prototype.add=Tt.prototype.push=xl,Tt.prototype.has=ml;function zn(n){var t=this.__data__=new nt(n);this.size=t.size}function yl(){this.__data__=new nt,this.size=0}function wl(n){var t=this.__data__,e=t.delete(n);return this.size=t.size,e}function Al(n){return this.__data__.get(n)}function Sl(n){return this.__data__.has(n)}function Cl(n,t){var e=this.__data__;if(e instanceof nt){var r=e.__data__;if(!ae||r.length<m-1)return r.push([n,t]),this.size=++e.size,this;e=this.__data__=new tt(r)}return e.set(n,t),this.size=e.size,this}zn.prototype.clear=yl,zn.prototype.delete=wl,zn.prototype.get=Al,zn.prototype.has=Sl,zn.prototype.set=Cl;function Ju(n,t){var e=M(n),r=!e&&Lt(n),u=!e&&!r&&wt(n),o=!e&&!r&&!u&&Jt(n),s=e||r||u||o,a=s?Jr(n.length,Da):[],c=a.length;for(var _ in n)(t||U.call(n,_))&&!(s&&(_=="length"||u&&(_=="offset"||_=="parent")||o&&(_=="buffer"||_=="byteLength"||_=="byteOffset")||ut(_,c)))&&a.push(_);return a}function Xu(n){var t=n.length;return t?n[hi(0,t-1)]:i}function Tl(n,t){return cr(vn(n),It(t,0,n.length))}function Il(n){return cr(vn(n))}function ei(n,t,e){(e!==i&&!Kn(n[t],e)||e===i&&!(t in n))&&et(n,t,e)}function pe(n,t,e){var r=n[t];(!(U.call(n,t)&&Kn(r,e))||e===i&&!(t in n))&&et(n,t,e)}function Ve(n,t){for(var e=n.length;e--;)if(Kn(n[e][0],t))return e;return-1}function Fl(n,t,e,r){return vt(n,function(u,o,s){t(r,u,e(u),s)}),r}function Qu(n,t){return n&&Xn(t,en(t),n)}function Ml(n,t){return n&&Xn(t,mn(t),n)}function et(n,t,e){t=="__proto__"&&ke?ke(n,t,{configurable:!0,enumerable:!0,value:e,writable:!0}):n[t]=e}function ri(n,t){for(var e=-1,r=t.length,u=p(r),o=n==null;++e<r;)u[e]=o?i:Wi(n,t[e]);return u}function It(n,t,e){return n===n&&(e!==i&&(n=n<=e?n:e),t!==i&&(n=n>=t?n:t)),n}function Pn(n,t,e,r,u,o){var s,a=t&H,c=t&wn,_=t&an;if(e&&(s=u?e(n,r,u,o):e(n)),s!==i)return s;if(!z(n))return n;var d=M(n);if(d){if(s=dc(n),!a)return vn(n,s)}else{var v=on(n),x=v==Le||v==ji;if(wt(n))return Af(n,a);if(v==jn||v==Bt||x&&!u){if(s=c||x?{}:qf(n),!a)return c?uc(n,Ml(s,n)):ic(n,Qu(s,n))}else{if(!G[v])return u?n:{};s=vc(n,v,a)}}o||(o=new zn);var S=o.get(n);if(S)return S;o.set(n,s),vo(n)?n.forEach(function(I){s.add(Pn(I,t,e,I,n,o))}):go(n)&&n.forEach(function(I,b){s.set(b,Pn(I,t,e,b,n,o))});var T=_?c?Si:Ai:c?mn:en,L=d?i:T(n);return On(L||n,function(I,b){L&&(b=I,I=n[b]),pe(s,b,Pn(I,t,e,b,n,o))}),s}function Rl(n){var t=en(n);return function(e){return Vu(e,n,t)}}function Vu(n,t,e){var r=e.length;if(n==null)return!r;for(n=N(n);r--;){var u=e[r],o=t[u],s=n[u];if(s===i&&!(u in n)||!o(s))return!1}return!0}function ju(n,t,e){if(typeof n!="function")throw new bn(y);return ye(function(){n.apply(i,e)},t)}function ge(n,t,e,r){var u=-1,o=Pe,s=!0,a=n.length,c=[],_=t.length;if(!a)return c;e&&(t=$(t,Cn(e))),r?(o=$r,s=!1):t.length>=m&&(o=oe,s=!1,t=new Tt(t));n:for(;++u<a;){var d=n[u],v=e==null?d:e(d);if(d=r||d!==0?d:0,s&&v===v){for(var x=_;x--;)if(t[x]===v)continue n;c.push(d)}else o(t,v,r)||c.push(d)}return c}var vt=Ff(Jn),nf=Ff(ui,!0);function Ll(n,t){var e=!0;return vt(n,function(r,u,o){return e=!!t(r,u,o),e}),e}function je(n,t,e){for(var r=-1,u=n.length;++r<u;){var o=n[r],s=t(o);if(s!=null&&(a===i?s===s&&!In(s):e(s,a)))var a=s,c=o}return c}function El(n,t,e,r){var u=n.length;for(e=R(e),e<0&&(e=-e>u?0:u+e),r=r===i||r>u?u:R(r),r<0&&(r+=u),r=e>r?0:mo(r);e<r;)n[e++]=t;return n}function tf(n,t){var e=[];return vt(n,function(r,u,o){t(r,u,o)&&e.push(r)}),e}function un(n,t,e,r,u){var o=-1,s=n.length;for(e||(e=mc),u||(u=[]);++o<s;){var a=n[o];t>0&&e(a)?t>1?un(a,t-1,e,r,u):pt(u,a):r||(u[u.length]=a)}return u}var ii=Mf(),ef=Mf(!0);function Jn(n,t){return n&&ii(n,t,en)}function ui(n,t){return n&&ef(n,t,en)}function nr(n,t){return ht(t,function(e){return ft(n[e])})}function Ft(n,t){t=mt(t,n);for(var e=0,r=t.length;n!=null&&e<r;)n=n[Qn(t[e++])];return e&&e==r?n:i}function rf(n,t,e){var r=t(n);return M(n)?r:pt(r,e(n))}function pn(n){return n==null?n===i?fs:is:St&&St in N(n)?pc(n):Ic(n)}function fi(n,t){return n>t}function Ol(n,t){return n!=null&&U.call(n,t)}function bl(n,t){return n!=null&&t in N(n)}function Dl(n,t,e){return n>=fn(t,e)&&n<V(t,e)}function oi(n,t,e){for(var r=e?$r:Pe,u=n[0].length,o=n.length,s=o,a=p(o),c=1/0,_=[];s--;){var d=n[s];s&&t&&(d=$(d,Cn(t))),c=fn(d.length,c),a[s]=!e&&(t||u>=120&&d.length>=120)?new Tt(s&&d):i}d=n[0];var v=-1,x=a[0];n:for(;++v<u&&_.length<c;){var S=d[v],T=t?t(S):S;if(S=e||S!==0?S:0,!(x?oe(x,T):r(_,T,e))){for(s=o;--s;){var L=a[s];if(!(L?oe(L,T):r(n[s],T,e)))continue n}x&&x.push(T),_.push(S)}}return _}function Pl(n,t,e,r){return Jn(n,function(u,o,s){t(r,e(u),o,s)}),r}function _e(n,t,e){t=mt(t,n),n=Kf(n,t);var r=n==null?n:n[Qn(Wn(t))];return r==null?i:Sn(r,n,e)}function uf(n){return k(n)&&pn(n)==Bt}function Bl(n){return k(n)&&pn(n)==fe}function Wl(n){return k(n)&&pn(n)==te}function de(n,t,e,r,u){return n===t?!0:n==null||t==null||!k(n)&&!k(t)?n!==n&&t!==t:Ul(n,t,e,r,de,u)}function Ul(n,t,e,r,u,o){var s=M(n),a=M(t),c=s?Me:on(n),_=a?Me:on(t);c=c==Bt?jn:c,_=_==Bt?jn:_;var d=c==jn,v=_==jn,x=c==_;if(x&&wt(n)){if(!wt(t))return!1;s=!0,d=!1}if(x&&!d)return o||(o=new zn),s||Jt(n)?Uf(n,t,e,r,u,o):cc(n,t,c,e,r,u,o);if(!(e&K)){var S=d&&U.call(n,"__wrapped__"),T=v&&U.call(t,"__wrapped__");if(S||T){var L=S?n.value():n,I=T?t.value():t;return o||(o=new zn),u(L,I,e,r,o)}}return x?(o||(o=new zn),hc(n,t,e,r,u,o)):!1}function Nl(n){return k(n)&&on(n)==qn}function si(n,t,e,r){var u=e.length,o=u,s=!r;if(n==null)return!o;for(n=N(n);u--;){var a=e[u];if(s&&a[2]?a[1]!==n[a[0]]:!(a[0]in n))return!1}for(;++u<o;){a=e[u];var c=a[0],_=n[c],d=a[1];if(s&&a[2]){if(_===i&&!(c in n))return!1}else{var v=new zn;if(r)var x=r(_,d,c,n,t,v);if(!(x===i?de(d,_,K|Yn,r,v):x))return!1}}return!0}function ff(n){if(!z(n)||wc(n))return!1;var t=ft(n)?Na:Rs;return t.test(Rt(n))}function Gl(n){return k(n)&&pn(n)==re}function ql(n){return k(n)&&on(n)==Hn}function Hl(n){return k(n)&&vr(n.length)&&!!q[pn(n)]}function of(n){return typeof n=="function"?n:n==null?yn:typeof n=="object"?M(n)?lf(n[0],n[1]):af(n):Lo(n)}function ai(n){if(!me(n))return Ka(n);var t=[];for(var e in N(n))U.call(n,e)&&e!="constructor"&&t.push(e);return t}function $l(n){if(!z(n))return Tc(n);var t=me(n),e=[];for(var r in n)r=="constructor"&&(t||!U.call(n,r))||e.push(r);return e}function li(n,t){return n<t}function sf(n,t){var e=-1,r=xn(n)?p(n.length):[];return vt(n,function(u,o,s){r[++e]=t(u,o,s)}),r}function af(n){var t=Ti(n);return t.length==1&&t[0][2]?$f(t[0][0],t[0][1]):function(e){return e===n||si(e,n,t)}}function lf(n,t){return Fi(n)&&Hf(t)?$f(Qn(n),t):function(e){var r=Wi(e,n);return r===i&&r===t?Ui(e,n):de(t,r,K|Yn)}}function tr(n,t,e,r,u){n!==t&&ii(t,function(o,s){if(u||(u=new zn),z(o))zl(n,t,s,e,tr,r,u);else{var a=r?r(Ri(n,s),o,s+"",n,t,u):i;a===i&&(a=o),ei(n,s,a)}},mn)}function zl(n,t,e,r,u,o,s){var a=Ri(n,e),c=Ri(t,e),_=s.get(c);if(_){ei(n,e,_);return}var d=o?o(a,c,e+"",n,t,s):i,v=d===i;if(v){var x=M(c),S=!x&&wt(c),T=!x&&!S&&Jt(c);d=c,x||S||T?M(a)?d=a:Z(a)?d=vn(a):S?(v=!1,d=Af(c,!0)):T?(v=!1,d=Sf(c,!0)):d=[]:we(c)||Lt(c)?(d=a,Lt(a)?d=yo(a):(!z(a)||ft(a))&&(d=qf(c))):v=!1}v&&(s.set(c,d),u(d,c,r,o,s),s.delete(c)),ei(n,e,d)}function cf(n,t){var e=n.length;if(!!e)return t+=t<0?e:0,ut(t,e)?n[t]:i}function hf(n,t,e){t.length?t=$(t,function(o){return M(o)?function(s){return Ft(s,o.length===1?o[0]:o)}:o}):t=[yn];var r=-1;t=$(t,Cn(C()));var u=sf(n,function(o,s,a){var c=$(t,function(_){return _(o)});return{criteria:c,index:++r,value:o}});return va(u,function(o,s){return rc(o,s,e)})}function Kl(n,t){return pf(n,t,function(e,r){return Ui(n,r)})}function pf(n,t,e){for(var r=-1,u=t.length,o={};++r<u;){var s=t[r],a=Ft(n,s);e(a,s)&&ve(o,mt(s,n),a)}return o}function kl(n){return function(t){return Ft(t,n)}}function ci(n,t,e,r){var u=r?da:Nt,o=-1,s=t.length,a=n;for(n===t&&(t=vn(t)),e&&(a=$(n,Cn(e)));++o<s;)for(var c=0,_=t[o],d=e?e(_):_;(c=u(a,d,c,r))>-1;)a!==n&&Ke.call(a,c,1),Ke.call(n,c,1);return n}function gf(n,t){for(var e=n?t.length:0,r=e-1;e--;){var u=t[e];if(e==r||u!==o){var o=u;ut(u)?Ke.call(n,u,1):_i(n,u)}}return n}function hi(n,t){return n+Ze(Yu()*(t-n+1))}function Yl(n,t,e,r){for(var u=-1,o=V(Ye((t-n)/(e||1)),0),s=p(o);o--;)s[r?o:++u]=n,n+=e;return s}function pi(n,t){var e="";if(!n||t<1||t>Nn)return e;do t%2&&(e+=n),t=Ze(t/2),t&&(n+=n);while(t);return e}function O(n,t){return Li(zf(n,t,yn),n+"")}function Zl(n){return Xu(Xt(n))}function Jl(n,t){var e=Xt(n);return cr(e,It(t,0,e.length))}function ve(n,t,e,r){if(!z(n))return n;t=mt(t,n);for(var u=-1,o=t.length,s=o-1,a=n;a!=null&&++u<o;){var c=Qn(t[u]),_=e;if(c==="__proto__"||c==="constructor"||c==="prototype")return n;if(u!=s){var d=a[c];_=r?r(d,c,a):i,_===i&&(_=z(d)?d:ut(t[u+1])?[]:{})}pe(a,c,_),a=a[c]}return n}var _f=Je?function(n,t){return Je.set(n,t),n}:yn,Xl=ke?function(n,t){return ke(n,"toString",{configurable:!0,enumerable:!1,value:Gi(t),writable:!0})}:yn;function Ql(n){return cr(Xt(n))}function Bn(n,t,e){var r=-1,u=n.length;t<0&&(t=-t>u?0:u+t),e=e>u?u:e,e<0&&(e+=u),u=t>e?0:e-t>>>0,t>>>=0;for(var o=p(u);++r<u;)o[r]=n[r+t];return o}function Vl(n,t){var e;return vt(n,function(r,u,o){return e=t(r,u,o),!e}),!!e}function er(n,t,e){var r=0,u=n==null?r:n.length;if(typeof t=="number"&&t===t&&u<=ns){for(;r<u;){var o=r+u>>>1,s=n[o];s!==null&&!In(s)&&(e?s<=t:s<t)?r=o+1:u=o}return u}return gi(n,t,yn,e)}function gi(n,t,e,r){var u=0,o=n==null?0:n.length;if(o===0)return 0;t=e(t);for(var s=t!==t,a=t===null,c=In(t),_=t===i;u<o;){var d=Ze((u+o)/2),v=e(n[d]),x=v!==i,S=v===null,T=v===v,L=In(v);if(s)var I=r||T;else _?I=T&&(r||x):a?I=T&&x&&(r||!S):c?I=T&&x&&!S&&(r||!L):S||L?I=!1:I=r?v<=t:v<t;I?u=d+1:o=d}return fn(o,ct)}function df(n,t){for(var e=-1,r=n.length,u=0,o=[];++e<r;){var s=n[e],a=t?t(s):s;if(!e||!Kn(a,c)){var c=a;o[u++]=s===0?0:s}}return o}function vf(n){return typeof n=="number"?n:In(n)?Gn:+n}function Tn(n){if(typeof n=="string")return n;if(M(n))return $(n,Tn)+"";if(In(n))return Zu?Zu.call(n):"";var t=n+"";return t=="0"&&1/n==-Zn?"-0":t}function xt(n,t,e){var r=-1,u=Pe,o=n.length,s=!0,a=[],c=a;if(e)s=!1,u=$r;else if(o>=m){var _=t?null:ac(n);if(_)return We(_);s=!1,u=oe,c=new Tt}else c=t?[]:a;n:for(;++r<o;){var d=n[r],v=t?t(d):d;if(d=e||d!==0?d:0,s&&v===v){for(var x=c.length;x--;)if(c[x]===v)continue n;t&&c.push(v),a.push(d)}else u(c,v,e)||(c!==a&&c.push(v),a.push(d))}return a}function _i(n,t){return t=mt(t,n),n=Kf(n,t),n==null||delete n[Qn(Wn(t))]}function xf(n,t,e,r){return ve(n,t,e(Ft(n,t)),r)}function rr(n,t,e,r){for(var u=n.length,o=r?u:-1;(r?o--:++o<u)&&t(n[o],o,n););return e?Bn(n,r?0:o,r?o+1:u):Bn(n,r?o+1:0,r?u:o)}function mf(n,t){var e=n;return e instanceof D&&(e=e.value()),zr(t,function(r,u){return u.func.apply(u.thisArg,pt([r],u.args))},e)}function di(n,t,e){var r=n.length;if(r<2)return r?xt(n[0]):[];for(var u=-1,o=p(r);++u<r;)for(var s=n[u],a=-1;++a<r;)a!=u&&(o[u]=ge(o[u]||s,n[a],t,e));return xt(un(o,1),t,e)}function yf(n,t,e){for(var r=-1,u=n.length,o=t.length,s={};++r<u;){var a=r<o?t[r]:i;e(s,n[r],a)}return s}function vi(n){return Z(n)?n:[]}function xi(n){return typeof n=="function"?n:yn}function mt(n,t){return M(n)?n:Fi(n,t)?[n]:Jf(W(n))}var jl=O;function yt(n,t,e){var r=n.length;return e=e===i?r:e,!t&&e>=r?n:Bn(n,t,e)}var wf=Ga||function(n){return tn.clearTimeout(n)};function Af(n,t){if(t)return n.slice();var e=n.length,r=Hu?Hu(e):new n.constructor(e);return n.copy(r),r}function mi(n){var t=new n.constructor(n.byteLength);return new $e(t).set(new $e(n)),t}function nc(n,t){var e=t?mi(n.buffer):n.buffer;return new n.constructor(e,n.byteOffset,n.byteLength)}function tc(n){var t=new n.constructor(n.source,iu.exec(n));return t.lastIndex=n.lastIndex,t}function ec(n){return he?N(he.call(n)):{}}function Sf(n,t){var e=t?mi(n.buffer):n.buffer;return new n.constructor(e,n.byteOffset,n.length)}function Cf(n,t){if(n!==t){var e=n!==i,r=n===null,u=n===n,o=In(n),s=t!==i,a=t===null,c=t===t,_=In(t);if(!a&&!_&&!o&&n>t||o&&s&&c&&!a&&!_||r&&s&&c||!e&&c||!u)return 1;if(!r&&!o&&!_&&n<t||_&&e&&u&&!r&&!o||a&&e&&u||!s&&u||!c)return-1}return 0}function rc(n,t,e){for(var r=-1,u=n.criteria,o=t.criteria,s=u.length,a=e.length;++r<s;){var c=Cf(u[r],o[r]);if(c){if(r>=a)return c;var _=e[r];return c*(_=="desc"?-1:1)}}return n.index-t.index}function Tf(n,t,e,r){for(var u=-1,o=n.length,s=e.length,a=-1,c=t.length,_=V(o-s,0),d=p(c+_),v=!r;++a<c;)d[a]=t[a];for(;++u<s;)(v||u<o)&&(d[e[u]]=n[u]);for(;_--;)d[a++]=n[u++];return d}function If(n,t,e,r){for(var u=-1,o=n.length,s=-1,a=e.length,c=-1,_=t.length,d=V(o-a,0),v=p(d+_),x=!r;++u<d;)v[u]=n[u];for(var S=u;++c<_;)v[S+c]=t[c];for(;++s<a;)(x||u<o)&&(v[S+e[s]]=n[u++]);return v}function vn(n,t){var e=-1,r=n.length;for(t||(t=p(r));++e<r;)t[e]=n[e];return t}function Xn(n,t,e,r){var u=!e;e||(e={});for(var o=-1,s=t.length;++o<s;){var a=t[o],c=r?r(e[a],n[a],a,e,n):i;c===i&&(c=n[a]),u?et(e,a,c):pe(e,a,c)}return e}function ic(n,t){return Xn(n,Ii(n),t)}function uc(n,t){return Xn(n,Nf(n),t)}function ir(n,t){return function(e,r){var u=M(e)?la:Fl,o=t?t():{};return u(e,n,C(r,2),o)}}function kt(n){return O(function(t,e){var r=-1,u=e.length,o=u>1?e[u-1]:i,s=u>2?e[2]:i;for(o=n.length>3&&typeof o=="function"?(u--,o):i,s&&gn(e[0],e[1],s)&&(o=u<3?i:o,u=1),t=N(t);++r<u;){var a=e[r];a&&n(t,a,r,o)}return t})}function Ff(n,t){return function(e,r){if(e==null)return e;if(!xn(e))return n(e,r);for(var u=e.length,o=t?u:-1,s=N(e);(t?o--:++o<u)&&r(s[o],o,s)!==!1;);return e}}function Mf(n){return function(t,e,r){for(var u=-1,o=N(t),s=r(t),a=s.length;a--;){var c=s[n?a:++u];if(e(o[c],c,o)===!1)break}return t}}function fc(n,t,e){var r=t&j,u=xe(n);function o(){var s=this&&this!==tn&&this instanceof o?u:n;return s.apply(r?e:this,arguments)}return o}function Rf(n){return function(t){t=W(t);var e=Gt(t)?$n(t):i,r=e?e[0]:t.charAt(0),u=e?yt(e,1).join(""):t.slice(1);return r[n]()+u}}function Yt(n){return function(t){return zr(Mo(Fo(t).replace(Xs,"")),n,"")}}function xe(n){return function(){var t=arguments;switch(t.length){case 0:return new n;case 1:return new n(t[0]);case 2:return new n(t[0],t[1]);case 3:return new n(t[0],t[1],t[2]);case 4:return new n(t[0],t[1],t[2],t[3]);case 5:return new n(t[0],t[1],t[2],t[3],t[4]);case 6:return new n(t[0],t[1],t[2],t[3],t[4],t[5]);case 7:return new n(t[0],t[1],t[2],t[3],t[4],t[5],t[6])}var e=Kt(n.prototype),r=n.apply(e,t);return z(r)?r:e}}function oc(n,t,e){var r=xe(n);function u(){for(var o=arguments.length,s=p(o),a=o,c=Zt(u);a--;)s[a]=arguments[a];var _=o<3&&s[0]!==c&&s[o-1]!==c?[]:gt(s,c);if(o-=_.length,o<e)return Df(n,t,ur,u.placeholder,i,s,_,i,i,e-o);var d=this&&this!==tn&&this instanceof u?r:n;return Sn(d,this,s)}return u}function Lf(n){return function(t,e,r){var u=N(t);if(!xn(t)){var o=C(e,3);t=en(t),e=function(a){return o(u[a],a,u)}}var s=n(t,e,r);return s>-1?u[o?t[s]:s]:i}}function Ef(n){return it(function(t){var e=t.length,r=e,u=Dn.prototype.thru;for(n&&t.reverse();r--;){var o=t[r];if(typeof o!="function")throw new bn(y);if(u&&!s&&ar(o)=="wrapper")var s=new Dn([],!0)}for(r=s?r:e;++r<e;){o=t[r];var a=ar(o),c=a=="wrapper"?Ci(o):i;c&&Mi(c[0])&&c[1]==(Ln|ln|hn|An)&&!c[4].length&&c[9]==1?s=s[ar(c[0])].apply(s,c[3]):s=o.length==1&&Mi(o)?s[a]():s.thru(o)}return function(){var _=arguments,d=_[0];if(s&&_.length==1&&M(d))return s.plant(d).value();for(var v=0,x=e?t[v].apply(this,_):d;++v<e;)x=t[v].call(this,x);return x}})}function ur(n,t,e,r,u,o,s,a,c,_){var d=t&Ln,v=t&j,x=t&Rn,S=t&(ln|cn),T=t&bt,L=x?i:xe(n);function I(){for(var b=arguments.length,P=p(b),Fn=b;Fn--;)P[Fn]=arguments[Fn];if(S)var _n=Zt(I),Mn=ma(P,_n);if(r&&(P=Tf(P,r,u,S)),o&&(P=If(P,o,s,S)),b-=Mn,S&&b<_){var J=gt(P,_n);return Df(n,t,ur,I.placeholder,e,P,J,a,c,_-b)}var kn=v?e:this,st=x?kn[n]:n;return b=P.length,a?P=Fc(P,a):T&&b>1&&P.reverse(),d&&c<b&&(P.length=c),this&&this!==tn&&this instanceof I&&(st=L||xe(st)),st.apply(kn,P)}return I}function Of(n,t){return function(e,r){return Pl(e,n,t(r),{})}}function fr(n,t){return function(e,r){var u;if(e===i&&r===i)return t;if(e!==i&&(u=e),r!==i){if(u===i)return r;typeof e=="string"||typeof r=="string"?(e=Tn(e),r=Tn(r)):(e=vf(e),r=vf(r)),u=n(e,r)}return u}}function yi(n){return it(function(t){return t=$(t,Cn(C())),O(function(e){var r=this;return n(t,function(u){return Sn(u,r,e)})})})}function or(n,t){t=t===i?" ":Tn(t);var e=t.length;if(e<2)return e?pi(t,n):t;var r=pi(t,Ye(n/qt(t)));return Gt(t)?yt($n(r),0,n).join(""):r.slice(0,n)}function sc(n,t,e,r){var u=t&j,o=xe(n);function s(){for(var a=-1,c=arguments.length,_=-1,d=r.length,v=p(d+c),x=this&&this!==tn&&this instanceof s?o:n;++_<d;)v[_]=r[_];for(;c--;)v[_++]=arguments[++a];return Sn(x,u?e:this,v)}return s}function bf(n){return function(t,e,r){return r&&typeof r!="number"&&gn(t,e,r)&&(e=r=i),t=ot(t),e===i?(e=t,t=0):e=ot(e),r=r===i?t<e?1:-1:ot(r),Yl(t,e,r,n)}}function sr(n){return function(t,e){return typeof t=="string"&&typeof e=="string"||(t=Un(t),e=Un(e)),n(t,e)}}function Df(n,t,e,r,u,o,s,a,c,_){var d=t&ln,v=d?s:i,x=d?i:s,S=d?o:i,T=d?i:o;t|=d?hn:Vn,t&=~(d?Vn:hn),t&nn||(t&=~(j|Rn));var L=[n,t,u,S,v,T,x,a,c,_],I=e.apply(i,L);return Mi(n)&&kf(I,L),I.placeholder=r,Yf(I,n,t)}function wi(n){var t=Q[n];return function(e,r){if(e=Un(e),r=r==null?0:fn(R(r),292),r&&ku(e)){var u=(W(e)+"e").split("e"),o=t(u[0]+"e"+(+u[1]+r));return u=(W(o)+"e").split("e"),+(u[0]+"e"+(+u[1]-r))}return t(e)}}var ac=$t&&1/We(new $t([,-0]))[1]==Zn?function(n){return new $t(n)}:$i;function Pf(n){return function(t){var e=on(t);return e==qn?Qr(t):e==Hn?Ia(t):xa(t,n(t))}}function rt(n,t,e,r,u,o,s,a){var c=t&Rn;if(!c&&typeof n!="function")throw new bn(y);var _=r?r.length:0;if(_||(t&=~(hn|Vn),r=u=i),s=s===i?s:V(R(s),0),a=a===i?a:R(a),_-=u?u.length:0,t&Vn){var d=r,v=u;r=u=i}var x=c?i:Ci(n),S=[n,t,e,r,u,d,v,o,s,a];if(x&&Cc(S,x),n=S[0],t=S[1],e=S[2],r=S[3],u=S[4],a=S[9]=S[9]===i?c?0:n.length:V(S[9]-_,0),!a&&t&(ln|cn)&&(t&=~(ln|cn)),!t||t==j)var T=fc(n,t,e);else t==ln||t==cn?T=oc(n,t,a):(t==hn||t==(j|hn))&&!u.length?T=sc(n,t,e,r):T=ur.apply(i,S);var L=x?_f:kf;return Yf(L(T,S),n,t)}function Bf(n,t,e,r){return n===i||Kn(n,Ht[e])&&!U.call(r,e)?t:n}function Wf(n,t,e,r,u,o){return z(n)&&z(t)&&(o.set(t,n),tr(n,t,i,Wf,o),o.delete(t)),n}function lc(n){return we(n)?i:n}function Uf(n,t,e,r,u,o){var s=e&K,a=n.length,c=t.length;if(a!=c&&!(s&&c>a))return!1;var _=o.get(n),d=o.get(t);if(_&&d)return _==t&&d==n;var v=-1,x=!0,S=e&Yn?new Tt:i;for(o.set(n,t),o.set(t,n);++v<a;){var T=n[v],L=t[v];if(r)var I=s?r(L,T,v,t,n,o):r(T,L,v,n,t,o);if(I!==i){if(I)continue;x=!1;break}if(S){if(!Kr(t,function(b,P){if(!oe(S,P)&&(T===b||u(T,b,e,r,o)))return S.push(P)})){x=!1;break}}else if(!(T===L||u(T,L,e,r,o))){x=!1;break}}return o.delete(n),o.delete(t),x}function cc(n,t,e,r,u,o,s){switch(e){case Wt:if(n.byteLength!=t.byteLength||n.byteOffset!=t.byteOffset)return!1;n=n.buffer,t=t.buffer;case fe:return!(n.byteLength!=t.byteLength||!o(new $e(n),new $e(t)));case ne:case te:case ee:return Kn(+n,+t);case Re:return n.name==t.name&&n.message==t.message;case re:case ie:return n==t+"";case qn:var a=Qr;case Hn:var c=r&K;if(a||(a=We),n.size!=t.size&&!c)return!1;var _=s.get(n);if(_)return _==t;r|=Yn,s.set(n,t);var d=Uf(a(n),a(t),r,u,o,s);return s.delete(n),d;case Ee:if(he)return he.call(n)==he.call(t)}return!1}function hc(n,t,e,r,u,o){var s=e&K,a=Ai(n),c=a.length,_=Ai(t),d=_.length;if(c!=d&&!s)return!1;for(var v=c;v--;){var x=a[v];if(!(s?x in t:U.call(t,x)))return!1}var S=o.get(n),T=o.get(t);if(S&&T)return S==t&&T==n;var L=!0;o.set(n,t),o.set(t,n);for(var I=s;++v<c;){x=a[v];var b=n[x],P=t[x];if(r)var Fn=s?r(P,b,x,t,n,o):r(b,P,x,n,t,o);if(!(Fn===i?b===P||u(b,P,e,r,o):Fn)){L=!1;break}I||(I=x=="constructor")}if(L&&!I){var _n=n.constructor,Mn=t.constructor;_n!=Mn&&"constructor"in n&&"constructor"in t&&!(typeof _n=="function"&&_n instanceof _n&&typeof Mn=="function"&&Mn instanceof Mn)&&(L=!1)}return o.delete(n),o.delete(t),L}function it(n){return Li(zf(n,i,jf),n+"")}function Ai(n){return rf(n,en,Ii)}function Si(n){return rf(n,mn,Nf)}var Ci=Je?function(n){return Je.get(n)}:$i;function ar(n){for(var t=n.name+"",e=zt[t],r=U.call(zt,t)?e.length:0;r--;){var u=e[r],o=u.func;if(o==null||o==n)return u.name}return t}function Zt(n){var t=U.call(f,"placeholder")?f:n;return t.placeholder}function C(){var n=f.iteratee||qi;return n=n===qi?of:n,arguments.length?n(arguments[0],arguments[1]):n}function lr(n,t){var e=n.__data__;return yc(t)?e[typeof t=="string"?"string":"hash"]:e.map}function Ti(n){for(var t=en(n),e=t.length;e--;){var r=t[e],u=n[r];t[e]=[r,u,Hf(u)]}return t}function Mt(n,t){var e=Sa(n,t);return ff(e)?e:i}function pc(n){var t=U.call(n,St),e=n[St];try{n[St]=i;var r=!0}catch(o){}var u=qe.call(n);return r&&(t?n[St]=e:delete n[St]),u}var Ii=jr?function(n){return n==null?[]:(n=N(n),ht(jr(n),function(t){return zu.call(n,t)}))}:zi,Nf=jr?function(n){for(var t=[];n;)pt(t,Ii(n)),n=ze(n);return t}:zi,on=pn;(ni&&on(new ni(new ArrayBuffer(1)))!=Wt||ae&&on(new ae)!=qn||ti&&on(ti.resolve())!=nu||$t&&on(new $t)!=Hn||le&&on(new le)!=ue)&&(on=function(n){var t=pn(n),e=t==jn?n.constructor:i,r=e?Rt(e):"";if(r)switch(r){case Ja:return Wt;case Xa:return qn;case Qa:return nu;case Va:return Hn;case ja:return ue}return t});function gc(n,t,e){for(var r=-1,u=e.length;++r<u;){var o=e[r],s=o.size;switch(o.type){case"drop":n+=s;break;case"dropRight":t-=s;break;case"take":t=fn(t,n+s);break;case"takeRight":n=V(n,t-s);break}}return{start:n,end:t}}function _c(n){var t=n.match(ws);return t?t[1].split(As):[]}function Gf(n,t,e){t=mt(t,n);for(var r=-1,u=t.length,o=!1;++r<u;){var s=Qn(t[r]);if(!(o=n!=null&&e(n,s)))break;n=n[s]}return o||++r!=u?o:(u=n==null?0:n.length,!!u&&vr(u)&&ut(s,u)&&(M(n)||Lt(n)))}function dc(n){var t=n.length,e=new n.constructor(t);return t&&typeof n[0]=="string"&&U.call(n,"index")&&(e.index=n.index,e.input=n.input),e}function qf(n){return typeof n.constructor=="function"&&!me(n)?Kt(ze(n)):{}}function vc(n,t,e){var r=n.constructor;switch(t){case fe:return mi(n);case ne:case te:return new r(+n);case Wt:return nc(n,e);case Tr:case Ir:case Fr:case Mr:case Rr:case Lr:case Er:case Or:case br:return Sf(n,e);case qn:return new r;case ee:case ie:return new r(n);case re:return tc(n);case Hn:return new r;case Ee:return ec(n)}}function xc(n,t){var e=t.length;if(!e)return n;var r=e-1;return t[r]=(e>1?"& ":"")+t[r],t=t.join(e>2?", ":" "),n.replace(ys,`{\n/* [wrapped with `+t+`] */\n`)}function mc(n){return M(n)||Lt(n)||!!(Ku&&n&&n[Ku])}function ut(n,t){var e=typeof n;return t=t==null?Nn:t,!!t&&(e=="number"||e!="symbol"&&Es.test(n))&&n>-1&&n%1==0&&n<t}function gn(n,t,e){if(!z(e))return!1;var r=typeof t;return(r=="number"?xn(e)&&ut(t,e.length):r=="string"&&t in e)?Kn(e[t],n):!1}function Fi(n,t){if(M(n))return!1;var e=typeof n;return e=="number"||e=="symbol"||e=="boolean"||n==null||In(n)?!0:ds.test(n)||!_s.test(n)||t!=null&&n in N(t)}function yc(n){var t=typeof n;return t=="string"||t=="number"||t=="symbol"||t=="boolean"?n!=="__proto__":n===null}function Mi(n){var t=ar(n),e=f[t];if(typeof e!="function"||!(t in D.prototype))return!1;if(n===e)return!0;var r=Ci(e);return!!r&&n===r[0]}function wc(n){return!!qu&&qu in n}var Ac=Ne?ft:Ki;function me(n){var t=n&&n.constructor,e=typeof t=="function"&&t.prototype||Ht;return n===e}function Hf(n){return n===n&&!z(n)}function $f(n,t){return function(e){return e==null?!1:e[n]===t&&(t!==i||n in N(e))}}function Sc(n){var t=_r(n,function(r){return e.size===sn&&e.clear(),r}),e=t.cache;return t}function Cc(n,t){var e=n[1],r=t[1],u=e|r,o=u<(j|Rn|Ln),s=r==Ln&&e==ln||r==Ln&&e==An&&n[7].length<=t[8]||r==(Ln|An)&&t[7].length<=t[8]&&e==ln;if(!(o||s))return n;r&j&&(n[2]=t[2],u|=e&j?0:nn);var a=t[3];if(a){var c=n[3];n[3]=c?Tf(c,a,t[4]):a,n[4]=c?gt(n[3],rn):t[4]}return a=t[5],a&&(c=n[5],n[5]=c?If(c,a,t[6]):a,n[6]=c?gt(n[5],rn):t[6]),a=t[7],a&&(n[7]=a),r&Ln&&(n[8]=n[8]==null?t[8]:fn(n[8],t[8])),n[9]==null&&(n[9]=t[9]),n[0]=t[0],n[1]=u,n}function Tc(n){var t=[];if(n!=null)for(var e in N(n))t.push(e);return t}function Ic(n){return qe.call(n)}function zf(n,t,e){return t=V(t===i?n.length-1:t,0),function(){for(var r=arguments,u=-1,o=V(r.length-t,0),s=p(o);++u<o;)s[u]=r[t+u];u=-1;for(var a=p(t+1);++u<t;)a[u]=r[u];return a[t]=e(s),Sn(n,this,a)}}function Kf(n,t){return t.length<2?n:Ft(n,Bn(t,0,-1))}function Fc(n,t){for(var e=n.length,r=fn(t.length,e),u=vn(n);r--;){var o=t[r];n[r]=ut(o,e)?u[o]:i}return n}function Ri(n,t){if(!(t==="constructor"&&typeof n[t]=="function")&&t!="__proto__")return n[t]}var kf=Zf(_f),ye=Ha||function(n,t){return tn.setTimeout(n,t)},Li=Zf(Xl);function Yf(n,t,e){var r=t+"";return Li(n,xc(r,Mc(_c(r),e)))}function Zf(n){var t=0,e=0;return function(){var r=ka(),u=Cr-(r-e);if(e=r,u>0){if(++t>=Te)return arguments[0]}else t=0;return n.apply(i,arguments)}}function cr(n,t){var e=-1,r=n.length,u=r-1;for(t=t===i?r:t;++e<t;){var o=hi(e,u),s=n[o];n[o]=n[e],n[e]=s}return n.length=t,n}var Jf=Sc(function(n){var t=[];return n.charCodeAt(0)===46&&t.push(""),n.replace(vs,function(e,r,u,o){t.push(u?o.replace(Ts,"$1"):r||e)}),t});function Qn(n){if(typeof n=="string"||In(n))return n;var t=n+"";return t=="0"&&1/n==-Zn?"-0":t}function Rt(n){if(n!=null){try{return Ge.call(n)}catch(t){}try{return n+""}catch(t){}}return""}function Mc(n,t){return On(ts,function(e){var r="_."+e[0];t&e[1]&&!Pe(n,r)&&n.push(r)}),n.sort()}function Xf(n){if(n instanceof D)return n.clone();var t=new Dn(n.__wrapped__,n.__chain__);return t.__actions__=vn(n.__actions__),t.__index__=n.__index__,t.__values__=n.__values__,t}function Rc(n,t,e){(e?gn(n,t,e):t===i)?t=1:t=V(R(t),0);var r=n==null?0:n.length;if(!r||t<1)return[];for(var u=0,o=0,s=p(Ye(r/t));u<r;)s[o++]=Bn(n,u,u+=t);return s}function Lc(n){for(var t=-1,e=n==null?0:n.length,r=0,u=[];++t<e;){var o=n[t];o&&(u[r++]=o)}return u}function Ec(){var n=arguments.length;if(!n)return[];for(var t=p(n-1),e=arguments[0],r=n;r--;)t[r-1]=arguments[r];return pt(M(e)?vn(e):[e],un(t,1))}var Oc=O(function(n,t){return Z(n)?ge(n,un(t,1,Z,!0)):[]}),bc=O(function(n,t){var e=Wn(t);return Z(e)&&(e=i),Z(n)?ge(n,un(t,1,Z,!0),C(e,2)):[]}),Dc=O(function(n,t){var e=Wn(t);return Z(e)&&(e=i),Z(n)?ge(n,un(t,1,Z,!0),i,e):[]});function Pc(n,t,e){var r=n==null?0:n.length;return r?(t=e||t===i?1:R(t),Bn(n,t<0?0:t,r)):[]}function Bc(n,t,e){var r=n==null?0:n.length;return r?(t=e||t===i?1:R(t),t=r-t,Bn(n,0,t<0?0:t)):[]}function Wc(n,t){return n&&n.length?rr(n,C(t,3),!0,!0):[]}function Uc(n,t){return n&&n.length?rr(n,C(t,3),!0):[]}function Nc(n,t,e,r){var u=n==null?0:n.length;return u?(e&&typeof e!="number"&&gn(n,t,e)&&(e=0,r=u),El(n,t,e,r)):[]}function Qf(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=e==null?0:R(e);return u<0&&(u=V(r+u,0)),Be(n,C(t,3),u)}function Vf(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=r-1;return e!==i&&(u=R(e),u=e<0?V(r+u,0):fn(u,r-1)),Be(n,C(t,3),u,!0)}function jf(n){var t=n==null?0:n.length;return t?un(n,1):[]}function Gc(n){var t=n==null?0:n.length;return t?un(n,Zn):[]}function qc(n,t){var e=n==null?0:n.length;return e?(t=t===i?1:R(t),un(n,t)):[]}function Hc(n){for(var t=-1,e=n==null?0:n.length,r={};++t<e;){var u=n[t];r[u[0]]=u[1]}return r}function no(n){return n&&n.length?n[0]:i}function $c(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=e==null?0:R(e);return u<0&&(u=V(r+u,0)),Nt(n,t,u)}function zc(n){var t=n==null?0:n.length;return t?Bn(n,0,-1):[]}var Kc=O(function(n){var t=$(n,vi);return t.length&&t[0]===n[0]?oi(t):[]}),kc=O(function(n){var t=Wn(n),e=$(n,vi);return t===Wn(e)?t=i:e.pop(),e.length&&e[0]===n[0]?oi(e,C(t,2)):[]}),Yc=O(function(n){var t=Wn(n),e=$(n,vi);return t=typeof t=="function"?t:i,t&&e.pop(),e.length&&e[0]===n[0]?oi(e,i,t):[]});function Zc(n,t){return n==null?"":za.call(n,t)}function Wn(n){var t=n==null?0:n.length;return t?n[t-1]:i}function Jc(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=r;return e!==i&&(u=R(e),u=u<0?V(r+u,0):fn(u,r-1)),t===t?Ma(n,t,u):Be(n,bu,u,!0)}function Xc(n,t){return n&&n.length?cf(n,R(t)):i}var Qc=O(to);function to(n,t){return n&&n.length&&t&&t.length?ci(n,t):n}function Vc(n,t,e){return n&&n.length&&t&&t.length?ci(n,t,C(e,2)):n}function jc(n,t,e){return n&&n.length&&t&&t.length?ci(n,t,i,e):n}var nh=it(function(n,t){var e=n==null?0:n.length,r=ri(n,t);return gf(n,$(t,function(u){return ut(u,e)?+u:u}).sort(Cf)),r});function th(n,t){var e=[];if(!(n&&n.length))return e;var r=-1,u=[],o=n.length;for(t=C(t,3);++r<o;){var s=n[r];t(s,r,n)&&(e.push(s),u.push(r))}return gf(n,u),e}function Ei(n){return n==null?n:Za.call(n)}function eh(n,t,e){var r=n==null?0:n.length;return r?(e&&typeof e!="number"&&gn(n,t,e)?(t=0,e=r):(t=t==null?0:R(t),e=e===i?r:R(e)),Bn(n,t,e)):[]}function rh(n,t){return er(n,t)}function ih(n,t,e){return gi(n,t,C(e,2))}function uh(n,t){var e=n==null?0:n.length;if(e){var r=er(n,t);if(r<e&&Kn(n[r],t))return r}return-1}function fh(n,t){return er(n,t,!0)}function oh(n,t,e){return gi(n,t,C(e,2),!0)}function sh(n,t){var e=n==null?0:n.length;if(e){var r=er(n,t,!0)-1;if(Kn(n[r],t))return r}return-1}function ah(n){return n&&n.length?df(n):[]}function lh(n,t){return n&&n.length?df(n,C(t,2)):[]}function ch(n){var t=n==null?0:n.length;return t?Bn(n,1,t):[]}function hh(n,t,e){return n&&n.length?(t=e||t===i?1:R(t),Bn(n,0,t<0?0:t)):[]}function ph(n,t,e){var r=n==null?0:n.length;return r?(t=e||t===i?1:R(t),t=r-t,Bn(n,t<0?0:t,r)):[]}function gh(n,t){return n&&n.length?rr(n,C(t,3),!1,!0):[]}function _h(n,t){return n&&n.length?rr(n,C(t,3)):[]}var dh=O(function(n){return xt(un(n,1,Z,!0))}),vh=O(function(n){var t=Wn(n);return Z(t)&&(t=i),xt(un(n,1,Z,!0),C(t,2))}),xh=O(function(n){var t=Wn(n);return t=typeof t=="function"?t:i,xt(un(n,1,Z,!0),i,t)});function mh(n){return n&&n.length?xt(n):[]}function yh(n,t){return n&&n.length?xt(n,C(t,2)):[]}function wh(n,t){return t=typeof t=="function"?t:i,n&&n.length?xt(n,i,t):[]}function Oi(n){if(!(n&&n.length))return[];var t=0;return n=ht(n,function(e){if(Z(e))return t=V(e.length,t),!0}),Jr(t,function(e){return $(n,kr(e))})}function eo(n,t){if(!(n&&n.length))return[];var e=Oi(n);return t==null?e:$(e,function(r){return Sn(t,i,r)})}var Ah=O(function(n,t){return Z(n)?ge(n,t):[]}),Sh=O(function(n){return di(ht(n,Z))}),Ch=O(function(n){var t=Wn(n);return Z(t)&&(t=i),di(ht(n,Z),C(t,2))}),Th=O(function(n){var t=Wn(n);return t=typeof t=="function"?t:i,di(ht(n,Z),i,t)}),Ih=O(Oi);function Fh(n,t){return yf(n||[],t||[],pe)}function Mh(n,t){return yf(n||[],t||[],ve)}var Rh=O(function(n){var t=n.length,e=t>1?n[t-1]:i;return e=typeof e=="function"?(n.pop(),e):i,eo(n,e)});function ro(n){var t=f(n);return t.__chain__=!0,t}function Lh(n,t){return t(n),n}function hr(n,t){return t(n)}var Eh=it(function(n){var t=n.length,e=t?n[0]:0,r=this.__wrapped__,u=function(o){return ri(o,n)};return t>1||this.__actions__.length||!(r instanceof D)||!ut(e)?this.thru(u):(r=r.slice(e,+e+(t?1:0)),r.__actions__.push({func:hr,args:[u],thisArg:i}),new Dn(r,this.__chain__).thru(function(o){return t&&!o.length&&o.push(i),o}))});function Oh(){return ro(this)}function bh(){return new Dn(this.value(),this.__chain__)}function Dh(){this.__values__===i&&(this.__values__=xo(this.value()));var n=this.__index__>=this.__values__.length,t=n?i:this.__values__[this.__index__++];return{done:n,value:t}}function Ph(){return this}function Bh(n){for(var t,e=this;e instanceof Qe;){var r=Xf(e);r.__index__=0,r.__values__=i,t?u.__wrapped__=r:t=r;var u=r;e=e.__wrapped__}return u.__wrapped__=n,t}function Wh(){var n=this.__wrapped__;if(n instanceof D){var t=n;return this.__actions__.length&&(t=new D(this)),t=t.reverse(),t.__actions__.push({func:hr,args:[Ei],thisArg:i}),new Dn(t,this.__chain__)}return this.thru(Ei)}function Uh(){return mf(this.__wrapped__,this.__actions__)}var Nh=ir(function(n,t,e){U.call(n,e)?++n[e]:et(n,e,1)});function Gh(n,t,e){var r=M(n)?Eu:Ll;return e&&gn(n,t,e)&&(t=i),r(n,C(t,3))}function qh(n,t){var e=M(n)?ht:tf;return e(n,C(t,3))}var Hh=Lf(Qf),$h=Lf(Vf);function zh(n,t){return un(pr(n,t),1)}function Kh(n,t){return un(pr(n,t),Zn)}function kh(n,t,e){return e=e===i?1:R(e),un(pr(n,t),e)}function io(n,t){var e=M(n)?On:vt;return e(n,C(t,3))}function uo(n,t){var e=M(n)?ca:nf;return e(n,C(t,3))}var Yh=ir(function(n,t,e){U.call(n,e)?n[e].push(t):et(n,e,[t])});function Zh(n,t,e,r){n=xn(n)?n:Xt(n),e=e&&!r?R(e):0;var u=n.length;return e<0&&(e=V(u+e,0)),xr(n)?e<=u&&n.indexOf(t,e)>-1:!!u&&Nt(n,t,e)>-1}var Jh=O(function(n,t,e){var r=-1,u=typeof t=="function",o=xn(n)?p(n.length):[];return vt(n,function(s){o[++r]=u?Sn(t,s,e):_e(s,t,e)}),o}),Xh=ir(function(n,t,e){et(n,e,t)});function pr(n,t){var e=M(n)?$:sf;return e(n,C(t,3))}function Qh(n,t,e,r){return n==null?[]:(M(t)||(t=t==null?[]:[t]),e=r?i:e,M(e)||(e=e==null?[]:[e]),hf(n,t,e))}var Vh=ir(function(n,t,e){n[e?0:1].push(t)},function(){return[[],[]]});function jh(n,t,e){var r=M(n)?zr:Pu,u=arguments.length<3;return r(n,C(t,4),e,u,vt)}function np(n,t,e){var r=M(n)?ha:Pu,u=arguments.length<3;return r(n,C(t,4),e,u,nf)}function tp(n,t){var e=M(n)?ht:tf;return e(n,dr(C(t,3)))}function ep(n){var t=M(n)?Xu:Zl;return t(n)}function rp(n,t,e){(e?gn(n,t,e):t===i)?t=1:t=R(t);var r=M(n)?Tl:Jl;return r(n,t)}function ip(n){var t=M(n)?Il:Ql;return t(n)}function up(n){if(n==null)return 0;if(xn(n))return xr(n)?qt(n):n.length;var t=on(n);return t==qn||t==Hn?n.size:ai(n).length}function fp(n,t,e){var r=M(n)?Kr:Vl;return e&&gn(n,t,e)&&(t=i),r(n,C(t,3))}var op=O(function(n,t){if(n==null)return[];var e=t.length;return e>1&&gn(n,t[0],t[1])?t=[]:e>2&&gn(t[0],t[1],t[2])&&(t=[t[0]]),hf(n,un(t,1),[])}),gr=qa||function(){return tn.Date.now()};function sp(n,t){if(typeof t!="function")throw new bn(y);return n=R(n),function(){if(--n<1)return t.apply(this,arguments)}}function fo(n,t,e){return t=e?i:t,t=n&&t==null?n.length:t,rt(n,Ln,i,i,i,i,t)}function oo(n,t){var e;if(typeof t!="function")throw new bn(y);return n=R(n),function(){return--n>0&&(e=t.apply(this,arguments)),n<=1&&(t=i),e}}var bi=O(function(n,t,e){var r=j;if(e.length){var u=gt(e,Zt(bi));r|=hn}return rt(n,r,t,e,u)}),so=O(function(n,t,e){var r=j|Rn;if(e.length){var u=gt(e,Zt(so));r|=hn}return rt(t,r,n,e,u)});function ao(n,t,e){t=e?i:t;var r=rt(n,ln,i,i,i,i,i,t);return r.placeholder=ao.placeholder,r}function lo(n,t,e){t=e?i:t;var r=rt(n,cn,i,i,i,i,i,t);return r.placeholder=lo.placeholder,r}function co(n,t,e){var r,u,o,s,a,c,_=0,d=!1,v=!1,x=!0;if(typeof n!="function")throw new bn(y);t=Un(t)||0,z(e)&&(d=!!e.leading,v="maxWait"in e,o=v?V(Un(e.maxWait)||0,t):o,x="trailing"in e?!!e.trailing:x);function S(J){var kn=r,st=u;return r=u=i,_=J,s=n.apply(st,kn),s}function T(J){return _=J,a=ye(b,t),d?S(J):s}function L(J){var kn=J-c,st=J-_,Eo=t-kn;return v?fn(Eo,o-st):Eo}function I(J){var kn=J-c,st=J-_;return c===i||kn>=t||kn<0||v&&st>=o}function b(){var J=gr();if(I(J))return P(J);a=ye(b,L(J))}function P(J){return a=i,x&&r?S(J):(r=u=i,s)}function Fn(){a!==i&&wf(a),_=0,r=c=u=a=i}function _n(){return a===i?s:P(gr())}function Mn(){var J=gr(),kn=I(J);if(r=arguments,u=this,c=J,kn){if(a===i)return T(c);if(v)return wf(a),a=ye(b,t),S(c)}return a===i&&(a=ye(b,t)),s}return Mn.cancel=Fn,Mn.flush=_n,Mn}var ap=O(function(n,t){return ju(n,1,t)}),lp=O(function(n,t,e){return ju(n,Un(t)||0,e)});function cp(n){return rt(n,bt)}function _r(n,t){if(typeof n!="function"||t!=null&&typeof t!="function")throw new bn(y);var e=function(){var r=arguments,u=t?t.apply(this,r):r[0],o=e.cache;if(o.has(u))return o.get(u);var s=n.apply(this,r);return e.cache=o.set(u,s)||o,s};return e.cache=new(_r.Cache||tt),e}_r.Cache=tt;function dr(n){if(typeof n!="function")throw new bn(y);return function(){var t=arguments;switch(t.length){case 0:return!n.call(this);case 1:return!n.call(this,t[0]);case 2:return!n.call(this,t[0],t[1]);case 3:return!n.call(this,t[0],t[1],t[2])}return!n.apply(this,t)}}function hp(n){return oo(2,n)}var pp=jl(function(n,t){t=t.length==1&&M(t[0])?$(t[0],Cn(C())):$(un(t,1),Cn(C()));var e=t.length;return O(function(r){for(var u=-1,o=fn(r.length,e);++u<o;)r[u]=t[u].call(this,r[u]);return Sn(n,this,r)})}),Di=O(function(n,t){var e=gt(t,Zt(Di));return rt(n,hn,i,t,e)}),ho=O(function(n,t){var e=gt(t,Zt(ho));return rt(n,Vn,i,t,e)}),gp=it(function(n,t){return rt(n,An,i,i,i,t)});function _p(n,t){if(typeof n!="function")throw new bn(y);return t=t===i?t:R(t),O(n,t)}function dp(n,t){if(typeof n!="function")throw new bn(y);return t=t==null?0:V(R(t),0),O(function(e){var r=e[t],u=yt(e,0,t);return r&&pt(u,r),Sn(n,this,u)})}function vp(n,t,e){var r=!0,u=!0;if(typeof n!="function")throw new bn(y);return z(e)&&(r="leading"in e?!!e.leading:r,u="trailing"in e?!!e.trailing:u),co(n,t,{leading:r,maxWait:t,trailing:u})}function xp(n){return fo(n,1)}function mp(n,t){return Di(xi(t),n)}function yp(){if(!arguments.length)return[];var n=arguments[0];return M(n)?n:[n]}function wp(n){return Pn(n,an)}function Ap(n,t){return t=typeof t=="function"?t:i,Pn(n,an,t)}function Sp(n){return Pn(n,H|an)}function Cp(n,t){return t=typeof t=="function"?t:i,Pn(n,H|an,t)}function Tp(n,t){return t==null||Vu(n,t,en(t))}function Kn(n,t){return n===t||n!==n&&t!==t}var Ip=sr(fi),Fp=sr(function(n,t){return n>=t}),Lt=uf(function(){return arguments}())?uf:function(n){return k(n)&&U.call(n,"callee")&&!zu.call(n,"callee")},M=p.isArray,Mp=Tu?Cn(Tu):Bl;function xn(n){return n!=null&&vr(n.length)&&!ft(n)}function Z(n){return k(n)&&xn(n)}function Rp(n){return n===!0||n===!1||k(n)&&pn(n)==ne}var wt=$a||Ki,Lp=Iu?Cn(Iu):Wl;function Ep(n){return k(n)&&n.nodeType===1&&!we(n)}function Op(n){if(n==null)return!0;if(xn(n)&&(M(n)||typeof n=="string"||typeof n.splice=="function"||wt(n)||Jt(n)||Lt(n)))return!n.length;var t=on(n);if(t==qn||t==Hn)return!n.size;if(me(n))return!ai(n).length;for(var e in n)if(U.call(n,e))return!1;return!0}function bp(n,t){return de(n,t)}function Dp(n,t,e){e=typeof e=="function"?e:i;var r=e?e(n,t):i;return r===i?de(n,t,i,e):!!r}function Pi(n){if(!k(n))return!1;var t=pn(n);return t==Re||t==rs||typeof n.message=="string"&&typeof n.name=="string"&&!we(n)}function Pp(n){return typeof n=="number"&&ku(n)}function ft(n){if(!z(n))return!1;var t=pn(n);return t==Le||t==ji||t==es||t==us}function po(n){return typeof n=="number"&&n==R(n)}function vr(n){return typeof n=="number"&&n>-1&&n%1==0&&n<=Nn}function z(n){var t=typeof n;return n!=null&&(t=="object"||t=="function")}function k(n){return n!=null&&typeof n=="object"}var go=Fu?Cn(Fu):Nl;function Bp(n,t){return n===t||si(n,t,Ti(t))}function Wp(n,t,e){return e=typeof e=="function"?e:i,si(n,t,Ti(t),e)}function Up(n){return _o(n)&&n!=+n}function Np(n){if(Ac(n))throw new F(A);return ff(n)}function Gp(n){return n===null}function qp(n){return n==null}function _o(n){return typeof n=="number"||k(n)&&pn(n)==ee}function we(n){if(!k(n)||pn(n)!=jn)return!1;var t=ze(n);if(t===null)return!0;var e=U.call(t,"constructor")&&t.constructor;return typeof e=="function"&&e instanceof e&&Ge.call(e)==Wa}var Bi=Mu?Cn(Mu):Gl;function Hp(n){return po(n)&&n>=-Nn&&n<=Nn}var vo=Ru?Cn(Ru):ql;function xr(n){return typeof n=="string"||!M(n)&&k(n)&&pn(n)==ie}function In(n){return typeof n=="symbol"||k(n)&&pn(n)==Ee}var Jt=Lu?Cn(Lu):Hl;function $p(n){return n===i}function zp(n){return k(n)&&on(n)==ue}function Kp(n){return k(n)&&pn(n)==os}var kp=sr(li),Yp=sr(function(n,t){return n<=t});function xo(n){if(!n)return[];if(xn(n))return xr(n)?$n(n):vn(n);if(se&&n[se])return Ta(n[se]());var t=on(n),e=t==qn?Qr:t==Hn?We:Xt;return e(n)}function ot(n){if(!n)return n===0?n:0;if(n=Un(n),n===Zn||n===-Zn){var t=n<0?-1:1;return t*dn}return n===n?n:0}function R(n){var t=ot(n),e=t%1;return t===t?e?t-e:t:0}function mo(n){return n?It(R(n),0,Y):0}function Un(n){if(typeof n=="number")return n;if(In(n))return Gn;if(z(n)){var t=typeof n.valueOf=="function"?n.valueOf():n;n=z(t)?t+"":t}if(typeof n!="string")return n===0?n:+n;n=Bu(n);var e=Ms.test(n);return e||Ls.test(n)?sa(n.slice(2),e?2:8):Fs.test(n)?Gn:+n}function yo(n){return Xn(n,mn(n))}function Zp(n){return n?It(R(n),-Nn,Nn):n===0?n:0}function W(n){return n==null?"":Tn(n)}var Jp=kt(function(n,t){if(me(t)||xn(t)){Xn(t,en(t),n);return}for(var e in t)U.call(t,e)&&pe(n,e,t[e])}),wo=kt(function(n,t){Xn(t,mn(t),n)}),mr=kt(function(n,t,e,r){Xn(t,mn(t),n,r)}),Xp=kt(function(n,t,e,r){Xn(t,en(t),n,r)}),Qp=it(ri);function Vp(n,t){var e=Kt(n);return t==null?e:Qu(e,t)}var jp=O(function(n,t){n=N(n);var e=-1,r=t.length,u=r>2?t[2]:i;for(u&&gn(t[0],t[1],u)&&(r=1);++e<r;)for(var o=t[e],s=mn(o),a=-1,c=s.length;++a<c;){var _=s[a],d=n[_];(d===i||Kn(d,Ht[_])&&!U.call(n,_))&&(n[_]=o[_])}return n}),ng=O(function(n){return n.push(i,Wf),Sn(Ao,i,n)});function tg(n,t){return Ou(n,C(t,3),Jn)}function eg(n,t){return Ou(n,C(t,3),ui)}function rg(n,t){return n==null?n:ii(n,C(t,3),mn)}function ig(n,t){return n==null?n:ef(n,C(t,3),mn)}function ug(n,t){return n&&Jn(n,C(t,3))}function fg(n,t){return n&&ui(n,C(t,3))}function og(n){return n==null?[]:nr(n,en(n))}function sg(n){return n==null?[]:nr(n,mn(n))}function Wi(n,t,e){var r=n==null?i:Ft(n,t);return r===i?e:r}function ag(n,t){return n!=null&&Gf(n,t,Ol)}function Ui(n,t){return n!=null&&Gf(n,t,bl)}var lg=Of(function(n,t,e){t!=null&&typeof t.toString!="function"&&(t=qe.call(t)),n[t]=e},Gi(yn)),cg=Of(function(n,t,e){t!=null&&typeof t.toString!="function"&&(t=qe.call(t)),U.call(n,t)?n[t].push(e):n[t]=[e]},C),hg=O(_e);function en(n){return xn(n)?Ju(n):ai(n)}function mn(n){return xn(n)?Ju(n,!0):$l(n)}function pg(n,t){var e={};return t=C(t,3),Jn(n,function(r,u,o){et(e,t(r,u,o),r)}),e}function gg(n,t){var e={};return t=C(t,3),Jn(n,function(r,u,o){et(e,u,t(r,u,o))}),e}var _g=kt(function(n,t,e){tr(n,t,e)}),Ao=kt(function(n,t,e,r){tr(n,t,e,r)}),dg=it(function(n,t){var e={};if(n==null)return e;var r=!1;t=$(t,function(o){return o=mt(o,n),r||(r=o.length>1),o}),Xn(n,Si(n),e),r&&(e=Pn(e,H|wn|an,lc));for(var u=t.length;u--;)_i(e,t[u]);return e});function vg(n,t){return So(n,dr(C(t)))}var xg=it(function(n,t){return n==null?{}:Kl(n,t)});function So(n,t){if(n==null)return{};var e=$(Si(n),function(r){return[r]});return t=C(t),pf(n,e,function(r,u){return t(r,u[0])})}function mg(n,t,e){t=mt(t,n);var r=-1,u=t.length;for(u||(u=1,n=i);++r<u;){var o=n==null?i:n[Qn(t[r])];o===i&&(r=u,o=e),n=ft(o)?o.call(n):o}return n}function yg(n,t,e){return n==null?n:ve(n,t,e)}function wg(n,t,e,r){return r=typeof r=="function"?r:i,n==null?n:ve(n,t,e,r)}var Co=Pf(en),To=Pf(mn);function Ag(n,t,e){var r=M(n),u=r||wt(n)||Jt(n);if(t=C(t,4),e==null){var o=n&&n.constructor;u?e=r?new o:[]:z(n)?e=ft(o)?Kt(ze(n)):{}:e={}}return(u?On:Jn)(n,function(s,a,c){return t(e,s,a,c)}),e}function Sg(n,t){return n==null?!0:_i(n,t)}function Cg(n,t,e){return n==null?n:xf(n,t,xi(e))}function Tg(n,t,e,r){return r=typeof r=="function"?r:i,n==null?n:xf(n,t,xi(e),r)}function Xt(n){return n==null?[]:Xr(n,en(n))}function Ig(n){return n==null?[]:Xr(n,mn(n))}function Fg(n,t,e){return e===i&&(e=t,t=i),e!==i&&(e=Un(e),e=e===e?e:0),t!==i&&(t=Un(t),t=t===t?t:0),It(Un(n),t,e)}function Mg(n,t,e){return t=ot(t),e===i?(e=t,t=0):e=ot(e),n=Un(n),Dl(n,t,e)}function Rg(n,t,e){if(e&&typeof e!="boolean"&&gn(n,t,e)&&(t=e=i),e===i&&(typeof t=="boolean"?(e=t,t=i):typeof n=="boolean"&&(e=n,n=i)),n===i&&t===i?(n=0,t=1):(n=ot(n),t===i?(t=n,n=0):t=ot(t)),n>t){var r=n;n=t,t=r}if(e||n%1||t%1){var u=Yu();return fn(n+u*(t-n+oa("1e-"+((u+"").length-1))),t)}return hi(n,t)}var Lg=Yt(function(n,t,e){return t=t.toLowerCase(),n+(e?Io(t):t)});function Io(n){return Ni(W(n).toLowerCase())}function Fo(n){return n=W(n),n&&n.replace(Os,ya).replace(Qs,"")}function Eg(n,t,e){n=W(n),t=Tn(t);var r=n.length;e=e===i?r:It(R(e),0,r);var u=e;return e-=t.length,e>=0&&n.slice(e,u)==t}function Og(n){return n=W(n),n&&hs.test(n)?n.replace(eu,wa):n}function bg(n){return n=W(n),n&&xs.test(n)?n.replace(Dr,"\\\\$&"):n}var Dg=Yt(function(n,t,e){return n+(e?"-":"")+t.toLowerCase()}),Pg=Yt(function(n,t,e){return n+(e?" ":"")+t.toLowerCase()}),Bg=Rf("toLowerCase");function Wg(n,t,e){n=W(n),t=R(t);var r=t?qt(n):0;if(!t||r>=t)return n;var u=(t-r)/2;return or(Ze(u),e)+n+or(Ye(u),e)}function Ug(n,t,e){n=W(n),t=R(t);var r=t?qt(n):0;return t&&r<t?n+or(t-r,e):n}function Ng(n,t,e){n=W(n),t=R(t);var r=t?qt(n):0;return t&&r<t?or(t-r,e)+n:n}function Gg(n,t,e){return e||t==null?t=0:t&&(t=+t),Ya(W(n).replace(Pr,""),t||0)}function qg(n,t,e){return(e?gn(n,t,e):t===i)?t=1:t=R(t),pi(W(n),t)}function Hg(){var n=arguments,t=W(n[0]);return n.length<3?t:t.replace(n[1],n[2])}var $g=Yt(function(n,t,e){return n+(e?"_":"")+t.toLowerCase()});function zg(n,t,e){return e&&typeof e!="number"&&gn(n,t,e)&&(t=e=i),e=e===i?Y:e>>>0,e?(n=W(n),n&&(typeof t=="string"||t!=null&&!Bi(t))&&(t=Tn(t),!t&&Gt(n))?yt($n(n),0,e):n.split(t,e)):[]}var Kg=Yt(function(n,t,e){return n+(e?" ":"")+Ni(t)});function kg(n,t,e){return n=W(n),e=e==null?0:It(R(e),0,n.length),t=Tn(t),n.slice(e,e+t.length)==t}function Yg(n,t,e){var r=f.templateSettings;e&&gn(n,t,e)&&(t=i),n=W(n),t=mr({},t,r,Bf);var u=mr({},t.imports,r.imports,Bf),o=en(u),s=Xr(u,o),a,c,_=0,d=t.interpolate||Oe,v="__p += \'",x=Vr((t.escape||Oe).source+"|"+d.source+"|"+(d===ru?Is:Oe).source+"|"+(t.evaluate||Oe).source+"|$","g"),S="//# sourceURL="+(U.call(t,"sourceURL")?(t.sourceURL+"").replace(/\\s/g," "):"lodash.templateSources["+ ++ea+"]")+`\n`;n.replace(x,function(I,b,P,Fn,_n,Mn){return P||(P=Fn),v+=n.slice(_,Mn).replace(bs,Aa),b&&(a=!0,v+=`\' +\n__e(`+b+`) +\n\'`),_n&&(c=!0,v+=`\';\n`+_n+`;\n__p += \'`),P&&(v+=`\' +\n((__t = (`+P+`)) == null ? \'\' : __t) +\n\'`),_=Mn+I.length,I}),v+=`\';\n`;var T=U.call(t,"variable")&&t.variable;if(!T)v=`with (obj) {\n`+v+`\n}\n`;else if(Cs.test(T))throw new F(E);v=(c?v.replace(ss,""):v).replace(as,"$1").replace(ls,"$1;"),v="function("+(T||"obj")+`) {\n`+(T?"":`obj || (obj = {});\n`)+"var __t, __p = \'\'"+(a?", __e = _.escape":"")+(c?`, __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, \'\') }\n`:`;\n`)+v+`return __p\n}`;var L=Ro(function(){return B(o,S+"return "+v).apply(i,s)});if(L.source=v,Pi(L))throw L;return L}function Zg(n){return W(n).toLowerCase()}function Jg(n){return W(n).toUpperCase()}function Xg(n,t,e){if(n=W(n),n&&(e||t===i))return Bu(n);if(!n||!(t=Tn(t)))return n;var r=$n(n),u=$n(t),o=Wu(r,u),s=Uu(r,u)+1;return yt(r,o,s).join("")}function Qg(n,t,e){if(n=W(n),n&&(e||t===i))return n.slice(0,Gu(n)+1);if(!n||!(t=Tn(t)))return n;var r=$n(n),u=Uu(r,$n(t))+1;return yt(r,0,u).join("")}function Vg(n,t,e){if(n=W(n),n&&(e||t===i))return n.replace(Pr,"");if(!n||!(t=Tn(t)))return n;var r=$n(n),u=Wu(r,$n(t));return yt(r,u).join("")}function jg(n,t){var e=Dt,r=Pt;if(z(t)){var u="separator"in t?t.separator:u;e="length"in t?R(t.length):e,r="omission"in t?Tn(t.omission):r}n=W(n);var o=n.length;if(Gt(n)){var s=$n(n);o=s.length}if(e>=o)return n;var a=e-qt(r);if(a<1)return r;var c=s?yt(s,0,a).join(""):n.slice(0,a);if(u===i)return c+r;if(s&&(a+=c.length-a),Bi(u)){if(n.slice(a).search(u)){var _,d=c;for(u.global||(u=Vr(u.source,W(iu.exec(u))+"g")),u.lastIndex=0;_=u.exec(d);)var v=_.index;c=c.slice(0,v===i?a:v)}}else if(n.indexOf(Tn(u),a)!=a){var x=c.lastIndexOf(u);x>-1&&(c=c.slice(0,x))}return c+r}function n_(n){return n=W(n),n&&cs.test(n)?n.replace(tu,Ra):n}var t_=Yt(function(n,t,e){return n+(e?" ":"")+t.toUpperCase()}),Ni=Rf("toUpperCase");function Mo(n,t,e){return n=W(n),t=e?i:t,t===i?Ca(n)?Oa(n):_a(n):n.match(t)||[]}var Ro=O(function(n,t){try{return Sn(n,i,t)}catch(e){return Pi(e)?e:new F(e)}}),e_=it(function(n,t){return On(t,function(e){e=Qn(e),et(n,e,bi(n[e],n))}),n});function r_(n){var t=n==null?0:n.length,e=C();return n=t?$(n,function(r){if(typeof r[1]!="function")throw new bn(y);return[e(r[0]),r[1]]}):[],O(function(r){for(var u=-1;++u<t;){var o=n[u];if(Sn(o[0],this,r))return Sn(o[1],this,r)}})}function i_(n){return Rl(Pn(n,H))}function Gi(n){return function(){return n}}function u_(n,t){return n==null||n!==n?t:n}var f_=Ef(),o_=Ef(!0);function yn(n){return n}function qi(n){return of(typeof n=="function"?n:Pn(n,H))}function s_(n){return af(Pn(n,H))}function a_(n,t){return lf(n,Pn(t,H))}var l_=O(function(n,t){return function(e){return _e(e,n,t)}}),c_=O(function(n,t){return function(e){return _e(n,e,t)}});function Hi(n,t,e){var r=en(t),u=nr(t,r);e==null&&!(z(t)&&(u.length||!r.length))&&(e=t,t=n,n=this,u=nr(t,en(t)));var o=!(z(e)&&"chain"in e)||!!e.chain,s=ft(n);return On(u,function(a){var c=t[a];n[a]=c,s&&(n.prototype[a]=function(){var _=this.__chain__;if(o||_){var d=n(this.__wrapped__),v=d.__actions__=vn(this.__actions__);return v.push({func:c,args:arguments,thisArg:n}),d.__chain__=_,d}return c.apply(n,pt([this.value()],arguments))})}),n}function h_(){return tn._===this&&(tn._=Ua),this}function $i(){}function p_(n){return n=R(n),O(function(t){return cf(t,n)})}var g_=yi($),__=yi(Eu),d_=yi(Kr);function Lo(n){return Fi(n)?kr(Qn(n)):kl(n)}function v_(n){return function(t){return n==null?i:Ft(n,t)}}var x_=bf(),m_=bf(!0);function zi(){return[]}function Ki(){return!1}function y_(){return{}}function w_(){return""}function A_(){return!0}function S_(n,t){if(n=R(n),n<1||n>Nn)return[];var e=Y,r=fn(n,Y);t=C(t),n-=Y;for(var u=Jr(r,t);++e<n;)t(e);return u}function C_(n){return M(n)?$(n,Qn):In(n)?[n]:vn(Jf(W(n)))}function T_(n){var t=++Ba;return W(n)+t}var I_=fr(function(n,t){return n+t},0),F_=wi("ceil"),M_=fr(function(n,t){return n/t},1),R_=wi("floor");function L_(n){return n&&n.length?je(n,yn,fi):i}function E_(n,t){return n&&n.length?je(n,C(t,2),fi):i}function O_(n){return Du(n,yn)}function b_(n,t){return Du(n,C(t,2))}function D_(n){return n&&n.length?je(n,yn,li):i}function P_(n,t){return n&&n.length?je(n,C(t,2),li):i}var B_=fr(function(n,t){return n*t},1),W_=wi("round"),U_=fr(function(n,t){return n-t},0);function N_(n){return n&&n.length?Zr(n,yn):0}function G_(n,t){return n&&n.length?Zr(n,C(t,2)):0}return f.after=sp,f.ary=fo,f.assign=Jp,f.assignIn=wo,f.assignInWith=mr,f.assignWith=Xp,f.at=Qp,f.before=oo,f.bind=bi,f.bindAll=e_,f.bindKey=so,f.castArray=yp,f.chain=ro,f.chunk=Rc,f.compact=Lc,f.concat=Ec,f.cond=r_,f.conforms=i_,f.constant=Gi,f.countBy=Nh,f.create=Vp,f.curry=ao,f.curryRight=lo,f.debounce=co,f.defaults=jp,f.defaultsDeep=ng,f.defer=ap,f.delay=lp,f.difference=Oc,f.differenceBy=bc,f.differenceWith=Dc,f.drop=Pc,f.dropRight=Bc,f.dropRightWhile=Wc,f.dropWhile=Uc,f.fill=Nc,f.filter=qh,f.flatMap=zh,f.flatMapDeep=Kh,f.flatMapDepth=kh,f.flatten=jf,f.flattenDeep=Gc,f.flattenDepth=qc,f.flip=cp,f.flow=f_,f.flowRight=o_,f.fromPairs=Hc,f.functions=og,f.functionsIn=sg,f.groupBy=Yh,f.initial=zc,f.intersection=Kc,f.intersectionBy=kc,f.intersectionWith=Yc,f.invert=lg,f.invertBy=cg,f.invokeMap=Jh,f.iteratee=qi,f.keyBy=Xh,f.keys=en,f.keysIn=mn,f.map=pr,f.mapKeys=pg,f.mapValues=gg,f.matches=s_,f.matchesProperty=a_,f.memoize=_r,f.merge=_g,f.mergeWith=Ao,f.method=l_,f.methodOf=c_,f.mixin=Hi,f.negate=dr,f.nthArg=p_,f.omit=dg,f.omitBy=vg,f.once=hp,f.orderBy=Qh,f.over=g_,f.overArgs=pp,f.overEvery=__,f.overSome=d_,f.partial=Di,f.partialRight=ho,f.partition=Vh,f.pick=xg,f.pickBy=So,f.property=Lo,f.propertyOf=v_,f.pull=Qc,f.pullAll=to,f.pullAllBy=Vc,f.pullAllWith=jc,f.pullAt=nh,f.range=x_,f.rangeRight=m_,f.rearg=gp,f.reject=tp,f.remove=th,f.rest=_p,f.reverse=Ei,f.sampleSize=rp,f.set=yg,f.setWith=wg,f.shuffle=ip,f.slice=eh,f.sortBy=op,f.sortedUniq=ah,f.sortedUniqBy=lh,f.split=zg,f.spread=dp,f.tail=ch,f.take=hh,f.takeRight=ph,f.takeRightWhile=gh,f.takeWhile=_h,f.tap=Lh,f.throttle=vp,f.thru=hr,f.toArray=xo,f.toPairs=Co,f.toPairsIn=To,f.toPath=C_,f.toPlainObject=yo,f.transform=Ag,f.unary=xp,f.union=dh,f.unionBy=vh,f.unionWith=xh,f.uniq=mh,f.uniqBy=yh,f.uniqWith=wh,f.unset=Sg,f.unzip=Oi,f.unzipWith=eo,f.update=Cg,f.updateWith=Tg,f.values=Xt,f.valuesIn=Ig,f.without=Ah,f.words=Mo,f.wrap=mp,f.xor=Sh,f.xorBy=Ch,f.xorWith=Th,f.zip=Ih,f.zipObject=Fh,f.zipObjectDeep=Mh,f.zipWith=Rh,f.entries=Co,f.entriesIn=To,f.extend=wo,f.extendWith=mr,Hi(f,f),f.add=I_,f.attempt=Ro,f.camelCase=Lg,f.capitalize=Io,f.ceil=F_,f.clamp=Fg,f.clone=wp,f.cloneDeep=Sp,f.cloneDeepWith=Cp,f.cloneWith=Ap,f.conformsTo=Tp,f.deburr=Fo,f.defaultTo=u_,f.divide=M_,f.endsWith=Eg,f.eq=Kn,f.escape=Og,f.escapeRegExp=bg,f.every=Gh,f.find=Hh,f.findIndex=Qf,f.findKey=tg,f.findLast=$h,f.findLastIndex=Vf,f.findLastKey=eg,f.floor=R_,f.forEach=io,f.forEachRight=uo,f.forIn=rg,f.forInRight=ig,f.forOwn=ug,f.forOwnRight=fg,f.get=Wi,f.gt=Ip,f.gte=Fp,f.has=ag,f.hasIn=Ui,f.head=no,f.identity=yn,f.includes=Zh,f.indexOf=$c,f.inRange=Mg,f.invoke=hg,f.isArguments=Lt,f.isArray=M,f.isArrayBuffer=Mp,f.isArrayLike=xn,f.isArrayLikeObject=Z,f.isBoolean=Rp,f.isBuffer=wt,f.isDate=Lp,f.isElement=Ep,f.isEmpty=Op,f.isEqual=bp,f.isEqualWith=Dp,f.isError=Pi,f.isFinite=Pp,f.isFunction=ft,f.isInteger=po,f.isLength=vr,f.isMap=go,f.isMatch=Bp,f.isMatchWith=Wp,f.isNaN=Up,f.isNative=Np,f.isNil=qp,f.isNull=Gp,f.isNumber=_o,f.isObject=z,f.isObjectLike=k,f.isPlainObject=we,f.isRegExp=Bi,f.isSafeInteger=Hp,f.isSet=vo,f.isString=xr,f.isSymbol=In,f.isTypedArray=Jt,f.isUndefined=$p,f.isWeakMap=zp,f.isWeakSet=Kp,f.join=Zc,f.kebabCase=Dg,f.last=Wn,f.lastIndexOf=Jc,f.lowerCase=Pg,f.lowerFirst=Bg,f.lt=kp,f.lte=Yp,f.max=L_,f.maxBy=E_,f.mean=O_,f.meanBy=b_,f.min=D_,f.minBy=P_,f.stubArray=zi,f.stubFalse=Ki,f.stubObject=y_,f.stubString=w_,f.stubTrue=A_,f.multiply=B_,f.nth=Xc,f.noConflict=h_,f.noop=$i,f.now=gr,f.pad=Wg,f.padEnd=Ug,f.padStart=Ng,f.parseInt=Gg,f.random=Rg,f.reduce=jh,f.reduceRight=np,f.repeat=qg,f.replace=Hg,f.result=mg,f.round=W_,f.runInContext=l,f.sample=ep,f.size=up,f.snakeCase=$g,f.some=fp,f.sortedIndex=rh,f.sortedIndexBy=ih,f.sortedIndexOf=uh,f.sortedLastIndex=fh,f.sortedLastIndexBy=oh,f.sortedLastIndexOf=sh,f.startCase=Kg,f.startsWith=kg,f.subtract=U_,f.sum=N_,f.sumBy=G_,f.template=Yg,f.times=S_,f.toFinite=ot,f.toInteger=R,f.toLength=mo,f.toLower=Zg,f.toNumber=Un,f.toSafeInteger=Zp,f.toString=W,f.toUpper=Jg,f.trim=Xg,f.trimEnd=Qg,f.trimStart=Vg,f.truncate=jg,f.unescape=n_,f.uniqueId=T_,f.upperCase=t_,f.upperFirst=Ni,f.each=io,f.eachRight=uo,f.first=no,Hi(f,function(){var n={};return Jn(f,function(t,e){U.call(f.prototype,e)||(n[e]=t)}),n}(),{chain:!1}),f.VERSION=h,On(["bind","bindKey","curry","curryRight","partial","partialRight"],function(n){f[n].placeholder=f}),On(["drop","take"],function(n,t){D.prototype[n]=function(e){e=e===i?1:V(R(e),0);var r=this.__filtered__&&!t?new D(this):this.clone();return r.__filtered__?r.__takeCount__=fn(e,r.__takeCount__):r.__views__.push({size:fn(e,Y),type:n+(r.__dir__<0?"Right":"")}),r},D.prototype[n+"Right"]=function(e){return this.reverse()[n](e).reverse()}}),On(["filter","map","takeWhile"],function(n,t){var e=t+1,r=e==jt||e==Fe;D.prototype[n]=function(u){var o=this.clone();return o.__iteratees__.push({iteratee:C(u,3),type:e}),o.__filtered__=o.__filtered__||r,o}}),On(["head","last"],function(n,t){var e="take"+(t?"Right":"");D.prototype[n]=function(){return this[e](1).value()[0]}}),On(["initial","tail"],function(n,t){var e="drop"+(t?"":"Right");D.prototype[n]=function(){return this.__filtered__?new D(this):this[e](1)}}),D.prototype.compact=function(){return this.filter(yn)},D.prototype.find=function(n){return this.filter(n).head()},D.prototype.findLast=function(n){return this.reverse().find(n)},D.prototype.invokeMap=O(function(n,t){return typeof n=="function"?new D(this):this.map(function(e){return _e(e,n,t)})}),D.prototype.reject=function(n){return this.filter(dr(C(n)))},D.prototype.slice=function(n,t){n=R(n);var e=this;return e.__filtered__&&(n>0||t<0)?new D(e):(n<0?e=e.takeRight(-n):n&&(e=e.drop(n)),t!==i&&(t=R(t),e=t<0?e.dropRight(-t):e.take(t-n)),e)},D.prototype.takeRightWhile=function(n){return this.reverse().takeWhile(n).reverse()},D.prototype.toArray=function(){return this.take(Y)},Jn(D.prototype,function(n,t){var e=/^(?:filter|find|map|reject)|While$/.test(t),r=/^(?:head|last)$/.test(t),u=f[r?"take"+(t=="last"?"Right":""):t],o=r||/^find/.test(t);!u||(f.prototype[t]=function(){var s=this.__wrapped__,a=r?[1]:arguments,c=s instanceof D,_=a[0],d=c||M(s),v=function(b){var P=u.apply(f,pt([b],a));return r&&x?P[0]:P};d&&e&&typeof _=="function"&&_.length!=1&&(c=d=!1);var x=this.__chain__,S=!!this.__actions__.length,T=o&&!x,L=c&&!S;if(!o&&d){s=L?s:new D(this);var I=n.apply(s,a);return I.__actions__.push({func:hr,args:[v],thisArg:i}),new Dn(I,x)}return T&&L?n.apply(this,a):(I=this.thru(v),T?r?I.value()[0]:I.value():I)})}),On(["pop","push","shift","sort","splice","unshift"],function(n){var t=Ue[n],e=/^(?:push|sort|unshift)$/.test(n)?"tap":"thru",r=/^(?:pop|shift)$/.test(n);f.prototype[n]=function(){var u=arguments;if(r&&!this.__chain__){var o=this.value();return t.apply(M(o)?o:[],u)}return this[e](function(s){return t.apply(M(s)?s:[],u)})}}),Jn(D.prototype,function(n,t){var e=f[t];if(e){var r=e.name+"";U.call(zt,r)||(zt[r]=[]),zt[r].push({name:t,func:e})}}),zt[ur(i,Rn).name]=[{name:"wrapper",func:i}],D.prototype.clone=nl,D.prototype.reverse=tl,D.prototype.value=el,f.prototype.at=Eh,f.prototype.chain=Oh,f.prototype.commit=bh,f.prototype.next=Dh,f.prototype.plant=Bh,f.prototype.reverse=Wh,f.prototype.toJSON=f.prototype.valueOf=f.prototype.value=Uh,f.prototype.first=f.prototype.head,se&&(f.prototype[se]=Ph),f},_t=ba();typeof define=="function"&&typeof define.amd=="object"&&define.amd?(tn._=_t,define(function(){return _t})):At?((At.exports=_t)._=_t,qr._=_t):tn._=_t}).call(Qt)});var Vi=X_(Po());var at=i=>[...new Set(i)],Bo=i=>[...new Map(i.map(h=>[h.toLowerCase(),h])).values()];var Wo=i=>{var h;try{h=JSON.parse(i)}catch(m){}return h};var No=(i,h)=>h.indexOf(i)>0?h.indexOf(i):h.length,Q_=i=>i.substring(0,i.length-2),Yi=i=>i.replace(/\\//g,"+")+"//";var Go=i=>i.substring(0,i.lastIndexOf("."))||i,V_=i=>i.charAt(0)=="/"?i.substring(1):i;var Uo=i=>V_(i.substring(i.lastIndexOf("/")))||i,Zi=i=>i?(i==null?void 0:i.type)=="folder"?Uo(i.contextPath):(i==null?void 0:i.type)=="space"?Q_(i.contextPath):i.isRemote?Uo(i.contextPath):i.contextPath:"";var lt=i=>{var h;return(h=i==null?void 0:i.match(/(\\\\.|[^,])+/g))!=null?h:[]};var qo=i=>{if(!i)return"";let h=/\\[\\[(.*?)\\]\\]/g.exec(i),m=(h==null?void 0:h.length)>1?h[1].substring(0,No("|",h[1])):i;return m||i};var Ho=i=>{var h;return!i||i.length==0?[]:i.charAt(0)=="#"?i.split("&").map(m=>({type:"tag",value:m})):(h=Wo(i))!=null?h:[]};var Se=(i,h)=>{if(typeof i=="string"){if(/\\/\\/(\\S+?(?:jpe?g|png|gif|svg))/gi.test(i)||i.includes("unsplash"))return"image";if(/^\\d{4}-\\d{2}-\\d{2}$/.test(i))return"date";if(h=="tag"||h=="tags")return"tag";if(/\\[\\[.*?\\]\\]/.test(i))return"link"}else{if(typeof i=="number")return"number";if(typeof i=="boolean")return"boolean";if(i)if(Array.isArray(i)||typeof i=="string"&&i.indexOf(",")>-1){let m=Array.isArray(i)?i:[];if(typeof i=="string"&&i.indexOf(",")>-1&&(m=lt(i)),h=="tag"||h=="tags")return"tag-multi";if(m.length==1&&Array.isArray(m[0])&&m[0].length==1&&typeof m[0][0]=="string")return"link";let A=at(m.map(y=>Se(y,h)));return A.length==1&&A[0]=="link"?"link-multi":"option-multi"}else{if(i.isLuxonDateTime)return"date";if(i.isLuxonDuration)return"duration";if(i.type=="file")return"link";if(typeof i=="object"&&!Array.isArray(i)&&i!==null)return"object"}else return"unknown"}return"text"};var $o=i=>Object.keys(i!=null?i:{}).filter(h=>h!="position").filter(h=>h!="tag"&&h!="tags");var Vt=i=>i.join(","),zo=i=>i.join(", ");var yr=(i,h)=>{switch(Se(h,i)){case"object":return JSON.stringify(h);case"number":return h.toString();case"boolean":return h?"true":"false";case"date":return h;case"duration":return zo(Object.keys(h.values).reduce((A,y)=>[...A,...h.values[y]>0?[h.values[y]+" "+y]:[]],[]));case"option-multi":case"link-multi":return typeof h=="string"?h:Vt(h.map(A=>A?typeof A=="string"?A:A.path?A.path:Array.isArray(h)&&A.length==1&&Array.isArray(A[0])&&A[0].length==1&&typeof A[0][0]=="string"?A[0][0]:JSON.stringify(A):""));case"link":return Array.isArray(h)&&h.length==1&&Array.isArray(h[0])&&h[0].length==1&&typeof h[0][0]=="string"?h[0][0]:typeof h=="string"?h:h.path;case"text":case"tag":case"image":return h}return""};var Ko=i=>{switch(i){case"duration":return"text";case"unknown":return"text"}return i};var wr=(i,h)=>i==h,Ji=(i,h)=>(i!=null?i:"").length==0,Xi=(i,h)=>(i!=null?i:"").toLowerCase().includes((h!=null?h:"").toLowerCase()),Ar=(i,h)=>parseFloat(i)>parseFloat(h),Sr=(i,h)=>parseInt(i)>parseInt(h),Qi=(i,h)=>{let m=i?lt(i):[];return(h?lt(h):[]).some(y=>m.some(E=>E==y))};var Ce={isNotEmpty:{type:["text","file","link","link-multi","fileprop","image"],fn:(i,h)=>!Ji(i,""),valueType:"none"},isEmpty:{type:["text","file","link","link-multi","fileprop","image"],fn:(i,h)=>Ji(i,""),valueType:"none"},include:{fn:(i,h)=>Xi(i,h),type:["text","file","link","link-multi","fileprop","image"],valueType:"text"},notInclude:{type:["text","file","link","link-multi","fileprop","image"],fn:(i,h)=>!Xi(i,h),valueType:"text"},is:{type:["text","file","link","context","fileprop"],fn:wr,valueType:"text"},isNot:{type:["text","file","link","context","fileprop"],fn:(i,h)=>!wr(i,h),valueType:"text"},equal:{type:["number"],fn:wr,valueType:"number"},isGreatThan:{type:["number"],fn:Ar,valueType:"number"},isLessThan:{type:["number"],fn:Sr,valueType:"number"},isLessThanOrEqual:{type:["number"],fn:(i,h)=>!Ar(i,h),valueType:"number"},isGreatThanOrEqual:{type:["number"],fn:(i,h)=>!Sr(i,h),valueType:"number"},dateBefore:{type:["date"],fn:Sr,valueType:"date"},dateAfter:{type:["date"],fn:Ar,valueType:"date"},isAnyInList:{type:["option","context","option-multi","context-multi","tags-multi","tags"],fn:Qi,valueType:"list"},isNoneInList:{type:["option","context","option-multi","context-multi","tags-multi","tags"],fn:(i,h)=>!Qi(i,h),valueType:"list"},isTrue:{type:["boolean"],fn:(i,h)=>i=="true",valueType:"none"},isFalse:{type:["boolean"],fn:(i,h)=>i!="true",valueType:"none"}};var j_=(i,h)=>h.reduce((A,y)=>{let[E,X]=A,sn=y.type=="fileprop"?Zo(X,y):y.type=="filemeta"?Yo(X,y):y.type=="frontmatter"?ko(X,y):[],rn=X.filter(H=>!sn.includes(H));return[[...E,...sn],rn]},[[],i])[0],n0=(i,h)=>h.reduce((m,A)=>A.type=="fileprop"?Zo(m,A):A.type=="filemeta"?Yo(m,A):A.type=="frontmatter"?ko(m,A):[],i),ko=(i,h)=>i.filter(m=>{let A=m.frontmatter;if(!A||!A[h.field])return!1;let y=Ce[h.fn],E=!0;return y&&(E=y.fn(yr(h.field,A[h.field]),h.value)),E}),Yo=(i,h)=>i.filter(m=>{let A="";h.field=="outlinks"?A=Vt(m.outlinks):h.field=="inlinks"?A=Vt(m.inlinks):h.field=="tags"&&(A=Vt(m.tags));let y=Ce[h.fn],E=!0;return y&&(E=y.fn(A,h.value)),E}),Zo=(i,h)=>i.filter(m=>{if(["path","sticker","color","isFolder","extension","ctime","mtime","size","parent"].includes(h.field)){let y=Ce[h.fn],E=!0;return y&&(E=y.fn(m[h.field],h.value)),E}return!0}),Jo=(i,h)=>i.filters.reduce((y,E)=>y&&(E.type=="any"?j_([h],E.filters).length>0:n0([h],E.filters).length>0),!0);var Xo=(i,h,m)=>{var wn,an,K,Yn,j,Rn;if(!h)return{changed:!1,cache:{path:i.dbPath,info:i,name:Zi(i),sticker:"",banner:"",cols:[],files:[],rows:[],def:[],defContexts:[],outlinks:[],contexts:[]}};let A=(an=(wn=h.cols)==null?void 0:wn.filter(nn=>nn.type.startsWith("context")))!=null?an:[],y=(Yn=(K=h.cols)==null?void 0:K.filter(nn=>nn.type.startsWith("link")))!=null?Yn:[],E=at(A.map(nn=>nn.value)),X=at(h.rows.reduce((nn,ln)=>at([...nn,...[...A,...y].flatMap(cn=>lt(ln[cn.name]).map(hn=>qo(hn)))]),[])),sn=Ho(h.schema.def),rn={path:i.dbPath,info:i,name:Zi(i),sticker:"",banner:"",cols:h.cols,files:(j=h.rows.map(nn=>nn.File))!=null?j:[],rows:(Rn=h.rows)!=null?Rn:[],defContexts:sn.filter(nn=>nn.type=="tag").map(nn=>nn.value),def:sn,contexts:E,outlinks:X},H=!0;return m&&Vi.default.isEqual(rn,m)&&(H=!1),{changed:H,cache:rn}},t0=i=>{var m,A,y,E,X,sn,rn,H,wn,an;let h=[];return i&&i.tags&&h.push(...(A=(m=i.tags)==null?void 0:m.map(K=>K.tag))!=null?A:[]),i&&((y=i.frontmatter)==null?void 0:y.tags)&&h.push(...(typeof((E=i.frontmatter)==null?void 0:E.tags)=="string"?lt(i.frontmatter.tags.replace(/ /g,"")):Array.isArray((X=i.frontmatter)==null?void 0:X.tags)?(sn=i.frontmatter)==null?void 0:sn.tags:[]).filter(K=>typeof K=="string").map(K=>"#"+K)),i&&((rn=i.frontmatter)==null?void 0:rn.tag)&&h.push(...(typeof((H=i.frontmatter)==null?void 0:H.tag)=="string"?lt(i.frontmatter.tag.replace(/ /g,"")):Array.isArray((wn=i.frontmatter)==null?void 0:wn.tag)?(an=i.frontmatter)==null?void 0:an.tag:[]).filter(K=>typeof K=="string").map(K=>"#"+K)),at(h)};var e0=(i,h,m,A)=>{let y=[];return y.push(...h.filter(E=>m.has(E))),i.parent!="/"&&y.push(i.parent),A.forEach(E=>{m.has(Yi(E))&&y.push(Yi(E))}),y},Qo=(i,h,m,A,y,E,X,sn,rn)=>{var Fe,Zn,Nn;let H={path:i.path,name:i.name};i.stat&&(H.ctime=i.stat.ctime,H.mtime=i.stat.mtime,H.size=i.stat.size,H.extension=i.extension);let wn=[],an=t0(E);if(m.has(i.parent))for(let dn of m.get(i.parent).def)dn.type=="tag"&&wn.push(dn.value);wn.push(...an);let K=i.isFolder?i.name:Go(i.name),Yn=(Fe=y==null?void 0:y.sticker)!=null?Fe:"",j=(Zn=y==null?void 0:y.color)!=null?Zn:"",Rn=(Nn=y==null?void 0:y.rank)!=null?Nn:"",nn=i.parent,ln=i.isFolder,cn={},hn={},Vn=[],Ln=[],An=E==null?void 0:E.frontmatter;E!=null&&E.links&&Ln.push(...E.links.map(dn=>dn.link));for(let dn of Object.keys(X))i.path in X[dn]&&Vn.push(dn);let bt;if(An){let Gn=Bo($o(An)).reduce((Y,ct)=>Ot(Et({},Y),{[ct]:{name:ct,type:Ko(Se(An[ct],ct))}}),{});Object.keys(Gn).forEach(Y=>{cn[Y]=yr(Y,An[Y]),hn[Y]=Gn[Y].type}),bt=cn.banner,cn.sticker&&(Yn=An.sticker),cn.color&&(j=An.color),cn.alias&&(K=An.alias)}let Dt=Ot(Et({},H),{name:K,tags:at(wn),fileTags:an,folderNote:sn,sticker:Yn,color:j,rank:Rn,parent:nn,banner:bt,isFolder:ln,frontmatter:cn,frontmatterTypes:hn,inlinks:Vn,outlinks:Ln}),Pt=[],Te={};for(let[dn,Gn]of A)if(Gn.space.def.type=="smart")Jo(Gn.space.def,Dt)&&Pt.push(dn);else{let Y=Gn.spaceItems.find(ct=>ct.path==Dt.path);Y&&(Pt.push(dn),Te[dn]=Y.rank)}let Cr=e0(i,wn,m,Pt),jt=sn&&!ln?Ot(Et({},Dt),{space:[],contexts:[]}):Ot(Et({},Dt),{spaces:Pt,contexts:at(Cr),spaceRanks:Te}),Ie=!0;return rn&&Vi.default.isEqual(jt,rn)&&(Ie=!1),{changed:Ie,cache:jt}};function Vo(i){let{file:h,settings:m,contextsCache:A,spacesCache:y,vaultItem:E,metadataCache:X,resolvedLinks:sn,folderNote:rn,oldMetadata:H}=i;return Qo(h,m,A,y,E,X,sn,rn,H)}function jo(i){let{context:h,mdbTable:m,oldCache:A}=i;return Xo(h,m,A)}var r0=self;r0.onmessage=async i=>{let{payload:h,job:m}=i.data,A;m.type=="file"?A=Vo(h):m.type=="context"&&(A=jo(h));try{postMessage({job:m,result:A})}catch(y){console.log(y),postMessage({job:m,result:{$error:`Failed to index ${m.type} ${m.path}: ${y}`}})}};\n/**\n * @license\n * Lodash <https://lodash.com/>\n * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>\n * Released under MIT license <https://lodash.com/license>\n * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>\n * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors\n */\n');
+  return inlineWorker('var z_=Object.create;var ki=Object.defineProperty,k_=Object.defineProperties,Y_=Object.getOwnPropertyDescriptor,Z_=Object.getOwnPropertyDescriptors,J_=Object.getOwnPropertyNames,Po=Object.getOwnPropertySymbols,X_=Object.getPrototypeOf,Wo=Object.prototype.hasOwnProperty,Q_=Object.prototype.propertyIsEnumerable;var Bo=(i,p,m)=>p in i?ki(i,p,{enumerable:!0,configurable:!0,writable:!0,value:m}):i[p]=m,Et=(i,p)=>{for(var m in p||(p={}))Wo.call(p,m)&&Bo(i,m,p[m]);if(Po)for(var m of Po(p))Q_.call(p,m)&&Bo(i,m,p[m]);return i},Ot=(i,p)=>k_(i,Z_(p));var V_=(i,p)=>()=>(p||i((p={exports:{}}).exports,p),p.exports);var j_=(i,p,m,A)=>{if(p&&typeof p=="object"||typeof p=="function")for(let y of J_(p))!Wo.call(i,y)&&y!==m&&ki(i,y,{get:()=>p[y],enumerable:!(A=Y_(p,y))||A.enumerable});return i};var n0=(i,p,m)=>(m=i!=null?z_(X_(i)):{},j_(p||!i||!i.__esModule?ki(m,"default",{value:i,enumerable:!0}):m,i));var Uo=V_((Qt,Ae)=>{(function(){var i,p="4.17.21",m=200,A="Unsupported core-js use. Try https://npms.io/search?q=ponyfill.",y="Expected a function",E="Invalid `variable` option passed into `_.template`",X="__lodash_hash_undefined__",sn=500,rn="__lodash_placeholder__",K=1,wn=2,an=4,z=1,Yn=2,j=1,Rn=2,nn=4,ln=8,cn=16,pn=32,Vn=64,Ln=128,An=256,bt=512,Dt=30,Pt="...",Te=800,Cr=16,jt=1,Fe=2,Ie=3,Zn=1/0,Nn=9007199254740991,dn=17976931348623157e292,Gn=0/0,Y=4294967295,ct=Y-1,is=Y>>>1,us=[["ary",Ln],["bind",j],["bindKey",Rn],["curry",ln],["curryRight",cn],["flip",bt],["partial",pn],["partialRight",Vn],["rearg",An]],Bt="[object Arguments]",Me="[object Array]",fs="[object AsyncFunction]",ne="[object Boolean]",te="[object Date]",os="[object DOMException]",Re="[object Error]",Le="[object Function]",eu="[object GeneratorFunction]",qn="[object Map]",ee="[object Number]",ss="[object Null]",jn="[object Object]",ru="[object Promise]",as="[object Proxy]",re="[object RegExp]",Kn="[object Set]",ie="[object String]",Ee="[object Symbol]",ls="[object Undefined]",ue="[object WeakMap]",cs="[object WeakSet]",fe="[object ArrayBuffer]",Wt="[object DataView]",Tr="[object Float32Array]",Fr="[object Float64Array]",Ir="[object Int8Array]",Mr="[object Int16Array]",Rr="[object Int32Array]",Lr="[object Uint8Array]",Er="[object Uint8ClampedArray]",Or="[object Uint16Array]",br="[object Uint32Array]",ps=/\\b__p \\+= \'\';/g,hs=/\\b(__p \\+=) \'\' \\+/g,gs=/(__e\\(.*?\\)|\\b__t\\)) \\+\\n\'\';/g,iu=/&(?:amp|lt|gt|quot|#39);/g,uu=/[&<>"\']/g,_s=RegExp(iu.source),ds=RegExp(uu.source),vs=/<%-([\\s\\S]+?)%>/g,xs=/<%([\\s\\S]+?)%>/g,fu=/<%=([\\s\\S]+?)%>/g,ms=/\\.|\\[(?:[^[\\]]*|(["\'])(?:(?!\\1)[^\\\\]|\\\\.)*?\\1)\\]/,ys=/^\\w*$/,ws=/[^.[\\]]+|\\[(?:(-?\\d+(?:\\.\\d+)?)|(["\'])((?:(?!\\2)[^\\\\]|\\\\.)*?)\\2)\\]|(?=(?:\\.|\\[\\])(?:\\.|\\[\\]|$))/g,Dr=/[\\\\^$.*+?()[\\]{}|]/g,As=RegExp(Dr.source),Pr=/^\\s+/,Ss=/\\s/,Cs=/\\{(?:\\n\\/\\* \\[wrapped with .+\\] \\*\\/)?\\n?/,Ts=/\\{\\n\\/\\* \\[wrapped with (.+)\\] \\*/,Fs=/,? & /,Is=/[^\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\x7f]+/g,Ms=/[()=,{}\\[\\]\\/\\s]/,Rs=/\\\\(\\\\)?/g,Ls=/\\$\\{([^\\\\}]*(?:\\\\.[^\\\\}]*)*)\\}/g,ou=/\\w*$/,Es=/^[-+]0x[0-9a-f]+$/i,Os=/^0b[01]+$/i,bs=/^\\[object .+?Constructor\\]$/,Ds=/^0o[0-7]+$/i,Ps=/^(?:0|[1-9]\\d*)$/,Bs=/[\\xc0-\\xd6\\xd8-\\xf6\\xf8-\\xff\\u0100-\\u017f]/g,Oe=/($^)/,Ws=/[\'\\n\\r\\u2028\\u2029\\\\]/g,be="\\\\ud800-\\\\udfff",Us="\\\\u0300-\\\\u036f",Ns="\\\\ufe20-\\\\ufe2f",Gs="\\\\u20d0-\\\\u20ff",su=Us+Ns+Gs,au="\\\\u2700-\\\\u27bf",lu="a-z\\\\xdf-\\\\xf6\\\\xf8-\\\\xff",qs="\\\\xac\\\\xb1\\\\xd7\\\\xf7",Ks="\\\\x00-\\\\x2f\\\\x3a-\\\\x40\\\\x5b-\\\\x60\\\\x7b-\\\\xbf",Hs="\\\\u2000-\\\\u206f",$s=" \\\\t\\\\x0b\\\\f\\\\xa0\\\\ufeff\\\\n\\\\r\\\\u2028\\\\u2029\\\\u1680\\\\u180e\\\\u2000\\\\u2001\\\\u2002\\\\u2003\\\\u2004\\\\u2005\\\\u2006\\\\u2007\\\\u2008\\\\u2009\\\\u200a\\\\u202f\\\\u205f\\\\u3000",cu="A-Z\\\\xc0-\\\\xd6\\\\xd8-\\\\xde",pu="\\\\ufe0e\\\\ufe0f",hu=qs+Ks+Hs+$s,Br="[\'\\u2019]",zs="["+be+"]",gu="["+hu+"]",De="["+su+"]",_u="\\\\d+",ks="["+au+"]",du="["+lu+"]",vu="[^"+be+hu+_u+au+lu+cu+"]",Wr="\\\\ud83c[\\\\udffb-\\\\udfff]",Ys="(?:"+De+"|"+Wr+")",xu="[^"+be+"]",Ur="(?:\\\\ud83c[\\\\udde6-\\\\uddff]){2}",Nr="[\\\\ud800-\\\\udbff][\\\\udc00-\\\\udfff]",Ut="["+cu+"]",mu="\\\\u200d",yu="(?:"+du+"|"+vu+")",Zs="(?:"+Ut+"|"+vu+")",wu="(?:"+Br+"(?:d|ll|m|re|s|t|ve))?",Au="(?:"+Br+"(?:D|LL|M|RE|S|T|VE))?",Su=Ys+"?",Cu="["+pu+"]?",Js="(?:"+mu+"(?:"+[xu,Ur,Nr].join("|")+")"+Cu+Su+")*",Xs="\\\\d*(?:1st|2nd|3rd|(?![123])\\\\dth)(?=\\\\b|[A-Z_])",Qs="\\\\d*(?:1ST|2ND|3RD|(?![123])\\\\dTH)(?=\\\\b|[a-z_])",Tu=Cu+Su+Js,Vs="(?:"+[ks,Ur,Nr].join("|")+")"+Tu,js="(?:"+[xu+De+"?",De,Ur,Nr,zs].join("|")+")",na=RegExp(Br,"g"),ta=RegExp(De,"g"),Gr=RegExp(Wr+"(?="+Wr+")|"+js+Tu,"g"),ea=RegExp([Ut+"?"+du+"+"+wu+"(?="+[gu,Ut,"$"].join("|")+")",Zs+"+"+Au+"(?="+[gu,Ut+yu,"$"].join("|")+")",Ut+"?"+yu+"+"+wu,Ut+"+"+Au,Qs,Xs,_u,Vs].join("|"),"g"),ra=RegExp("["+mu+be+su+pu+"]"),ia=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,ua=["Array","Buffer","DataView","Date","Error","Float32Array","Float64Array","Function","Int8Array","Int16Array","Int32Array","Map","Math","Object","Promise","RegExp","Set","String","Symbol","TypeError","Uint8Array","Uint8ClampedArray","Uint16Array","Uint32Array","WeakMap","_","clearTimeout","isFinite","parseInt","setTimeout"],fa=-1,q={};q[Tr]=q[Fr]=q[Ir]=q[Mr]=q[Rr]=q[Lr]=q[Er]=q[Or]=q[br]=!0,q[Bt]=q[Me]=q[fe]=q[ne]=q[Wt]=q[te]=q[Re]=q[Le]=q[qn]=q[ee]=q[jn]=q[re]=q[Kn]=q[ie]=q[ue]=!1;var G={};G[Bt]=G[Me]=G[fe]=G[Wt]=G[ne]=G[te]=G[Tr]=G[Fr]=G[Ir]=G[Mr]=G[Rr]=G[qn]=G[ee]=G[jn]=G[re]=G[Kn]=G[ie]=G[Ee]=G[Lr]=G[Er]=G[Or]=G[br]=!0,G[Re]=G[Le]=G[ue]=!1;var oa={\\u00C0:"A",\\u00C1:"A",\\u00C2:"A",\\u00C3:"A",\\u00C4:"A",\\u00C5:"A",\\u00E0:"a",\\u00E1:"a",\\u00E2:"a",\\u00E3:"a",\\u00E4:"a",\\u00E5:"a",\\u00C7:"C",\\u00E7:"c",\\u00D0:"D",\\u00F0:"d",\\u00C8:"E",\\u00C9:"E",\\u00CA:"E",\\u00CB:"E",\\u00E8:"e",\\u00E9:"e",\\u00EA:"e",\\u00EB:"e",\\u00CC:"I",\\u00CD:"I",\\u00CE:"I",\\u00CF:"I",\\u00EC:"i",\\u00ED:"i",\\u00EE:"i",\\u00EF:"i",\\u00D1:"N",\\u00F1:"n",\\u00D2:"O",\\u00D3:"O",\\u00D4:"O",\\u00D5:"O",\\u00D6:"O",\\u00D8:"O",\\u00F2:"o",\\u00F3:"o",\\u00F4:"o",\\u00F5:"o",\\u00F6:"o",\\u00F8:"o",\\u00D9:"U",\\u00DA:"U",\\u00DB:"U",\\u00DC:"U",\\u00F9:"u",\\u00FA:"u",\\u00FB:"u",\\u00FC:"u",\\u00DD:"Y",\\u00FD:"y",\\u00FF:"y",\\u00C6:"Ae",\\u00E6:"ae",\\u00DE:"Th",\\u00FE:"th",\\u00DF:"ss",\\u0100:"A",\\u0102:"A",\\u0104:"A",\\u0101:"a",\\u0103:"a",\\u0105:"a",\\u0106:"C",\\u0108:"C",\\u010A:"C",\\u010C:"C",\\u0107:"c",\\u0109:"c",\\u010B:"c",\\u010D:"c",\\u010E:"D",\\u0110:"D",\\u010F:"d",\\u0111:"d",\\u0112:"E",\\u0114:"E",\\u0116:"E",\\u0118:"E",\\u011A:"E",\\u0113:"e",\\u0115:"e",\\u0117:"e",\\u0119:"e",\\u011B:"e",\\u011C:"G",\\u011E:"G",\\u0120:"G",\\u0122:"G",\\u011D:"g",\\u011F:"g",\\u0121:"g",\\u0123:"g",\\u0124:"H",\\u0126:"H",\\u0125:"h",\\u0127:"h",\\u0128:"I",\\u012A:"I",\\u012C:"I",\\u012E:"I",\\u0130:"I",\\u0129:"i",\\u012B:"i",\\u012D:"i",\\u012F:"i",\\u0131:"i",\\u0134:"J",\\u0135:"j",\\u0136:"K",\\u0137:"k",\\u0138:"k",\\u0139:"L",\\u013B:"L",\\u013D:"L",\\u013F:"L",\\u0141:"L",\\u013A:"l",\\u013C:"l",\\u013E:"l",\\u0140:"l",\\u0142:"l",\\u0143:"N",\\u0145:"N",\\u0147:"N",\\u014A:"N",\\u0144:"n",\\u0146:"n",\\u0148:"n",\\u014B:"n",\\u014C:"O",\\u014E:"O",\\u0150:"O",\\u014D:"o",\\u014F:"o",\\u0151:"o",\\u0154:"R",\\u0156:"R",\\u0158:"R",\\u0155:"r",\\u0157:"r",\\u0159:"r",\\u015A:"S",\\u015C:"S",\\u015E:"S",\\u0160:"S",\\u015B:"s",\\u015D:"s",\\u015F:"s",\\u0161:"s",\\u0162:"T",\\u0164:"T",\\u0166:"T",\\u0163:"t",\\u0165:"t",\\u0167:"t",\\u0168:"U",\\u016A:"U",\\u016C:"U",\\u016E:"U",\\u0170:"U",\\u0172:"U",\\u0169:"u",\\u016B:"u",\\u016D:"u",\\u016F:"u",\\u0171:"u",\\u0173:"u",\\u0174:"W",\\u0175:"w",\\u0176:"Y",\\u0177:"y",\\u0178:"Y",\\u0179:"Z",\\u017B:"Z",\\u017D:"Z",\\u017A:"z",\\u017C:"z",\\u017E:"z",\\u0132:"IJ",\\u0133:"ij",\\u0152:"Oe",\\u0153:"oe",\\u0149:"\'n",\\u017F:"s"},sa={"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;","\'":"&#39;"},aa={"&amp;":"&","&lt;":"<","&gt;":">","&quot;":\'"\',"&#39;":"\'"},la={"\\\\":"\\\\","\'":"\'","\\n":"n","\\r":"r","\\u2028":"u2028","\\u2029":"u2029"},ca=parseFloat,pa=parseInt,Fu=typeof global=="object"&&global&&global.Object===Object&&global,ha=typeof self=="object"&&self&&self.Object===Object&&self,tn=Fu||ha||Function("return this")(),qr=typeof Qt=="object"&&Qt&&!Qt.nodeType&&Qt,At=qr&&typeof Ae=="object"&&Ae&&!Ae.nodeType&&Ae,Iu=At&&At.exports===qr,Kr=Iu&&Fu.process,En=function(){try{var l=At&&At.require&&At.require("util").types;return l||Kr&&Kr.binding&&Kr.binding("util")}catch(g){}}(),Mu=En&&En.isArrayBuffer,Ru=En&&En.isDate,Lu=En&&En.isMap,Eu=En&&En.isRegExp,Ou=En&&En.isSet,bu=En&&En.isTypedArray;function Sn(l,g,h){switch(h.length){case 0:return l.call(g);case 1:return l.call(g,h[0]);case 2:return l.call(g,h[0],h[1]);case 3:return l.call(g,h[0],h[1],h[2])}return l.apply(g,h)}function ga(l,g,h,w){for(var I=-1,B=l==null?0:l.length;++I<B;){var Q=l[I];g(w,Q,h(Q),l)}return w}function On(l,g){for(var h=-1,w=l==null?0:l.length;++h<w&&g(l[h],h,l)!==!1;);return l}function _a(l,g){for(var h=l==null?0:l.length;h--&&g(l[h],h,l)!==!1;);return l}function Du(l,g){for(var h=-1,w=l==null?0:l.length;++h<w;)if(!g(l[h],h,l))return!1;return!0}function pt(l,g){for(var h=-1,w=l==null?0:l.length,I=0,B=[];++h<w;){var Q=l[h];g(Q,h,l)&&(B[I++]=Q)}return B}function Pe(l,g){var h=l==null?0:l.length;return!!h&&Nt(l,g,0)>-1}function Hr(l,g,h){for(var w=-1,I=l==null?0:l.length;++w<I;)if(h(g,l[w]))return!0;return!1}function H(l,g){for(var h=-1,w=l==null?0:l.length,I=Array(w);++h<w;)I[h]=g(l[h],h,l);return I}function ht(l,g){for(var h=-1,w=g.length,I=l.length;++h<w;)l[I+h]=g[h];return l}function $r(l,g,h,w){var I=-1,B=l==null?0:l.length;for(w&&B&&(h=l[++I]);++I<B;)h=g(h,l[I],I,l);return h}function da(l,g,h,w){var I=l==null?0:l.length;for(w&&I&&(h=l[--I]);I--;)h=g(h,l[I],I,l);return h}function zr(l,g){for(var h=-1,w=l==null?0:l.length;++h<w;)if(g(l[h],h,l))return!0;return!1}var va=kr("length");function xa(l){return l.split("")}function ma(l){return l.match(Is)||[]}function Pu(l,g,h){var w;return h(l,function(I,B,Q){if(g(I,B,Q))return w=B,!1}),w}function Be(l,g,h,w){for(var I=l.length,B=h+(w?1:-1);w?B--:++B<I;)if(g(l[B],B,l))return B;return-1}function Nt(l,g,h){return g===g?Ea(l,g,h):Be(l,Bu,h)}function ya(l,g,h,w){for(var I=h-1,B=l.length;++I<B;)if(w(l[I],g))return I;return-1}function Bu(l){return l!==l}function Wu(l,g){var h=l==null?0:l.length;return h?Zr(l,g)/h:Gn}function kr(l){return function(g){return g==null?i:g[l]}}function Yr(l){return function(g){return l==null?i:l[g]}}function Uu(l,g,h,w,I){return I(l,function(B,Q,N){h=w?(w=!1,B):g(h,B,Q,N)}),h}function wa(l,g){var h=l.length;for(l.sort(g);h--;)l[h]=l[h].value;return l}function Zr(l,g){for(var h,w=-1,I=l.length;++w<I;){var B=g(l[w]);B!==i&&(h=h===i?B:h+B)}return h}function Jr(l,g){for(var h=-1,w=Array(l);++h<l;)w[h]=g(h);return w}function Aa(l,g){return H(g,function(h){return[h,l[h]]})}function Nu(l){return l&&l.slice(0,Hu(l)+1).replace(Pr,"")}function Cn(l){return function(g){return l(g)}}function Xr(l,g){return H(g,function(h){return l[h]})}function oe(l,g){return l.has(g)}function Gu(l,g){for(var h=-1,w=l.length;++h<w&&Nt(g,l[h],0)>-1;);return h}function qu(l,g){for(var h=l.length;h--&&Nt(g,l[h],0)>-1;);return h}function Sa(l,g){for(var h=l.length,w=0;h--;)l[h]===g&&++w;return w}var Ca=Yr(oa),Ta=Yr(sa);function Fa(l){return"\\\\"+la[l]}function Ia(l,g){return l==null?i:l[g]}function Gt(l){return ra.test(l)}function Ma(l){return ia.test(l)}function Ra(l){for(var g,h=[];!(g=l.next()).done;)h.push(g.value);return h}function Qr(l){var g=-1,h=Array(l.size);return l.forEach(function(w,I){h[++g]=[I,w]}),h}function Ku(l,g){return function(h){return l(g(h))}}function gt(l,g){for(var h=-1,w=l.length,I=0,B=[];++h<w;){var Q=l[h];(Q===g||Q===rn)&&(l[h]=rn,B[I++]=h)}return B}function We(l){var g=-1,h=Array(l.size);return l.forEach(function(w){h[++g]=w}),h}function La(l){var g=-1,h=Array(l.size);return l.forEach(function(w){h[++g]=[w,w]}),h}function Ea(l,g,h){for(var w=h-1,I=l.length;++w<I;)if(l[w]===g)return w;return-1}function Oa(l,g,h){for(var w=h+1;w--;)if(l[w]===g)return w;return w}function qt(l){return Gt(l)?Da(l):va(l)}function Hn(l){return Gt(l)?Pa(l):xa(l)}function Hu(l){for(var g=l.length;g--&&Ss.test(l.charAt(g)););return g}var ba=Yr(aa);function Da(l){for(var g=Gr.lastIndex=0;Gr.test(l);)++g;return g}function Pa(l){return l.match(Gr)||[]}function Ba(l){return l.match(ea)||[]}var Wa=function l(g){g=g==null?tn:_t.defaults(tn.Object(),g,_t.pick(tn,ua));var h=g.Array,w=g.Date,I=g.Error,B=g.Function,Q=g.Math,N=g.Object,Vr=g.RegExp,Ua=g.String,bn=g.TypeError,Ue=h.prototype,Na=B.prototype,Kt=N.prototype,Ne=g["__core-js_shared__"],Ge=Na.toString,U=Kt.hasOwnProperty,Ga=0,$u=function(){var n=/[^.]+$/.exec(Ne&&Ne.keys&&Ne.keys.IE_PROTO||"");return n?"Symbol(src)_1."+n:""}(),qe=Kt.toString,qa=Ge.call(N),Ka=tn._,Ha=Vr("^"+Ge.call(U).replace(Dr,"\\\\$&").replace(/hasOwnProperty|(function).*?(?=\\\\\\()| for .+?(?=\\\\\\])/g,"$1.*?")+"$"),Ke=Iu?g.Buffer:i,dt=g.Symbol,He=g.Uint8Array,zu=Ke?Ke.allocUnsafe:i,$e=Ku(N.getPrototypeOf,N),ku=N.create,Yu=Kt.propertyIsEnumerable,ze=Ue.splice,Zu=dt?dt.isConcatSpreadable:i,se=dt?dt.iterator:i,St=dt?dt.toStringTag:i,ke=function(){try{var n=Mt(N,"defineProperty");return n({},"",{}),n}catch(t){}}(),$a=g.clearTimeout!==tn.clearTimeout&&g.clearTimeout,za=w&&w.now!==tn.Date.now&&w.now,ka=g.setTimeout!==tn.setTimeout&&g.setTimeout,Ye=Q.ceil,Ze=Q.floor,jr=N.getOwnPropertySymbols,Ya=Ke?Ke.isBuffer:i,Ju=g.isFinite,Za=Ue.join,Ja=Ku(N.keys,N),V=Q.max,fn=Q.min,Xa=w.now,Qa=g.parseInt,Xu=Q.random,Va=Ue.reverse,ni=Mt(g,"DataView"),ae=Mt(g,"Map"),ti=Mt(g,"Promise"),Ht=Mt(g,"Set"),le=Mt(g,"WeakMap"),ce=Mt(N,"create"),Je=le&&new le,$t={},ja=Rt(ni),nl=Rt(ae),tl=Rt(ti),el=Rt(Ht),rl=Rt(le),Xe=dt?dt.prototype:i,pe=Xe?Xe.valueOf:i,Qu=Xe?Xe.toString:i;function f(n){if(k(n)&&!M(n)&&!(n instanceof D)){if(n instanceof Dn)return n;if(U.call(n,"__wrapped__"))return jf(n)}return new Dn(n)}var zt=function(){function n(){}return function(t){if(!$(t))return{};if(ku)return ku(t);n.prototype=t;var e=new n;return n.prototype=i,e}}();function Qe(){}function Dn(n,t){this.__wrapped__=n,this.__actions__=[],this.__chain__=!!t,this.__index__=0,this.__values__=i}f.templateSettings={escape:vs,evaluate:xs,interpolate:fu,variable:"",imports:{_:f}},f.prototype=Qe.prototype,f.prototype.constructor=f,Dn.prototype=zt(Qe.prototype),Dn.prototype.constructor=Dn;function D(n){this.__wrapped__=n,this.__actions__=[],this.__dir__=1,this.__filtered__=!1,this.__iteratees__=[],this.__takeCount__=Y,this.__views__=[]}function il(){var n=new D(this.__wrapped__);return n.__actions__=vn(this.__actions__),n.__dir__=this.__dir__,n.__filtered__=this.__filtered__,n.__iteratees__=vn(this.__iteratees__),n.__takeCount__=this.__takeCount__,n.__views__=vn(this.__views__),n}function ul(){if(this.__filtered__){var n=new D(this);n.__dir__=-1,n.__filtered__=!0}else n=this.clone(),n.__dir__*=-1;return n}function fl(){var n=this.__wrapped__.value(),t=this.__dir__,e=M(n),r=t<0,u=e?n.length:0,o=xc(0,u,this.__views__),s=o.start,a=o.end,c=a-s,_=r?a:s-1,d=this.__iteratees__,v=d.length,x=0,S=fn(c,this.__takeCount__);if(!e||!r&&u==c&&S==c)return Af(n,this.__actions__);var T=[];n:for(;c--&&x<S;){_+=t;for(var L=-1,F=n[_];++L<v;){var b=d[L],P=b.iteratee,In=b.type,_n=P(F);if(In==Fe)F=_n;else if(!_n){if(In==jt)continue n;break n}}T[x++]=F}return T}D.prototype=zt(Qe.prototype),D.prototype.constructor=D;function Ct(n){var t=-1,e=n==null?0:n.length;for(this.clear();++t<e;){var r=n[t];this.set(r[0],r[1])}}function ol(){this.__data__=ce?ce(null):{},this.size=0}function sl(n){var t=this.has(n)&&delete this.__data__[n];return this.size-=t?1:0,t}function al(n){var t=this.__data__;if(ce){var e=t[n];return e===X?i:e}return U.call(t,n)?t[n]:i}function ll(n){var t=this.__data__;return ce?t[n]!==i:U.call(t,n)}function cl(n,t){var e=this.__data__;return this.size+=this.has(n)?0:1,e[n]=ce&&t===i?X:t,this}Ct.prototype.clear=ol,Ct.prototype.delete=sl,Ct.prototype.get=al,Ct.prototype.has=ll,Ct.prototype.set=cl;function nt(n){var t=-1,e=n==null?0:n.length;for(this.clear();++t<e;){var r=n[t];this.set(r[0],r[1])}}function pl(){this.__data__=[],this.size=0}function hl(n){var t=this.__data__,e=Ve(t,n);if(e<0)return!1;var r=t.length-1;return e==r?t.pop():ze.call(t,e,1),--this.size,!0}function gl(n){var t=this.__data__,e=Ve(t,n);return e<0?i:t[e][1]}function _l(n){return Ve(this.__data__,n)>-1}function dl(n,t){var e=this.__data__,r=Ve(e,n);return r<0?(++this.size,e.push([n,t])):e[r][1]=t,this}nt.prototype.clear=pl,nt.prototype.delete=hl,nt.prototype.get=gl,nt.prototype.has=_l,nt.prototype.set=dl;function tt(n){var t=-1,e=n==null?0:n.length;for(this.clear();++t<e;){var r=n[t];this.set(r[0],r[1])}}function vl(){this.size=0,this.__data__={hash:new Ct,map:new(ae||nt),string:new Ct}}function xl(n){var t=lr(this,n).delete(n);return this.size-=t?1:0,t}function ml(n){return lr(this,n).get(n)}function yl(n){return lr(this,n).has(n)}function wl(n,t){var e=lr(this,n),r=e.size;return e.set(n,t),this.size+=e.size==r?0:1,this}tt.prototype.clear=vl,tt.prototype.delete=xl,tt.prototype.get=ml,tt.prototype.has=yl,tt.prototype.set=wl;function Tt(n){var t=-1,e=n==null?0:n.length;for(this.__data__=new tt;++t<e;)this.add(n[t])}function Al(n){return this.__data__.set(n,X),this}function Sl(n){return this.__data__.has(n)}Tt.prototype.add=Tt.prototype.push=Al,Tt.prototype.has=Sl;function $n(n){var t=this.__data__=new nt(n);this.size=t.size}function Cl(){this.__data__=new nt,this.size=0}function Tl(n){var t=this.__data__,e=t.delete(n);return this.size=t.size,e}function Fl(n){return this.__data__.get(n)}function Il(n){return this.__data__.has(n)}function Ml(n,t){var e=this.__data__;if(e instanceof nt){var r=e.__data__;if(!ae||r.length<m-1)return r.push([n,t]),this.size=++e.size,this;e=this.__data__=new tt(r)}return e.set(n,t),this.size=e.size,this}$n.prototype.clear=Cl,$n.prototype.delete=Tl,$n.prototype.get=Fl,$n.prototype.has=Il,$n.prototype.set=Ml;function Vu(n,t){var e=M(n),r=!e&&Lt(n),u=!e&&!r&&wt(n),o=!e&&!r&&!u&&Jt(n),s=e||r||u||o,a=s?Jr(n.length,Ua):[],c=a.length;for(var _ in n)(t||U.call(n,_))&&!(s&&(_=="length"||u&&(_=="offset"||_=="parent")||o&&(_=="buffer"||_=="byteLength"||_=="byteOffset")||ut(_,c)))&&a.push(_);return a}function ju(n){var t=n.length;return t?n[pi(0,t-1)]:i}function Rl(n,t){return cr(vn(n),Ft(t,0,n.length))}function Ll(n){return cr(vn(n))}function ei(n,t,e){(e!==i&&!zn(n[t],e)||e===i&&!(t in n))&&et(n,t,e)}function he(n,t,e){var r=n[t];(!(U.call(n,t)&&zn(r,e))||e===i&&!(t in n))&&et(n,t,e)}function Ve(n,t){for(var e=n.length;e--;)if(zn(n[e][0],t))return e;return-1}function El(n,t,e,r){return vt(n,function(u,o,s){t(r,u,e(u),s)}),r}function nf(n,t){return n&&Xn(t,en(t),n)}function Ol(n,t){return n&&Xn(t,mn(t),n)}function et(n,t,e){t=="__proto__"&&ke?ke(n,t,{configurable:!0,enumerable:!0,value:e,writable:!0}):n[t]=e}function ri(n,t){for(var e=-1,r=t.length,u=h(r),o=n==null;++e<r;)u[e]=o?i:Wi(n,t[e]);return u}function Ft(n,t,e){return n===n&&(e!==i&&(n=n<=e?n:e),t!==i&&(n=n>=t?n:t)),n}function Pn(n,t,e,r,u,o){var s,a=t&K,c=t&wn,_=t&an;if(e&&(s=u?e(n,r,u,o):e(n)),s!==i)return s;if(!$(n))return n;var d=M(n);if(d){if(s=yc(n),!a)return vn(n,s)}else{var v=on(n),x=v==Le||v==eu;if(wt(n))return Tf(n,a);if(v==jn||v==Bt||x&&!u){if(s=c||x?{}:$f(n),!a)return c?ac(n,Ol(s,n)):sc(n,nf(s,n))}else{if(!G[v])return u?n:{};s=wc(n,v,a)}}o||(o=new $n);var S=o.get(n);if(S)return S;o.set(n,s),yo(n)?n.forEach(function(F){s.add(Pn(F,t,e,F,n,o))}):xo(n)&&n.forEach(function(F,b){s.set(b,Pn(F,t,e,b,n,o))});var T=_?c?Si:Ai:c?mn:en,L=d?i:T(n);return On(L||n,function(F,b){L&&(b=F,F=n[b]),he(s,b,Pn(F,t,e,b,n,o))}),s}function bl(n){var t=en(n);return function(e){return tf(e,n,t)}}function tf(n,t,e){var r=e.length;if(n==null)return!r;for(n=N(n);r--;){var u=e[r],o=t[u],s=n[u];if(s===i&&!(u in n)||!o(s))return!1}return!0}function ef(n,t,e){if(typeof n!="function")throw new bn(y);return ye(function(){n.apply(i,e)},t)}function ge(n,t,e,r){var u=-1,o=Pe,s=!0,a=n.length,c=[],_=t.length;if(!a)return c;e&&(t=H(t,Cn(e))),r?(o=Hr,s=!1):t.length>=m&&(o=oe,s=!1,t=new Tt(t));n:for(;++u<a;){var d=n[u],v=e==null?d:e(d);if(d=r||d!==0?d:0,s&&v===v){for(var x=_;x--;)if(t[x]===v)continue n;c.push(d)}else o(t,v,r)||c.push(d)}return c}var vt=Lf(Jn),rf=Lf(ui,!0);function Dl(n,t){var e=!0;return vt(n,function(r,u,o){return e=!!t(r,u,o),e}),e}function je(n,t,e){for(var r=-1,u=n.length;++r<u;){var o=n[r],s=t(o);if(s!=null&&(a===i?s===s&&!Fn(s):e(s,a)))var a=s,c=o}return c}function Pl(n,t,e,r){var u=n.length;for(e=R(e),e<0&&(e=-e>u?0:u+e),r=r===i||r>u?u:R(r),r<0&&(r+=u),r=e>r?0:Ao(r);e<r;)n[e++]=t;return n}function uf(n,t){var e=[];return vt(n,function(r,u,o){t(r,u,o)&&e.push(r)}),e}function un(n,t,e,r,u){var o=-1,s=n.length;for(e||(e=Sc),u||(u=[]);++o<s;){var a=n[o];t>0&&e(a)?t>1?un(a,t-1,e,r,u):ht(u,a):r||(u[u.length]=a)}return u}var ii=Ef(),ff=Ef(!0);function Jn(n,t){return n&&ii(n,t,en)}function ui(n,t){return n&&ff(n,t,en)}function nr(n,t){return pt(t,function(e){return ft(n[e])})}function It(n,t){t=mt(t,n);for(var e=0,r=t.length;n!=null&&e<r;)n=n[Qn(t[e++])];return e&&e==r?n:i}function of(n,t,e){var r=t(n);return M(n)?r:ht(r,e(n))}function hn(n){return n==null?n===i?ls:ss:St&&St in N(n)?vc(n):Lc(n)}function fi(n,t){return n>t}function Bl(n,t){return n!=null&&U.call(n,t)}function Wl(n,t){return n!=null&&t in N(n)}function Ul(n,t,e){return n>=fn(t,e)&&n<V(t,e)}function oi(n,t,e){for(var r=e?Hr:Pe,u=n[0].length,o=n.length,s=o,a=h(o),c=1/0,_=[];s--;){var d=n[s];s&&t&&(d=H(d,Cn(t))),c=fn(d.length,c),a[s]=!e&&(t||u>=120&&d.length>=120)?new Tt(s&&d):i}d=n[0];var v=-1,x=a[0];n:for(;++v<u&&_.length<c;){var S=d[v],T=t?t(S):S;if(S=e||S!==0?S:0,!(x?oe(x,T):r(_,T,e))){for(s=o;--s;){var L=a[s];if(!(L?oe(L,T):r(n[s],T,e)))continue n}x&&x.push(T),_.push(S)}}return _}function Nl(n,t,e,r){return Jn(n,function(u,o,s){t(r,e(u),o,s)}),r}function _e(n,t,e){t=mt(t,n),n=Zf(n,t);var r=n==null?n:n[Qn(Wn(t))];return r==null?i:Sn(r,n,e)}function sf(n){return k(n)&&hn(n)==Bt}function Gl(n){return k(n)&&hn(n)==fe}function ql(n){return k(n)&&hn(n)==te}function de(n,t,e,r,u){return n===t?!0:n==null||t==null||!k(n)&&!k(t)?n!==n&&t!==t:Kl(n,t,e,r,de,u)}function Kl(n,t,e,r,u,o){var s=M(n),a=M(t),c=s?Me:on(n),_=a?Me:on(t);c=c==Bt?jn:c,_=_==Bt?jn:_;var d=c==jn,v=_==jn,x=c==_;if(x&&wt(n)){if(!wt(t))return!1;s=!0,d=!1}if(x&&!d)return o||(o=new $n),s||Jt(n)?qf(n,t,e,r,u,o):_c(n,t,c,e,r,u,o);if(!(e&z)){var S=d&&U.call(n,"__wrapped__"),T=v&&U.call(t,"__wrapped__");if(S||T){var L=S?n.value():n,F=T?t.value():t;return o||(o=new $n),u(L,F,e,r,o)}}return x?(o||(o=new $n),dc(n,t,e,r,u,o)):!1}function Hl(n){return k(n)&&on(n)==qn}function si(n,t,e,r){var u=e.length,o=u,s=!r;if(n==null)return!o;for(n=N(n);u--;){var a=e[u];if(s&&a[2]?a[1]!==n[a[0]]:!(a[0]in n))return!1}for(;++u<o;){a=e[u];var c=a[0],_=n[c],d=a[1];if(s&&a[2]){if(_===i&&!(c in n))return!1}else{var v=new $n;if(r)var x=r(_,d,c,n,t,v);if(!(x===i?de(d,_,z|Yn,r,v):x))return!1}}return!0}function af(n){if(!$(n)||Tc(n))return!1;var t=ft(n)?Ha:bs;return t.test(Rt(n))}function $l(n){return k(n)&&hn(n)==re}function zl(n){return k(n)&&on(n)==Kn}function kl(n){return k(n)&&vr(n.length)&&!!q[hn(n)]}function lf(n){return typeof n=="function"?n:n==null?yn:typeof n=="object"?M(n)?hf(n[0],n[1]):pf(n):bo(n)}function ai(n){if(!me(n))return Ja(n);var t=[];for(var e in N(n))U.call(n,e)&&e!="constructor"&&t.push(e);return t}function Yl(n){if(!$(n))return Rc(n);var t=me(n),e=[];for(var r in n)r=="constructor"&&(t||!U.call(n,r))||e.push(r);return e}function li(n,t){return n<t}function cf(n,t){var e=-1,r=xn(n)?h(n.length):[];return vt(n,function(u,o,s){r[++e]=t(u,o,s)}),r}function pf(n){var t=Ti(n);return t.length==1&&t[0][2]?kf(t[0][0],t[0][1]):function(e){return e===n||si(e,n,t)}}function hf(n,t){return Ii(n)&&zf(t)?kf(Qn(n),t):function(e){var r=Wi(e,n);return r===i&&r===t?Ui(e,n):de(t,r,z|Yn)}}function tr(n,t,e,r,u){n!==t&&ii(t,function(o,s){if(u||(u=new $n),$(o))Zl(n,t,s,e,tr,r,u);else{var a=r?r(Ri(n,s),o,s+"",n,t,u):i;a===i&&(a=o),ei(n,s,a)}},mn)}function Zl(n,t,e,r,u,o,s){var a=Ri(n,e),c=Ri(t,e),_=s.get(c);if(_){ei(n,e,_);return}var d=o?o(a,c,e+"",n,t,s):i,v=d===i;if(v){var x=M(c),S=!x&&wt(c),T=!x&&!S&&Jt(c);d=c,x||S||T?M(a)?d=a:Z(a)?d=vn(a):S?(v=!1,d=Tf(c,!0)):T?(v=!1,d=Ff(c,!0)):d=[]:we(c)||Lt(c)?(d=a,Lt(a)?d=So(a):(!$(a)||ft(a))&&(d=$f(c))):v=!1}v&&(s.set(c,d),u(d,c,r,o,s),s.delete(c)),ei(n,e,d)}function gf(n,t){var e=n.length;if(!!e)return t+=t<0?e:0,ut(t,e)?n[t]:i}function _f(n,t,e){t.length?t=H(t,function(o){return M(o)?function(s){return It(s,o.length===1?o[0]:o)}:o}):t=[yn];var r=-1;t=H(t,Cn(C()));var u=cf(n,function(o,s,a){var c=H(t,function(_){return _(o)});return{criteria:c,index:++r,value:o}});return wa(u,function(o,s){return oc(o,s,e)})}function Jl(n,t){return df(n,t,function(e,r){return Ui(n,r)})}function df(n,t,e){for(var r=-1,u=t.length,o={};++r<u;){var s=t[r],a=It(n,s);e(a,s)&&ve(o,mt(s,n),a)}return o}function Xl(n){return function(t){return It(t,n)}}function ci(n,t,e,r){var u=r?ya:Nt,o=-1,s=t.length,a=n;for(n===t&&(t=vn(t)),e&&(a=H(n,Cn(e)));++o<s;)for(var c=0,_=t[o],d=e?e(_):_;(c=u(a,d,c,r))>-1;)a!==n&&ze.call(a,c,1),ze.call(n,c,1);return n}function vf(n,t){for(var e=n?t.length:0,r=e-1;e--;){var u=t[e];if(e==r||u!==o){var o=u;ut(u)?ze.call(n,u,1):_i(n,u)}}return n}function pi(n,t){return n+Ze(Xu()*(t-n+1))}function Ql(n,t,e,r){for(var u=-1,o=V(Ye((t-n)/(e||1)),0),s=h(o);o--;)s[r?o:++u]=n,n+=e;return s}function hi(n,t){var e="";if(!n||t<1||t>Nn)return e;do t%2&&(e+=n),t=Ze(t/2),t&&(n+=n);while(t);return e}function O(n,t){return Li(Yf(n,t,yn),n+"")}function Vl(n){return ju(Xt(n))}function jl(n,t){var e=Xt(n);return cr(e,Ft(t,0,e.length))}function ve(n,t,e,r){if(!$(n))return n;t=mt(t,n);for(var u=-1,o=t.length,s=o-1,a=n;a!=null&&++u<o;){var c=Qn(t[u]),_=e;if(c==="__proto__"||c==="constructor"||c==="prototype")return n;if(u!=s){var d=a[c];_=r?r(d,c,a):i,_===i&&(_=$(d)?d:ut(t[u+1])?[]:{})}he(a,c,_),a=a[c]}return n}var xf=Je?function(n,t){return Je.set(n,t),n}:yn,nc=ke?function(n,t){return ke(n,"toString",{configurable:!0,enumerable:!1,value:Gi(t),writable:!0})}:yn;function tc(n){return cr(Xt(n))}function Bn(n,t,e){var r=-1,u=n.length;t<0&&(t=-t>u?0:u+t),e=e>u?u:e,e<0&&(e+=u),u=t>e?0:e-t>>>0,t>>>=0;for(var o=h(u);++r<u;)o[r]=n[r+t];return o}function ec(n,t){var e;return vt(n,function(r,u,o){return e=t(r,u,o),!e}),!!e}function er(n,t,e){var r=0,u=n==null?r:n.length;if(typeof t=="number"&&t===t&&u<=is){for(;r<u;){var o=r+u>>>1,s=n[o];s!==null&&!Fn(s)&&(e?s<=t:s<t)?r=o+1:u=o}return u}return gi(n,t,yn,e)}function gi(n,t,e,r){var u=0,o=n==null?0:n.length;if(o===0)return 0;t=e(t);for(var s=t!==t,a=t===null,c=Fn(t),_=t===i;u<o;){var d=Ze((u+o)/2),v=e(n[d]),x=v!==i,S=v===null,T=v===v,L=Fn(v);if(s)var F=r||T;else _?F=T&&(r||x):a?F=T&&x&&(r||!S):c?F=T&&x&&!S&&(r||!L):S||L?F=!1:F=r?v<=t:v<t;F?u=d+1:o=d}return fn(o,ct)}function mf(n,t){for(var e=-1,r=n.length,u=0,o=[];++e<r;){var s=n[e],a=t?t(s):s;if(!e||!zn(a,c)){var c=a;o[u++]=s===0?0:s}}return o}function yf(n){return typeof n=="number"?n:Fn(n)?Gn:+n}function Tn(n){if(typeof n=="string")return n;if(M(n))return H(n,Tn)+"";if(Fn(n))return Qu?Qu.call(n):"";var t=n+"";return t=="0"&&1/n==-Zn?"-0":t}function xt(n,t,e){var r=-1,u=Pe,o=n.length,s=!0,a=[],c=a;if(e)s=!1,u=Hr;else if(o>=m){var _=t?null:hc(n);if(_)return We(_);s=!1,u=oe,c=new Tt}else c=t?[]:a;n:for(;++r<o;){var d=n[r],v=t?t(d):d;if(d=e||d!==0?d:0,s&&v===v){for(var x=c.length;x--;)if(c[x]===v)continue n;t&&c.push(v),a.push(d)}else u(c,v,e)||(c!==a&&c.push(v),a.push(d))}return a}function _i(n,t){return t=mt(t,n),n=Zf(n,t),n==null||delete n[Qn(Wn(t))]}function wf(n,t,e,r){return ve(n,t,e(It(n,t)),r)}function rr(n,t,e,r){for(var u=n.length,o=r?u:-1;(r?o--:++o<u)&&t(n[o],o,n););return e?Bn(n,r?0:o,r?o+1:u):Bn(n,r?o+1:0,r?u:o)}function Af(n,t){var e=n;return e instanceof D&&(e=e.value()),$r(t,function(r,u){return u.func.apply(u.thisArg,ht([r],u.args))},e)}function di(n,t,e){var r=n.length;if(r<2)return r?xt(n[0]):[];for(var u=-1,o=h(r);++u<r;)for(var s=n[u],a=-1;++a<r;)a!=u&&(o[u]=ge(o[u]||s,n[a],t,e));return xt(un(o,1),t,e)}function Sf(n,t,e){for(var r=-1,u=n.length,o=t.length,s={};++r<u;){var a=r<o?t[r]:i;e(s,n[r],a)}return s}function vi(n){return Z(n)?n:[]}function xi(n){return typeof n=="function"?n:yn}function mt(n,t){return M(n)?n:Ii(n,t)?[n]:Vf(W(n))}var rc=O;function yt(n,t,e){var r=n.length;return e=e===i?r:e,!t&&e>=r?n:Bn(n,t,e)}var Cf=$a||function(n){return tn.clearTimeout(n)};function Tf(n,t){if(t)return n.slice();var e=n.length,r=zu?zu(e):new n.constructor(e);return n.copy(r),r}function mi(n){var t=new n.constructor(n.byteLength);return new He(t).set(new He(n)),t}function ic(n,t){var e=t?mi(n.buffer):n.buffer;return new n.constructor(e,n.byteOffset,n.byteLength)}function uc(n){var t=new n.constructor(n.source,ou.exec(n));return t.lastIndex=n.lastIndex,t}function fc(n){return pe?N(pe.call(n)):{}}function Ff(n,t){var e=t?mi(n.buffer):n.buffer;return new n.constructor(e,n.byteOffset,n.length)}function If(n,t){if(n!==t){var e=n!==i,r=n===null,u=n===n,o=Fn(n),s=t!==i,a=t===null,c=t===t,_=Fn(t);if(!a&&!_&&!o&&n>t||o&&s&&c&&!a&&!_||r&&s&&c||!e&&c||!u)return 1;if(!r&&!o&&!_&&n<t||_&&e&&u&&!r&&!o||a&&e&&u||!s&&u||!c)return-1}return 0}function oc(n,t,e){for(var r=-1,u=n.criteria,o=t.criteria,s=u.length,a=e.length;++r<s;){var c=If(u[r],o[r]);if(c){if(r>=a)return c;var _=e[r];return c*(_=="desc"?-1:1)}}return n.index-t.index}function Mf(n,t,e,r){for(var u=-1,o=n.length,s=e.length,a=-1,c=t.length,_=V(o-s,0),d=h(c+_),v=!r;++a<c;)d[a]=t[a];for(;++u<s;)(v||u<o)&&(d[e[u]]=n[u]);for(;_--;)d[a++]=n[u++];return d}function Rf(n,t,e,r){for(var u=-1,o=n.length,s=-1,a=e.length,c=-1,_=t.length,d=V(o-a,0),v=h(d+_),x=!r;++u<d;)v[u]=n[u];for(var S=u;++c<_;)v[S+c]=t[c];for(;++s<a;)(x||u<o)&&(v[S+e[s]]=n[u++]);return v}function vn(n,t){var e=-1,r=n.length;for(t||(t=h(r));++e<r;)t[e]=n[e];return t}function Xn(n,t,e,r){var u=!e;e||(e={});for(var o=-1,s=t.length;++o<s;){var a=t[o],c=r?r(e[a],n[a],a,e,n):i;c===i&&(c=n[a]),u?et(e,a,c):he(e,a,c)}return e}function sc(n,t){return Xn(n,Fi(n),t)}function ac(n,t){return Xn(n,Kf(n),t)}function ir(n,t){return function(e,r){var u=M(e)?ga:El,o=t?t():{};return u(e,n,C(r,2),o)}}function kt(n){return O(function(t,e){var r=-1,u=e.length,o=u>1?e[u-1]:i,s=u>2?e[2]:i;for(o=n.length>3&&typeof o=="function"?(u--,o):i,s&&gn(e[0],e[1],s)&&(o=u<3?i:o,u=1),t=N(t);++r<u;){var a=e[r];a&&n(t,a,r,o)}return t})}function Lf(n,t){return function(e,r){if(e==null)return e;if(!xn(e))return n(e,r);for(var u=e.length,o=t?u:-1,s=N(e);(t?o--:++o<u)&&r(s[o],o,s)!==!1;);return e}}function Ef(n){return function(t,e,r){for(var u=-1,o=N(t),s=r(t),a=s.length;a--;){var c=s[n?a:++u];if(e(o[c],c,o)===!1)break}return t}}function lc(n,t,e){var r=t&j,u=xe(n);function o(){var s=this&&this!==tn&&this instanceof o?u:n;return s.apply(r?e:this,arguments)}return o}function Of(n){return function(t){t=W(t);var e=Gt(t)?Hn(t):i,r=e?e[0]:t.charAt(0),u=e?yt(e,1).join(""):t.slice(1);return r[n]()+u}}function Yt(n){return function(t){return $r(Eo(Lo(t).replace(na,"")),n,"")}}function xe(n){return function(){var t=arguments;switch(t.length){case 0:return new n;case 1:return new n(t[0]);case 2:return new n(t[0],t[1]);case 3:return new n(t[0],t[1],t[2]);case 4:return new n(t[0],t[1],t[2],t[3]);case 5:return new n(t[0],t[1],t[2],t[3],t[4]);case 6:return new n(t[0],t[1],t[2],t[3],t[4],t[5]);case 7:return new n(t[0],t[1],t[2],t[3],t[4],t[5],t[6])}var e=zt(n.prototype),r=n.apply(e,t);return $(r)?r:e}}function cc(n,t,e){var r=xe(n);function u(){for(var o=arguments.length,s=h(o),a=o,c=Zt(u);a--;)s[a]=arguments[a];var _=o<3&&s[0]!==c&&s[o-1]!==c?[]:gt(s,c);if(o-=_.length,o<e)return Wf(n,t,ur,u.placeholder,i,s,_,i,i,e-o);var d=this&&this!==tn&&this instanceof u?r:n;return Sn(d,this,s)}return u}function bf(n){return function(t,e,r){var u=N(t);if(!xn(t)){var o=C(e,3);t=en(t),e=function(a){return o(u[a],a,u)}}var s=n(t,e,r);return s>-1?u[o?t[s]:s]:i}}function Df(n){return it(function(t){var e=t.length,r=e,u=Dn.prototype.thru;for(n&&t.reverse();r--;){var o=t[r];if(typeof o!="function")throw new bn(y);if(u&&!s&&ar(o)=="wrapper")var s=new Dn([],!0)}for(r=s?r:e;++r<e;){o=t[r];var a=ar(o),c=a=="wrapper"?Ci(o):i;c&&Mi(c[0])&&c[1]==(Ln|ln|pn|An)&&!c[4].length&&c[9]==1?s=s[ar(c[0])].apply(s,c[3]):s=o.length==1&&Mi(o)?s[a]():s.thru(o)}return function(){var _=arguments,d=_[0];if(s&&_.length==1&&M(d))return s.plant(d).value();for(var v=0,x=e?t[v].apply(this,_):d;++v<e;)x=t[v].call(this,x);return x}})}function ur(n,t,e,r,u,o,s,a,c,_){var d=t&Ln,v=t&j,x=t&Rn,S=t&(ln|cn),T=t&bt,L=x?i:xe(n);function F(){for(var b=arguments.length,P=h(b),In=b;In--;)P[In]=arguments[In];if(S)var _n=Zt(F),Mn=Sa(P,_n);if(r&&(P=Mf(P,r,u,S)),o&&(P=Rf(P,o,s,S)),b-=Mn,S&&b<_){var J=gt(P,_n);return Wf(n,t,ur,F.placeholder,e,P,J,a,c,_-b)}var kn=v?e:this,st=x?kn[n]:n;return b=P.length,a?P=Ec(P,a):T&&b>1&&P.reverse(),d&&c<b&&(P.length=c),this&&this!==tn&&this instanceof F&&(st=L||xe(st)),st.apply(kn,P)}return F}function Pf(n,t){return function(e,r){return Nl(e,n,t(r),{})}}function fr(n,t){return function(e,r){var u;if(e===i&&r===i)return t;if(e!==i&&(u=e),r!==i){if(u===i)return r;typeof e=="string"||typeof r=="string"?(e=Tn(e),r=Tn(r)):(e=yf(e),r=yf(r)),u=n(e,r)}return u}}function yi(n){return it(function(t){return t=H(t,Cn(C())),O(function(e){var r=this;return n(t,function(u){return Sn(u,r,e)})})})}function or(n,t){t=t===i?" ":Tn(t);var e=t.length;if(e<2)return e?hi(t,n):t;var r=hi(t,Ye(n/qt(t)));return Gt(t)?yt(Hn(r),0,n).join(""):r.slice(0,n)}function pc(n,t,e,r){var u=t&j,o=xe(n);function s(){for(var a=-1,c=arguments.length,_=-1,d=r.length,v=h(d+c),x=this&&this!==tn&&this instanceof s?o:n;++_<d;)v[_]=r[_];for(;c--;)v[_++]=arguments[++a];return Sn(x,u?e:this,v)}return s}function Bf(n){return function(t,e,r){return r&&typeof r!="number"&&gn(t,e,r)&&(e=r=i),t=ot(t),e===i?(e=t,t=0):e=ot(e),r=r===i?t<e?1:-1:ot(r),Ql(t,e,r,n)}}function sr(n){return function(t,e){return typeof t=="string"&&typeof e=="string"||(t=Un(t),e=Un(e)),n(t,e)}}function Wf(n,t,e,r,u,o,s,a,c,_){var d=t&ln,v=d?s:i,x=d?i:s,S=d?o:i,T=d?i:o;t|=d?pn:Vn,t&=~(d?Vn:pn),t&nn||(t&=~(j|Rn));var L=[n,t,u,S,v,T,x,a,c,_],F=e.apply(i,L);return Mi(n)&&Jf(F,L),F.placeholder=r,Xf(F,n,t)}function wi(n){var t=Q[n];return function(e,r){if(e=Un(e),r=r==null?0:fn(R(r),292),r&&Ju(e)){var u=(W(e)+"e").split("e"),o=t(u[0]+"e"+(+u[1]+r));return u=(W(o)+"e").split("e"),+(u[0]+"e"+(+u[1]-r))}return t(e)}}var hc=Ht&&1/We(new Ht([,-0]))[1]==Zn?function(n){return new Ht(n)}:Hi;function Uf(n){return function(t){var e=on(t);return e==qn?Qr(t):e==Kn?La(t):Aa(t,n(t))}}function rt(n,t,e,r,u,o,s,a){var c=t&Rn;if(!c&&typeof n!="function")throw new bn(y);var _=r?r.length:0;if(_||(t&=~(pn|Vn),r=u=i),s=s===i?s:V(R(s),0),a=a===i?a:R(a),_-=u?u.length:0,t&Vn){var d=r,v=u;r=u=i}var x=c?i:Ci(n),S=[n,t,e,r,u,d,v,o,s,a];if(x&&Mc(S,x),n=S[0],t=S[1],e=S[2],r=S[3],u=S[4],a=S[9]=S[9]===i?c?0:n.length:V(S[9]-_,0),!a&&t&(ln|cn)&&(t&=~(ln|cn)),!t||t==j)var T=lc(n,t,e);else t==ln||t==cn?T=cc(n,t,a):(t==pn||t==(j|pn))&&!u.length?T=pc(n,t,e,r):T=ur.apply(i,S);var L=x?xf:Jf;return Xf(L(T,S),n,t)}function Nf(n,t,e,r){return n===i||zn(n,Kt[e])&&!U.call(r,e)?t:n}function Gf(n,t,e,r,u,o){return $(n)&&$(t)&&(o.set(t,n),tr(n,t,i,Gf,o),o.delete(t)),n}function gc(n){return we(n)?i:n}function qf(n,t,e,r,u,o){var s=e&z,a=n.length,c=t.length;if(a!=c&&!(s&&c>a))return!1;var _=o.get(n),d=o.get(t);if(_&&d)return _==t&&d==n;var v=-1,x=!0,S=e&Yn?new Tt:i;for(o.set(n,t),o.set(t,n);++v<a;){var T=n[v],L=t[v];if(r)var F=s?r(L,T,v,t,n,o):r(T,L,v,n,t,o);if(F!==i){if(F)continue;x=!1;break}if(S){if(!zr(t,function(b,P){if(!oe(S,P)&&(T===b||u(T,b,e,r,o)))return S.push(P)})){x=!1;break}}else if(!(T===L||u(T,L,e,r,o))){x=!1;break}}return o.delete(n),o.delete(t),x}function _c(n,t,e,r,u,o,s){switch(e){case Wt:if(n.byteLength!=t.byteLength||n.byteOffset!=t.byteOffset)return!1;n=n.buffer,t=t.buffer;case fe:return!(n.byteLength!=t.byteLength||!o(new He(n),new He(t)));case ne:case te:case ee:return zn(+n,+t);case Re:return n.name==t.name&&n.message==t.message;case re:case ie:return n==t+"";case qn:var a=Qr;case Kn:var c=r&z;if(a||(a=We),n.size!=t.size&&!c)return!1;var _=s.get(n);if(_)return _==t;r|=Yn,s.set(n,t);var d=qf(a(n),a(t),r,u,o,s);return s.delete(n),d;case Ee:if(pe)return pe.call(n)==pe.call(t)}return!1}function dc(n,t,e,r,u,o){var s=e&z,a=Ai(n),c=a.length,_=Ai(t),d=_.length;if(c!=d&&!s)return!1;for(var v=c;v--;){var x=a[v];if(!(s?x in t:U.call(t,x)))return!1}var S=o.get(n),T=o.get(t);if(S&&T)return S==t&&T==n;var L=!0;o.set(n,t),o.set(t,n);for(var F=s;++v<c;){x=a[v];var b=n[x],P=t[x];if(r)var In=s?r(P,b,x,t,n,o):r(b,P,x,n,t,o);if(!(In===i?b===P||u(b,P,e,r,o):In)){L=!1;break}F||(F=x=="constructor")}if(L&&!F){var _n=n.constructor,Mn=t.constructor;_n!=Mn&&"constructor"in n&&"constructor"in t&&!(typeof _n=="function"&&_n instanceof _n&&typeof Mn=="function"&&Mn instanceof Mn)&&(L=!1)}return o.delete(n),o.delete(t),L}function it(n){return Li(Yf(n,i,eo),n+"")}function Ai(n){return of(n,en,Fi)}function Si(n){return of(n,mn,Kf)}var Ci=Je?function(n){return Je.get(n)}:Hi;function ar(n){for(var t=n.name+"",e=$t[t],r=U.call($t,t)?e.length:0;r--;){var u=e[r],o=u.func;if(o==null||o==n)return u.name}return t}function Zt(n){var t=U.call(f,"placeholder")?f:n;return t.placeholder}function C(){var n=f.iteratee||qi;return n=n===qi?lf:n,arguments.length?n(arguments[0],arguments[1]):n}function lr(n,t){var e=n.__data__;return Cc(t)?e[typeof t=="string"?"string":"hash"]:e.map}function Ti(n){for(var t=en(n),e=t.length;e--;){var r=t[e],u=n[r];t[e]=[r,u,zf(u)]}return t}function Mt(n,t){var e=Ia(n,t);return af(e)?e:i}function vc(n){var t=U.call(n,St),e=n[St];try{n[St]=i;var r=!0}catch(o){}var u=qe.call(n);return r&&(t?n[St]=e:delete n[St]),u}var Fi=jr?function(n){return n==null?[]:(n=N(n),pt(jr(n),function(t){return Yu.call(n,t)}))}:$i,Kf=jr?function(n){for(var t=[];n;)ht(t,Fi(n)),n=$e(n);return t}:$i,on=hn;(ni&&on(new ni(new ArrayBuffer(1)))!=Wt||ae&&on(new ae)!=qn||ti&&on(ti.resolve())!=ru||Ht&&on(new Ht)!=Kn||le&&on(new le)!=ue)&&(on=function(n){var t=hn(n),e=t==jn?n.constructor:i,r=e?Rt(e):"";if(r)switch(r){case ja:return Wt;case nl:return qn;case tl:return ru;case el:return Kn;case rl:return ue}return t});function xc(n,t,e){for(var r=-1,u=e.length;++r<u;){var o=e[r],s=o.size;switch(o.type){case"drop":n+=s;break;case"dropRight":t-=s;break;case"take":t=fn(t,n+s);break;case"takeRight":n=V(n,t-s);break}}return{start:n,end:t}}function mc(n){var t=n.match(Ts);return t?t[1].split(Fs):[]}function Hf(n,t,e){t=mt(t,n);for(var r=-1,u=t.length,o=!1;++r<u;){var s=Qn(t[r]);if(!(o=n!=null&&e(n,s)))break;n=n[s]}return o||++r!=u?o:(u=n==null?0:n.length,!!u&&vr(u)&&ut(s,u)&&(M(n)||Lt(n)))}function yc(n){var t=n.length,e=new n.constructor(t);return t&&typeof n[0]=="string"&&U.call(n,"index")&&(e.index=n.index,e.input=n.input),e}function $f(n){return typeof n.constructor=="function"&&!me(n)?zt($e(n)):{}}function wc(n,t,e){var r=n.constructor;switch(t){case fe:return mi(n);case ne:case te:return new r(+n);case Wt:return ic(n,e);case Tr:case Fr:case Ir:case Mr:case Rr:case Lr:case Er:case Or:case br:return Ff(n,e);case qn:return new r;case ee:case ie:return new r(n);case re:return uc(n);case Kn:return new r;case Ee:return fc(n)}}function Ac(n,t){var e=t.length;if(!e)return n;var r=e-1;return t[r]=(e>1?"& ":"")+t[r],t=t.join(e>2?", ":" "),n.replace(Cs,`{\n/* [wrapped with `+t+`] */\n`)}function Sc(n){return M(n)||Lt(n)||!!(Zu&&n&&n[Zu])}function ut(n,t){var e=typeof n;return t=t==null?Nn:t,!!t&&(e=="number"||e!="symbol"&&Ps.test(n))&&n>-1&&n%1==0&&n<t}function gn(n,t,e){if(!$(e))return!1;var r=typeof t;return(r=="number"?xn(e)&&ut(t,e.length):r=="string"&&t in e)?zn(e[t],n):!1}function Ii(n,t){if(M(n))return!1;var e=typeof n;return e=="number"||e=="symbol"||e=="boolean"||n==null||Fn(n)?!0:ys.test(n)||!ms.test(n)||t!=null&&n in N(t)}function Cc(n){var t=typeof n;return t=="string"||t=="number"||t=="symbol"||t=="boolean"?n!=="__proto__":n===null}function Mi(n){var t=ar(n),e=f[t];if(typeof e!="function"||!(t in D.prototype))return!1;if(n===e)return!0;var r=Ci(e);return!!r&&n===r[0]}function Tc(n){return!!$u&&$u in n}var Fc=Ne?ft:zi;function me(n){var t=n&&n.constructor,e=typeof t=="function"&&t.prototype||Kt;return n===e}function zf(n){return n===n&&!$(n)}function kf(n,t){return function(e){return e==null?!1:e[n]===t&&(t!==i||n in N(e))}}function Ic(n){var t=_r(n,function(r){return e.size===sn&&e.clear(),r}),e=t.cache;return t}function Mc(n,t){var e=n[1],r=t[1],u=e|r,o=u<(j|Rn|Ln),s=r==Ln&&e==ln||r==Ln&&e==An&&n[7].length<=t[8]||r==(Ln|An)&&t[7].length<=t[8]&&e==ln;if(!(o||s))return n;r&j&&(n[2]=t[2],u|=e&j?0:nn);var a=t[3];if(a){var c=n[3];n[3]=c?Mf(c,a,t[4]):a,n[4]=c?gt(n[3],rn):t[4]}return a=t[5],a&&(c=n[5],n[5]=c?Rf(c,a,t[6]):a,n[6]=c?gt(n[5],rn):t[6]),a=t[7],a&&(n[7]=a),r&Ln&&(n[8]=n[8]==null?t[8]:fn(n[8],t[8])),n[9]==null&&(n[9]=t[9]),n[0]=t[0],n[1]=u,n}function Rc(n){var t=[];if(n!=null)for(var e in N(n))t.push(e);return t}function Lc(n){return qe.call(n)}function Yf(n,t,e){return t=V(t===i?n.length-1:t,0),function(){for(var r=arguments,u=-1,o=V(r.length-t,0),s=h(o);++u<o;)s[u]=r[t+u];u=-1;for(var a=h(t+1);++u<t;)a[u]=r[u];return a[t]=e(s),Sn(n,this,a)}}function Zf(n,t){return t.length<2?n:It(n,Bn(t,0,-1))}function Ec(n,t){for(var e=n.length,r=fn(t.length,e),u=vn(n);r--;){var o=t[r];n[r]=ut(o,e)?u[o]:i}return n}function Ri(n,t){if(!(t==="constructor"&&typeof n[t]=="function")&&t!="__proto__")return n[t]}var Jf=Qf(xf),ye=ka||function(n,t){return tn.setTimeout(n,t)},Li=Qf(nc);function Xf(n,t,e){var r=t+"";return Li(n,Ac(r,Oc(mc(r),e)))}function Qf(n){var t=0,e=0;return function(){var r=Xa(),u=Cr-(r-e);if(e=r,u>0){if(++t>=Te)return arguments[0]}else t=0;return n.apply(i,arguments)}}function cr(n,t){var e=-1,r=n.length,u=r-1;for(t=t===i?r:t;++e<t;){var o=pi(e,u),s=n[o];n[o]=n[e],n[e]=s}return n.length=t,n}var Vf=Ic(function(n){var t=[];return n.charCodeAt(0)===46&&t.push(""),n.replace(ws,function(e,r,u,o){t.push(u?o.replace(Rs,"$1"):r||e)}),t});function Qn(n){if(typeof n=="string"||Fn(n))return n;var t=n+"";return t=="0"&&1/n==-Zn?"-0":t}function Rt(n){if(n!=null){try{return Ge.call(n)}catch(t){}try{return n+""}catch(t){}}return""}function Oc(n,t){return On(us,function(e){var r="_."+e[0];t&e[1]&&!Pe(n,r)&&n.push(r)}),n.sort()}function jf(n){if(n instanceof D)return n.clone();var t=new Dn(n.__wrapped__,n.__chain__);return t.__actions__=vn(n.__actions__),t.__index__=n.__index__,t.__values__=n.__values__,t}function bc(n,t,e){(e?gn(n,t,e):t===i)?t=1:t=V(R(t),0);var r=n==null?0:n.length;if(!r||t<1)return[];for(var u=0,o=0,s=h(Ye(r/t));u<r;)s[o++]=Bn(n,u,u+=t);return s}function Dc(n){for(var t=-1,e=n==null?0:n.length,r=0,u=[];++t<e;){var o=n[t];o&&(u[r++]=o)}return u}function Pc(){var n=arguments.length;if(!n)return[];for(var t=h(n-1),e=arguments[0],r=n;r--;)t[r-1]=arguments[r];return ht(M(e)?vn(e):[e],un(t,1))}var Bc=O(function(n,t){return Z(n)?ge(n,un(t,1,Z,!0)):[]}),Wc=O(function(n,t){var e=Wn(t);return Z(e)&&(e=i),Z(n)?ge(n,un(t,1,Z,!0),C(e,2)):[]}),Uc=O(function(n,t){var e=Wn(t);return Z(e)&&(e=i),Z(n)?ge(n,un(t,1,Z,!0),i,e):[]});function Nc(n,t,e){var r=n==null?0:n.length;return r?(t=e||t===i?1:R(t),Bn(n,t<0?0:t,r)):[]}function Gc(n,t,e){var r=n==null?0:n.length;return r?(t=e||t===i?1:R(t),t=r-t,Bn(n,0,t<0?0:t)):[]}function qc(n,t){return n&&n.length?rr(n,C(t,3),!0,!0):[]}function Kc(n,t){return n&&n.length?rr(n,C(t,3),!0):[]}function Hc(n,t,e,r){var u=n==null?0:n.length;return u?(e&&typeof e!="number"&&gn(n,t,e)&&(e=0,r=u),Pl(n,t,e,r)):[]}function no(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=e==null?0:R(e);return u<0&&(u=V(r+u,0)),Be(n,C(t,3),u)}function to(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=r-1;return e!==i&&(u=R(e),u=e<0?V(r+u,0):fn(u,r-1)),Be(n,C(t,3),u,!0)}function eo(n){var t=n==null?0:n.length;return t?un(n,1):[]}function $c(n){var t=n==null?0:n.length;return t?un(n,Zn):[]}function zc(n,t){var e=n==null?0:n.length;return e?(t=t===i?1:R(t),un(n,t)):[]}function kc(n){for(var t=-1,e=n==null?0:n.length,r={};++t<e;){var u=n[t];r[u[0]]=u[1]}return r}function ro(n){return n&&n.length?n[0]:i}function Yc(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=e==null?0:R(e);return u<0&&(u=V(r+u,0)),Nt(n,t,u)}function Zc(n){var t=n==null?0:n.length;return t?Bn(n,0,-1):[]}var Jc=O(function(n){var t=H(n,vi);return t.length&&t[0]===n[0]?oi(t):[]}),Xc=O(function(n){var t=Wn(n),e=H(n,vi);return t===Wn(e)?t=i:e.pop(),e.length&&e[0]===n[0]?oi(e,C(t,2)):[]}),Qc=O(function(n){var t=Wn(n),e=H(n,vi);return t=typeof t=="function"?t:i,t&&e.pop(),e.length&&e[0]===n[0]?oi(e,i,t):[]});function Vc(n,t){return n==null?"":Za.call(n,t)}function Wn(n){var t=n==null?0:n.length;return t?n[t-1]:i}function jc(n,t,e){var r=n==null?0:n.length;if(!r)return-1;var u=r;return e!==i&&(u=R(e),u=u<0?V(r+u,0):fn(u,r-1)),t===t?Oa(n,t,u):Be(n,Bu,u,!0)}function np(n,t){return n&&n.length?gf(n,R(t)):i}var tp=O(io);function io(n,t){return n&&n.length&&t&&t.length?ci(n,t):n}function ep(n,t,e){return n&&n.length&&t&&t.length?ci(n,t,C(e,2)):n}function rp(n,t,e){return n&&n.length&&t&&t.length?ci(n,t,i,e):n}var ip=it(function(n,t){var e=n==null?0:n.length,r=ri(n,t);return vf(n,H(t,function(u){return ut(u,e)?+u:u}).sort(If)),r});function up(n,t){var e=[];if(!(n&&n.length))return e;var r=-1,u=[],o=n.length;for(t=C(t,3);++r<o;){var s=n[r];t(s,r,n)&&(e.push(s),u.push(r))}return vf(n,u),e}function Ei(n){return n==null?n:Va.call(n)}function fp(n,t,e){var r=n==null?0:n.length;return r?(e&&typeof e!="number"&&gn(n,t,e)?(t=0,e=r):(t=t==null?0:R(t),e=e===i?r:R(e)),Bn(n,t,e)):[]}function op(n,t){return er(n,t)}function sp(n,t,e){return gi(n,t,C(e,2))}function ap(n,t){var e=n==null?0:n.length;if(e){var r=er(n,t);if(r<e&&zn(n[r],t))return r}return-1}function lp(n,t){return er(n,t,!0)}function cp(n,t,e){return gi(n,t,C(e,2),!0)}function pp(n,t){var e=n==null?0:n.length;if(e){var r=er(n,t,!0)-1;if(zn(n[r],t))return r}return-1}function hp(n){return n&&n.length?mf(n):[]}function gp(n,t){return n&&n.length?mf(n,C(t,2)):[]}function _p(n){var t=n==null?0:n.length;return t?Bn(n,1,t):[]}function dp(n,t,e){return n&&n.length?(t=e||t===i?1:R(t),Bn(n,0,t<0?0:t)):[]}function vp(n,t,e){var r=n==null?0:n.length;return r?(t=e||t===i?1:R(t),t=r-t,Bn(n,t<0?0:t,r)):[]}function xp(n,t){return n&&n.length?rr(n,C(t,3),!1,!0):[]}function mp(n,t){return n&&n.length?rr(n,C(t,3)):[]}var yp=O(function(n){return xt(un(n,1,Z,!0))}),wp=O(function(n){var t=Wn(n);return Z(t)&&(t=i),xt(un(n,1,Z,!0),C(t,2))}),Ap=O(function(n){var t=Wn(n);return t=typeof t=="function"?t:i,xt(un(n,1,Z,!0),i,t)});function Sp(n){return n&&n.length?xt(n):[]}function Cp(n,t){return n&&n.length?xt(n,C(t,2)):[]}function Tp(n,t){return t=typeof t=="function"?t:i,n&&n.length?xt(n,i,t):[]}function Oi(n){if(!(n&&n.length))return[];var t=0;return n=pt(n,function(e){if(Z(e))return t=V(e.length,t),!0}),Jr(t,function(e){return H(n,kr(e))})}function uo(n,t){if(!(n&&n.length))return[];var e=Oi(n);return t==null?e:H(e,function(r){return Sn(t,i,r)})}var Fp=O(function(n,t){return Z(n)?ge(n,t):[]}),Ip=O(function(n){return di(pt(n,Z))}),Mp=O(function(n){var t=Wn(n);return Z(t)&&(t=i),di(pt(n,Z),C(t,2))}),Rp=O(function(n){var t=Wn(n);return t=typeof t=="function"?t:i,di(pt(n,Z),i,t)}),Lp=O(Oi);function Ep(n,t){return Sf(n||[],t||[],he)}function Op(n,t){return Sf(n||[],t||[],ve)}var bp=O(function(n){var t=n.length,e=t>1?n[t-1]:i;return e=typeof e=="function"?(n.pop(),e):i,uo(n,e)});function fo(n){var t=f(n);return t.__chain__=!0,t}function Dp(n,t){return t(n),n}function pr(n,t){return t(n)}var Pp=it(function(n){var t=n.length,e=t?n[0]:0,r=this.__wrapped__,u=function(o){return ri(o,n)};return t>1||this.__actions__.length||!(r instanceof D)||!ut(e)?this.thru(u):(r=r.slice(e,+e+(t?1:0)),r.__actions__.push({func:pr,args:[u],thisArg:i}),new Dn(r,this.__chain__).thru(function(o){return t&&!o.length&&o.push(i),o}))});function Bp(){return fo(this)}function Wp(){return new Dn(this.value(),this.__chain__)}function Up(){this.__values__===i&&(this.__values__=wo(this.value()));var n=this.__index__>=this.__values__.length,t=n?i:this.__values__[this.__index__++];return{done:n,value:t}}function Np(){return this}function Gp(n){for(var t,e=this;e instanceof Qe;){var r=jf(e);r.__index__=0,r.__values__=i,t?u.__wrapped__=r:t=r;var u=r;e=e.__wrapped__}return u.__wrapped__=n,t}function qp(){var n=this.__wrapped__;if(n instanceof D){var t=n;return this.__actions__.length&&(t=new D(this)),t=t.reverse(),t.__actions__.push({func:pr,args:[Ei],thisArg:i}),new Dn(t,this.__chain__)}return this.thru(Ei)}function Kp(){return Af(this.__wrapped__,this.__actions__)}var Hp=ir(function(n,t,e){U.call(n,e)?++n[e]:et(n,e,1)});function $p(n,t,e){var r=M(n)?Du:Dl;return e&&gn(n,t,e)&&(t=i),r(n,C(t,3))}function zp(n,t){var e=M(n)?pt:uf;return e(n,C(t,3))}var kp=bf(no),Yp=bf(to);function Zp(n,t){return un(hr(n,t),1)}function Jp(n,t){return un(hr(n,t),Zn)}function Xp(n,t,e){return e=e===i?1:R(e),un(hr(n,t),e)}function oo(n,t){var e=M(n)?On:vt;return e(n,C(t,3))}function so(n,t){var e=M(n)?_a:rf;return e(n,C(t,3))}var Qp=ir(function(n,t,e){U.call(n,e)?n[e].push(t):et(n,e,[t])});function Vp(n,t,e,r){n=xn(n)?n:Xt(n),e=e&&!r?R(e):0;var u=n.length;return e<0&&(e=V(u+e,0)),xr(n)?e<=u&&n.indexOf(t,e)>-1:!!u&&Nt(n,t,e)>-1}var jp=O(function(n,t,e){var r=-1,u=typeof t=="function",o=xn(n)?h(n.length):[];return vt(n,function(s){o[++r]=u?Sn(t,s,e):_e(s,t,e)}),o}),nh=ir(function(n,t,e){et(n,e,t)});function hr(n,t){var e=M(n)?H:cf;return e(n,C(t,3))}function th(n,t,e,r){return n==null?[]:(M(t)||(t=t==null?[]:[t]),e=r?i:e,M(e)||(e=e==null?[]:[e]),_f(n,t,e))}var eh=ir(function(n,t,e){n[e?0:1].push(t)},function(){return[[],[]]});function rh(n,t,e){var r=M(n)?$r:Uu,u=arguments.length<3;return r(n,C(t,4),e,u,vt)}function ih(n,t,e){var r=M(n)?da:Uu,u=arguments.length<3;return r(n,C(t,4),e,u,rf)}function uh(n,t){var e=M(n)?pt:uf;return e(n,dr(C(t,3)))}function fh(n){var t=M(n)?ju:Vl;return t(n)}function oh(n,t,e){(e?gn(n,t,e):t===i)?t=1:t=R(t);var r=M(n)?Rl:jl;return r(n,t)}function sh(n){var t=M(n)?Ll:tc;return t(n)}function ah(n){if(n==null)return 0;if(xn(n))return xr(n)?qt(n):n.length;var t=on(n);return t==qn||t==Kn?n.size:ai(n).length}function lh(n,t,e){var r=M(n)?zr:ec;return e&&gn(n,t,e)&&(t=i),r(n,C(t,3))}var ch=O(function(n,t){if(n==null)return[];var e=t.length;return e>1&&gn(n,t[0],t[1])?t=[]:e>2&&gn(t[0],t[1],t[2])&&(t=[t[0]]),_f(n,un(t,1),[])}),gr=za||function(){return tn.Date.now()};function ph(n,t){if(typeof t!="function")throw new bn(y);return n=R(n),function(){if(--n<1)return t.apply(this,arguments)}}function ao(n,t,e){return t=e?i:t,t=n&&t==null?n.length:t,rt(n,Ln,i,i,i,i,t)}function lo(n,t){var e;if(typeof t!="function")throw new bn(y);return n=R(n),function(){return--n>0&&(e=t.apply(this,arguments)),n<=1&&(t=i),e}}var bi=O(function(n,t,e){var r=j;if(e.length){var u=gt(e,Zt(bi));r|=pn}return rt(n,r,t,e,u)}),co=O(function(n,t,e){var r=j|Rn;if(e.length){var u=gt(e,Zt(co));r|=pn}return rt(t,r,n,e,u)});function po(n,t,e){t=e?i:t;var r=rt(n,ln,i,i,i,i,i,t);return r.placeholder=po.placeholder,r}function ho(n,t,e){t=e?i:t;var r=rt(n,cn,i,i,i,i,i,t);return r.placeholder=ho.placeholder,r}function go(n,t,e){var r,u,o,s,a,c,_=0,d=!1,v=!1,x=!0;if(typeof n!="function")throw new bn(y);t=Un(t)||0,$(e)&&(d=!!e.leading,v="maxWait"in e,o=v?V(Un(e.maxWait)||0,t):o,x="trailing"in e?!!e.trailing:x);function S(J){var kn=r,st=u;return r=u=i,_=J,s=n.apply(st,kn),s}function T(J){return _=J,a=ye(b,t),d?S(J):s}function L(J){var kn=J-c,st=J-_,Do=t-kn;return v?fn(Do,o-st):Do}function F(J){var kn=J-c,st=J-_;return c===i||kn>=t||kn<0||v&&st>=o}function b(){var J=gr();if(F(J))return P(J);a=ye(b,L(J))}function P(J){return a=i,x&&r?S(J):(r=u=i,s)}function In(){a!==i&&Cf(a),_=0,r=c=u=a=i}function _n(){return a===i?s:P(gr())}function Mn(){var J=gr(),kn=F(J);if(r=arguments,u=this,c=J,kn){if(a===i)return T(c);if(v)return Cf(a),a=ye(b,t),S(c)}return a===i&&(a=ye(b,t)),s}return Mn.cancel=In,Mn.flush=_n,Mn}var hh=O(function(n,t){return ef(n,1,t)}),gh=O(function(n,t,e){return ef(n,Un(t)||0,e)});function _h(n){return rt(n,bt)}function _r(n,t){if(typeof n!="function"||t!=null&&typeof t!="function")throw new bn(y);var e=function(){var r=arguments,u=t?t.apply(this,r):r[0],o=e.cache;if(o.has(u))return o.get(u);var s=n.apply(this,r);return e.cache=o.set(u,s)||o,s};return e.cache=new(_r.Cache||tt),e}_r.Cache=tt;function dr(n){if(typeof n!="function")throw new bn(y);return function(){var t=arguments;switch(t.length){case 0:return!n.call(this);case 1:return!n.call(this,t[0]);case 2:return!n.call(this,t[0],t[1]);case 3:return!n.call(this,t[0],t[1],t[2])}return!n.apply(this,t)}}function dh(n){return lo(2,n)}var vh=rc(function(n,t){t=t.length==1&&M(t[0])?H(t[0],Cn(C())):H(un(t,1),Cn(C()));var e=t.length;return O(function(r){for(var u=-1,o=fn(r.length,e);++u<o;)r[u]=t[u].call(this,r[u]);return Sn(n,this,r)})}),Di=O(function(n,t){var e=gt(t,Zt(Di));return rt(n,pn,i,t,e)}),_o=O(function(n,t){var e=gt(t,Zt(_o));return rt(n,Vn,i,t,e)}),xh=it(function(n,t){return rt(n,An,i,i,i,t)});function mh(n,t){if(typeof n!="function")throw new bn(y);return t=t===i?t:R(t),O(n,t)}function yh(n,t){if(typeof n!="function")throw new bn(y);return t=t==null?0:V(R(t),0),O(function(e){var r=e[t],u=yt(e,0,t);return r&&ht(u,r),Sn(n,this,u)})}function wh(n,t,e){var r=!0,u=!0;if(typeof n!="function")throw new bn(y);return $(e)&&(r="leading"in e?!!e.leading:r,u="trailing"in e?!!e.trailing:u),go(n,t,{leading:r,maxWait:t,trailing:u})}function Ah(n){return ao(n,1)}function Sh(n,t){return Di(xi(t),n)}function Ch(){if(!arguments.length)return[];var n=arguments[0];return M(n)?n:[n]}function Th(n){return Pn(n,an)}function Fh(n,t){return t=typeof t=="function"?t:i,Pn(n,an,t)}function Ih(n){return Pn(n,K|an)}function Mh(n,t){return t=typeof t=="function"?t:i,Pn(n,K|an,t)}function Rh(n,t){return t==null||tf(n,t,en(t))}function zn(n,t){return n===t||n!==n&&t!==t}var Lh=sr(fi),Eh=sr(function(n,t){return n>=t}),Lt=sf(function(){return arguments}())?sf:function(n){return k(n)&&U.call(n,"callee")&&!Yu.call(n,"callee")},M=h.isArray,Oh=Mu?Cn(Mu):Gl;function xn(n){return n!=null&&vr(n.length)&&!ft(n)}function Z(n){return k(n)&&xn(n)}function bh(n){return n===!0||n===!1||k(n)&&hn(n)==ne}var wt=Ya||zi,Dh=Ru?Cn(Ru):ql;function Ph(n){return k(n)&&n.nodeType===1&&!we(n)}function Bh(n){if(n==null)return!0;if(xn(n)&&(M(n)||typeof n=="string"||typeof n.splice=="function"||wt(n)||Jt(n)||Lt(n)))return!n.length;var t=on(n);if(t==qn||t==Kn)return!n.size;if(me(n))return!ai(n).length;for(var e in n)if(U.call(n,e))return!1;return!0}function Wh(n,t){return de(n,t)}function Uh(n,t,e){e=typeof e=="function"?e:i;var r=e?e(n,t):i;return r===i?de(n,t,i,e):!!r}function Pi(n){if(!k(n))return!1;var t=hn(n);return t==Re||t==os||typeof n.message=="string"&&typeof n.name=="string"&&!we(n)}function Nh(n){return typeof n=="number"&&Ju(n)}function ft(n){if(!$(n))return!1;var t=hn(n);return t==Le||t==eu||t==fs||t==as}function vo(n){return typeof n=="number"&&n==R(n)}function vr(n){return typeof n=="number"&&n>-1&&n%1==0&&n<=Nn}function $(n){var t=typeof n;return n!=null&&(t=="object"||t=="function")}function k(n){return n!=null&&typeof n=="object"}var xo=Lu?Cn(Lu):Hl;function Gh(n,t){return n===t||si(n,t,Ti(t))}function qh(n,t,e){return e=typeof e=="function"?e:i,si(n,t,Ti(t),e)}function Kh(n){return mo(n)&&n!=+n}function Hh(n){if(Fc(n))throw new I(A);return af(n)}function $h(n){return n===null}function zh(n){return n==null}function mo(n){return typeof n=="number"||k(n)&&hn(n)==ee}function we(n){if(!k(n)||hn(n)!=jn)return!1;var t=$e(n);if(t===null)return!0;var e=U.call(t,"constructor")&&t.constructor;return typeof e=="function"&&e instanceof e&&Ge.call(e)==qa}var Bi=Eu?Cn(Eu):$l;function kh(n){return vo(n)&&n>=-Nn&&n<=Nn}var yo=Ou?Cn(Ou):zl;function xr(n){return typeof n=="string"||!M(n)&&k(n)&&hn(n)==ie}function Fn(n){return typeof n=="symbol"||k(n)&&hn(n)==Ee}var Jt=bu?Cn(bu):kl;function Yh(n){return n===i}function Zh(n){return k(n)&&on(n)==ue}function Jh(n){return k(n)&&hn(n)==cs}var Xh=sr(li),Qh=sr(function(n,t){return n<=t});function wo(n){if(!n)return[];if(xn(n))return xr(n)?Hn(n):vn(n);if(se&&n[se])return Ra(n[se]());var t=on(n),e=t==qn?Qr:t==Kn?We:Xt;return e(n)}function ot(n){if(!n)return n===0?n:0;if(n=Un(n),n===Zn||n===-Zn){var t=n<0?-1:1;return t*dn}return n===n?n:0}function R(n){var t=ot(n),e=t%1;return t===t?e?t-e:t:0}function Ao(n){return n?Ft(R(n),0,Y):0}function Un(n){if(typeof n=="number")return n;if(Fn(n))return Gn;if($(n)){var t=typeof n.valueOf=="function"?n.valueOf():n;n=$(t)?t+"":t}if(typeof n!="string")return n===0?n:+n;n=Nu(n);var e=Os.test(n);return e||Ds.test(n)?pa(n.slice(2),e?2:8):Es.test(n)?Gn:+n}function So(n){return Xn(n,mn(n))}function Vh(n){return n?Ft(R(n),-Nn,Nn):n===0?n:0}function W(n){return n==null?"":Tn(n)}var jh=kt(function(n,t){if(me(t)||xn(t)){Xn(t,en(t),n);return}for(var e in t)U.call(t,e)&&he(n,e,t[e])}),Co=kt(function(n,t){Xn(t,mn(t),n)}),mr=kt(function(n,t,e,r){Xn(t,mn(t),n,r)}),ng=kt(function(n,t,e,r){Xn(t,en(t),n,r)}),tg=it(ri);function eg(n,t){var e=zt(n);return t==null?e:nf(e,t)}var rg=O(function(n,t){n=N(n);var e=-1,r=t.length,u=r>2?t[2]:i;for(u&&gn(t[0],t[1],u)&&(r=1);++e<r;)for(var o=t[e],s=mn(o),a=-1,c=s.length;++a<c;){var _=s[a],d=n[_];(d===i||zn(d,Kt[_])&&!U.call(n,_))&&(n[_]=o[_])}return n}),ig=O(function(n){return n.push(i,Gf),Sn(To,i,n)});function ug(n,t){return Pu(n,C(t,3),Jn)}function fg(n,t){return Pu(n,C(t,3),ui)}function og(n,t){return n==null?n:ii(n,C(t,3),mn)}function sg(n,t){return n==null?n:ff(n,C(t,3),mn)}function ag(n,t){return n&&Jn(n,C(t,3))}function lg(n,t){return n&&ui(n,C(t,3))}function cg(n){return n==null?[]:nr(n,en(n))}function pg(n){return n==null?[]:nr(n,mn(n))}function Wi(n,t,e){var r=n==null?i:It(n,t);return r===i?e:r}function hg(n,t){return n!=null&&Hf(n,t,Bl)}function Ui(n,t){return n!=null&&Hf(n,t,Wl)}var gg=Pf(function(n,t,e){t!=null&&typeof t.toString!="function"&&(t=qe.call(t)),n[t]=e},Gi(yn)),_g=Pf(function(n,t,e){t!=null&&typeof t.toString!="function"&&(t=qe.call(t)),U.call(n,t)?n[t].push(e):n[t]=[e]},C),dg=O(_e);function en(n){return xn(n)?Vu(n):ai(n)}function mn(n){return xn(n)?Vu(n,!0):Yl(n)}function vg(n,t){var e={};return t=C(t,3),Jn(n,function(r,u,o){et(e,t(r,u,o),r)}),e}function xg(n,t){var e={};return t=C(t,3),Jn(n,function(r,u,o){et(e,u,t(r,u,o))}),e}var mg=kt(function(n,t,e){tr(n,t,e)}),To=kt(function(n,t,e,r){tr(n,t,e,r)}),yg=it(function(n,t){var e={};if(n==null)return e;var r=!1;t=H(t,function(o){return o=mt(o,n),r||(r=o.length>1),o}),Xn(n,Si(n),e),r&&(e=Pn(e,K|wn|an,gc));for(var u=t.length;u--;)_i(e,t[u]);return e});function wg(n,t){return Fo(n,dr(C(t)))}var Ag=it(function(n,t){return n==null?{}:Jl(n,t)});function Fo(n,t){if(n==null)return{};var e=H(Si(n),function(r){return[r]});return t=C(t),df(n,e,function(r,u){return t(r,u[0])})}function Sg(n,t,e){t=mt(t,n);var r=-1,u=t.length;for(u||(u=1,n=i);++r<u;){var o=n==null?i:n[Qn(t[r])];o===i&&(r=u,o=e),n=ft(o)?o.call(n):o}return n}function Cg(n,t,e){return n==null?n:ve(n,t,e)}function Tg(n,t,e,r){return r=typeof r=="function"?r:i,n==null?n:ve(n,t,e,r)}var Io=Uf(en),Mo=Uf(mn);function Fg(n,t,e){var r=M(n),u=r||wt(n)||Jt(n);if(t=C(t,4),e==null){var o=n&&n.constructor;u?e=r?new o:[]:$(n)?e=ft(o)?zt($e(n)):{}:e={}}return(u?On:Jn)(n,function(s,a,c){return t(e,s,a,c)}),e}function Ig(n,t){return n==null?!0:_i(n,t)}function Mg(n,t,e){return n==null?n:wf(n,t,xi(e))}function Rg(n,t,e,r){return r=typeof r=="function"?r:i,n==null?n:wf(n,t,xi(e),r)}function Xt(n){return n==null?[]:Xr(n,en(n))}function Lg(n){return n==null?[]:Xr(n,mn(n))}function Eg(n,t,e){return e===i&&(e=t,t=i),e!==i&&(e=Un(e),e=e===e?e:0),t!==i&&(t=Un(t),t=t===t?t:0),Ft(Un(n),t,e)}function Og(n,t,e){return t=ot(t),e===i?(e=t,t=0):e=ot(e),n=Un(n),Ul(n,t,e)}function bg(n,t,e){if(e&&typeof e!="boolean"&&gn(n,t,e)&&(t=e=i),e===i&&(typeof t=="boolean"?(e=t,t=i):typeof n=="boolean"&&(e=n,n=i)),n===i&&t===i?(n=0,t=1):(n=ot(n),t===i?(t=n,n=0):t=ot(t)),n>t){var r=n;n=t,t=r}if(e||n%1||t%1){var u=Xu();return fn(n+u*(t-n+ca("1e-"+((u+"").length-1))),t)}return pi(n,t)}var Dg=Yt(function(n,t,e){return t=t.toLowerCase(),n+(e?Ro(t):t)});function Ro(n){return Ni(W(n).toLowerCase())}function Lo(n){return n=W(n),n&&n.replace(Bs,Ca).replace(ta,"")}function Pg(n,t,e){n=W(n),t=Tn(t);var r=n.length;e=e===i?r:Ft(R(e),0,r);var u=e;return e-=t.length,e>=0&&n.slice(e,u)==t}function Bg(n){return n=W(n),n&&ds.test(n)?n.replace(uu,Ta):n}function Wg(n){return n=W(n),n&&As.test(n)?n.replace(Dr,"\\\\$&"):n}var Ug=Yt(function(n,t,e){return n+(e?"-":"")+t.toLowerCase()}),Ng=Yt(function(n,t,e){return n+(e?" ":"")+t.toLowerCase()}),Gg=Of("toLowerCase");function qg(n,t,e){n=W(n),t=R(t);var r=t?qt(n):0;if(!t||r>=t)return n;var u=(t-r)/2;return or(Ze(u),e)+n+or(Ye(u),e)}function Kg(n,t,e){n=W(n),t=R(t);var r=t?qt(n):0;return t&&r<t?n+or(t-r,e):n}function Hg(n,t,e){n=W(n),t=R(t);var r=t?qt(n):0;return t&&r<t?or(t-r,e)+n:n}function $g(n,t,e){return e||t==null?t=0:t&&(t=+t),Qa(W(n).replace(Pr,""),t||0)}function zg(n,t,e){return(e?gn(n,t,e):t===i)?t=1:t=R(t),hi(W(n),t)}function kg(){var n=arguments,t=W(n[0]);return n.length<3?t:t.replace(n[1],n[2])}var Yg=Yt(function(n,t,e){return n+(e?"_":"")+t.toLowerCase()});function Zg(n,t,e){return e&&typeof e!="number"&&gn(n,t,e)&&(t=e=i),e=e===i?Y:e>>>0,e?(n=W(n),n&&(typeof t=="string"||t!=null&&!Bi(t))&&(t=Tn(t),!t&&Gt(n))?yt(Hn(n),0,e):n.split(t,e)):[]}var Jg=Yt(function(n,t,e){return n+(e?" ":"")+Ni(t)});function Xg(n,t,e){return n=W(n),e=e==null?0:Ft(R(e),0,n.length),t=Tn(t),n.slice(e,e+t.length)==t}function Qg(n,t,e){var r=f.templateSettings;e&&gn(n,t,e)&&(t=i),n=W(n),t=mr({},t,r,Nf);var u=mr({},t.imports,r.imports,Nf),o=en(u),s=Xr(u,o),a,c,_=0,d=t.interpolate||Oe,v="__p += \'",x=Vr((t.escape||Oe).source+"|"+d.source+"|"+(d===fu?Ls:Oe).source+"|"+(t.evaluate||Oe).source+"|$","g"),S="//# sourceURL="+(U.call(t,"sourceURL")?(t.sourceURL+"").replace(/\\s/g," "):"lodash.templateSources["+ ++fa+"]")+`\n`;n.replace(x,function(F,b,P,In,_n,Mn){return P||(P=In),v+=n.slice(_,Mn).replace(Ws,Fa),b&&(a=!0,v+=`\' +\n__e(`+b+`) +\n\'`),_n&&(c=!0,v+=`\';\n`+_n+`;\n__p += \'`),P&&(v+=`\' +\n((__t = (`+P+`)) == null ? \'\' : __t) +\n\'`),_=Mn+F.length,F}),v+=`\';\n`;var T=U.call(t,"variable")&&t.variable;if(!T)v=`with (obj) {\n`+v+`\n}\n`;else if(Ms.test(T))throw new I(E);v=(c?v.replace(ps,""):v).replace(hs,"$1").replace(gs,"$1;"),v="function("+(T||"obj")+`) {\n`+(T?"":`obj || (obj = {});\n`)+"var __t, __p = \'\'"+(a?", __e = _.escape":"")+(c?`, __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, \'\') }\n`:`;\n`)+v+`return __p\n}`;var L=Oo(function(){return B(o,S+"return "+v).apply(i,s)});if(L.source=v,Pi(L))throw L;return L}function Vg(n){return W(n).toLowerCase()}function jg(n){return W(n).toUpperCase()}function n_(n,t,e){if(n=W(n),n&&(e||t===i))return Nu(n);if(!n||!(t=Tn(t)))return n;var r=Hn(n),u=Hn(t),o=Gu(r,u),s=qu(r,u)+1;return yt(r,o,s).join("")}function t_(n,t,e){if(n=W(n),n&&(e||t===i))return n.slice(0,Hu(n)+1);if(!n||!(t=Tn(t)))return n;var r=Hn(n),u=qu(r,Hn(t))+1;return yt(r,0,u).join("")}function e_(n,t,e){if(n=W(n),n&&(e||t===i))return n.replace(Pr,"");if(!n||!(t=Tn(t)))return n;var r=Hn(n),u=Gu(r,Hn(t));return yt(r,u).join("")}function r_(n,t){var e=Dt,r=Pt;if($(t)){var u="separator"in t?t.separator:u;e="length"in t?R(t.length):e,r="omission"in t?Tn(t.omission):r}n=W(n);var o=n.length;if(Gt(n)){var s=Hn(n);o=s.length}if(e>=o)return n;var a=e-qt(r);if(a<1)return r;var c=s?yt(s,0,a).join(""):n.slice(0,a);if(u===i)return c+r;if(s&&(a+=c.length-a),Bi(u)){if(n.slice(a).search(u)){var _,d=c;for(u.global||(u=Vr(u.source,W(ou.exec(u))+"g")),u.lastIndex=0;_=u.exec(d);)var v=_.index;c=c.slice(0,v===i?a:v)}}else if(n.indexOf(Tn(u),a)!=a){var x=c.lastIndexOf(u);x>-1&&(c=c.slice(0,x))}return c+r}function i_(n){return n=W(n),n&&_s.test(n)?n.replace(iu,ba):n}var u_=Yt(function(n,t,e){return n+(e?" ":"")+t.toUpperCase()}),Ni=Of("toUpperCase");function Eo(n,t,e){return n=W(n),t=e?i:t,t===i?Ma(n)?Ba(n):ma(n):n.match(t)||[]}var Oo=O(function(n,t){try{return Sn(n,i,t)}catch(e){return Pi(e)?e:new I(e)}}),f_=it(function(n,t){return On(t,function(e){e=Qn(e),et(n,e,bi(n[e],n))}),n});function o_(n){var t=n==null?0:n.length,e=C();return n=t?H(n,function(r){if(typeof r[1]!="function")throw new bn(y);return[e(r[0]),r[1]]}):[],O(function(r){for(var u=-1;++u<t;){var o=n[u];if(Sn(o[0],this,r))return Sn(o[1],this,r)}})}function s_(n){return bl(Pn(n,K))}function Gi(n){return function(){return n}}function a_(n,t){return n==null||n!==n?t:n}var l_=Df(),c_=Df(!0);function yn(n){return n}function qi(n){return lf(typeof n=="function"?n:Pn(n,K))}function p_(n){return pf(Pn(n,K))}function h_(n,t){return hf(n,Pn(t,K))}var g_=O(function(n,t){return function(e){return _e(e,n,t)}}),__=O(function(n,t){return function(e){return _e(n,e,t)}});function Ki(n,t,e){var r=en(t),u=nr(t,r);e==null&&!($(t)&&(u.length||!r.length))&&(e=t,t=n,n=this,u=nr(t,en(t)));var o=!($(e)&&"chain"in e)||!!e.chain,s=ft(n);return On(u,function(a){var c=t[a];n[a]=c,s&&(n.prototype[a]=function(){var _=this.__chain__;if(o||_){var d=n(this.__wrapped__),v=d.__actions__=vn(this.__actions__);return v.push({func:c,args:arguments,thisArg:n}),d.__chain__=_,d}return c.apply(n,ht([this.value()],arguments))})}),n}function d_(){return tn._===this&&(tn._=Ka),this}function Hi(){}function v_(n){return n=R(n),O(function(t){return gf(t,n)})}var x_=yi(H),m_=yi(Du),y_=yi(zr);function bo(n){return Ii(n)?kr(Qn(n)):Xl(n)}function w_(n){return function(t){return n==null?i:It(n,t)}}var A_=Bf(),S_=Bf(!0);function $i(){return[]}function zi(){return!1}function C_(){return{}}function T_(){return""}function F_(){return!0}function I_(n,t){if(n=R(n),n<1||n>Nn)return[];var e=Y,r=fn(n,Y);t=C(t),n-=Y;for(var u=Jr(r,t);++e<n;)t(e);return u}function M_(n){return M(n)?H(n,Qn):Fn(n)?[n]:vn(Vf(W(n)))}function R_(n){var t=++Ga;return W(n)+t}var L_=fr(function(n,t){return n+t},0),E_=wi("ceil"),O_=fr(function(n,t){return n/t},1),b_=wi("floor");function D_(n){return n&&n.length?je(n,yn,fi):i}function P_(n,t){return n&&n.length?je(n,C(t,2),fi):i}function B_(n){return Wu(n,yn)}function W_(n,t){return Wu(n,C(t,2))}function U_(n){return n&&n.length?je(n,yn,li):i}function N_(n,t){return n&&n.length?je(n,C(t,2),li):i}var G_=fr(function(n,t){return n*t},1),q_=wi("round"),K_=fr(function(n,t){return n-t},0);function H_(n){return n&&n.length?Zr(n,yn):0}function $_(n,t){return n&&n.length?Zr(n,C(t,2)):0}return f.after=ph,f.ary=ao,f.assign=jh,f.assignIn=Co,f.assignInWith=mr,f.assignWith=ng,f.at=tg,f.before=lo,f.bind=bi,f.bindAll=f_,f.bindKey=co,f.castArray=Ch,f.chain=fo,f.chunk=bc,f.compact=Dc,f.concat=Pc,f.cond=o_,f.conforms=s_,f.constant=Gi,f.countBy=Hp,f.create=eg,f.curry=po,f.curryRight=ho,f.debounce=go,f.defaults=rg,f.defaultsDeep=ig,f.defer=hh,f.delay=gh,f.difference=Bc,f.differenceBy=Wc,f.differenceWith=Uc,f.drop=Nc,f.dropRight=Gc,f.dropRightWhile=qc,f.dropWhile=Kc,f.fill=Hc,f.filter=zp,f.flatMap=Zp,f.flatMapDeep=Jp,f.flatMapDepth=Xp,f.flatten=eo,f.flattenDeep=$c,f.flattenDepth=zc,f.flip=_h,f.flow=l_,f.flowRight=c_,f.fromPairs=kc,f.functions=cg,f.functionsIn=pg,f.groupBy=Qp,f.initial=Zc,f.intersection=Jc,f.intersectionBy=Xc,f.intersectionWith=Qc,f.invert=gg,f.invertBy=_g,f.invokeMap=jp,f.iteratee=qi,f.keyBy=nh,f.keys=en,f.keysIn=mn,f.map=hr,f.mapKeys=vg,f.mapValues=xg,f.matches=p_,f.matchesProperty=h_,f.memoize=_r,f.merge=mg,f.mergeWith=To,f.method=g_,f.methodOf=__,f.mixin=Ki,f.negate=dr,f.nthArg=v_,f.omit=yg,f.omitBy=wg,f.once=dh,f.orderBy=th,f.over=x_,f.overArgs=vh,f.overEvery=m_,f.overSome=y_,f.partial=Di,f.partialRight=_o,f.partition=eh,f.pick=Ag,f.pickBy=Fo,f.property=bo,f.propertyOf=w_,f.pull=tp,f.pullAll=io,f.pullAllBy=ep,f.pullAllWith=rp,f.pullAt=ip,f.range=A_,f.rangeRight=S_,f.rearg=xh,f.reject=uh,f.remove=up,f.rest=mh,f.reverse=Ei,f.sampleSize=oh,f.set=Cg,f.setWith=Tg,f.shuffle=sh,f.slice=fp,f.sortBy=ch,f.sortedUniq=hp,f.sortedUniqBy=gp,f.split=Zg,f.spread=yh,f.tail=_p,f.take=dp,f.takeRight=vp,f.takeRightWhile=xp,f.takeWhile=mp,f.tap=Dp,f.throttle=wh,f.thru=pr,f.toArray=wo,f.toPairs=Io,f.toPairsIn=Mo,f.toPath=M_,f.toPlainObject=So,f.transform=Fg,f.unary=Ah,f.union=yp,f.unionBy=wp,f.unionWith=Ap,f.uniq=Sp,f.uniqBy=Cp,f.uniqWith=Tp,f.unset=Ig,f.unzip=Oi,f.unzipWith=uo,f.update=Mg,f.updateWith=Rg,f.values=Xt,f.valuesIn=Lg,f.without=Fp,f.words=Eo,f.wrap=Sh,f.xor=Ip,f.xorBy=Mp,f.xorWith=Rp,f.zip=Lp,f.zipObject=Ep,f.zipObjectDeep=Op,f.zipWith=bp,f.entries=Io,f.entriesIn=Mo,f.extend=Co,f.extendWith=mr,Ki(f,f),f.add=L_,f.attempt=Oo,f.camelCase=Dg,f.capitalize=Ro,f.ceil=E_,f.clamp=Eg,f.clone=Th,f.cloneDeep=Ih,f.cloneDeepWith=Mh,f.cloneWith=Fh,f.conformsTo=Rh,f.deburr=Lo,f.defaultTo=a_,f.divide=O_,f.endsWith=Pg,f.eq=zn,f.escape=Bg,f.escapeRegExp=Wg,f.every=$p,f.find=kp,f.findIndex=no,f.findKey=ug,f.findLast=Yp,f.findLastIndex=to,f.findLastKey=fg,f.floor=b_,f.forEach=oo,f.forEachRight=so,f.forIn=og,f.forInRight=sg,f.forOwn=ag,f.forOwnRight=lg,f.get=Wi,f.gt=Lh,f.gte=Eh,f.has=hg,f.hasIn=Ui,f.head=ro,f.identity=yn,f.includes=Vp,f.indexOf=Yc,f.inRange=Og,f.invoke=dg,f.isArguments=Lt,f.isArray=M,f.isArrayBuffer=Oh,f.isArrayLike=xn,f.isArrayLikeObject=Z,f.isBoolean=bh,f.isBuffer=wt,f.isDate=Dh,f.isElement=Ph,f.isEmpty=Bh,f.isEqual=Wh,f.isEqualWith=Uh,f.isError=Pi,f.isFinite=Nh,f.isFunction=ft,f.isInteger=vo,f.isLength=vr,f.isMap=xo,f.isMatch=Gh,f.isMatchWith=qh,f.isNaN=Kh,f.isNative=Hh,f.isNil=zh,f.isNull=$h,f.isNumber=mo,f.isObject=$,f.isObjectLike=k,f.isPlainObject=we,f.isRegExp=Bi,f.isSafeInteger=kh,f.isSet=yo,f.isString=xr,f.isSymbol=Fn,f.isTypedArray=Jt,f.isUndefined=Yh,f.isWeakMap=Zh,f.isWeakSet=Jh,f.join=Vc,f.kebabCase=Ug,f.last=Wn,f.lastIndexOf=jc,f.lowerCase=Ng,f.lowerFirst=Gg,f.lt=Xh,f.lte=Qh,f.max=D_,f.maxBy=P_,f.mean=B_,f.meanBy=W_,f.min=U_,f.minBy=N_,f.stubArray=$i,f.stubFalse=zi,f.stubObject=C_,f.stubString=T_,f.stubTrue=F_,f.multiply=G_,f.nth=np,f.noConflict=d_,f.noop=Hi,f.now=gr,f.pad=qg,f.padEnd=Kg,f.padStart=Hg,f.parseInt=$g,f.random=bg,f.reduce=rh,f.reduceRight=ih,f.repeat=zg,f.replace=kg,f.result=Sg,f.round=q_,f.runInContext=l,f.sample=fh,f.size=ah,f.snakeCase=Yg,f.some=lh,f.sortedIndex=op,f.sortedIndexBy=sp,f.sortedIndexOf=ap,f.sortedLastIndex=lp,f.sortedLastIndexBy=cp,f.sortedLastIndexOf=pp,f.startCase=Jg,f.startsWith=Xg,f.subtract=K_,f.sum=H_,f.sumBy=$_,f.template=Qg,f.times=I_,f.toFinite=ot,f.toInteger=R,f.toLength=Ao,f.toLower=Vg,f.toNumber=Un,f.toSafeInteger=Vh,f.toString=W,f.toUpper=jg,f.trim=n_,f.trimEnd=t_,f.trimStart=e_,f.truncate=r_,f.unescape=i_,f.uniqueId=R_,f.upperCase=u_,f.upperFirst=Ni,f.each=oo,f.eachRight=so,f.first=ro,Ki(f,function(){var n={};return Jn(f,function(t,e){U.call(f.prototype,e)||(n[e]=t)}),n}(),{chain:!1}),f.VERSION=p,On(["bind","bindKey","curry","curryRight","partial","partialRight"],function(n){f[n].placeholder=f}),On(["drop","take"],function(n,t){D.prototype[n]=function(e){e=e===i?1:V(R(e),0);var r=this.__filtered__&&!t?new D(this):this.clone();return r.__filtered__?r.__takeCount__=fn(e,r.__takeCount__):r.__views__.push({size:fn(e,Y),type:n+(r.__dir__<0?"Right":"")}),r},D.prototype[n+"Right"]=function(e){return this.reverse()[n](e).reverse()}}),On(["filter","map","takeWhile"],function(n,t){var e=t+1,r=e==jt||e==Ie;D.prototype[n]=function(u){var o=this.clone();return o.__iteratees__.push({iteratee:C(u,3),type:e}),o.__filtered__=o.__filtered__||r,o}}),On(["head","last"],function(n,t){var e="take"+(t?"Right":"");D.prototype[n]=function(){return this[e](1).value()[0]}}),On(["initial","tail"],function(n,t){var e="drop"+(t?"":"Right");D.prototype[n]=function(){return this.__filtered__?new D(this):this[e](1)}}),D.prototype.compact=function(){return this.filter(yn)},D.prototype.find=function(n){return this.filter(n).head()},D.prototype.findLast=function(n){return this.reverse().find(n)},D.prototype.invokeMap=O(function(n,t){return typeof n=="function"?new D(this):this.map(function(e){return _e(e,n,t)})}),D.prototype.reject=function(n){return this.filter(dr(C(n)))},D.prototype.slice=function(n,t){n=R(n);var e=this;return e.__filtered__&&(n>0||t<0)?new D(e):(n<0?e=e.takeRight(-n):n&&(e=e.drop(n)),t!==i&&(t=R(t),e=t<0?e.dropRight(-t):e.take(t-n)),e)},D.prototype.takeRightWhile=function(n){return this.reverse().takeWhile(n).reverse()},D.prototype.toArray=function(){return this.take(Y)},Jn(D.prototype,function(n,t){var e=/^(?:filter|find|map|reject)|While$/.test(t),r=/^(?:head|last)$/.test(t),u=f[r?"take"+(t=="last"?"Right":""):t],o=r||/^find/.test(t);!u||(f.prototype[t]=function(){var s=this.__wrapped__,a=r?[1]:arguments,c=s instanceof D,_=a[0],d=c||M(s),v=function(b){var P=u.apply(f,ht([b],a));return r&&x?P[0]:P};d&&e&&typeof _=="function"&&_.length!=1&&(c=d=!1);var x=this.__chain__,S=!!this.__actions__.length,T=o&&!x,L=c&&!S;if(!o&&d){s=L?s:new D(this);var F=n.apply(s,a);return F.__actions__.push({func:pr,args:[v],thisArg:i}),new Dn(F,x)}return T&&L?n.apply(this,a):(F=this.thru(v),T?r?F.value()[0]:F.value():F)})}),On(["pop","push","shift","sort","splice","unshift"],function(n){var t=Ue[n],e=/^(?:push|sort|unshift)$/.test(n)?"tap":"thru",r=/^(?:pop|shift)$/.test(n);f.prototype[n]=function(){var u=arguments;if(r&&!this.__chain__){var o=this.value();return t.apply(M(o)?o:[],u)}return this[e](function(s){return t.apply(M(s)?s:[],u)})}}),Jn(D.prototype,function(n,t){var e=f[t];if(e){var r=e.name+"";U.call($t,r)||($t[r]=[]),$t[r].push({name:t,func:e})}}),$t[ur(i,Rn).name]=[{name:"wrapper",func:i}],D.prototype.clone=il,D.prototype.reverse=ul,D.prototype.value=fl,f.prototype.at=Pp,f.prototype.chain=Bp,f.prototype.commit=Wp,f.prototype.next=Up,f.prototype.plant=Gp,f.prototype.reverse=qp,f.prototype.toJSON=f.prototype.valueOf=f.prototype.value=Kp,f.prototype.first=f.prototype.head,se&&(f.prototype[se]=Np),f},_t=Wa();typeof define=="function"&&typeof define.amd=="object"&&define.amd?(tn._=_t,define(function(){return _t})):At?((At.exports=_t)._=_t,qr._=_t):tn._=_t}).call(Qt)});var tu=n0(Uo());var No="banner",Yi="alias",Zi="sticker",Ji="color";var at=i=>[...new Set(i)],Go=i=>[...new Map(i.map(p=>[p.toLowerCase(),p])).values()];var qo=i=>{var p;try{p=JSON.parse(i)}catch(m){}return p};var Ho=(i,p)=>p.indexOf(i)>0?p.indexOf(i):p.length,t0=i=>i.substring(0,i.length-2),Xi=i=>i.replace(/\\//g,"+")+"//";var $o=i=>i.substring(0,i.lastIndexOf("."))||i,e0=i=>i.charAt(0)=="/"?i.substring(1):i;var Ko=i=>e0(i.substring(i.lastIndexOf("/")))||i,Qi=i=>i?(i==null?void 0:i.type)=="folder"?Ko(i.contextPath):(i==null?void 0:i.type)=="space"?t0(i.contextPath):i.isRemote?Ko(i.contextPath):i.contextPath:"";var lt=i=>{var p;return(p=i==null?void 0:i.match(/(\\\\.|[^,])+/g))!=null?p:[]},zo=i=>{if(!i)return"";let p=/\\[\\[(.*?)\\]\\]/g.exec(i),m=(p==null?void 0:p.length)>1?p[1].substring(0,Ho("|",p[1])):i;return m||i};var ko=i=>{var p;return!i||i.length==0?[]:i.charAt(0)=="#"?i.split("&").map(m=>({type:"tag",value:m})):(p=qo(i))!=null?p:[]};var Se=(i,p)=>{if(typeof i=="string"){if(/\\/\\/(\\S+?(?:jpe?g|png|gif|svg))/gi.test(i)||i.includes("unsplash"))return"image";if(/^\\d{4}-\\d{2}-\\d{2}$/.test(i))return"date";if(p=="tag"||p=="tags")return"tag";if(/\\[\\[.*?\\]\\]/.test(i))return"link"}else{if(typeof i=="number")return"number";if(typeof i=="boolean")return"boolean";if(i)if(Array.isArray(i)||typeof i=="string"&&i.indexOf(",")>-1){let m=Array.isArray(i)?i:[];if(typeof i=="string"&&i.indexOf(",")>-1&&(m=lt(i)),p=="tag"||p=="tags")return"tag-multi";if(m.length==1&&Array.isArray(m[0])&&m[0].length==1&&typeof m[0][0]=="string")return"link";let A=at(m.map(y=>Se(y,p)));return A.length==1&&A[0]=="link"?"link-multi":"option-multi"}else{if(i.isLuxonDateTime)return"date";if(i.isLuxonDuration)return"duration";if(i.type=="file")return"link";if(typeof i=="object"&&!Array.isArray(i)&&i!==null)return"object"}else return"unknown"}return"text"};var Yo=i=>Object.keys(i!=null?i:{}).filter(p=>p!="position").filter(p=>p!="tag"&&p!="tags");var Vt=i=>i.join(","),Zo=i=>i.join(", ");var yr=(i,p)=>{switch(Se(p,i)){case"object":return JSON.stringify(p);case"number":return p.toString();case"boolean":return p?"true":"false";case"date":return p;case"duration":return Zo(Object.keys(p.values).reduce((A,y)=>[...A,...p.values[y]>0?[p.values[y]+" "+y]:[]],[]));case"option-multi":case"link-multi":return typeof p=="string"?p:Vt(p.map(A=>A?typeof A=="string"?A:A.path?A.path:Array.isArray(p)&&A.length==1&&Array.isArray(A[0])&&A[0].length==1&&typeof A[0][0]=="string"?A[0][0]:JSON.stringify(A):""));case"link":return Array.isArray(p)&&p.length==1&&Array.isArray(p[0])&&p[0].length==1&&typeof p[0][0]=="string"?p[0][0]:typeof p=="string"?p:p.path;case"text":case"tag":case"image":return p}return""};var Jo=i=>{switch(i){case"duration":return"text";case"unknown":return"text"}return i};var wr=(i,p)=>i==p,Vi=(i,p)=>(i!=null?i:"").length==0,ji=(i,p)=>(i!=null?i:"").toLowerCase().includes((p!=null?p:"").toLowerCase()),Ar=(i,p)=>parseFloat(i)>parseFloat(p),Sr=(i,p)=>parseInt(i)>parseInt(p),nu=(i,p)=>{let m=i?lt(i):[];return(p?lt(p):[]).some(y=>m.some(E=>E==y))};var Ce={isNotEmpty:{type:["text","file","link","link-multi","fileprop","image"],fn:(i,p)=>!Vi(i,""),valueType:"none"},isEmpty:{type:["text","file","link","link-multi","fileprop","image"],fn:(i,p)=>Vi(i,""),valueType:"none"},include:{fn:(i,p)=>ji(i,p),type:["text","file","link","link-multi","fileprop","image"],valueType:"text"},notInclude:{type:["text","file","link","link-multi","fileprop","image"],fn:(i,p)=>!ji(i,p),valueType:"text"},is:{type:["text","file","link","context","fileprop"],fn:wr,valueType:"text"},isNot:{type:["text","file","link","context","fileprop"],fn:(i,p)=>!wr(i,p),valueType:"text"},equal:{type:["number"],fn:wr,valueType:"number"},isGreatThan:{type:["number"],fn:Ar,valueType:"number"},isLessThan:{type:["number"],fn:Sr,valueType:"number"},isLessThanOrEqual:{type:["number"],fn:(i,p)=>!Ar(i,p),valueType:"number"},isGreatThanOrEqual:{type:["number"],fn:(i,p)=>!Sr(i,p),valueType:"number"},dateBefore:{type:["date"],fn:Sr,valueType:"date"},dateAfter:{type:["date"],fn:Ar,valueType:"date"},isAnyInList:{type:["option","context","option-multi","context-multi","tags-multi","tags"],fn:nu,valueType:"list"},isNoneInList:{type:["option","context","option-multi","context-multi","tags-multi","tags"],fn:(i,p)=>!nu(i,p),valueType:"list"},isTrue:{type:["boolean"],fn:(i,p)=>i=="true",valueType:"none"},isFalse:{type:["boolean"],fn:(i,p)=>i!="true",valueType:"none"}};var r0=(i,p)=>p.reduce((A,y)=>{let[E,X]=A,sn=y.type=="fileprop"?Vo(X,y):y.type=="filemeta"?Qo(X,y):y.type=="frontmatter"?Xo(X,y):[],rn=X.filter(K=>!sn.includes(K));return[[...E,...sn],rn]},[[],i])[0],i0=(i,p)=>p.reduce((m,A)=>A.type=="fileprop"?Vo(m,A):A.type=="filemeta"?Qo(m,A):A.type=="frontmatter"?Xo(m,A):[],i),Xo=(i,p)=>i.filter(m=>{let A=m.frontmatter;if(!A||!A[p.field])return!1;let y=Ce[p.fn],E=!0;return y&&(E=y.fn(yr(p.field,A[p.field]),p.value)),E}),Qo=(i,p)=>i.filter(m=>{let A="";p.field=="outlinks"?A=Vt(m.outlinks):p.field=="inlinks"?A=Vt(m.inlinks):p.field=="tags"&&(A=Vt(m.tags));let y=Ce[p.fn],E=!0;return y&&(E=y.fn(A,p.value)),E}),Vo=(i,p)=>i.filter(m=>{if(["path","sticker","color","isFolder","extension","ctime","mtime","size","parent"].includes(p.field)){let y=Ce[p.fn],E=!0;return y&&(E=y.fn(m[p.field],p.value)),E}return!0}),jo=(i,p)=>i.filters.reduce((y,E)=>y&&(E.type=="any"?r0([p],E.filters).length>0:i0([p],E.filters).length>0),!0);var ns=(i,p,m)=>{var wn,an,z,Yn,j,Rn;if(!p)return{changed:!1,cache:{path:i.dbPath,info:i,name:Qi(i),sticker:"",banner:"",cols:[],files:[],rows:[],def:[],defContexts:[],outlinks:[],contexts:[]}};let A=(an=(wn=p.cols)==null?void 0:wn.filter(nn=>nn.type.startsWith("context")))!=null?an:[],y=(Yn=(z=p.cols)==null?void 0:z.filter(nn=>nn.type.startsWith("link")))!=null?Yn:[],E=at(A.map(nn=>nn.value)),X=at(p.rows.reduce((nn,ln)=>at([...nn,...[...A,...y].flatMap(cn=>lt(ln[cn.name]).map(pn=>zo(pn)))]),[])),sn=ko(p.schema.def),rn={path:i.dbPath,info:i,name:Qi(i),sticker:"",banner:"",cols:p.cols,files:(j=p.rows.map(nn=>nn.File))!=null?j:[],rows:(Rn=p.rows)!=null?Rn:[],defContexts:sn.filter(nn=>nn.type=="tag").map(nn=>nn.value),def:sn,contexts:E,outlinks:X},K=!0;return m&&tu.default.isEqual(rn,m)&&(K=!0),{changed:K,cache:rn}},u0=i=>{var m,A,y,E,X,sn,rn,K,wn,an;let p=[];return i&&i.tags&&p.push(...(A=(m=i.tags)==null?void 0:m.map(z=>z.tag))!=null?A:[]),i&&((y=i.frontmatter)==null?void 0:y.tags)&&p.push(...(typeof((E=i.frontmatter)==null?void 0:E.tags)=="string"?lt(i.frontmatter.tags.replace(/ /g,"")):Array.isArray((X=i.frontmatter)==null?void 0:X.tags)?(sn=i.frontmatter)==null?void 0:sn.tags:[]).filter(z=>typeof z=="string").map(z=>"#"+z)),i&&((rn=i.frontmatter)==null?void 0:rn.tag)&&p.push(...(typeof((K=i.frontmatter)==null?void 0:K.tag)=="string"?lt(i.frontmatter.tag.replace(/ /g,"")):Array.isArray((wn=i.frontmatter)==null?void 0:wn.tag)?(an=i.frontmatter)==null?void 0:an.tag:[]).filter(z=>typeof z=="string").map(z=>"#"+z)),at(p)};var f0=(i,p,m,A)=>{let y=[];return y.push(...p.filter(E=>m.has(E))),i.parent!="/"&&y.push(i.parent),A.forEach(E=>{m.has(Xi(E))&&y.push(Xi(E))}),y},ts=(i,p,m,A,y,E,X,sn,rn)=>{var Ie,Zn,Nn;let K={path:i.path,name:i.name};i.stat&&(K.ctime=i.stat.ctime,K.mtime=i.stat.mtime,K.size=i.stat.size,K.extension=i.extension);let wn=[],an=u0(E);if(m.has(i.parent))for(let dn of m.get(i.parent).def)dn.type=="tag"&&wn.push(dn.value);wn.push(...an);let z=i.isFolder?i.name:$o(i.name),Yn=(Ie=y==null?void 0:y.sticker)!=null?Ie:"",j=(Zn=y==null?void 0:y.color)!=null?Zn:"",Rn=(Nn=y==null?void 0:y.rank)!=null?Nn:"",nn=i.parent,ln=i.isFolder,cn={},pn={},Vn=[],Ln=[],An=E==null?void 0:E.frontmatter;E!=null&&E.links&&Ln.push(...E.links.map(dn=>dn.link));for(let dn of Object.keys(X))i.path in X[dn]&&Vn.push(dn);let bt;if(An){let Gn=Go(Yo(An)).reduce((Y,ct)=>Ot(Et({},Y),{[ct]:{name:ct,type:Jo(Se(An[ct],ct))}}),{});Object.keys(Gn).forEach(Y=>{cn[Y]=yr(Y,An[Y]),pn[Y]=Gn[Y].type}),bt=cn[No],cn[Zi]&&(Yn=An[Zi]),cn[Ji]&&(j=An[Ji]),cn[Yi]&&(z=An[Yi])}let Dt=Ot(Et({},K),{name:z,tags:at(wn),fileTags:an,folderNote:sn,sticker:Yn,color:j,rank:Rn,parent:nn,banner:bt,isFolder:ln,frontmatter:cn,frontmatterTypes:pn,inlinks:Vn,outlinks:Ln}),Pt=[],Te={};for(let[dn,Gn]of A)if(Gn.space.def.type=="smart")jo(Gn.space.def,Dt)&&Pt.push(dn);else{let Y=Gn.spaceItems.find(ct=>ct.path==Dt.path);Y&&(Pt.push(dn),Te[dn]=Y.rank)}let Cr=f0(i,wn,m,Pt),jt=sn&&!ln?Ot(Et({},Dt),{space:[],contexts:[]}):Ot(Et({},Dt),{spaces:Pt,contexts:at(Cr),spaceRanks:Te}),Fe=!0;return rn&&tu.default.isEqual(jt,rn)&&(Fe=!1),{changed:Fe,cache:jt}};function es(i){let{file:p,settings:m,contextsCache:A,spacesCache:y,vaultItem:E,metadataCache:X,resolvedLinks:sn,folderNote:rn,oldMetadata:K}=i;return ts(p,m,A,y,E,X,sn,rn,K)}function rs(i){let{context:p,mdbTable:m,oldCache:A}=i;return ns(p,m,A)}var o0=self;o0.onmessage=async i=>{let{payload:p,job:m}=i.data,A;m.type=="file"?A=es(p):m.type=="context"&&(A=rs(p));try{postMessage({job:m,result:A})}catch(y){console.log(y),postMessage({job:m,result:{$error:`Failed to index ${m.type} ${m.path}: ${y}`}})}};\n/**\n * @license\n * Lodash <https://lodash.com/>\n * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>\n * Released under MIT license <https://lodash.com/license>\n * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>\n * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors\n */\n');
 }
 
 // src/superstate/workers/manager.ts
-var Manager = class extends import_obsidian54.Component {
+var Manager = class extends import_obsidian57.Component {
   constructor(numWorkers, cache) {
     super();
     this.numWorkers = numWorkers;
@@ -51873,9 +52302,10 @@ var Manager = class extends import_obsidian54.Component {
     }
   }
   send(job, workerId) {
-    this.busy[workerId] = true;
     if (job.type == "file") {
       const file = tFileToAFile(getAbstractFileAtPath(app, job.path));
+      if (!file)
+        return;
       const folderNote = (file2) => {
         if (!file2.extension || file2.extension.length == 0) {
           return abstractFileAtPathExists(app, folderNotePathFromAFile(this.cache.plugin.settings, file2));
@@ -51899,9 +52329,13 @@ var Manager = class extends import_obsidian54.Component {
           oldMetadata: this.cache.files.get(job.path)
         }
       });
+      this.busy[workerId] = true;
     }
     if (job.type == "context") {
-      const context = mdbContextByContextPath(this.cache.plugin, job.path);
+      const context = mdbContextByPath(this.cache.plugin, job.path);
+      if (!context) {
+        return;
+      }
       getMDBTable(this.cache.plugin, context, "files").then((mdbTable) => {
         this.workers[workerId].postMessage({
           job,
@@ -51911,6 +52345,7 @@ var Manager = class extends import_obsidian54.Component {
             oldCache: this.cache.contextsCache.get(job.path)
           }
         });
+        this.busy[workerId] = true;
       });
     }
   }
@@ -51929,7 +52364,7 @@ var loadContexts = (plugin, spaces2) => {
       getFolderPathFromString(plugin2.settings.tagContextFolder)
     );
     const allcontexts = (_a2 = folder == null ? void 0 : folder.children.filter(
-      (f4) => f4 instanceof import_obsidian55.TFile && f4.extension == "mdb" && f4.name.charAt(0) == "#"
+      (f4) => f4 instanceof import_obsidian58.TFile && f4.extension == "mdb" && f4.name.charAt(0) == "#"
     ).map((f4) => tagContextFromTag(plugin2, tagPathToTag(f4.name)))) != null ? _a2 : [];
     return allcontexts;
   };
@@ -51940,7 +52375,7 @@ var loadContexts = (plugin, spaces2) => {
       getFolderPathFromString(plugin2.settings.tagContextFolder)
     );
     const allcontexts = (_a2 = folder == null ? void 0 : folder.children.filter(
-      (f4) => f4 instanceof import_obsidian55.TFile && f4.extension == "mdb" && spaces3.some((s5) => s5.name == f4.basename)
+      (f4) => f4 instanceof import_obsidian58.TFile && f4.extension == "mdb" && spaces3.some((s5) => s5.name == f4.basename)
     ).map((f4) => spaceContextFromSpace(plugin2, spaceContextPathFromName(f4.basename)))) != null ? _a2 : [];
     return allcontexts;
   };
@@ -51949,12 +52384,12 @@ var loadContexts = (plugin, spaces2) => {
     let rootFolder = app.vault.getRoot();
     function recursiveFx(folder) {
       for (let child of folder.children) {
-        if (child instanceof import_obsidian55.TFolder) {
+        if (child instanceof import_obsidian58.TFolder) {
           let childFolder = child;
           if (childFolder.children)
             recursiveFx(childFolder);
         }
-        if (child instanceof import_obsidian55.TFile && child.basename == plugin2.settings.folderContextFile && child.path != "/")
+        if (child instanceof import_obsidian58.TFile && child.basename == plugin2.settings.folderContextFile && child.path != "/")
           files.push(child);
       }
     }
@@ -51963,12 +52398,21 @@ var loadContexts = (plugin, spaces2) => {
   };
   return [...getAllTagContextFiles(plugin), ...getAllFolderContextFiles(plugin), ...getAllSpaceContextFiles(plugin, spaces2)];
 };
-var Superstate = class extends import_obsidian55.Component {
+var Superstate = class extends import_obsidian58.Component {
   constructor(app2, indexVersion, onChange, plugin) {
     super();
     this.app = app2;
     this.indexVersion = indexVersion;
     this.onChange = onChange;
+    this.persistSpacesDB = (0, import_lodash9.debounce)(
+      (tables) => {
+        saveDBToPath(this.plugin, this.plugin.spacesDBPath, tables).then((f4) => this.updateSpaceLastUpdated());
+      },
+      1e3,
+      {
+        leading: false
+      }
+    );
     this.initialized = false;
     this.plugin = plugin;
     this.metadataCache = app2.metadataCache;
@@ -51979,6 +52423,10 @@ var Superstate = class extends import_obsidian55.Component {
     this.contextsCache = /* @__PURE__ */ new Map();
     this.contexts = new IndexMap();
     this.contextStoreQueue = Promise.resolve();
+    this.vaultDBCache = [];
+    this.spacesItemsDBCache = [];
+    this.spacesDBCache = [];
+    this.syncStatus = 0;
     this.persister = new LocalStorageCache(app2.appId || "shared", indexVersion);
     this.addChild(this.indexer = new Manager(2, this));
   }
@@ -51989,21 +52437,20 @@ var Superstate = class extends import_obsidian55.Component {
     this.contextStoreQueue = this.contextStoreQueue.then(operation).catch(() => {
     });
   }
-  async loadSpacesDB() {
-    var _a2, _b2, _c2, _d2, _e2, _f;
-    if (this.plugin.settings.spacesSyncResolver.length > 0) {
+  async resolveSync() {
+    if (this.plugin.settings.spacesSyncLastUpdated.length > 0) {
       const waitIfSpacesFileStillSyncing = async (timeout) => {
-        var _a3;
-        const incomingSpaceTime = parseInt(await app.vault.read(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver)));
+        var _a2;
+        const incomingSpaceTime = parseInt(await app.vault.read(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncLastUpdated)));
         const currentSpaceTime = this.plugin.spacesDBLastModify;
-        const spaceFileTime = (_a3 = await app.vault.adapter.stat(this.plugin.spacesDBPath)) == null ? void 0 : _a3.mtime;
+        const spaceFileTime = (_a2 = await app.vault.adapter.stat(this.plugin.spacesDBPath)) == null ? void 0 : _a2.mtime;
         if (Math.floor(incomingSpaceTime / 1e3) != Math.floor(spaceFileTime / 1e3)) {
           await sleep(timeout);
           return false;
         }
         return true;
       };
-      let resolverFile = getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver);
+      let resolverFile = getAbstractFileAtPath(app, this.plugin.settings.spacesSyncLastUpdated);
       if (!resolverFile) {
         await this.updateSpaceLastUpdated();
       } else {
@@ -52011,72 +52458,75 @@ var Superstate = class extends import_obsidian55.Component {
         let spacesReady = await waitIfSpacesFileStillSyncing(500);
         let notice;
         if (!spacesReady) {
-          notice = new import_obsidian55.Notice(`Local Spaces File Out of Sync
-Waiting for Sync
-${this.plugin.settings.spacesSyncTimeoutSeconds} seconds`, 0);
         }
         while (!spacesReady && counter++ <= this.plugin.settings.spacesSyncTimeoutSeconds * 2) {
           this.syncStatus = 1;
-          notice.setMessage(`Local Spaces File Out of Sync
-Waiting for Sync
-${this.plugin.settings.spacesSyncTimeoutSeconds - Math.floor(counter / 2)} seconds`);
           spacesReady = await waitIfSpacesFileStillSyncing(500);
         }
         if (notice) {
-          notice.hide();
         }
         this.syncStatus = 0;
       }
     }
-    const db = await getDB(await this.plugin.sqlJS(), this.plugin.spacesDBPath);
-    const tables = dbResultsToDBTables(
-      db.exec(
-        "SELECT name FROM sqlite_schema WHERE type ='table' AND name NOT LIKE 'sqlite_%';"
-      )
-    );
-    if (tables.length == 0) {
-      initiateDB(db);
-      await saveDBToPath(this.plugin, this.plugin.spacesDBPath, {
-        vault: vaultSchema,
-        spaces: spaceSchema,
-        spaceItems: spaceItemsSchema
-      }).then((f4) => this.updateSpaceLastUpdated());
+  }
+  async initializeIndex() {
+    this.loadSpacesDB();
+  }
+  async loadSpacesDB() {
+    var _a2, _b2, _c2, _d2, _e2, _f;
+    if (this.plugin.settings.spacesEnabled) {
+      await this.resolveSync();
+      const db = await getDB(await this.plugin.sqlJS(), this.plugin.spacesDBPath);
+      const tables = dbResultsToDBTables(
+        db.exec(
+          "SELECT name FROM sqlite_schema WHERE type ='table' AND name NOT LIKE 'sqlite_%';"
+        )
+      );
+      if (tables.length == 0) {
+        initiateDB(db);
+        await saveDBToPath(this.plugin, this.plugin.spacesDBPath, {
+          vault: vaultSchema,
+          spaces: spaceSchema,
+          spaceItems: spaceItemsSchema
+        }).then((f4) => this.updateSpaceLastUpdated());
+      }
+      this.vaultDBCache = (_b2 = (_a2 = selectDB(db, "vault")) == null ? void 0 : _a2.rows) != null ? _b2 : [];
+      this.spacesItemsDBCache = (_d2 = (_c2 = selectDB(db, "spaceItems")) == null ? void 0 : _c2.rows) != null ? _d2 : [];
+      this.spacesDBCache = (_f = (_e2 = selectDB(db, "spaces")) == null ? void 0 : _e2.rows) != null ? _f : [];
+      db.close();
     }
-    this.vaultDBCache = (_b2 = (_a2 = selectDB(db, "vault")) == null ? void 0 : _a2.rows) != null ? _b2 : [];
-    this.spacesItemsDBCache = (_d2 = (_c2 = selectDB(db, "spaceItems")) == null ? void 0 : _c2.rows) != null ? _d2 : [];
-    this.spacesDBCache = (_f = (_e2 = selectDB(db, "spaces")) == null ? void 0 : _e2.rows) != null ? _f : [];
-    db.close();
-    rebuildIndex(this.plugin);
+    rebuildIndex(this.plugin, true);
   }
   async updateSpaceLastUpdated() {
-    if (this.plugin.settings.spacesSyncResolver.length > 0) {
+    if (this.plugin.settings.spacesSyncLastUpdated.length > 0) {
       return app.vault.adapter.stat(this.plugin.spacesDBPath).then((f4) => {
         if (f4) {
           this.plugin.spacesDBLastModify = f4.mtime;
-          let resolverFile = getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver);
+          let resolverFile = getAbstractFileAtPath(app, this.plugin.settings.spacesSyncLastUpdated);
           if (!resolverFile) {
-            return app.vault.create(this.plugin.settings.spacesSyncResolver, f4.mtime.toString()).then((f5) => {
+            return app.vault.create(this.plugin.settings.spacesSyncLastUpdated, f4.mtime.toString()).then((f5) => {
             });
           }
-          return app.vault.modify(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver), f4.mtime.toString());
+          return app.vault.modify(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncLastUpdated), f4.mtime.toString());
         }
       });
     }
   }
-  saveSpacesDB(tables, save = true) {
+  async saveSpacesDB(tables, save = true) {
     if (tables.vault)
       this.vaultDBCache = tables.vault.rows;
     if (tables.spaceItems)
       this.spacesItemsDBCache = tables.spaceItems.rows;
     if (tables.spaces)
       this.spacesDBCache = tables.spaces.rows;
-    if (save) {
-      saveDBToPath(this.plugin, this.plugin.spacesDBPath, tables).then((f4) => this.updateSpaceLastUpdated());
+    if (save && this.plugin.settings.spacesEnabled && this.syncStatus == 0) {
+      this.persistSpacesDB(tables);
     }
   }
   async initialize() {
     const start = Date.now();
-    await this.initializeSpaces();
+    if (this.plugin.settings.spacesEnabled)
+      await this.initializeSpaces();
     await this.initializeContexts();
     await this.loadFromCache();
     await this.initalizeFiles();
@@ -52202,7 +52652,7 @@ ${this.plugin.settings.spacesSyncTimeoutSeconds - Math.floor(counter / 2)} secon
   }
   metadataChange(file) {
     const fileCache = this.files.get(file.path);
-    if (fileCache && file instanceof import_obsidian55.TFile) {
+    if (fileCache && file instanceof import_obsidian58.TFile) {
       const allContextsWithFile = fileCache.contexts.map((f4) => {
         var _a2;
         return (_a2 = this.contextsCache.get(f4)) == null ? void 0 : _a2.info;
@@ -52294,13 +52744,15 @@ ${this.plugin.settings.spacesSyncTimeoutSeconds - Math.floor(counter / 2)} secon
     this.broadcast("space");
   }
   async spacesSynced() {
-    const incomingSpaceTime = parseInt(await app.vault.read(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncResolver)));
+    const incomingSpaceTime = parseInt(await app.vault.read(getAbstractFileAtPath(app, this.plugin.settings.spacesSyncLastUpdated)));
     const currentSpaceTime = this.plugin.spacesDBLastModify;
     if (incomingSpaceTime != currentSpaceTime) {
       this.loadSpacesDB();
     }
   }
   async reloadContext(context) {
+    if (!context)
+      return false;
     return this.indexer.reload({ type: "context", path: context.contextPath }).then((r3) => {
       const { changed, cache } = r3;
       if (!changed) {
@@ -52407,13 +52859,13 @@ var FileHeaderContextView = (props2) => {
   }, []);
   return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, fm && /* @__PURE__ */ Cn.createElement(NoteBannerView, {
     plugin: props2.plugin,
-    link: fm.banner
+    link: fm[FMBannerKey]
   }), /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-file-context-component"
   }, /* @__PURE__ */ Cn.createElement("div", {
     className: `mk-spacer`,
     style: {
-      "--header-height": fm && fm.banner ? ((platformIsMobile() ? 1 : 0) * 26 + 138 + (!fm.icon || props2.plugin.settings.inlineContextNameLayout == "horizontal" ? 1 : 0) * 50).toString() + "px" : 0
+      "--header-height": fm && fm[FMBannerKey] ? ((platformIsMobile() ? 1 : 0) * 26 + 138 + (!fm.icon || props2.plugin.settings.inlineContextNameLayout == "horizontal" ? 1 : 0) * 50).toString() + "px" : 0
     },
     onContextMenu: (e4) => e4.preventDefault()
   }), /* @__PURE__ */ Cn.createElement("div", {
@@ -52421,10 +52873,13 @@ var FileHeaderContextView = (props2) => {
   }, /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, fm.icon ? /* @__PURE__ */ Cn.createElement("div", {
     className: `mk-file-icon`
   }, /* @__PURE__ */ Cn.createElement("div", {
-    dangerouslySetInnerHTML: { __html: stickerFromString(fm.icon) }
+    dangerouslySetInnerHTML: {
+      __html: stickerFromString(fm.icon)
+    }
   })) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null), /* @__PURE__ */ Cn.createElement("div", {
     className: "mk-inline-title inline-title"
   }, fileNameToString(name)), (tags == null ? void 0 : tags.length) > 0 ? /* @__PURE__ */ Cn.createElement(TagsView, {
+    canOpen: true,
     plugin: props2.plugin,
     tags
   }) : /* @__PURE__ */ Cn.createElement(Cn.Fragment, null)))), !collapsed ? /* @__PURE__ */ Cn.createElement("div", {
@@ -52471,7 +52926,7 @@ var ReadingModeHeader = (props2) => {
 };
 
 // src/utils/contexts/markdownPost.tsx
-var import_obsidian56 = require("obsidian");
+var import_obsidian59 = require("obsidian");
 var replaceInlineContext = (plugin, el, ctx) => {
   replaceMarkdownForReadingMode(el, (dom) => {
     let element = dom.querySelector(".mod-header");
@@ -52481,7 +52936,7 @@ var replaceInlineContext = (plugin, el, ctx) => {
         element.setAttribute("data-path", ctx.sourcePath);
         element.toggleClass("mk-header", true);
         const reactEl = createRoot(element);
-        ctx.addChild(new import_obsidian56.MarkdownRenderChild(element));
+        ctx.addChild(new import_obsidian59.MarkdownRenderChild(element));
         if (ctx.sourcePath.match(urlRegex)) {
           reactEl.render(
             /* @__PURE__ */ Cn.createElement(FileHeaderContextView, {
@@ -52556,10 +53011,10 @@ function around1(obj, method, createWrapper) {
 }
 
 // src/utils/spaces/patches.ts
-var import_obsidian57 = require("obsidian");
+var import_obsidian60 = require("obsidian");
 var patchFileExplorer = (plugin) => {
   plugin.register(
-    around(import_obsidian57.Workspace.prototype, {
+    around(import_obsidian60.Workspace.prototype, {
       getLeavesOfType(old) {
         return function(type) {
           if (type == "file-explorer") {
@@ -52573,7 +53028,7 @@ var patchFileExplorer = (plugin) => {
 };
 var patchWorkspace = (plugin) => {
   let layoutChanging = false;
-  const uninstaller = around(import_obsidian57.Workspace.prototype, {
+  const uninstaller = around(import_obsidian60.Workspace.prototype, {
     changeLayout(old) {
       return async function(workspace) {
         layoutChanging = true;
@@ -52594,7 +53049,7 @@ var patchWorkspace = (plugin) => {
           return false;
         if (layoutChanging)
           return false;
-        if (parent === app.workspace.rootSplit || import_obsidian57.WorkspaceContainer && parent instanceof import_obsidian57.WorkspaceContainer) {
+        if (parent === app.workspace.rootSplit || import_obsidian60.WorkspaceContainer && parent instanceof import_obsidian60.WorkspaceContainer) {
           for (const popover of FlowEditor.popoversForWindow(
             parent.win
           )) {
@@ -52627,7 +53082,7 @@ var patchWorkspace = (plugin) => {
 };
 
 // src/main.ts
-var MakeMDPlugin = class extends import_obsidian58.Plugin {
+var MakeMDPlugin = class extends import_obsidian61.Plugin {
   constructor() {
     super(...arguments);
     this.dataViewAPI = () => (0, import_obsidian_dataview.getAPI)();
@@ -52649,28 +53104,28 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
     this.onCreate = (file) => {
       if (!file)
         return;
-      onFileCreated(this, file.path, file instanceof import_obsidian58.TFolder);
+      onFileCreated(this, file.path, file instanceof import_obsidian61.TFolder);
     };
     this.onDelete = (file) => {
-      if (file instanceof import_obsidian58.TFile && file.extension != "mdb") {
+      if (file instanceof import_obsidian61.TFile && file.extension != "mdb") {
         onFileDeleted(this, file.path);
-      } else if (file instanceof import_obsidian58.TFolder) {
+      } else if (file instanceof import_obsidian61.TFolder) {
         onFolderDeleted(this, file.path);
       }
       this.activeFileChange();
     };
     this.onModify = (file) => {
-      if (file.path == this.settings.spacesSyncResolver) {
+      if (file.path == this.settings.spacesSyncLastUpdated) {
         this.index.spacesSynced();
       }
-      if (file instanceof import_obsidian58.TFile && file.extension == "mdb") {
+      if (file instanceof import_obsidian61.TFile && file.extension == "mdb") {
         this.index.reloadContext(mdbContextByDBPath(this, file.path));
       }
     };
     this.onRename = (file, oldPath) => {
-      if (file instanceof import_obsidian58.TFile && file.extension != "mdb") {
+      if (file instanceof import_obsidian61.TFile && file.extension != "mdb") {
         onFileChanged(this, oldPath, file.path);
-      } else if (file instanceof import_obsidian58.TFolder) {
+      } else if (file instanceof import_obsidian61.TFolder) {
         onFolderChanged(this, oldPath, file.path);
       }
       this.activeFileChange();
@@ -52706,15 +53161,16 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
         leaf.detach();
       }
     };
-    this.openFileContextLeaf = async () => {
+    this.openFileContextLeaf = async (reveal) => {
       let leafs = this.app.workspace.getLeavesOfType(FILE_CONTEXT_VIEW_TYPE);
       if (leafs.length == 0) {
         let leaf = this.app.workspace.getRightLeaf(false);
         await leaf.setViewState({ type: FILE_CONTEXT_VIEW_TYPE });
+        this.app.workspace.revealLeaf(leaf);
       } else {
         leafs.forEach((leaf) => this.app.workspace.revealLeaf(leaf));
       }
-      if (platformIsMobile()) {
+      if (platformIsMobile() && !reveal) {
         app.workspace.rightSplit.collapse();
       }
     };
@@ -52787,13 +53243,41 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
       });
     }
   }
+  loadSuperState() {
+    this.app.workspace.onLayoutReady(async () => {
+      if (this.settings.spacesEnabled)
+        await this.index.initializeIndex();
+      else
+        this.index.initialize();
+      this.registerEvent(this.app.vault.on("create", this.onCreate));
+      this.registerEvent(this.app.vault.on("delete", this.onDelete));
+      this.registerEvent(this.app.vault.on("rename", this.onRename));
+      this.registerEvent(this.app.vault.on("modify", this.onModify));
+      this.app.metadataCache.on("changed", this.metadataChange);
+      if (this.dataViewAPI()) {
+        this.registerEvent(
+          this.app.metadataCache.on("dataview:index-ready", () => {
+            this.dataViewReady = true;
+          })
+        );
+        this.registerEvent(
+          this.app.metadataCache.on(
+            "dataview:metadata-change",
+            (type, file, oldPath) => {
+              if (type === "update" && this.app.metadataCache.fileCache[file.path].mtime >= this.loadTime && this.dataViewAPI().index.revision !== this.dataViewLastIndex && this.dataViewReady) {
+                if (file instanceof import_obsidian61.TFile) {
+                  this.metadataChange(file);
+                }
+                this.dataViewLastIndex = this.dataViewAPI().index.revision;
+              }
+            }
+          )
+        );
+      }
+      await this.openFileTreeLeaf(true);
+    });
+  }
   async loadSpaces() {
-    this.spacesDBPath = (0, import_obsidian58.normalizePath)(
-      app.vault.configDir + "/plugins/make-md/Spaces.mdb"
-    );
-    this.superstateDBPath = (0, import_obsidian58.normalizePath)(
-      app.vault.configDir + "/plugins/make-md/Superstate.mdb"
-    );
     patchWorkspace(this);
     document.body.classList.toggle("mk-hide-tabs", !this.settings.sidebarTabs);
     document.body.classList.toggle("mk-hide-ribbon", !this.settings.showRibbon);
@@ -52811,35 +53295,6 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
       this.registerView(FILE_TREE_VIEW_TYPE, (leaf) => {
         return new FileTreeView(leaf, this);
       });
-      this.app.workspace.onLayoutReady(async () => {
-        await this.index.loadSpacesDB();
-        this.registerEvent(this.app.vault.on("create", this.onCreate));
-        this.registerEvent(this.app.vault.on("delete", this.onDelete));
-        this.registerEvent(this.app.vault.on("rename", this.onRename));
-        this.registerEvent(this.app.vault.on("modify", this.onModify));
-        this.app.metadataCache.on("changed", this.metadataChange);
-        if (this.dataViewAPI()) {
-          this.registerEvent(
-            this.app.metadataCache.on("dataview:index-ready", () => {
-              this.dataViewReady = true;
-            })
-          );
-          this.registerEvent(
-            this.app.metadataCache.on(
-              "dataview:metadata-change",
-              (type, file, oldPath) => {
-                if (type === "update" && this.app.metadataCache.fileCache[file.path].mtime >= this.loadTime && this.dataViewAPI().index.revision !== this.dataViewLastIndex && this.dataViewReady) {
-                  if (file instanceof import_obsidian58.TFile) {
-                    this.metadataChange(file);
-                  }
-                  this.dataViewLastIndex = this.dataViewAPI().index.revision;
-                }
-              }
-            )
-          );
-        }
-        await this.openFileTreeLeaf(true);
-      });
     }
     this.registerEvent(
       app.workspace.on("active-leaf-change", () => this.activeFileChange())
@@ -52849,7 +53304,7 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
     let filePath = null;
     const activeLeaf = app.workspace.activeLeaf;
     if ((activeLeaf == null ? void 0 : activeLeaf.view.getViewType()) == CONTEXT_VIEW_TYPE) {
-      const context = mdbContextByContextPath(
+      const context = mdbContextByPath(
         this,
         activeLeaf == null ? void 0 : activeLeaf.view.getState().contextPath
       );
@@ -52859,18 +53314,18 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
           filePath = file.path;
       }
     } else if ((activeLeaf == null ? void 0 : activeLeaf.view.getViewType()) == "markdown") {
-      const view = app.workspace.getActiveViewOfType(import_obsidian58.MarkdownView);
-      if (view instanceof import_obsidian58.MarkdownView) {
+      const view = app.workspace.getActiveViewOfType(import_obsidian61.MarkdownView);
+      if (view instanceof import_obsidian61.MarkdownView) {
         filePath = view.file.path;
       }
     }
     return filePath;
   }
   activeFileChange() {
-    const filePath = this.getActiveFile();
-    if (filePath) {
-      let evt = new CustomEvent(eventTypes.activeFileChange, {
-        detail: { filePath }
+    const path = this.getActiveFile();
+    if (path) {
+      let evt = new CustomEvent(eventTypes.activePathChange, {
+        detail: { path: pathByString(this, path) }
       });
       window.dispatchEvent(evt);
     }
@@ -52923,7 +53378,7 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
       this.addCommand({
         id: "mk-open-file-context",
         name: i18n_default.commandPalette.openFileContext,
-        callback: () => this.openFileContextLeaf()
+        callback: () => this.openFileContextLeaf(true)
       });
     }
     if (this.settings.inlineBacklinks) {
@@ -53081,8 +53536,12 @@ var MakeMDPlugin = class extends import_obsidian58.Plugin {
         this.debouncedRefresh();
       }, this)
     );
-    (0, import_obsidian58.addIcon)("mk-logo", mkLogo);
+    (0, import_obsidian61.addIcon)("mk-logo", mkLogo);
     await this.loadSettings();
+    this.spacesDBPath = (0, import_obsidian61.normalizePath)(
+      app.vault.configDir + "/plugins/make-md/Spaces.mdb"
+    );
+    this.loadSuperState();
     this.addSettingTab(new MakeMDPluginSettingsTab(this.app, this));
     await this.loadSpaces();
     this.loadContext();

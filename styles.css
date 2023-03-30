@@ -151,11 +151,13 @@
 }
 
 /* src/css/CardsView.css */
+.mk-folder-view .mk-cards-container {
+  padding-bottom: 60px;
+}
 .mk-cards-container {
   width: 100%;
   height: 100%;
   overflow-x: auto;
-  padding-bottom: 60px;
 }
 .mk-cards-container .mk-list-content > .mk-flowspace-editor {
   padding-left: 12px !important;
@@ -210,11 +212,19 @@
 .mk-list-container .mk-list-group-header > div {
   background: none !important;
 }
+.mk-floweditor > .workspace-leaf > .workspace-leaf-content > .view-content > div > .mk-list-container {
+  padding-bottom: 0;
+}
+.mk-floweditor > .workspace-leaf > .workspace-leaf-content > .view-content > div > .mk-list-container .mk-list-item {
+  padding: 8px;
+}
+.mk-folder-view .mk-list-container {
+  padding-bottom: 100px;
+}
 .mk-list-container {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding-bottom: 100px;
 }
 .mk-list-container .mk-list-view {
   display: flex;
@@ -224,9 +234,12 @@
 .mk-list-container .mk-list-item.mk-is-active {
   background: var(--background-modifier-active-hover);
 }
+.mk-folder-view .mk-list-container .mk-list-item {
+  padding: 8px var(--context-padding) 0 var(--context-padding);
+}
 .mk-list-container .mk-list-item {
   display: flex;
-  padding: 8px var(--context-padding) 0 var(--context-padding);
+  padding: 8px;
   list-style: none;
   font-size: var(--font-ui-small);
   color: var(--text-muted);
@@ -243,8 +256,11 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   padding-bottom: 8px;
+}
+.mk-list-container .mk-list-fields > div {
+  margin-bottom: -8px;
 }
 .mk-list-container .mk-list-fields > div:not(.mk-cell-file):not(.mk-cell-image) {
   width: unset !important;
@@ -264,7 +280,6 @@
 .mk-list-container .mk-list-fields .mk-cell-file {
   width: 100%;
   font-weight: var(--bold-weight);
-  margin-bottom: -12px;
 }
 .mk-cards-container .mk-list-fields {
   padding: 12px;
@@ -500,6 +515,8 @@ body {
 .mk-cell-date-value:hover {
   background: var(--interactive-hover);
 }
+.mk-cell-link,
+.mk-cell-context,
 .mk-cell-option {
   width: 100%;
   min-height: 24px;
@@ -508,7 +525,8 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-.mk-cell-checkbox-item {
+.mk-cell-boolean {
+  padding: 4px;
   display: flex;
   align-items: center;
   gap: 2px;
@@ -520,6 +538,9 @@ body {
   display: flex;
   align-items: center;
   gap: 2px;
+}
+.mk-cell-option-item.mk-is-active {
+  background: var(--interactive-accent) !important;
 }
 .mk-cell-option-item input {
   margin: 0;
@@ -666,6 +687,8 @@ body {
   display: flex;
   border-radius: 4px;
 }
+.mk-cell-link:hover .mk-cell-option-new,
+.mk-cell-context:hover .mk-cell-option-new,
 .mk-cell-option:hover .mk-cell-option-new {
   visibility: visible;
 }
@@ -1116,7 +1139,70 @@ body {
   border-radius: 0;
 }
 
+/* src/css/ContextBuilder.css */
+.is-phone .mk-context-maker {
+  max-height: 100vh;
+}
+.mk-context-maker-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.mk-context-maker .modal-content {
+  height: var(--dialog-max-height);
+}
+.mk-context-maker-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: var(--size-4-4);
+  flex-grow: 1;
+  overflow: scroll;
+  padding-bottom: 0;
+}
+.mk-context-maker-item {
+  background: rgba(var(--mono-rgb-100), 0.025);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px;
+}
+.mk-context-maker-selector {
+  font-size: var(--font-ui-small);
+  height: 240px;
+  overflow-y: scroll;
+  background: rgba(var(--mono-rgb-100), 0.025);
+  padding: var(--size-4-4);
+  border-radius: 4px;
+}
+.mk-context-maker-selector .mk-cell-option {
+  margin-bottom: 8px;
+}
+.mk-context-maker-builder {
+  min-height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+  gap: 4px;
+}
+.mk-context-maker {
+  padding: 0;
+}
+.mk-context-maker-layout > div > div {
+  border-bottom: thin solid var(--divider-color);
+  padding: 4px;
+}
+.mk-context-maker-layout > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 /* src/css/FilterBar.css */
+.mk-view-selector,
 .mk-table-selector {
   margin-right: 0;
   display: flex;
@@ -1127,21 +1213,24 @@ body {
   max-width: 100%;
   overflow-x: auto;
 }
-.mk-table-selector::-webkit-scrollbar {
+.mk-view-selector {
+  margin-left: var(--size-4-3);
+}
+.mk-view-selector::-webkit-scrollbar {
   display: none;
 }
-.mk-table-selector > div > .mk-collapse {
+.mk-view-selector > div > .mk-collapse {
   padding-right: 8px;
   padding-left: 0px;
 }
-.mk-table-selector .mk-collapse.mk-icon-xsmall svg {
+.mk-view-selector .mk-collapse.mk-icon-xsmall svg {
   color: unset;
 }
-.mk-table-selector > div > button:not(:last-child) {
+.mk-view-selector > div > button:not(:last-child) {
   padding-right: 0px;
 }
-.mk-table-selector > div,
-.mk-table-selector > button {
+.mk-view-selector > div,
+.mk-view-selector > button {
   border-radius: 0;
   margin: 4px -8px;
   display: flex;
@@ -1149,24 +1238,25 @@ body {
   border-bottom: thin solid transparent;
   height: 100%;
 }
-.mk-table-selector .mk-is-active button {
+.mk-view-config .mk-is-active button {
   color: var(--text-normal);
 }
-.mk-table-selector .mk-is-active {
+.mk-view-config .mk-is-active {
   border-bottom: thin solid var(--text-normal);
   color: var(--text-normal);
   background: none !important;
 }
-.mk-view-selector button {
+.mk-table-selector button,
+.mk-view-config button {
   background: none;
   border: none;
   box-shadow: none;
   color: var(--text-faint);
 }
-.mk-view-selector button:hover {
+.mk-view-config button:hover {
   color: var(--text-normal);
 }
-.mk-view-selector {
+.mk-view-config {
   width: 100%;
   display: flex;
   color: var(--text-faint);
@@ -1174,15 +1264,15 @@ body {
   border-bottom: 1px solid var(--divider-color);
   flex-wrap: wrap;
 }
-.mk-view-selector input {
+.mk-view-config input {
   background: none;
   border: none;
   flex-grow: 1;
 }
-.is-phone .mk-view-selector {
+.is-phone .mk-view-config {
   flex-wrap: wrap;
 }
-.is-phone .mk-view-selector button {
+.is-phone .mk-view-config button {
   width: unset;
 }
 .mk-view-search {
@@ -1213,10 +1303,10 @@ body {
   padding-right: var(--size-4-3);
   flex-grow: 1;
 }
-.mk-view-selector span {
+.mk-view-config span {
   flex-grow: 10;
 }
-.mk-view-selector svg {
+.mk-view-config svg {
   width: 14px;
   height: 14px;
 }
@@ -1230,6 +1320,7 @@ body {
 .mk-filter-bar span {
   flex-grow: 1;
 }
+.mk-view-config .mk-is-active,
 .mk-table-selector .mk-is-active {
   color: var(--text-normal) !important;
 }
@@ -1297,6 +1388,10 @@ body {
 .mk-query-group button {
   background-color: unset;
   box-shadow: none;
+  width: unset;
+}
+.is-phone .mk-query-group button {
+  background-color: var(--interative-normal);
 }
 .mk-query-group-type > span,
 .mk-query-filter > span {
@@ -1325,7 +1420,6 @@ body {
 .mk-search-bar {
 }
 .mk-tag-selector {
-  padding: 0 var(--context-padding);
   display: flex;
   gap: 8px;
   margin-top: 8px;
@@ -1777,10 +1871,13 @@ mark {
 .mk-file-context-value input[type=number]:focus {
   box-shadow: none !important;
 }
+c .mk-section-title,
 .mk-file-context-title {
   font-size: var(--font-ui-small);
   font-weight: var(--bold-weight);
   color: var(--text-muted);
+}
+.mk-file-context-title {
   display: flex;
   align-items: center;
   height: 24px;
@@ -2012,6 +2109,7 @@ mark {
 }
 .mk-image-modal {
   display: flex;
+  flex-wrap: wrap;
 }
 
 /* src/css/makerMode.css */
@@ -2243,15 +2341,29 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
 .mk-section-wrapper {
   padding-top: 8px !important;
 }
-body:not(.is-mobile) .mk-section-title:hover {
-  background: var(--nav-item-background-hover);
+.mk-section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--divider-color);
+}
+.mk-section-tabs .mk-is-active {
+  background: none;
+  font-weight: var(--bold-weight);
+  color: var(--text-normal);
+}
+.mk-section-tabs .mk-section-title {
+  font-weight: var(--normal-weight);
+  background: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  gap: 8px;
+  height: unset;
+  flex-direction: column;
 }
 .mk-section-title {
   height: 24px;
-  border-radius: 4px;
-  padding-left: 4px;
   display: flex;
-  flex: 1;
   min-width: 0;
   align-items: center;
 }
@@ -2259,9 +2371,9 @@ body:not(.is-mobile) .mk-section-title:hover {
   padding: 0.25rem 0.3rem;
 }
 .mk-section .mk-collapse svg {
-  margin: 2px;
-  width: 10px;
-  height: 10px;
+  margin: 4px;
+  width: 8px;
+  height: 8px;
 }
 
 /* src/css/FolderTreeView.css */
