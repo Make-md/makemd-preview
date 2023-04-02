@@ -1758,6 +1758,12 @@ mark {
   border-radius: 8px;
   padding: 8px !important;
 }
+.mod-right-split .mk-header {
+  display: none;
+}
+.mod-left-split .mk-header {
+  display: none;
+}
 .markdown-reading-view .mk-file-context-file > .mk-inline-title.inline-title,
 .markdown-source-view.mod-cm6.is-readable-line-width .mk-file-context-file > .mk-inline-title.inline-title {
   padding-bottom: 0;
@@ -1765,6 +1771,7 @@ mark {
   margin-left: 0 !important;
   margin-top: 0;
   padding-top: 0;
+  margin-bottom: 0;
 }
 .mk-file-context-component .mk-tag-selector {
   margin-top: 4px;
@@ -2175,6 +2182,13 @@ c .mk-section-title,
 .mk-hide-tabs .mod-left-split .mod-top-left-space .workspace-tab-header-container-inner {
   visibility: hidden;
 }
+.mk-sync-status {
+  display: flex;
+  font-size: var(--font-ui-small);
+  color: var(--nav-item-color);
+  gap: 4px;
+  margin: 8px 12px;
+}
 .mk-spaces-enabled.is-mobile.mk-hide-ribbon .workspace-drawer.mod-left .workspace-drawer-inner {
   padding-left: 0 !important;
 }
@@ -2236,6 +2250,9 @@ body.is-mobile .sidebar-toggle-button {
 .mk-file-tree {
   flex: 1;
   overflow: hidden;
+}
+.mk-context-tree .tree-item {
+  padding: 4px;
 }
 .mk-context-tree .tree-item-self {
   margin-left: var(--spacing);
@@ -2393,7 +2410,10 @@ body:not(.is-mobile) .mk-main-menu-button:hover {
   padding-bottom: 6px;
 }
 .is-mobile .mk-tree-wrapper > div {
-  padding-left: 8px;
+  padding-left: 24px;
+}
+.is-mobile .mk-tree-wrapper > .mk-section {
+  padding-left: 4px;
 }
 .mk-tree-wrapper > div {
   display: flex;
