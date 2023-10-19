@@ -44588,6 +44588,7 @@ var removeFilesInContext = async (plugin, paths, space2) => {
 // src/components/ui/menus/propertyMenu/PropertyValue.tsx
 init_compat_module();
 var PropertyValueComponent = (props2) => {
+  var _a2;
   const showOptions = (e4, value, options, field, saveProperty) => {
     showSelectMenu(e4.target.getBoundingClientRect(), {
       plugin: props2.plugin,
@@ -44614,8 +44615,8 @@ var PropertyValueComponent = (props2) => {
     props2.saveValue(JSON.stringify({ ...parsedValue, [field]: value }));
   };
   const saveSpaceProperty = (field) => {
-    var _a2, _b2;
-    const colExists = (_b2 = (_a2 = props2.plugin.index.contextsIndex.get(parsedValue.space)) == null ? void 0 : _a2.cols) == null ? void 0 : _b2.some((f4) => f4.name == field);
+    var _a3, _b2;
+    const colExists = (_b2 = (_a3 = props2.plugin.index.contextsIndex.get(parsedValue.space)) == null ? void 0 : _a3.cols) == null ? void 0 : _b2.some((f4) => f4.name == field);
     if (!colExists) {
       insertContextColumn(
         props2.plugin,
@@ -44628,7 +44629,7 @@ var PropertyValueComponent = (props2) => {
         }
       );
     }
-    saveParsedValue("space", field);
+    saveParsedValue("field", field);
   };
   const selectContext = (e4) => {
     showOptions(
@@ -44639,20 +44640,21 @@ var PropertyValueComponent = (props2) => {
     );
   };
   const selectSpaceProperty = (e4) => {
-    var _a2;
+    var _a3, _b2;
+    console.log(parsedValue.space);
     showOptions(
       e4,
       parsedValue.property,
-      (_a2 = props2.plugin.index.contextsIndex.get(parsedValue.space)) == null ? void 0 : _a2.cols.filter((f4) => {
+      (_b2 = (_a3 = props2.plugin.index.contextsIndex.get(parsedValue.space)) == null ? void 0 : _a3.cols.filter((f4) => {
         return f4.type.startsWith("context") && parseFieldValue(f4.value, f4.type)["space"] == props2.contextPath ? true : false;
-      }).map((m6) => ({ name: m6.name, value: m6.name })),
+      }).map((m6) => ({ name: m6.name, value: m6.name }))) != null ? _b2 : [],
       "field",
       saveSpaceProperty
     );
   };
   const selectProperty = (e4) => {
-    var _a2, _b2;
-    const properties2 = (_b2 = (_a2 = props2.plugin.index.contextsIndex.get(props2.contextPath)) == null ? void 0 : _a2.cols.filter(
+    var _a3, _b2;
+    const properties2 = (_b2 = (_a3 = props2.plugin.index.contextsIndex.get(props2.contextPath)) == null ? void 0 : _a3.cols.filter(
       (f4) => f4.type == "file" || f4.type == "link" || f4.type == "context"
     ).map((f4) => ({
       name: f4.name,
@@ -44661,8 +44663,8 @@ var PropertyValueComponent = (props2) => {
     showOptions(e4, null, properties2, "field");
   };
   const selectFileProp = (e4) => {
-    var _a2, _b2, _c2;
-    const property2 = (_a2 = props2.plugin.index.contextsIndex.get(props2.contextPath)) == null ? void 0 : _a2.cols.find((f4) => f4.name == parsedValue.field);
+    var _a3, _b2, _c2;
+    const property2 = (_a3 = props2.plugin.index.contextsIndex.get(props2.contextPath)) == null ? void 0 : _a3.cols.find((f4) => f4.name == parsedValue.field);
     const fileProps2 = property2 ? property2.type == "file" || property2.type == "link" ? filePropTypes.map((f4) => ({
       name: f4.name,
       value: f4.value
@@ -44695,7 +44697,7 @@ var PropertyValueComponent = (props2) => {
   }, /* @__PURE__ */ Cn.createElement("span", null, i18n_default.labels.dateFormat), /* @__PURE__ */ Cn.createElement("span", null, parsedValue.format)) : props2.fieldType.startsWith("context") ? /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
     className: "menu-item",
     onClick: (e4) => selectContext(e4)
-  }, /* @__PURE__ */ Cn.createElement("span", null, i18n_default.labels.propertyValueSpace), /* @__PURE__ */ Cn.createElement("span", null, spaceNameFromSpacePath(parsedValue.space, props2.plugin))), parsedValue.space.length > 0 && /* @__PURE__ */ Cn.createElement("div", {
+  }, /* @__PURE__ */ Cn.createElement("span", null, i18n_default.labels.propertyValueSpace), /* @__PURE__ */ Cn.createElement("span", null, spaceNameFromSpacePath(parsedValue.space, props2.plugin))), ((_a2 = parsedValue.space) == null ? void 0 : _a2.length) > 0 && /* @__PURE__ */ Cn.createElement("div", {
     className: "menu-item",
     onClick: (e4) => selectSpaceProperty(e4)
   }, /* @__PURE__ */ Cn.createElement("span", null, i18n_default.labels.propertyValueProperty), /* @__PURE__ */ Cn.createElement("span", null, parsedValue.field))) : props2.fieldType == "fileprop" ? /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement("div", {
